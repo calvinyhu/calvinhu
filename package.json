@@ -45,9 +45,10 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "concurrently --kill-others \"node scripts/start.js\" \"npm run gulp\"",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "gulp": "gulp"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -90,5 +91,13 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-sass": "^4.0.1"
   }
 }
