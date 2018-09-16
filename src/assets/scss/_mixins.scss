@@ -1,0 +1,22 @@
+@mixin media-min-width($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin media-min-height($height) {
+  @media (min-height: $height) {
+    @content;
+  }
+}
+
+@mixin slideY($name, $from, $to) {
+  @keyframes #{$name} {
+    0% {
+      transform: translateY($from);
+    }
+    100% {
+      transform: translateY($to);
+    }
+  }
+}

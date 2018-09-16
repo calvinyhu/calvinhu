@@ -1,0 +1,64 @@
+// Media Widths
+$desktop-width: 40rem;
+$mobile-height: 31rem;
+$mobile-height-tall: 37rem;
+$mobile-height-taller: 44rem;
+$mobile-height-tallest: 50rem;
+
+// Transitions
+$transition-function: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-duration: 0.3s;
+$transition: $transition-duration $transition-function;
+
+// Padding
+$padding: 1rem;
+$padding-tiny: 0.2rem;
+
+// Border
+$border-input: 1px solid #ccc;
+$border-input-oa: 1px solid #5481a4;
+$border-radius-input: 2px;
+$border-radius-button: 4px;
+$border-radius-card: 6px;
+
+// Margin
+$margin: 1rem;
+
+// Box Shadow
+$box-shadow-top: 0px -3px 6px -2px rgba(0, 0, 0, 0.2);
+$box-shadow: 0px 3px 6px -2px rgba(0, 0, 0, 0.2);
+$box-shadow-card: 0px 3px 20px 0px rgba(0, 0, 0, 0.5);
+
+// Font
+$font-size: 1rem;
+
+// Height
+$height: 1rem;
+
+// Width
+$width: 1rem;
+
+// Color
+$lighter-main-color: #ffd8c8;
+$light-main-color: #ffbb80;
+$main-color: #ffa07a;
+$dark-main-color: #dd764d;
+$darker-main-color: #be5328;
+
+$lighter-adj-color: #ffe8c8;
+$light-adj-color: #ffd6a0;
+$adj-color: #ffc67a;
+$dark-adj-color: #dda04d;
+$darker-adj-color: #be7e28;
+
+$lighter-opp-color: #b5e7d2;
+$light-opp-color: #b5e7d2;
+$opp-color: #54af88;
+$dark-opp-color: #35986e;
+$darker-opp-color: #1b8256;
+
+$lighter-opp-adj-color: #b6d0e4;
+$light-opp-adj-color: #81a8c6;
+$opp-adj-color: #5481a4;
+$dark-opp-adj-color: #38698e;
+$darker-opp-adj-color: #20537a;

@@ -70,7 +70,7 @@ gulp.task(COMPILE_SCSS_FORCE, () => {
 gulp.task(WATCH_SCSS, () => {
   // gulp.watch('./src/assets/scss/*.scss', [COMPILE_SCSS_FORCE]);
   // gulp.watch('./src/components/**/*.scss', [COMPILE_SCSS]);
-  // gulp.watch('./src/containers/**/*.scss', [COMPILE_SCSS]);
+  gulp.watch('./src/containers/**/*.scss', [COMPILE_SCSS]);
   gulp.watch('./src/hoc/**/*.scss', [COMPILE_SCSS]);
 });
 
