@@ -1,0 +1,22 @@
+@import './src/assets/scss/_variables.scss';
+@import './src/assets/scss/_mixins.scss';
+
+@include fade-in;
+@include slide-y(blockSlideY, 5rem, 0);
+
+.Hide {
+  opacity: 0;
+}
+
+.Show {
+  opacity: 1;
+}
+
+.FadeIn {
+  animation: fadeIn 0.5s $timing-func-1 forwards;
+}
+
+.BlockSlideFadeIn {
+  animation: fadeIn 0.5s $timing-func-1 forwards,
+    blockSlideY 0.5s $timing-func-1 forwards;
+}
