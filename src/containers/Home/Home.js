@@ -4,22 +4,30 @@ import classes from './Home.css';
 
 const SCROLL = {
   PROJECTS: 99,
-  SHMACK: 200
+  SHMACK: 200,
+  PHOTO: 1300,
+  CALI: 2600
 };
 
 class Home extends PureComponent {
   state = {
     isShowProjects: false,
-    isShowShmack: false
+    isShowShmack: false,
+    isShowPhotography: false,
+    isShowCalisthenics: false
   };
 
   handleScroll = event => {
     let scrollTop = event.target.scrollTop;
-
+    console.log(scrollTop);
     if (!this.state.isShowProjects)
       this.setState({ isShowProjects: scrollTop > SCROLL.PROJECTS });
     if (!this.state.isShowShmack)
       this.setState({ isShowShmack: scrollTop > SCROLL.SHMACK });
+    if (!this.state.isShowPhotography)
+      this.setState({ isShowPhotography: scrollTop > SCROLL.PHOTO });
+    if (!this.state.isShowCalisthenics)
+      this.setState({ isShowCalisthenics: scrollTop > SCROLL.CALI });
   };
 
   render() {
@@ -31,6 +39,14 @@ class Home extends PureComponent {
     if (this.state.isShowProjects)
       projectsClasses = classes.Projects + ' ' + classes.BlockSlideFadeIn;
 
+    let photographyClasses = classes.Photography + ' ' + classes.Hide;
+    if (this.state.isShowPhotography)
+      photographyClasses = classes.Photography + ' ' + classes.BlockSlideFadeIn;
+
+    let caliClasses = classes.Calisthenics + ' ' + classes.Hide;
+    if (this.state.isShowCalisthenics)
+      caliClasses = classes.Calisthenics + ' ' + classes.BlockSlideFadeIn;
+
     return (
       <div className={classes.Home} onScroll={this.handleScroll}>
         <div className={classes.About}>
@@ -38,7 +54,10 @@ class Home extends PureComponent {
             Hi, I'm Calvin.
           </h1>
           <div className={classes.Blurb}>
-            <p className={classes.BlurbBegin + ' ' + classes.Hide}>I'm a</p>
+            <div className={classes.BlurbEnds}>
+              <p className={classes.BlurbBegin + ' ' + classes.Hide}>I'm a</p>
+              <p className={classes.BlurbEnd + ' ' + classes.Hide}>and</p>
+            </div>
             <div className={classes.BlurbTitles}>
               <p className={classes.BlurbTitle1 + ' ' + classes.Hide}>
                 Web Developer
@@ -54,16 +73,17 @@ class Home extends PureComponent {
         </div>
 
         <div className={projectsClasses}>
-          <h1>My Projects</h1>
+          <h4>My Projects</h4>
           <div className={shmackClasses} />
         </div>
 
-        <div className={classes.Photography}>
-          <h1>My Photos</h1>
+        <div className={photographyClasses}>
+          <h4>My Photos</h4>
+          <div className={classes.Gallery}>Gallery</div>
         </div>
 
-        <div className={classes.Calisthenics}>
-          <h1>My Health</h1>
+        <div className={caliClasses}>
+          <h4>My Health</h4>
         </div>
       </div>
     );

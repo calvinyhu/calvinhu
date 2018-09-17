@@ -17,15 +17,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: black;
+  background: $dark;
   color: white;
   width: 100%;
   height: 101vh;
 
   .Title {
     transform: translateY(100%);
-    animation: fadeIn 1s linear 0.5s forwards,
-      textSlideY 1s linear 0.5s forwards;
+    animation: fadeIn 1s $timing-func-1 0.5s forwards,
+      textSlideY 1s $timing-func-1 0.5s forwards;
   }
 
   .Blurb {
@@ -33,25 +33,40 @@
     justify-content: center;
     align-items: flex-start;
 
+    .BlurbEnds {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
     .BlurbBegin {
       margin-right: $margin;
-      animation: fadeIn 0.5s linear 1.5s forwards,
-        fadeOut 0.5s linear 4s forwards;
+      animation: fadeIn 0.5s $timing-func-1 1.5s forwards,
+        textSlideY 0.5s $timing-func-1 1.5s forwards,
+        fadeOut 0.5s $timing-func-1 4s forwards;
     }
 
     .BlurbTitle1 {
-      animation: fadeIn 0.5s linear 1.5s forwards,
-        textSlideY 0.5s linear 1.5s forwards;
+      animation: fadeIn 0.5s $timing-func-1 1.5s forwards,
+        textSlideY 0.5s $timing-func-1 1.5s forwards;
     }
 
     .BlurbTitle2 {
-      animation: fadeIn 0.5s linear 2.5s forwards,
-        textSlideY 0.5s linear 2.5s forwards;
+      animation: fadeIn 0.5s $timing-func-1 2.5s forwards,
+        textSlideY 0.5s $timing-func-1 2.5s forwards;
+    }
+
+    .BlurbEnd {
+      margin-top: $margin * 2.5;
+      margin-right: $margin;
+      animation: fadeIn 0.5s $timing-func-1 3.5s forwards,
+        textSlideY 0.5s $timing-func-1 3.5s forwards,
+        fadeOut 0.5s $timing-func-1 5s forwards;
     }
 
     .BlurbTitle3 {
-      animation: fadeIn 0.5s linear 3.5s forwards,
-        textSlideY 0.5s linear 3.5s forwards;
+      animation: fadeIn 0.5s $timing-func-1 3.5s forwards,
+        textSlideY 0.5s $timing-func-1 3.5s forwards;
     }
   }
 }
@@ -62,26 +77,27 @@
   align-items: center;
   width: 100%;
   min-height: 125vh;
-  background: white;
-  color: black;
+  background: $dark;
+  color: white;
 
-  h1 {
+  h4 {
     position: sticky;
-    margin: 0;
-    padding: $padding * 2 0;
     top: 0;
     z-index: 1;
+    margin: 0;
+    padding: $padding 0;
     width: 100%;
-    background: white;
+    background: $dark;
+    color: white;
     text-align: center;
-    box-shadow: $box-shadow;
+    box-shadow: $box-shadow-dark;
   }
 
   .Project {
-    margin: $margin * 3 0;
+    margin: $margin * 10 0;
     width: 80vw;
     height: 50vh;
-    background: red;
+    background: $lighter-opp-adj-color;
     color: black;
     box-shadow: $box-shadow-card;
     border-radius: $border-radius-card;
@@ -93,33 +109,42 @@
   width: 100%;
   height: 125vh;
 
-  h1 {
+  h4 {
     position: sticky;
-    margin: 0;
-    padding: $padding * 2 0;
     top: 0;
     z-index: 1;
+    margin: 0;
+    padding: $padding 0;
     width: 100%;
-    background: black;
+    background: white;
+    color: black;
     text-align: center;
+    box-shadow: $box-shadow;
+  }
+
+  .Gallery {
+    width: 100%;
+    height: 100%;
+    background: white;
   }
 }
 
 .Calisthenics {
   width: 100%;
   height: 125vh;
-  background: white;
-  color: black;
+  background: $dark;
+  color: white;
 
-  h1 {
+  h4 {
     position: sticky;
-    margin: 0;
-    padding: $padding * 2 0;
     top: 0;
     z-index: 1;
+    margin: 0;
+    padding: $padding 0;
     width: 100%;
-    background: white;
+    background: $dark;
     text-align: center;
+    box-shadow: $box-shadow-dark;
   }
 }
 
@@ -136,6 +161,6 @@
 }
 
 .BlockSlideFadeIn {
-  animation: fadeIn 0.5s linear forwards,
-    blockSlideY 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation: fadeIn 0.5s $timing-func-1 forwards,
+    blockSlideY 0.5s $timing-func-1 forwards;
 }
