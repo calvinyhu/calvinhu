@@ -1,11 +1,38 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import classes from './Home.css';
 
-class Home extends Component {
+const SCROLL = {
+  PROJECTS: 99,
+  SHMACK: 200
+};
+
+class Home extends PureComponent {
+  state = {
+    isShowProjects: false,
+    isShowShmack: false
+  };
+
+  handleScroll = event => {
+    let scrollTop = event.target.scrollTop;
+
+    if (!this.state.isShowProjects)
+      this.setState({ isShowProjects: scrollTop > SCROLL.PROJECTS });
+    if (!this.state.isShowShmack)
+      this.setState({ isShowShmack: scrollTop > SCROLL.SHMACK });
+  };
+
   render() {
+    let shmackClasses = classes.Project + ' ' + classes.Hide;
+    if (this.state.isShowShmack)
+      shmackClasses = classes.Project + ' ' + classes.BlockSlideFadeIn;
+
+    let projectsClasses = classes.Projects + ' ' + classes.Hide;
+    if (this.state.isShowProjects)
+      projectsClasses = classes.Projects + ' ' + classes.BlockSlideFadeIn;
+
     return (
-      <div className={classes.Home}>
+      <div className={classes.Home} onScroll={this.handleScroll}>
         <div className={classes.About}>
           <h1 className={classes.Title + ' ' + classes.Hide}>
             Hi, I'm Calvin.
@@ -26,11 +53,18 @@ class Home extends Component {
           </div>
         </div>
 
-        <div className={classes.Projects}>Projects</div>
+        <div className={projectsClasses}>
+          <h1>My Projects</h1>
+          <div className={shmackClasses} />
+        </div>
 
-        <div className={classes.Photography}>Photography</div>
+        <div className={classes.Photography}>
+          <h1>My Photos</h1>
+        </div>
 
-        <div className={classes.Calisthenics}>Calisthenics</div>
+        <div className={classes.Calisthenics}>
+          <h1>My Health</h1>
+        </div>
       </div>
     );
   }

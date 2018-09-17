@@ -10,7 +10,29 @@
   }
 }
 
-@mixin slideY($name, $from, $to) {
+@mixin fade-in {
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin fade-out {
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+@mixin slide-y($name, $from, $to) {
   @keyframes #{$name} {
     0% {
       transform: translateY($from);
