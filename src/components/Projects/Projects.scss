@@ -23,15 +23,41 @@
     text-align: center;
     box-shadow: $box-shadow-dark;
   }
+}
 
-  .Project {
-    margin: $margin * 10 0;
-    width: 80vw;
-    height: 50vh;
-    background: $lighter-opp-adj-color;
-    color: black;
-    box-shadow: $box-shadow-card;
-    border-radius: $border-radius-card;
-    font-size: 2rem;
+.ProjectItem {
+  margin: $margin * 10 0;
+  width: 100%;
+
+  .Carousel {
+    display: flex;
+    width: 100%;
+    overflow-y: auto;
+  }
+}
+
+.CarouselItem {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 $padding;
+
+  .ImgContainer {
+    display: inline-block;
+    margin: $margin;
+
+    img {
+      max-width: 100%;
+      max-height: 65vh;
+      object-fit: contain;
+      border-radius: $border-radius-button;
+      box-shadow: $box-shadow-card;
+    }
+  }
+
+  .Description {
+    display: inline-block;
+    margin: $margin;
   }
 }
