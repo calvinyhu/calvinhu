@@ -1,12 +1,13 @@
 import React, { PureComponent } from 'react';
 
 import classes from './Home.css';
+const throttle = require('lodash.throttle');
 
 const SCROLL = {
-  PROJECTS: 99,
-  SHMACK: 200,
-  PHOTO: 1300,
-  CALI: 2600
+  PROJECTS: 0.23,
+  SHMACK: 0.3,
+  PHOTO: 0.5,
+  CALI: 0.8
 };
 
 class Home extends PureComponent {
@@ -18,17 +19,21 @@ class Home extends PureComponent {
   };
 
   handleScroll = event => {
-    let scrollTop = event.target.scrollTop;
-    console.log(scrollTop);
-    if (!this.state.isShowProjects)
-      this.setState({ isShowProjects: scrollTop > SCROLL.PROJECTS });
-    if (!this.state.isShowShmack)
-      this.setState({ isShowShmack: scrollTop > SCROLL.SHMACK });
-    if (!this.state.isShowPhotography)
-      this.setState({ isShowPhotography: scrollTop > SCROLL.PHOTO });
-    if (!this.state.isShowCalisthenics)
-      this.setState({ isShowCalisthenics: scrollTop > SCROLL.CALI });
+    event.persist();
+    this.throttleScroll(event.target.scrollTop, event.target.scrollHeight);
   };
+
+  throttleScroll = throttle((scrollTop, scrollHeight) => {
+    const percent = (scrollTop + window.innerHeight) / scrollHeight;
+    if (!this.state.isShowProjects)
+      this.setState({ isShowProjects: percent > SCROLL.PROJECTS });
+    if (!this.state.isShowShmack)
+      this.setState({ isShowShmack: percent > SCROLL.SHMACK });
+    if (!this.state.isShowPhotography)
+      this.setState({ isShowPhotography: percent > SCROLL.PHOTO });
+    if (!this.state.isShowCalisthenics)
+      this.setState({ isShowCalisthenics: percent > SCROLL.CALI });
+  }, 200);
 
   render() {
     let shmackClasses = classes.Project + ' ' + classes.Hide;
