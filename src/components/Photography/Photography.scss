@@ -4,49 +4,21 @@
 
 .Photography {
   width: 100%;
-  // min-height: 125vh;
+  background: white;
+  color: black;
 
   h4 {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    margin: 0;
-    padding: $padding 0;
-    width: 100%;
-    background: white;
-    color: black;
     text-align: center;
-    box-shadow: $box-shadow;
+    padding: $padding * 2;
   }
 }
 
-.Gallery {
-  position: relative;
-  width: 100%;
-}
-
-.GalleryBackground {
-  display: inline-block;
+.ImgContainer {
   width: 100%;
 
   img {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
-  }
-}
-
-.GalleryItem {
-  position: absolute;
-  top: 21%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45%;
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    box-shadow: $box-shadow-gallery;
   }
 }

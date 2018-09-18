@@ -7,27 +7,29 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 125vh;
-  background: $dark;
-  color: white;
+  background: white;
+  color: black;
+  padding: $padding;
 
   h4 {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    margin: 0;
-    padding: $padding 0;
-    width: 100%;
-    background: $dark;
-    color: white;
-    text-align: center;
-    box-shadow: $box-shadow-dark;
+    margin: $margin * 2;
+  }
+
+  @include media-min-width($desktop-width) {
+    padding: $padding * 2;
   }
 }
 
 .ProjectItem {
-  margin: $margin * 10 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: $margin * 2;
   width: 100%;
+
+  p {
+    margin: $margin * 2;
+  }
 
   .Carousel {
     display: flex;
@@ -41,7 +43,6 @@
   flex-shrink: 0;
   flex-direction: column;
   align-items: center;
-  padding: 0 $padding;
 
   .ImgContainer {
     display: inline-block;
@@ -58,6 +59,5 @@
 
   .Description {
     display: inline-block;
-    margin: $margin;
   }
 }

@@ -7,49 +7,91 @@ import Projects from '../../components/Projects/Projects';
 import Photography from '../../components/Photography/Photography';
 import Calisthenics from '../../components/Calisthenics/Calisthenics';
 
+const PAGE = {
+  NONE: 0,
+  WEB: 1,
+  PHOTO: 2,
+  CALI: 3
+};
+
 const TIMELINE = {
-  PROJECTS: 5,
-  SHMACK: 15,
-  PHOTO: 40,
-  CALI: 75
+  PAGE: 25,
+  SHMACK: 55
 };
 
 class Home extends PureComponent {
   state = {
-    isShowProjects: false,
-    isShowShmack: false,
-    isShowPhotography: false,
-    isShowCalisthenics: false
+    isAnimatePageScroll: false,
+    isAnimateShmackScroll: false,
+    blurbTitlesOpacity: 1,
+    page: 0
+  };
+
+  handleClick = page => {
+    if (this.state.page !== page)
+      this.setState({
+        page: page,
+        isAnimatePageScroll: false,
+        isAnimateShmackScroll: false
+      });
   };
 
   handleScroll = event => {
     throttle(
-      this.animateTimeline(event.target.scrollTop, event.target.scrollHeight)
+      this.animateTimeline(
+        event.target.scrollTop,
+        event.target.scrollHeight,
+        event.target.clientHeight
+      )
     );
   };
 
-  animateTimeline = (scrollTop, scrollHeight) => {
+  animateTimeline = (scrollTop, scrollHeight, clientHeight) => {
     const percent = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
-    if (!this.state.isShowProjects)
-      this.setState({ isShowProjects: percent > TIMELINE.PROJECTS });
-    if (!this.state.isShowShmack)
-      this.setState({ isShowShmack: percent > TIMELINE.SHMACK });
-    if (!this.state.isShowPhotography)
-      this.setState({ isShowPhotography: percent > TIMELINE.PHOTO });
-    if (!this.state.isShowCalisthenics)
-      this.setState({ isShowCalisthenics: percent > TIMELINE.CALI });
+    console.log(percent);
+    if (!this.state.isAnimatePageScroll)
+      this.setState({ isAnimatePageScroll: percent > TIMELINE.PAGE });
+    if (!this.state.isAnimateShmackScroll)
+      this.setState({ isAnimateShmackScroll: percent > TIMELINE.SHMACK });
+    if (scrollTop > 0 && scrollTop <= clientHeight)
+      this.setState({
+        blurbTitlesOpacity: Math.max(1 - (scrollTop / clientHeight) * 2, 0)
+      });
+    if (scrollTop === 0) this.setState({ blurbTitlesOpacity: 1 });
   };
 
   render() {
+    let page;
+    switch (this.state.page) {
+      case PAGE.WEB:
+        page = (
+          <Projects
+            isAnimatePageScroll={this.state.isAnimatePageScroll}
+            isAnimateShmackScroll={this.state.isAnimateShmackScroll}
+          />
+        );
+        break;
+      case PAGE.PHOTO:
+        page = (
+          <Photography isAnimatePageScroll={this.state.isAnimatePageScroll} />
+        );
+        break;
+      case PAGE.CALI:
+        page = (
+          <Calisthenics isAnimatePageScroll={this.state.isAnimatePageScroll} />
+        );
+        break;
+      default:
+        page = null;
+    }
+
     return (
       <div className={classes.Home} onScroll={this.handleScroll}>
-        <About />
-        <Projects
-          isShowProjects={this.state.isShowProjects}
-          isShowShmack={this.state.isShowShmack}
+        <About
+          click={this.handleClick}
+          blurbTitlesOpacity={this.state.blurbTitlesOpacity}
         />
-        <Photography isShowPhotography={this.state.isShowPhotography} />
-        <Calisthenics isShowCalisthenics={this.state.isShowCalisthenics} />
+        {page}
       </div>
     );
   }

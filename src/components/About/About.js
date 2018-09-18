@@ -2,9 +2,16 @@ import React from 'react';
 
 import classes from './About.css';
 
-const about = () => {
+const about = props => {
+  const clickWeb = () => props.click(1);
+  const clickPhoto = () => props.click(2);
+  const clickCali = () => props.click(3);
+
   return (
-    <div className={classes.About}>
+    <div
+      style={{ opacity: props.blurbTitlesOpacity }}
+      className={classes.About}
+    >
       <h1 className={classes.Title + ' ' + classes.Hide}>Hi, I'm Calvin.</h1>
       <div className={classes.Blurb}>
         <div className={classes.BlurbEnds}>
@@ -12,13 +19,22 @@ const about = () => {
           <p className={classes.BlurbEnd + ' ' + classes.Hide}>and</p>
         </div>
         <div className={classes.BlurbTitles}>
-          <p className={classes.BlurbTitle1 + ' ' + classes.Hide}>
+          <p
+            className={classes.BlurbTitle1 + ' ' + classes.Hide}
+            onClick={clickWeb}
+          >
             Web Developer
           </p>
-          <p className={classes.BlurbTitle2 + ' ' + classes.Hide}>
+          <p
+            className={classes.BlurbTitle2 + ' ' + classes.Hide}
+            onClick={clickPhoto}
+          >
             Photography Enthusiast
           </p>
-          <p className={classes.BlurbTitle3 + ' ' + classes.Hide}>
+          <p
+            className={classes.BlurbTitle3 + ' ' + classes.Hide}
+            onClick={clickCali}
+          >
             Calisthenics Aficionado
           </p>
         </div>

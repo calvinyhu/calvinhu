@@ -50,7 +50,9 @@
     "start": "concurrently --kill-others \"node scripts/start.js\" \"npm run gulp\"",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "gulp": "gulp"
+    "gulp": "gulp",
+    "clean": "rm -rf node_modules",
+    "reinstall": "npm run clean && npm install"
   },
   "jest": {
     "collectCoverageFrom": [

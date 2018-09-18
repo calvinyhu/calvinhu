@@ -5,17 +5,21 @@ import shmack1 from '../../assets/images/shmack1.png';
 
 const projects = props => {
   let shmackClasses = classes.ProjectItem + ' ' + classes.Hide;
-  if (props.isShowShmack)
+  if (props.isAnimateShmackScroll)
     shmackClasses = classes.ProjectItem + ' ' + classes.BlockSlideFadeIn;
 
   let projectsClasses = classes.Projects + ' ' + classes.Hide;
-  if (props.isShowProjects)
+  if (props.isAnimatePageScroll)
     projectsClasses = classes.Projects + ' ' + classes.BlockSlideFadeIn;
 
   return (
     <div className={projectsClasses}>
-      <h4>My Projects</h4>
+      <h4>Web Apps I've Built</h4>
       <div className={shmackClasses}>
+        <p>
+          Shmack is the wikipedia of restaurants, where users can view, add, and
+          edit popular food items
+        </p>
         <div className={classes.Carousel}>
           <div className={classes.CarouselItem}>
             <div className={classes.ImgContainer}>
