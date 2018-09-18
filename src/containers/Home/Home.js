@@ -85,8 +85,11 @@ class Home extends PureComponent {
         page = null;
     }
 
+    let homeClasses = classes.Home;
+    if (this.state.page) homeClasses += ' ' + classes.Scroll;
+
     return (
-      <div className={classes.Home} onScroll={this.handleScroll}>
+      <div className={homeClasses} onScroll={this.handleScroll}>
         <About
           click={this.handleClick}
           blurbTitlesOpacity={this.state.blurbTitlesOpacity}
