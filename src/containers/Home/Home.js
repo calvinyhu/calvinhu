@@ -39,6 +39,7 @@ class Home extends PureComponent {
   handleScroll = event => {
     throttle(
       this.animateTimeline(
+        event.target.className,
         event.target.scrollTop,
         event.target.scrollHeight,
         event.target.clientHeight
@@ -46,18 +47,20 @@ class Home extends PureComponent {
     );
   };
 
-  animateTimeline = (scrollTop, scrollHeight, clientHeight) => {
+  animateTimeline = (className, scrollTop, scrollHeight, clientHeight) => {
     const percent = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
-    console.log(percent);
+    // console.log(className, scrollTop, scrollHeight, clientHeight, percent);
     if (!this.state.isAnimatePageScroll)
       this.setState({ isAnimatePageScroll: percent > TIMELINE.PAGE });
     if (!this.state.isAnimateShmackScroll)
       this.setState({ isAnimateShmackScroll: percent > TIMELINE.SHMACK });
-    if (scrollTop > 0 && scrollTop <= clientHeight)
-      this.setState({
-        blurbTitlesOpacity: Math.max(1 - (scrollTop / clientHeight) * 2, 0)
-      });
-    if (scrollTop === 0) this.setState({ blurbTitlesOpacity: 1 });
+    if (className.includes('Home')) {
+      if (scrollTop > 0 && scrollTop <= clientHeight)
+        this.setState({
+          blurbTitlesOpacity: Math.max(1 - (scrollTop / clientHeight) * 2, 0)
+        });
+      if (scrollTop === 0) this.setState({ blurbTitlesOpacity: 1 });
+    }
   };
 
   render() {

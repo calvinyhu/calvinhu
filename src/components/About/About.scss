@@ -39,6 +39,17 @@
         fadeOut 0.5s $timing-func-1 4s forwards;
     }
 
+    p {
+      &:active {
+        color: $light-adj-color;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: $light-adj-color;
+      }
+    }
+
     .BlurbTitle1 {
       animation: fadeIn 0.5s $timing-func-1 1.5s forwards,
         textSlideY 0.5s $timing-func-1 1.5s forwards;
