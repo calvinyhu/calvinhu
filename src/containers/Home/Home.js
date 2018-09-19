@@ -33,10 +33,6 @@ class Home extends PureComponent {
     page: 0
   };
 
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
-  }
-
   handleClick = page => {
     if (this.state.page !== page)
       this.setState({
