@@ -9,10 +9,14 @@
   border: none;
   padding: 0;
   box-shadow: $box-shadow;
-  transition: $transition;
+  transition: $transition2;
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 }
 

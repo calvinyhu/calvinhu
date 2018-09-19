@@ -10,6 +10,7 @@
 
 .Scroll {
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 
 .BackToTopBtn {
@@ -18,11 +19,14 @@
   bottom: 2rem;
   width: $fab-size;
   height: $fab-size;
-  transform: translateY(100vh);
+  opacity: 0.75;
+  transform: translateY(3rem + $fab-size);
+  transition: $transition1;
 
   @include media-min-width($desktop-width) {
     right: 4rem;
     bottom: 4rem;
+    transform: translateY(5rem + $fab-size);
   }
 }
 

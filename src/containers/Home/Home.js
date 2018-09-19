@@ -20,10 +20,8 @@ const TIMELINE = {
   SHMACK: 55
 };
 
-// TODO:
-// Make scroll back to top smooth
-// FIXME:
-// Adding scroll-behavior: smooth to .Home breaks wheel scrolling
+// FIXED:
+// Adding scroll-behavior: smooth to .Home breaks wheel scrolling (Smooth Scroll Chrome extension breaks scroll-behavior feature)
 let homeTarget = null;
 
 class Home extends PureComponent {
@@ -85,7 +83,6 @@ class Home extends PureComponent {
   };
 
   render() {
-    console.log('Rendering');
     let page;
     switch (this.state.page) {
       case PAGE.WEB:
@@ -115,8 +112,7 @@ class Home extends PureComponent {
 
     let goBackToTopBtnClasses = classes.BackToTopBtn;
     if (this.state.isShowBackToTopButton)
-      goBackToTopBtnClasses +=
-        ' ' + classes.OnScreenY + ' ' + classes.FabSlideFadeIn;
+      goBackToTopBtnClasses += ' ' + classes.OnScreenY;
 
     return (
       <div className={homeClasses} onScroll={this.handleScroll}>

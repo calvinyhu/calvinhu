@@ -40,13 +40,15 @@
     }
 
     p {
+      transition: $transition2;
+
       &:active {
-        color: $light-adj-color;
+        color: $opp-color;
       }
 
       &:hover {
         cursor: pointer;
-        color: $light-adj-color;
+        color: $opp-color;
       }
     }
 
