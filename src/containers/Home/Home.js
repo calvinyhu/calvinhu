@@ -8,7 +8,7 @@ import Photography from '../../components/Photography/Photography';
 import Calisthenics from '../../components/Calisthenics/Calisthenics';
 import Button from '../../components/UI/Button/Button';
 
-const PAGE = {
+export const PAGE = {
   NONE: 0,
   WEB: 1,
   PHOTO: 2,

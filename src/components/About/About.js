@@ -1,11 +1,12 @@
 import React from 'react';
 
 import classes from './About.css';
+import { PAGE } from '../../containers/Home/Home';
 
 const about = props => {
-  const clickWeb = () => props.click(1);
-  const clickPhoto = () => props.click(2);
-  const clickCali = () => props.click(3);
+  const clickWeb = () => props.click(PAGE.WEB);
+  const clickPhoto = () => props.click(PAGE.PHOTO);
+  const clickCali = () => props.click(PAGE.CALI);
 
   return (
     <div

@@ -9,6 +9,7 @@ import Home from './containers/Home/Home';
 // Make sure to upload photos that are large and small
 // Add infinite scrolling to photography page
 // Add dragon flag video as background
+// Add routing redirection (entering path info after calvinyhu.com/ should not show that on path name)
 
 class App extends Component {
   render() {
