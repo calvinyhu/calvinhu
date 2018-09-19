@@ -1,0 +1,30 @@
+@import './src/assets/scss/_variables.scss';
+
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  box-shadow: $box-shadow;
+  transition: $transition;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Circle {
+  border-radius: 50%;
+  box-shadow: $box-shadow-fab;
+}
+
+.Adj {
+  background: $adj-color;
+}
+
+.Opp {
+  background: $opp-color;
+}

@@ -2,7 +2,10 @@
 @import './src/assets/scss/_mixins.scss';
 
 @include fade-in;
+@include fade(fadeIn0to75, 0, 0.75);
+@include fade(fadeOut75to0, 0.75, 0);
 @include slide-y(blockSlideY, 5rem, 0);
+@include slide-y(slideYOut5, 0, 5rem);
 
 .Hide {
   opacity: 0;
@@ -14,6 +17,16 @@
 
 .FadeIn {
   animation: fadeIn 0.5s $timing-func-1 forwards;
+}
+
+.FabSlideFadeIn {
+  animation: fadeIn0to75 0.5s $timing-func-1 forwards,
+    blockSlideY 0.5s $timing-func-1 forwards;
+}
+
+.FabSlideFadeOut {
+  animation: fadeOut75to0 0.5s $timing-func-1 forwards,
+    slideYOut5 0.5s $timing-func-1 forwards;
 }
 
 .BlockSlideFadeIn {

@@ -1,5 +1,6 @@
 @import './src/assets/scss/_variables.scss';
 @import './src/assets/scss/_mixins.scss';
+@import './src/assets/scss/_classes.scss';
 
 .Home {
   width: 100%;
@@ -9,4 +10,22 @@
 
 .Scroll {
   overflow-y: scroll;
+}
+
+.BackToTopBtn {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  width: $fab-size;
+  height: $fab-size;
+  transform: translateY(100vh);
+
+  @include media-min-width($desktop-width) {
+    right: 4rem;
+    bottom: 4rem;
+  }
+}
+
+.OnScreenY {
+  transform: translateY(0);
 }
