@@ -16,14 +16,20 @@ export const PAGE = {
   CALI: 3
 };
 
+// TODO:
+// Timeline percentages need to be different for different pages
+// They can be hard-coded, but if content changes then the values need to be changed
 const TIMELINE = {
   PAGE: 25,
   SHMACK: 55
 };
 
-let homeTarget = null;
-
 class Home extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.home = React.createRef();
+  }
+
   state = {
     isAnimatePageScroll: false,
     isAnimateShmackScroll: false,
@@ -51,10 +57,12 @@ class Home extends PureComponent {
         isAnimateShmackScroll: false
       });
     }
+    // FIXME:
+    // Bug when clicking calisthenics first, then photography
+    this.home.current.scrollTop = this.home.current.clientHeight;
   };
 
   handleScroll = event => {
-    if (!homeTarget) homeTarget = event.target;
     throttle(
       this.animateTimeline(
         event.target.className,
@@ -85,9 +93,7 @@ class Home extends PureComponent {
     }
   };
 
-  handleGoBackToTop = () => {
-    homeTarget.scrollTop = 0;
-  };
+  handleGoBackToTop = () => (this.home.current.scrollTop = 0);
 
   render() {
     let page;
@@ -125,7 +131,7 @@ class Home extends PureComponent {
       goBackToTopBtnClasses += ' ' + classes.OnScreenY;
 
     return (
-      <div className={homeClasses} onScroll={this.handleScroll}>
+      <div className={homeClasses} onScroll={this.handleScroll} ref={this.home}>
         <About
           click={this.handleClick}
           blurbTitlesOpacity={this.state.blurbTitlesOpacity}
