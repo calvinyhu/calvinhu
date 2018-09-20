@@ -17,9 +17,6 @@ export const PAGE = {
   CALI: 3
 };
 
-// TODO:
-// Timeline percentages need to be different for different pages
-// They can be hard-coded, but if content changes then the values need to be changed
 const TIMELINE = {
   WEB: 25,
   PHOTO: 5,
