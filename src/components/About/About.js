@@ -15,22 +15,22 @@ const about = props => {
       <div className={classes.Blur} />
 
       <div className={classes.AboutText}>
-        <h1 className={classes.Title + ' ' + classes.Hide}>Hi, I'm Calvin.</h1>
+        <h1 className={classes.Title}>Hi, I'm Calvin.</h1>
         <div className={classes.Blurb}>
           <div className={classes.BlurbEnds}>
-            <p className={classes.BlurbBegin + ' ' + classes.Hide}>I'm a</p>
-            <p className={classes.BlurbEnd + ' ' + classes.Hide}>and</p>
+            <p className={classes.BlurbBegin}>I'm a</p>
+            <p className={classes.BlurbEnd}>and</p>
           </div>
           <div className={classes.BlurbTitles}>
-            <div className={classes.BlurbTitle1 + ' ' + classes.Hide}>
+            <div className={classes.BlurbTitle1}>
               <p onClick={clickWeb}>Web Apps</p>
               <p>Developer</p>
             </div>
-            <div className={classes.BlurbTitle2 + ' ' + classes.Hide}>
+            <div className={classes.BlurbTitle2}>
               <p onClick={clickPhoto}>Photography</p>
               <p>Enthusiast</p>
             </div>
-            <div className={classes.BlurbTitle3 + ' ' + classes.Hide}>
+            <div className={classes.BlurbTitle3}>
               <p onClick={clickCali}>Calisthenics</p>
               <p>Aficionado</p>
             </div>
