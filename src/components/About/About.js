@@ -20,24 +20,18 @@ const about = props => {
           <p className={classes.BlurbEnd + ' ' + classes.Hide}>and</p>
         </div>
         <div className={classes.BlurbTitles}>
-          <p
-            className={classes.BlurbTitle1 + ' ' + classes.Hide}
-            onClick={clickWeb}
-          >
-            Web Developer
-          </p>
-          <p
-            className={classes.BlurbTitle2 + ' ' + classes.Hide}
-            onClick={clickPhoto}
-          >
-            Photography Enthusiast
-          </p>
-          <p
-            className={classes.BlurbTitle3 + ' ' + classes.Hide}
-            onClick={clickCali}
-          >
-            Calisthenics Aficionado
-          </p>
+          <div className={classes.BlurbTitle1 + ' ' + classes.Hide}>
+            <p onClick={clickWeb}>Web Apps</p>
+            <p>Developer</p>
+          </div>
+          <div className={classes.BlurbTitle2 + ' ' + classes.Hide}>
+            <p onClick={clickPhoto}>Photography</p>
+            <p>Enthusiast</p>
+          </div>
+          <div className={classes.BlurbTitle3 + ' ' + classes.Hide}>
+            <p onClick={clickCali}>Calisthenics</p>
+            <p>Aficionado</p>
+          </div>
         </div>
       </div>
     </div>
