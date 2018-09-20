@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
 import classes from './Calisthenics.css';
 
-const calisthenics = props => {
-  let caliClasses = classes.Calisthenics + ' ' + classes.Hide;
-  if (props.isAnimatePageScroll)
-    caliClasses = classes.Calisthenics + ' ' + classes.BlockSlideFadeIn;
+class Calisthenics extends PureComponent {
+  componentDidMount() {
+    this.props.scrollIntoView();
+  }
 
-  return (
-    <div className={caliClasses}>
-      <h4>My Health</h4>
-      <p>I workout 4 days a week, 1 hour per session.</p>
-    </div>
-  );
-};
+  render() {
+    let caliClasses = classes.Calisthenics + ' ' + classes.Hide;
+    if (this.props.isAnimateCaliScroll)
+      caliClasses = classes.Calisthenics + ' ' + classes.BlockSlideFadeIn;
 
-export default calisthenics;
+    return (
+      <div className={caliClasses}>
+        <h4>My Health</h4>
+        <p>I workout 4 days a week, 1 hour per session.</p>
+      </div>
+    );
+  }
+}
+
+export default Calisthenics;
