@@ -39,7 +39,7 @@ class Home extends PureComponent {
     isAnimatePhotoScroll: false,
     isAnimateCaliScroll: false,
     isShowBackToTopButton: false,
-    blurbTitlesOpacity: 1,
+    blurbTitlesOpacity: 0,
     displace: 0,
     page: 0,
     photos: null

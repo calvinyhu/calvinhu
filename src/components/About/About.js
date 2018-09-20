@@ -12,10 +12,7 @@ const about = props => {
     <div className={classes.About}>
       <div className={classes.Background} />
 
-      <div
-        className={classes.Blur}
-        style={{ opacity: props.blurbTitlesOpacity }}
-      />
+      <div className={classes.Blur} />
 
       <div className={classes.AboutText}>
         <h1 className={classes.Title + ' ' + classes.Hide}>Hi, I'm Calvin.</h1>
