@@ -22,3 +22,4 @@ yarn-error.log*
 
 #images
 /src/assets/images
+/src/utils/secrets.js

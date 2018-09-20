@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import throttle from 'raf-throttle';
+import { firestore } from '../../utils/firebase';
 
 import classes from './Home.css';
 import About from '../../components/About/About';
@@ -20,8 +21,6 @@ const TIMELINE = {
   SHMACK: 55
 };
 
-// FIXED:
-// Adding scroll-behavior: smooth to .Home breaks wheel scrolling (Smooth Scroll Chrome extension breaks scroll-behavior feature)
 let homeTarget = null;
 
 class Home extends PureComponent {
@@ -30,16 +29,28 @@ class Home extends PureComponent {
     isAnimateShmackScroll: false,
     isShowBackToTopButton: false,
     blurbTitlesOpacity: 1,
-    page: 0
+    page: 0,
+    photos: null
   };
 
+  componentDidMount() {
+    const photographyRef = firestore.collection('photography');
+    photographyRef
+      .doc('photoUrls')
+      .get()
+      .then(doc => {
+        if (doc.exists) this.setState({ photos: doc.data() });
+      });
+  }
+
   handleClick = page => {
-    if (this.state.page !== page)
+    if (this.state.page !== page) {
       this.setState({
         page: page,
         isAnimatePageScroll: false,
         isAnimateShmackScroll: false
       });
+    }
   };
 
   handleScroll = event => {
@@ -91,7 +102,10 @@ class Home extends PureComponent {
         break;
       case PAGE.PHOTO:
         page = (
-          <Photography isAnimatePageScroll={this.state.isAnimatePageScroll} />
+          <Photography
+            isAnimatePageScroll={this.state.isAnimatePageScroll}
+            photos={this.state.photos}
+          />
         );
         break;
       case PAGE.CALI:
