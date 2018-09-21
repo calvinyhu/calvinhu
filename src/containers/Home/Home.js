@@ -75,7 +75,6 @@ class Home extends PureComponent {
 
   animateTimeline = (className, scrollTop, scrollHeight, clientHeight) => {
     const percent = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
-    // console.log(className, scrollTop, scrollHeight, clientHeight, percent);
     if (!this.state.isAnimateWebScroll)
       this.setState({ isAnimateWebScroll: percent > TIMELINE.WEB });
     if (!this.state.isAnimateShmackScroll)

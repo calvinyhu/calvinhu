@@ -19,7 +19,7 @@ class Projects extends PureComponent {
 
     return (
       <div className={projectsClasses}>
-        <h4>Web Apps I've Built</h4>
+        <h4>Web Apps I've Developed</h4>
         <div className={shmackClasses}>
           <p>
             Shmack is the wikipedia of restaurants, where users can view, add,

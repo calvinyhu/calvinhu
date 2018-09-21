@@ -14,8 +14,25 @@ class Calisthenics extends PureComponent {
 
     return (
       <div className={caliClasses}>
-        <h4>My Health</h4>
-        <p>I workout 4 days a week, 1 hour per session.</p>
+        <h3>The Body I've Built</h3>
+        <div className={classes.Timeline}>
+          <h3>2013</h3>
+          <p>Started body building routine</p>
+          <p>6 day routine</p>
+          <h3>2014</h3>
+          <p>Mid-year switched to calisthenics training</p>
+          <p>Inspired by Frank Medrano</p>
+          <h3>2015</h3>
+          <p>End of year weight plateau at 153 pounds</p>
+          <h3>2016</h3>
+          <p>Lost motivation beginning of 2016</p>
+          <h3>2017</h3>
+          <p>Maintaining body weight</p>
+          <h3>2018</h3>
+          <p>Motivation is back starting 2018</p>
+          <h3>2019</h3>
+          <p>?</p>
+        </div>
       </div>
     );
   }

@@ -7,6 +7,10 @@ class Photography extends PureComponent {
     this.props.scrollIntoView();
   }
 
+  handleClick = event => {
+    console.log(event.target.offsetTop);
+  };
+
   render() {
     let photographyClasses = classes.Photography + ' ' + classes.Hide;
     if (this.props.isAnimatePhotoScroll)
@@ -17,7 +21,11 @@ class Photography extends PureComponent {
       const photoIds = Object.keys(this.props.photos);
       photoIds.forEach(id => {
         gallery.push(
-          <div className={classes.ImgContainer} key={id}>
+          <div
+            className={classes.ImgContainer}
+            key={id}
+            onClick={this.handleClick}
+          >
             <img src={this.props.photos[id]} alt="calvinhu" />
           </div>
         );
@@ -26,7 +34,7 @@ class Photography extends PureComponent {
 
     return (
       <div className={photographyClasses}>
-        <h4>My Gallery</h4>
+        <h4>Photos I've Captured</h4>
         <div className={classes.Gallery}>{gallery}</div>
       </div>
     );
