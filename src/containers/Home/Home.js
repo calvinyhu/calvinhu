@@ -36,8 +36,6 @@ class Home extends PureComponent {
     isAnimatePhotoScroll: false,
     isAnimateCaliScroll: false,
     isShowBackToTopButton: false,
-    blurbTitlesOpacity: 0,
-    displace: 0,
     page: 0,
     photos: null
   };
@@ -88,12 +86,6 @@ class Home extends PureComponent {
       this.setState({ isAnimateCaliScroll: percent > TIMELINE.CALI });
 
     if (this.home.current.className === className) {
-      if (scrollTop <= clientHeight) {
-        this.setState({
-          blurbTitlesOpacity: Math.max(1 - scrollTop / clientHeight, 0),
-          displace: percent
-        });
-      }
       if (this.state.isShowBackToTopButton && scrollTop < clientHeight)
         this.setState({ isShowBackToTopButton: false });
       if (!this.state.isShowBackToTopButton && scrollTop >= clientHeight)
@@ -149,11 +141,7 @@ class Home extends PureComponent {
         onScroll={this.handleScroll}
         ref={this.home}
       >
-        <About
-          click={this.handleClick}
-          blurbTitlesOpacity={this.state.blurbTitlesOpacity}
-          displace={this.state.displace}
-        />
+        <About click={this.handleClick} />
         {page}
         <div className={goBackToTopBtnClasses}>
           <Button circle opp click={this.handleScrollToTop}>
