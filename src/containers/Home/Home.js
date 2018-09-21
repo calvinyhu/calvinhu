@@ -3,24 +3,24 @@ import throttle from 'raf-throttle';
 import { firestore } from '../../utils/firebase';
 
 import classes from './Home.css';
-import About from '../../components/About/About';
+import Cover from '../../components/Cover/Cover';
 import Projects from '../../components/Projects/Projects';
-import Photography from '../../components/Photography/Photography';
-import Calisthenics from '../../components/Calisthenics/Calisthenics';
+import About from '../../components/About/About';
+import Resume from '../../components/Resume/Resume';
 import Button from '../../components/UI/Button/Button';
 import STYLES from '../../utils/styles';
 
 export const PAGE = {
   NONE: 0,
   WEB: 1,
-  PHOTO: 2,
-  CALI: 3
+  ABOUT: 2,
+  RESUME: 3
 };
 
 const TIMELINE = {
   WEB: 25,
-  PHOTO: 5,
-  CALI: 25,
+  ABOUT: 25,
+  RESUME: 25,
   SHMACK: 55
 };
 
@@ -33,21 +33,21 @@ class Home extends PureComponent {
   state = {
     isAnimateWebScroll: false,
     isAnimateShmackScroll: false,
-    isAnimatePhotoScroll: false,
-    isAnimateCaliScroll: false,
+    isAnimateAboutScroll: false,
+    isAnimateResumeScroll: false,
     isShowBackToTopButton: false,
     page: 0,
     photos: null
   };
 
   componentDidMount() {
-    const photographyRef = firestore.collection('photography');
-    photographyRef
-      .doc('photoUrls')
-      .get()
-      .then(doc => {
-        if (doc.exists) this.setState({ photos: doc.data() });
-      });
+    // const photographyRef = firestore.collection('photography');
+    // photographyRef
+    //   .doc('photoUrls')
+    //   .get()
+    //   .then(doc => {
+    //     if (doc.exists) this.setState({ photos: doc.data() });
+    //   });
   }
 
   handleClick = page => {
@@ -55,11 +55,11 @@ class Home extends PureComponent {
       this.setState({
         page: page,
         isAnimateWebScroll: false,
-        isAnimatePhotoScroll: false,
-        isAnimateCaliScroll: false,
+        isAnimateAboutScroll: false,
+        isAnimateResumeScroll: false,
         isAnimateShmackScroll: false
       });
-    }
+    } else this.handleScrollToPage();
   };
 
   handleScroll = event => {
@@ -79,10 +79,10 @@ class Home extends PureComponent {
       this.setState({ isAnimateWebScroll: percent > TIMELINE.WEB });
     if (!this.state.isAnimateShmackScroll)
       this.setState({ isAnimateShmackScroll: percent > TIMELINE.SHMACK });
-    if (!this.state.isAnimatePhotoScroll)
-      this.setState({ isAnimatePhotoScroll: percent > TIMELINE.PHOTO });
-    if (!this.state.isAnimateCaliScroll)
-      this.setState({ isAnimateCaliScroll: percent > TIMELINE.CALI });
+    if (!this.state.isAnimateAboutScroll)
+      this.setState({ isAnimateAboutScroll: percent > TIMELINE.ABOUT });
+    if (!this.state.isAnimateResumeScroll)
+      this.setState({ isAnimateResumeScroll: percent > TIMELINE.RESUME });
 
     if (this.home.current.className === className) {
       if (this.state.isShowBackToTopButton && scrollTop < clientHeight)
@@ -109,20 +109,20 @@ class Home extends PureComponent {
           />
         );
         break;
-      case PAGE.PHOTO:
+      case PAGE.ABOUT:
         page = (
-          <Photography
+          <About
             scrollIntoView={this.handleScrollToPage}
-            isAnimatePhotoScroll={this.state.isAnimatePhotoScroll}
+            isAnimateAboutScroll={this.state.isAnimateAboutScroll}
             photos={this.state.photos}
           />
         );
         break;
-      case PAGE.CALI:
+      case PAGE.RESUME:
         page = (
-          <Calisthenics
+          <Resume
             scrollIntoView={this.handleScrollToPage}
-            isAnimateCaliScroll={this.state.isAnimateCaliScroll}
+            isAnimateResumeScroll={this.state.isAnimateResumeScroll}
           />
         );
         break;
@@ -140,7 +140,7 @@ class Home extends PureComponent {
         onScroll={this.handleScroll}
         ref={this.home}
       >
-        <About click={this.handleClick} />
+        <Cover click={this.handleClick} />
         {page}
         <div className={goBackToTopBtnClasses}>
           <Button circle opp click={this.handleScrollToTop}>

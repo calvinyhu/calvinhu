@@ -1,0 +1,123 @@
+@import './src/assets/scss/_variables.scss';
+@import './src/assets/scss/_mixins.scss';
+@import './src/assets/scss/_classes.scss';
+
+@include fade-out;
+@include slide-y(textSlideY, 50%, 0%);
+
+.Cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $dark;
+  color: black;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+
+  .Background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: url('../../assets/images/DSC_9569.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center left 25%;
+    opacity: 0;
+    animation: fadeIn 1s linear 0.5s forwards;
+  }
+
+  .Blur {
+    position: absolute;
+    width: 250vw;
+    height: 100vh;
+    border-radius: 50%;
+    background: radial-gradient(rgba(255, 255, 255, 0.8) 0%, transparent 35%);
+    opacity: 0;
+    animation: fadeIn 1s linear 0.5s forwards;
+  }
+}
+
+.SocialMedia {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: $padding;
+
+  h5 {
+    margin: 0;
+    margin-left: $margin;
+  }
+
+  @include media-min-width($desktop-width) {
+    padding: $padding * 2;
+  }
+}
+
+.CoverText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 85%;
+
+  @include media-min-width($desktop-width) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.Blurb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .Name,
+  .Title {
+    margin-bottom: $margin;
+    text-align: center;
+    transform: translateY(100%);
+    opacity: 0;
+    animation: fadeIn 1s $timing-func-1 0.5s forwards,
+      textSlideY 1s $timing-func-1 0.5s forwards;
+
+    @include media-min-width($desktop-width) {
+      font-size: $font-size * 4;
+      margin-bottom: 0;
+    }
+  }
+
+  .Title {
+    @include media-min-width($desktop-width) {
+      font-size: $font-size * 3;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.Nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h5 {
+    margin: $margin / 2 0;
+    opacity: 0;
+    animation: fadeIn 1s $timing-func-1 2s forwards;
+
+    &:hover {
+      cursor: pointer;
+      color: white;
+    }
+  }
+
+  @include media-min-width($desktop-width) {
+    align-items: flex-start;
+  }
+}

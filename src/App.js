@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
 
+// FIXME:
+// Remove auto load images for photography page (uses too much bandwidth)
+// Reduce image file size load to reduce bandwidth usage on small devices
 // TODO:
 // Add more shmack content
 // Add infinite scrolling to photography page

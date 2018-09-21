@@ -1,0 +1,89 @@
+@import './src/assets/scss/_variables.scss';
+@import './src/assets/scss/_mixins.scss';
+@import './src/assets/scss/_classes.scss';
+
+.Resume {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  background: white;
+  color: black;
+  padding: $padding;
+
+  h5,
+  h6 {
+    text-align: center;
+  }
+
+  h6 {
+    @include media-min-width($desktop-width) {
+      text-align: left;
+    }
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+
+    @include media-min-width($desktop-width) {
+      text-align: left;
+    }
+  }
+
+  @include media-min-width($desktop-width) {
+    flex-direction: row;
+    padding: $padding * 2;
+  }
+}
+
+.Left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+
+  @include media-min-width($desktop-width) {
+    width: auto;
+  }
+}
+
+.Education {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include media-min-width($desktop-width) {
+    width: auto;
+  }
+}
+
+.TS {
+  display: flex;
+  flex-direction: column;
+  margin-top: $margin * 2;
+
+  width: 100%;
+
+  @include media-min-width($desktop-width) {
+    width: auto;
+  }
+}
+
+.Experience {
+  display: flex;
+  flex-direction: column;
+  margin-top: $margin * 2;
+
+  width: 100%;
+
+  @include media-min-width($desktop-width) {
+    width: auto;
+  }
+
+  @include media-min-width($desktop-width) {
+    margin-top: 0;
+  }
+}
