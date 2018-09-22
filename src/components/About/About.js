@@ -16,10 +16,45 @@ class About extends PureComponent {
       <div className={aboutClasses}>
         <div className={classes.Me} />
         <main>
+          <h4>Who am I?</h4>
+          <h6>Calvin Hu! (punny)</h6>
+          <p>
+            I am a recent UC Davis graduate, currently seeking an entry-level
+            web development position in the Bay Area. Previously, I've developed
+            C++ and C applications that simulate vehicle traffic to test
+            hardware capabilities for various traffic scenarios, including blind
+            spot warning detection, forward collision warning, and automatic
+            toll collection. I am a generalist, actively pursuing a
+            specialization in full-stack web developement.
+          </p>
+          <h4>How am I pursuing my career objectives?</h4>
+          <p>
+            Within the past 3 months (July 2017 - Sep 2017), I spent many, many
+            hours teaching myself HTML, CSS, JavaScript, React, a lots of other
+            tools and methodologies, to build <i>this</i> website and several
+            other projects. I have utilized web developer tutorials on Udemy,
+            developer documentation on React, Firebase, MDN, Stack Overflow
+            (can't leave that one out), and Google Cloud Services. I have much
+            more to learn and I am eager to improve my skills.
+          </p>
+          <h4>Why consider me? (recruiters)</h4>
+          <p>
+            I have unrelenting determination to achieve milestones and achieve
+            them with the best and thoughtful ways. I am extremely organized
+            both virtually and physically, but also very adaptable. I love
+            challenging myself and I love learning. I have the right skills and
+            mind set to achieve goals once I lay my eyes on them.
+          </p>
           <h4>What are my other passions?</h4>
-          <p>The two main ones are</p>
-          <h5>Photography</h5>
-          <h5>Calisthenics</h5>
+          <div className={classes.Passions}>
+            <h5>Photography</h5>
+            <p>and</p>
+            <h5>Calisthenics</h5>
+          </div>
+          <div className={classes.Sink}>
+            <h4>Contact me at:</h4>
+            <h5>ycalvinhu@gmail.com</h5>
+          </div>
         </main>
       </div>
     );
