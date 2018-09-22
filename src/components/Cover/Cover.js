@@ -2,6 +2,8 @@ import React from 'react';
 
 import classes from './Cover.css';
 import { PAGE } from '../../containers/Home/Home';
+import linkedin from '../../assets/images/In-2C-128px-TM.png';
+import github from '../../assets/images/GitHub-Mark-64px.png';
 
 const cover = props => {
   const clickWeb = () => props.click(PAGE.WEB);
@@ -14,11 +16,6 @@ const cover = props => {
 
       <div className={classes.Blur} />
 
-      <div className={classes.SocialMedia}>
-        <h5>LinkedIn</h5>
-        <h5>GitHub</h5>
-      </div>
-
       <div className={classes.CoverText}>
         <div className={classes.Blurb}>
           <h1 className={classes.Name}>Hi, I'm Calvin</h1>
@@ -29,6 +26,24 @@ const cover = props => {
           <h5 onClick={clickWeb}>Web Apps</h5>
           <h5 onClick={clickAbout}>About</h5>
           <h5 onClick={clickResume}>Resume</h5>
+          <div className={classes.SocialMedia}>
+            <a
+              className={classes.ImgContainer}
+              href="https://www.linkedin.com/in/calvinyhu/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={linkedin} alt="LinkedIn" />
+            </a>
+            <a
+              className={classes.ImgContainer}
+              href="https://www.github.com/calvinyhu/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src={github} alt="GitHub" />
+            </a>
+          </div>
         </div>
       </div>
     </div>

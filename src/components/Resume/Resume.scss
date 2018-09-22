@@ -6,35 +6,27 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   width: 100%;
   background: white;
   color: black;
-  padding: $padding;
+  padding: $padding * 2 $padding;
+  box-shadow: $box-shadow-top;
 
-  h5,
-  h6 {
+  h5 {
     text-align: center;
-  }
-
-  h6 {
-    @include media-min-width($desktop-width) {
-      text-align: left;
-    }
+    margin-bottom: $margin;
+    font-weight: 600;
   }
 
   p {
     margin: 0;
-    text-align: center;
-
-    @include media-min-width($desktop-width) {
-      text-align: left;
-    }
   }
 
   @include media-min-width($desktop-width) {
     flex-direction: row;
+    align-items: flex-start;
     padding: $padding * 2;
   }
 }
@@ -42,33 +34,36 @@
 .Left {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 100%;
+  align-items: center;
 
-  @include media-min-width($desktop-width) {
-    width: auto;
+  .Education {
+    display: flex;
+    flex-direction: column;
+
+    h6 {
+      margin: 0;
+    }
   }
-}
 
-.Education {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  .Technologies {
+    display: flex;
+    flex-direction: column;
+    margin-top: $margin * 2;
 
-  @include media-min-width($desktop-width) {
-    width: auto;
-  }
-}
+    .TechnologiesDetails {
+      display: flex;
+      justify-content: space-around;
+      width: 90vw;
 
-.TS {
-  display: flex;
-  flex-direction: column;
-  margin-top: $margin * 2;
+      @include media-min-width($desktop-width) {
+        width: auto;
 
-  width: 100%;
-
-  @include media-min-width($desktop-width) {
-    width: auto;
+        div {
+          margin-right: $margin;
+          white-space: nowrap;
+        }
+      }
+    }
   }
 }
 
@@ -77,13 +72,24 @@
   flex-direction: column;
   margin-top: $margin * 2;
 
-  width: 100%;
+  div {
+    &:first-of-type {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 
-  @include media-min-width($desktop-width) {
-    width: auto;
+  .CompanyDescription {
+    margin-bottom: $margin / 2;
+  }
+
+  @include media-min-width($desktop-width / 1.5) {
+    padding: $padding * 2;
   }
 
   @include media-min-width($desktop-width) {
     margin-top: 0;
+    margin-left: $margin * 2;
+    padding: 0;
   }
 }

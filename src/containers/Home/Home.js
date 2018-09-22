@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import throttle from 'raf-throttle';
-import { firestore } from '../../utils/firebase';
+// import { firestore } from '../../utils/firebase';
 
 import classes from './Home.css';
 import Cover from '../../components/Cover/Cover';

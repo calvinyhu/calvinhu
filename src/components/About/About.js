@@ -8,8 +8,12 @@ class About extends PureComponent {
   }
 
   render() {
+    let aboutClasses = classes.About + ' ' + classes.Hide;
+    if (this.props.isAnimateAboutScroll)
+      aboutClasses = classes.About + ' ' + classes.BlockSlideFadeIn;
+
     return (
-      <div className={classes.About}>
+      <div className={aboutClasses}>
         <div className={classes.Me} />
         <main>
           <h4>What are my other passions?</h4>
