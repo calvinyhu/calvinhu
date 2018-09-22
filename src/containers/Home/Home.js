@@ -18,10 +18,15 @@ export const PAGE = {
 };
 
 const TIMELINE = {
-  WEB: 25,
-  ABOUT: 25,
-  RESUME: 25,
-  SHMACK: 55
+  WEB: 85,
+  SHMACK: 85,
+  ABOUT: 50,
+  WHO: 50,
+  OBJ: 70,
+  CONSIDER: 80,
+  PASSIONS: 90,
+  CONTACT: 95,
+  RESUME: 90
 };
 
 class Home extends PureComponent {
@@ -31,10 +36,15 @@ class Home extends PureComponent {
   }
 
   state = {
-    isAnimateWebScroll: false,
-    isAnimateShmackScroll: false,
-    isAnimateAboutScroll: false,
-    isAnimateResumeScroll: false,
+    isAnimateWeb: false,
+    isAnimateShmack: false,
+    isAnimateAbout: false,
+    isAnimateWho: false,
+    isAnimateObj: false,
+    isAnimateConsider: false,
+    isAnimatePassions: false,
+    isAnimateContact: false,
+    isAnimateResume: false,
     isShowBackToTopButton: false,
     page: 0,
     photos: null
@@ -54,17 +64,22 @@ class Home extends PureComponent {
     if (this.state.page !== page) {
       this.setState({
         page: page,
-        isAnimateWebScroll: false,
-        isAnimateAboutScroll: false,
-        isAnimateResumeScroll: false,
-        isAnimateShmackScroll: false
+        isAnimateWeb: false,
+        isAnimateShmack: false,
+        isAnimateAbout: false,
+        isAnimateWho: false,
+        isAnimateObj: false,
+        isAnimateConsider: false,
+        isAnimatePassions: false,
+        isAnimateContact: false,
+        isAnimateResume: false
       });
     } else this.handleScrollToPage();
   };
 
   handleScroll = event => {
     throttle(
-      this.animateTimeline(
+      this.animatePage(
         event.target.className,
         event.target.scrollTop,
         event.target.scrollHeight,
@@ -73,16 +88,27 @@ class Home extends PureComponent {
     );
   };
 
-  animateTimeline = (className, scrollTop, scrollHeight, clientHeight) => {
+  animatePage = (className, scrollTop, scrollHeight, clientHeight) => {
     const percent = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
-    if (!this.state.isAnimateWebScroll)
-      this.setState({ isAnimateWebScroll: percent > TIMELINE.WEB });
-    if (!this.state.isAnimateShmackScroll)
-      this.setState({ isAnimateShmackScroll: percent > TIMELINE.SHMACK });
-    if (!this.state.isAnimateAboutScroll)
-      this.setState({ isAnimateAboutScroll: percent > TIMELINE.ABOUT });
-    if (!this.state.isAnimateResumeScroll)
-      this.setState({ isAnimateResumeScroll: percent > TIMELINE.RESUME });
+    console.log(percent);
+    if (!this.state.isAnimateWeb)
+      this.setState({ isAnimateWeb: percent > TIMELINE.WEB });
+    if (!this.state.isAnimateShmack)
+      this.setState({ isAnimateShmack: percent > TIMELINE.SHMACK });
+    if (!this.state.isAnimateAbout)
+      this.setState({ isAnimateAbout: percent > TIMELINE.ABOUT });
+    if (!this.state.isAnimateWho)
+      this.setState({ isAnimateWho: percent > TIMELINE.WHO });
+    if (!this.state.isAnimateObj)
+      this.setState({ isAnimateObj: percent > TIMELINE.OBJ });
+    if (!this.state.isAnimateConsider)
+      this.setState({ isAnimateConsider: percent > TIMELINE.CONSIDER });
+    if (!this.state.isAnimatePassions)
+      this.setState({ isAnimatePassions: percent > TIMELINE.PASSIONS });
+    if (!this.state.isAnimateContact)
+      this.setState({ isAnimateContact: percent > TIMELINE.CONTACT });
+    if (!this.state.isAnimateResume)
+      this.setState({ isAnimateResume: percent > TIMELINE.RESUME });
 
     if (this.home.current.className === className) {
       if (this.state.isShowBackToTopButton && scrollTop < clientHeight)
@@ -104,8 +130,8 @@ class Home extends PureComponent {
         page = (
           <Projects
             scrollIntoView={this.handleScrollToPage}
-            isAnimateWebScroll={this.state.isAnimateWebScroll}
-            isAnimateShmackScroll={this.state.isAnimateShmackScroll}
+            isAnimateWeb={this.state.isAnimateWeb}
+            isAnimateShmack={this.state.isAnimateShmack}
           />
         );
         break;
@@ -113,7 +139,12 @@ class Home extends PureComponent {
         page = (
           <About
             scrollIntoView={this.handleScrollToPage}
-            isAnimateAboutScroll={this.state.isAnimateAboutScroll}
+            isAnimateAbout={this.state.isAnimateAbout}
+            isAnimateWho={this.state.isAnimateWho}
+            isAnimateObj={this.state.isAnimateObj}
+            isAnimateConsider={this.state.isAnimateConsider}
+            isAnimatePassions={this.state.isAnimatePassions}
+            isAnimateContact={this.state.isAnimateContact}
             photos={this.state.photos}
           />
         );
@@ -122,7 +153,7 @@ class Home extends PureComponent {
         page = (
           <Resume
             scrollIntoView={this.handleScrollToPage}
-            isAnimateResumeScroll={this.state.isAnimateResumeScroll}
+            isAnimateResume={this.state.isAnimateResume}
           />
         );
         break;
@@ -143,7 +174,7 @@ class Home extends PureComponent {
         <Cover click={this.handleClick} />
         {page}
         <div className={goBackToTopBtnClasses}>
-          <Button circle opp click={this.handleScrollToTop}>
+          <Button circle adj click={this.handleScrollToTop}>
             <div className={STYLES.MAT_ICONS}>arrow_upward</div>
           </Button>
         </div>

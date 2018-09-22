@@ -10,11 +10,11 @@ class Projects extends PureComponent {
 
   render() {
     let shmackClasses = classes.ProjectItem + ' ' + classes.Hide;
-    if (this.props.isAnimateShmackScroll)
+    if (this.props.isAnimateShmack)
       shmackClasses = classes.ProjectItem + ' ' + classes.BlockSlideFadeIn;
 
     let projectsClasses = classes.Projects + ' ' + classes.Hide;
-    if (this.props.isAnimateWebScroll)
+    if (this.props.isAnimateWeb)
       projectsClasses = classes.Projects + ' ' + classes.BlockSlideFadeIn;
 
     return (

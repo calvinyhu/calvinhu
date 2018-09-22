@@ -9,7 +9,7 @@ class Resume extends PureComponent {
 
   render() {
     let resumeClasses = classes.Resume + ' ' + classes.Hide;
-    if (this.props.isAnimateResumeScroll)
+    if (this.props.isAnimateResume)
       resumeClasses = classes.Resume + ' ' + classes.BlockSlideFadeIn;
 
     return (

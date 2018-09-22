@@ -9,7 +9,7 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background: white;
+  background: $light-opp-adj-color;
   color: black;
   box-shadow: $box-shadow;
 
@@ -30,37 +30,50 @@
     width: 100%;
     padding: $padding * 2 $padding;
     box-shadow: $box-shadow-card;
-
-    p {
-      text-indent: 5%;
-    }
+    background: white;
 
     @include media-min-width($desktop-width) {
       padding: $padding * 2;
       margin: $margin * 3 0;
       width: 66%;
+      max-width: 60rem;
     }
 
-    .Passions {
-      width: 100%;
-
-      a {
-        font-weight: 600;
-
-        &:hover {
-          cursor: pointer;
-          color: $dark-opp-color;
-        }
-      }
+    p {
+      text-indent: 5%;
     }
+  }
+}
 
-    .Sink {
-      width: 100%;
-      margin-top: $margin;
+.Question {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-      @include media-min-width($desktop-width) {
-        text-align: center;
-      }
+.Passions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+      color: $dark-opp-color;
     }
+  }
+}
+
+.Contact {
+  width: 100%;
+  margin-top: $margin;
+
+  @include media-min-width($desktop-width) {
+    text-align: center;
   }
 }
