@@ -6,7 +6,9 @@ import { PAGE } from '../../containers/Home/Home';
 import linkedin from '../../assets/images/In-2C-128px-TM.png';
 import github from '../../assets/images/GitHub-Mark-64px.png';
 
-const friction = 1 / 30;
+const FRICTION = 1 / 30;
+const DISPLACE_X = 20;
+const DISPLACE_Y = 20;
 
 class Cover extends PureComponent {
   state = {
@@ -29,8 +31,8 @@ class Cover extends PureComponent {
   setAnimationValues = (mouseX, mouseY) => {
     const x = Math.max(-100, Math.min(100, window.innerWidth / 2 - mouseX));
     const y = Math.max(-100, Math.min(100, window.innerHeight / 2 - mouseY));
-    const followX = (20 * x) / 100;
-    const followY = (20 * y) / 100;
+    const followX = (DISPLACE_X * x) / 100;
+    const followY = (DISPLACE_Y * y) / 100;
     this.setState({ followX: followX, followY: followY });
 
     // Start the animation loop
@@ -44,17 +46,17 @@ class Cover extends PureComponent {
   animateBackground = () => {
     this.setState(prevState => {
       return {
-        x: prevState.x + (this.state.followX - prevState.x) * friction,
-        y: prevState.y + (this.state.followY - prevState.y) * friction
+        x: prevState.x + (this.state.followX - prevState.x) * FRICTION,
+        y: prevState.y + (this.state.followY - prevState.y) * FRICTION
       };
     });
 
-    const stateX = Math.round(Math.abs(this.state.x));
-    const stateY = Math.round(Math.abs(this.state.y));
-    const followX = Math.round(Math.abs(this.state.followX));
-    const followY = Math.round(Math.abs(this.state.followY));
+    const stateX = Math.abs(this.state.x);
+    const stateY = Math.abs(this.state.y);
+    const followX = Math.abs(this.state.followX);
+    const followY = Math.abs(this.state.followY);
 
-    // Only continue the animation if within a 1px threshold
+    // Only continue the animation if within a 1px threshold OR initial animation
     if (stateX === 0 || stateX < followX - 1 || stateY < followY - 1)
       window.requestAnimationFrame(this.animateBackground);
     else this.setState({ isAnimating: false });
