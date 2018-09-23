@@ -28,16 +28,6 @@ class Home extends PureComponent {
     page: 0
   };
 
-  componentDidMount() {
-    // const photographyRef = firestore.collection('photography');
-    // photographyRef
-    //   .doc('photoUrls')
-    //   .get()
-    //   .then(doc => {
-    //     if (doc.exists) this.setState({ photos: doc.data() });
-    //   });
-  }
-
   handleClick = page => {
     if (this.state.page !== page) this.setState({ page: page });
     else this.handleScrollToPage();
