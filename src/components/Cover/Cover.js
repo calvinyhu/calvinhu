@@ -3,7 +3,7 @@ import throttle from 'raf-throttle';
 
 import classes from './Cover.css';
 import { PAGE } from '../../containers/Home/Home';
-import linkedin from '../../assets/images/In-2C-128px-TM.png';
+import linkedin from '../../assets/images/In-Black-66px-R.png';
 import github from '../../assets/images/GitHub-Mark-64px.png';
 
 const FRICTION = 1 / 30;
@@ -74,7 +74,7 @@ class Cover extends PureComponent {
       />
     );
 
-    const blur = <div className={classes.Blur} />;
+    const lightenFilter = <div className={classes.LightenFilter} />;
 
     const blurb = (
       <div className={classes.Blurb}>
@@ -109,14 +109,18 @@ class Cover extends PureComponent {
       </div>
     );
 
+    const coverText = (
+      <div className={classes.CoverText}>
+        {blurb}
+        {nav}
+      </div>
+    );
+
     return (
       <div className={classes.Cover} onMouseMove={this.handleMouseMove}>
         {background}
-        {blur}
-        <div className={classes.CoverText}>
-          {blurb}
-          {nav}
-        </div>
+        {lightenFilter}
+        {coverText}
       </div>
     );
   }
