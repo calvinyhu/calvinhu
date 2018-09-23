@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import Reveal from 'react-reveal/Reveal';
 
 import classes from './Projects.css';
 import shmack1 from '../../assets/images/shmack1.png';
@@ -9,42 +10,40 @@ class Projects extends PureComponent {
   }
 
   render() {
-    let shmackClasses = classes.ProjectItem + ' ' + classes.Hide;
-    if (this.props.isAnimateShmack)
-      shmackClasses = classes.ProjectItem + ' ' + classes.BlockSlideFadeIn;
-
-    let projectsClasses = classes.Projects + ' ' + classes.Hide;
-    if (this.props.isAnimateWeb)
-      projectsClasses = classes.Projects + ' ' + classes.BlockSlideFadeIn;
-
-    return (
-      <div className={projectsClasses}>
-        <h4>Web Apps I've Developed</h4>
-        <div className={shmackClasses}>
-          <p>
-            Shmack is the wikipedia of restaurants, where users can view, add,
-            and edit popular food items
-          </p>
-          <div className={classes.Carousel}>
-            <div className={classes.CarouselItem}>
-              <div className={classes.ImgContainer}>
-                <img src={shmack1} alt="shmack" />
-              </div>
-              <div className={classes.Description}>
-                <p>Get popular food items fast</p>
-              </div>
+    let shmack = (
+      <div className={classes.ProjectItem}>
+        <p>
+          Shmack is the wikipedia of restaurants, where users can view, add, and
+          edit popular food items
+        </p>
+        <div className={classes.Carousel}>
+          <div className={classes.CarouselItem}>
+            <div className={classes.ImgContainer}>
+              <img src={shmack1} alt="shmack" />
             </div>
-            <div className={classes.CarouselItem}>
-              <div className={classes.ImgContainer}>
-                <img src={shmack1} alt="shmack" />
-              </div>
-              <div className={classes.Description}>
-                <p>Get popular food items fast</p>
-              </div>
+            <div className={classes.Description}>
+              <p>Get popular food items fast</p>
+            </div>
+          </div>
+          <div className={classes.CarouselItem}>
+            <div className={classes.ImgContainer}>
+              <img src={shmack1} alt="shmack" />
+            </div>
+            <div className={classes.Description}>
+              <p>Get popular food items fast</p>
             </div>
           </div>
         </div>
       </div>
+    );
+
+    return (
+      <Reveal effect={classes.BlockSlideFadeIn}>
+        <div className={classes.Projects}>
+          <h4>Web Apps I've Developed</h4>
+          {shmack}
+        </div>
+      </Reveal>
     );
   }
 }

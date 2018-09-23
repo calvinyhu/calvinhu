@@ -63,48 +63,59 @@ class Cover extends PureComponent {
   };
 
   render() {
+    const background = (
+      <div
+        className={classes.Background}
+        style={{
+          transform: `translate(${this.state.x}px, ${
+            this.state.y
+          }px) scale(1.3)`
+        }}
+      />
+    );
+
+    const blur = <div className={classes.Blur} />;
+
+    const blurb = (
+      <div className={classes.Blurb}>
+        <h1 className={classes.Name}>Hi, I'm Calvin</h1>
+        <h2 className={classes.Title}>Web Developer</h2>
+      </div>
+    );
+
+    const nav = (
+      <div className={classes.Nav}>
+        <h5 onClick={this.clickWeb}>Web Apps</h5>
+        <h5 onClick={this.clickAbout}>About</h5>
+        <h5 onClick={this.clickResume}>Resume</h5>
+        <div className={classes.SocialMedia}>
+          <a
+            className={classes.ImgContainer}
+            href="https://www.linkedin.com/in/calvinyhu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={linkedin} alt="LinkedIn" />
+          </a>
+          <a
+            className={classes.ImgContainer}
+            href="https://www.github.com/calvinyhu/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={github} alt="GitHub" />
+          </a>
+        </div>
+      </div>
+    );
+
     return (
       <div className={classes.Cover} onMouseMove={this.handleMouseMove}>
-        <div
-          className={classes.Background}
-          style={{
-            transform: `translate(${this.state.x}px, ${
-              this.state.y
-            }px) scale(1.3)`
-          }}
-        />
-
-        <div className={classes.Blur} />
-
+        {background}
+        {blur}
         <div className={classes.CoverText}>
-          <div className={classes.Blurb}>
-            <h1 className={classes.Name}>Hi, I'm Calvin</h1>
-            <h2 className={classes.Title}>Web Developer</h2>
-          </div>
-
-          <div className={classes.Nav}>
-            <h5 onClick={this.clickWeb}>Web Apps</h5>
-            <h5 onClick={this.clickAbout}>About</h5>
-            <h5 onClick={this.clickResume}>Resume</h5>
-            <div className={classes.SocialMedia}>
-              <a
-                className={classes.ImgContainer}
-                href="https://www.linkedin.com/in/calvinyhu/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={linkedin} alt="LinkedIn" />
-              </a>
-              <a
-                className={classes.ImgContainer}
-                href="https://www.github.com/calvinyhu/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={github} alt="GitHub" />
-              </a>
-            </div>
-          </div>
+          {blurb}
+          {nav}
         </div>
       </div>
     );
