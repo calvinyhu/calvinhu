@@ -2,7 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../utils/utilities';
 
 const initialState = {
-  photos: {}
+  photos: null
 };
 
 const setPhotos = (state, action) => {
