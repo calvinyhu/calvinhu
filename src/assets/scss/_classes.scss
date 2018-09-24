@@ -6,6 +6,7 @@
 @include fade(fadeOut75to0, 0.75, 0);
 @include slide-y(blockSlideY, 5rem, 0);
 @include slide-y(slideYOut5, 0, 5rem);
+@include slide-y(textSlideY, 50%, 0%);
 
 .Hide {
   opacity: 0;
@@ -32,4 +33,9 @@
 .BlockSlideFadeIn {
   animation: fadeIn 1.5s $timing-func-1 forwards,
     blockSlideY 1s $timing-func-1 forwards;
+}
+
+.TextSlideFadeIn {
+  animation: fadeIn 1.5s $timing-func-1 forwards,
+    textSlideY 1s $timing-func-1 forwards;
 }

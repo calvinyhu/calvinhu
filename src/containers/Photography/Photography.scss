@@ -1,0 +1,78 @@
+@import './src/assets/scss/_variables.scss';
+@import './src/assets/scss/_mixins.scss';
+@import './src/assets/scss/_classes.scss';
+
+.Photography {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  background: $dark;
+  color: white;
+}
+
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: $padding;
+
+  @include media-min-width($desktop-width) {
+    width: 66vw;
+    max-width: 80rem;
+  }
+}
+
+.Logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+
+  @include media-min-width($desktop-width) {
+    h2 {
+      font-size: $font-size * 2.5;
+    }
+  }
+}
+
+.NavLink {
+  display: inline-block;
+  height: 100%;
+  font-size: $font-size * 1.5;
+  color: rgba(255, 255, 255, 0.5);
+  transition: $transition2;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+  }
+}
+
+.Gallery {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.ImgContainer {
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center left;
+  }
+
+  @include media-min-width($desktop-width) {
+    width: 50%;
+  }
+
+  @include media-min-width($desktop-width * 1.5) {
+    width: 25%;
+  }
+}

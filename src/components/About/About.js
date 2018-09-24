@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Reveal from 'react-reveal/Reveal';
+import { Link } from 'react-router-dom';
 
 import classes from './About.css';
 
@@ -32,7 +33,7 @@ class About extends PureComponent {
           Within the past 3 months (July 2018 - Sep 2018), I spent many, many
           hours teaching myself HTML, CSS, JavaScript, React, a lots of other
           tools and methodologies, to build <i>this</i> website and several
-          other projects. I have utilized web developer tutorials on Udemy,
+          other projects. I have utilized web development tutorials on Udemy,
           developer documentation on React, Firebase, MDN, Stack Overflow (can't
           leave that one out), and Google Cloud Services. I have much more to
           learn and I am eager to improve my skills.
@@ -57,8 +58,8 @@ class About extends PureComponent {
       <div className={classes.Passions}>
         <h4>What are my other passions?</h4>
         <p>
-          Check out my <a href="">photography</a> and see how I stay healthy
-          with <a href="">calisthenics</a>.
+          Check out my <Link to="/photo">photography</Link> and see how I stay
+          healthy with <Link to="/fitness">calisthenics</Link>.
         </p>
       </div>
     );

@@ -1,16 +1,16 @@
 import React, { PureComponent } from 'react';
 
-import classes from './Calisthenics.css';
+import classes from './Fitness.css';
 
-class Calisthenics extends PureComponent {
+class Fitness extends PureComponent {
   componentDidMount() {
     this.props.scrollIntoView();
   }
 
   render() {
-    let caliClasses = classes.Calisthenics + ' ' + classes.Hide;
+    let caliClasses = classes.Fitness + ' ' + classes.Hide;
     if (this.props.isAnimateCaliScroll)
-      caliClasses = classes.Calisthenics + ' ' + classes.BlockSlideFadeIn;
+      caliClasses = classes.Fitness + ' ' + classes.BlockSlideFadeIn;
 
     return (
       <div className={caliClasses}>
@@ -38,4 +38,4 @@ class Calisthenics extends PureComponent {
   }
 }
 
-export default Calisthenics;
+export default Fitness;

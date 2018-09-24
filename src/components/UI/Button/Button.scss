@@ -28,6 +28,10 @@
 
 .Adj {
   background: $adj-color;
+
+  &:hover {
+    background: $dark-adj-color;
+  }
 }
 
 .Opp {

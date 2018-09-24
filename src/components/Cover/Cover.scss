@@ -96,6 +96,12 @@
   animation: fadeIn 1s $timing-func-1 2s forwards;
   transition: $transition2;
 
+  &:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: $box-shadow;
+  }
+
   @include media-min-width($desktop-width) {
     align-items: flex-start;
     margin-top: 0;
@@ -108,8 +114,7 @@
 
     &:hover {
       cursor: pointer;
-      color: $darker-adj-color;
-      transform: scale(1.1);
+      color: $dark-adj-color;
     }
   }
 

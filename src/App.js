@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
+import Photography from './containers/Photography/Photography';
+import Fitness from './containers/Fitness/Fitness';
 
 // FIXME:
 // Remove auto load images for photography page (uses too much bandwidth)
@@ -19,7 +21,10 @@ class App extends Component {
     return (
       <Layout>
         <Switch>
+          <Route exact path={'/photo'} component={Photography} />
+          <Route exact path={'/fitness'} component={Fitness} />
           <Route exact path={'/'} component={Home} />
+          <Redirect to="/" />
         </Switch>
       </Layout>
     );
