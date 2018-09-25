@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Reveal from 'react-reveal/Reveal';
 
 import classes from './Fitness.css';
+import STYLES from '../../utils/styles';
 
 class Fitness extends PureComponent {
   render() {
@@ -16,6 +17,16 @@ class Fitness extends PureComponent {
         <NavLink className={classes.NavLink} to="/">
           Home
         </NavLink>
+      </div>
+    );
+
+    const banner = (
+      <div className={classes.Banner}>
+        <div className={classes.Quote}>
+          <div className={STYLES.MAT_ICONS}>format_quote</div>
+          <h1>Comfort is the enemy of progress</h1>
+          <p>P.T. Barnum</p>
+        </div>
       </div>
     );
 
@@ -97,7 +108,7 @@ class Fitness extends PureComponent {
 
     const year2013 = (
       <div className={classes.YearSection}>
-        <h3>2013</h3>
+        <h4>2013</h4>
         <div className={classes.YearSummary}>
           <p>Started body building routine</p>
           <p>6 day routine</p>
@@ -106,7 +117,7 @@ class Fitness extends PureComponent {
     );
     const year2014 = (
       <div className={classes.YearSection}>
-        <h3>2014</h3>
+        <h4>2014</h4>
         <div className={classes.YearSummary}>
           <p>Mid-year switched to calisthenics training</p>
           <p>Inspired by Frank Medrano</p>
@@ -115,7 +126,7 @@ class Fitness extends PureComponent {
     );
     const year2015 = (
       <div className={classes.YearSection}>
-        <h3>2015</h3>
+        <h4>2015</h4>
         <div className={classes.YearSummary}>
           <p>End of year weight plateau at 153 pounds</p>
         </div>
@@ -123,7 +134,7 @@ class Fitness extends PureComponent {
     );
     const year2016 = (
       <div className={classes.YearSection}>
-        <h3>2016</h3>
+        <h4>2016</h4>
         <div className={classes.YearSummary}>
           <p>Lost motivation beginning of 2016</p>
         </div>
@@ -131,7 +142,7 @@ class Fitness extends PureComponent {
     );
     const year2017 = (
       <div className={classes.YearSection}>
-        <h3>2017</h3>
+        <h4>2017</h4>
         <div className={classes.YearSummary}>
           <p>Maintaining body weight</p>
         </div>
@@ -139,7 +150,7 @@ class Fitness extends PureComponent {
     );
     const year2018 = (
       <div className={classes.YearSection}>
-        <h3>2018</h3>
+        <h4>2018</h4>
         <div className={classes.YearSummary}>
           <p>Motivation is back starting 2018</p>
         </div>
@@ -147,7 +158,7 @@ class Fitness extends PureComponent {
     );
     const year2019 = (
       <div className={classes.YearSection}>
-        <h3>2019</h3>
+        <h4>2019</h4>
         <div className={classes.YearSummary}>
           <p>?</p>
         </div>
@@ -173,6 +184,7 @@ class Fitness extends PureComponent {
       <div className={classes.Fitness}>
         <Reveal effect={classes.BlockSlideFadeIn}>
           {nav}
+          {banner}
           {current}
           {timeline}
         </Reveal>

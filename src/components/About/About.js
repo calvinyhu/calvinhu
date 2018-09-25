@@ -75,6 +75,7 @@ class About extends PureComponent {
       <Reveal effect={classes.BlockSlideFadeIn}>
         <div className={classes.About}>
           <div className={classes.Me} />
+          <div className={classes.ColorSplash} />
           <main>
             <Reveal effect={classes.BlockSlideFadeIn}>
               {who}

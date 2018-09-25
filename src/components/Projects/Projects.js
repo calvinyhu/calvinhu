@@ -12,25 +12,28 @@ class Projects extends PureComponent {
   render() {
     let shmack = (
       <div className={classes.ProjectItem}>
-        <p>
-          Shmack is the wikipedia of restaurants, where users can view, add, and
-          edit popular food items
-        </p>
-        <div className={classes.Carousel}>
-          <div className={classes.CarouselItem}>
-            <div className={classes.ImgContainer}>
-              <img src={shmack1} alt="shmack" />
+        <div className={classes.ColorSplash} />
+        <div className={classes.ProjectContent}>
+          <p>
+            Shmack is the wikipedia of restaurants, where users can view, add,
+            and edit popular food items
+          </p>
+          <div className={classes.Carousel}>
+            <div className={classes.CarouselItem}>
+              <div className={classes.ImgContainer}>
+                <img src={shmack1} alt="shmack" />
+              </div>
+              <div className={classes.Description}>
+                <p>Get popular food items fast</p>
+              </div>
             </div>
-            <div className={classes.Description}>
-              <p>Get popular food items fast</p>
-            </div>
-          </div>
-          <div className={classes.CarouselItem}>
-            <div className={classes.ImgContainer}>
-              <img src={shmack1} alt="shmack" />
-            </div>
-            <div className={classes.Description}>
-              <p>Get popular food items fast</p>
+            <div className={classes.CarouselItem}>
+              <div className={classes.ImgContainer}>
+                <img src={shmack1} alt="shmack" />
+              </div>
+              <div className={classes.Description}>
+                <p>Get popular food items fast</p>
+              </div>
             </div>
           </div>
         </div>
