@@ -40,17 +40,21 @@ class Photography extends PureComponent {
     const gallery = [];
 
     gallery.push(
-      <div className={classes.ImgContainer} key={'lake_siskiyou'}>
-        <img src={lake_siskiyou} alt="calvinhu" />
-      </div>
+      <Reveal effect={classes.BlockSlideFadeIn}>
+        <div className={classes.ImgContainer} key={'lake_siskiyou'}>
+          <img src={lake_siskiyou} alt="calvinhu" />
+        </div>
+      </Reveal>
     );
 
     const photoIds = Object.keys(this.props.photos);
     photoIds.forEach(id => {
       gallery.push(
-        <div className={classes.ImgContainer} key={id}>
-          <img src={this.props.photos[id]} alt="calvinhu" />
-        </div>
+        <Reveal effect={classes.BlockSlideFadeIn}>
+          <div className={classes.ImgContainer} key={id}>
+            <img src={this.props.photos[id]} alt="calvinhu" />
+          </div>
+        </Reveal>
       );
     });
 
@@ -76,10 +80,8 @@ class Photography extends PureComponent {
 
     return (
       <div className={classes.Photography}>
-        <Reveal effect={classes.BlockSlideFadeIn}>
-          {nav}
-          <div className={classes.Gallery}>{gallery}</div>
-        </Reveal>
+        {nav}
+        <div className={classes.Gallery}>{gallery}</div>
       </div>
     );
   }
