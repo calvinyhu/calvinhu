@@ -35,50 +35,6 @@ class Photography extends PureComponent {
       });
   };
 
-  getDiff = (newIds, oldIds) => {
-    if (!(newIds && oldIds)) return false;
-
-    const idsToAdd = [];
-    const newIdsLen = newIds.length;
-
-    for (let newIdIndex = 0; newIdIndex < newIdsLen; newIdIndex++) {
-      let isNewId = true;
-      const oldIdsLen = oldIds.length;
-
-      for (let oldIdIndex = 0; oldIdIndex < oldIdsLen; oldIdIndex++) {
-        if (newIds[newIdIndex] === oldIds[oldIdIndex]) {
-          oldIds.splice(oldIdIndex, 1);
-          isNewId = false;
-          break;
-        }
-      }
-      if (isNewId) idsToAdd.push(newIds[newIdIndex]);
-    }
-
-    if (idsToAdd.length > 0 || oldIds.length > 0)
-      return { add: idsToAdd, delete: oldIds };
-    return null;
-  };
-
-  addPhotos = (idsToAdd, newPhotoInfo, oldPhotos) => {
-    const photos = { ...oldPhotos };
-    idsToAdd.forEach(id => {
-      const img = new Image();
-      img.src = newPhotoInfo[id];
-      img.alt = 'calvinhu';
-      photos[id] = img;
-    });
-    return photos;
-  };
-
-  deletePhotos = (idsToDelete, oldPhotos) => {
-    const photos = { ...oldPhotos };
-    idsToDelete.forEach(id => {
-      delete photos[id];
-    });
-    return photos;
-  };
-
   renderPhotos = () => {
     const gallery = [];
 
