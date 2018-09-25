@@ -6,27 +6,146 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
   width: 100%;
   min-height: 100vh;
-  background: white;
-  color: black;
-  padding: $padding;
+  background: $dark;
+  color: rgba(255, 255, 255, 0.9);
 
-  h3 {
-    margin: $margin;
-  }
-
-  @include media-min-width($desktop-width) {
-    padding: $padding * 2;
+  p {
+    margin-bottom: $margin / 3;
   }
 }
 
-.Timeline {
-  margin-top: $margin;
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
+  padding: $padding;
 
-  p {
+  @include media-min-width($desktop-width) {
+    width: 66vw;
+    max-width: 80rem;
+  }
+}
+
+.Logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+
+  h2 {
+    margin: 0;
+  }
+
+  @include media-min-width($desktop-width) {
+    h2 {
+      font-size: $font-size * 2.5;
+    }
+  }
+}
+
+.NavLink {
+  display: inline-block;
+  height: 100%;
+  font-size: $font-size * 1.5;
+  color: rgba(255, 255, 255, 0.5);
+  transition: $transition2;
+
+  &:hover {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+  }
+}
+
+.Current {
+  width: 100%;
+  padding: $padding;
+  margin: $margin;
+
+  h3 {
     text-align: center;
   }
+
+  @include media-min-width($desktop-width) {
+    max-width: 80rem;
+    padding: $padding * 2;
+    margin: $margin * 2;
+  }
+
+  .DietContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .Diet {
+      display: flex;
+      flex-flow: row wrap;
+
+      .Meal {
+        width: 100%;
+        margin: $margin / 2;
+
+        @include media-min-width($desktop-width) {
+          width: auto;
+          margin: $margin;
+        }
+      }
+    }
+  }
+
+  .WorkoutContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: $margin;
+
+    @include media-min-width($desktop-width) {
+      margin-top: $margin * 2;
+    }
+
+    .Workout {
+      display: flex;
+      flex-flow: row wrap;
+
+      .Day {
+        width: 100%;
+        margin: $margin / 2;
+
+        @include media-min-width($desktop-width) {
+          width: auto;
+          margin: $margin;
+        }
+      }
+    }
+  }
+}
+
+.TimelineContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 50rem;
+  margin-top: $margin;
+
+  @include media-min-width($desktop-width) {
+    margin-top: $margin * 2;
+  }
+
+  .Timeline {
+    width: 100%;
+    margin: $margin;
+    padding: $padding;
+  }
+}
+
+.YearSection {
+  display: flex;
+  flex-direction: column;
 }

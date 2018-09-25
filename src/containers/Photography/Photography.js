@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Reveal from 'react-reveal/Reveal';
 
 import classes from './Photography.css';
 import { firestore } from '../../utils/firebase';
@@ -75,8 +76,10 @@ class Photography extends PureComponent {
 
     return (
       <div className={classes.Photography}>
-        {nav}
-        <div className={classes.Gallery}>{gallery}</div>
+        <Reveal effect={classes.BlockSlideFadeIn}>
+          {nav}
+          <div className={classes.Gallery}>{gallery}</div>
+        </Reveal>
       </div>
     );
   }
