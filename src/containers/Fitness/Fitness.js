@@ -1,11 +1,43 @@
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 import Reveal from 'react-reveal/Reveal';
+import throttle from 'raf-throttle';
 
 import classes from './Fitness.css';
 import STYLES from '../../utils/styles';
+import Button from '../../components/UI/Button/Button';
 
 class Fitness extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.fitness = React.createRef();
+  }
+
+  state = {
+    isShowBackToTopButton: false
+  };
+
+  handleScroll = event => {
+    throttle(
+      this.animatePage(
+        event.target.className,
+        event.target.scrollTop,
+        event.target.clientHeight
+      )
+    );
+  };
+
+  animatePage = (className, scrollTop, clientHeight) => {
+    if (this.fitness.current.className === className) {
+      if (this.state.isShowBackToTopButton && scrollTop < clientHeight)
+        this.setState({ isShowBackToTopButton: false });
+      if (!this.state.isShowBackToTopButton && scrollTop >= clientHeight)
+        this.setState({ isShowBackToTopButton: true });
+    }
+  };
+
+  handleScrollToTop = () => (this.fitness.current.scrollTop = 0);
+
   render() {
     const navClasses =
       classes.Nav + ' ' + classes.Hide + ' ' + classes.TextSlideFadeIn;
@@ -22,10 +54,12 @@ class Fitness extends PureComponent {
 
     const banner = (
       <div className={classes.Banner}>
-        <div className={classes.Quote}>
-          <div className={STYLES.MAT_ICONS}>format_quote</div>
-          <h1>Comfort is the enemy of progress</h1>
-          <p>P.T. Barnum</p>
+        <div className={classes.QuoteContainer}>
+          <div className={classes.Quote}>
+            <div className={STYLES.MAT_ICONS}>format_quote</div>
+            <h1>Comfort is the enemy of progress.</h1>
+            <p>- P.T. Barnum</p>
+          </div>
         </div>
       </div>
     );
@@ -59,7 +93,7 @@ class Fitness extends PureComponent {
           </div>
         </div>
         <div className={classes.WorkoutContainer}>
-          <h3>My Workout</h3>
+          <h3>My Week</h3>
           <div className={classes.Workout}>
             <div className={classes.Day}>
               <h4>Day 1</h4>
@@ -169,25 +203,42 @@ class Fitness extends PureComponent {
       <div className={classes.TimelineContainer}>
         <h3>How did I get to where I am?</h3>
         <div className={classes.Timeline}>
-          {year2013}
-          {year2014}
-          {year2015}
-          {year2016}
-          {year2017}
-          {year2018}
-          {year2019}
+          <Reveal effect={classes.BlockSlideFadeIn}>
+            {year2013}
+            {year2014}
+            {year2015}
+            {year2016}
+            {year2017}
+            {year2018}
+            {year2019}
+          </Reveal>
         </div>
       </div>
     );
 
+    let goBackToTopBtnClasses = classes.BackToTopBtn;
+    if (this.state.isShowBackToTopButton)
+      goBackToTopBtnClasses += ' ' + classes.OnScreenY;
+
     return (
-      <div className={classes.Fitness}>
-        <Reveal effect={classes.BlockSlideFadeIn}>
-          {nav}
-          {banner}
-          {current}
-          {timeline}
-        </Reveal>
+      <div
+        className={classes.FitnessContainer}
+        onScroll={this.handleScroll}
+        ref={this.fitness}
+      >
+        <div className={classes.Fitness}>
+          <Reveal effect={classes.BlockSlideFadeIn}>
+            {nav}
+            {banner}
+            {current}
+            {timeline}
+          </Reveal>
+        </div>
+        <div className={goBackToTopBtnClasses}>
+          <Button circle adj click={this.handleScrollToTop}>
+            <div className={STYLES.MAT_ICONS}>arrow_upward</div>
+          </Button>
+        </div>
       </div>
     );
   }

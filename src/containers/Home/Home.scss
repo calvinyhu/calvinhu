@@ -8,24 +8,3 @@
   scroll-behavior: smooth;
   overflow-y: scroll;
 }
-
-.BackToTopBtn {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  width: $fab-size;
-  height: $fab-size;
-  opacity: 0.75;
-  transform: translateY(2rem + $fab-size);
-  transition: $transition1;
-
-  @include media-min-width($desktop-width) {
-    right: 2rem;
-    bottom: 2rem;
-    transform: translateY(3rem + $fab-size);
-  }
-}
-
-.OnScreenY {
-  transform: translateY(0);
-}
