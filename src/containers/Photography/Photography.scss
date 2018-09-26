@@ -71,18 +71,13 @@
   width: 100%;
 }
 
-.ImgContainer {
+.GalleryItem {
   width: 100%;
   height: 100vw;
+  position: relative;
 
   &:hover {
     cursor: pointer;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 
   @include media-min-width($desktop-width) {
@@ -99,6 +94,47 @@
     width: 25%;
     height: 25vw;
   }
+}
+
+.ImgContainer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: $transition1;
+  }
+}
+
+.ImgContainerHover {
+  img {
+    filter: blur(5px);
+    transform: scale(1.1);
+  }
+}
+
+.Details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+  padding: $padding;
+  font-size: $font-size * 1.7;
+  opacity: 0;
+  transition: $transition1;
+  text-align: center;
+}
+
+.DetailsHover {
+  opacity: 1;
 }
 
 .Card {
@@ -122,7 +158,7 @@
   }
 }
 
-.CardOnScreenY {
+.CardShow {
   opacity: 1;
   transition: opacity $transition1;
   z-index: 0;
