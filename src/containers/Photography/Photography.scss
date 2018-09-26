@@ -2,6 +2,14 @@
 @import './src/assets/scss/_mixins.scss';
 @import './src/assets/scss/_classes.scss';
 
+.PhotographyContainer {
+  width: 100%;
+  height: 100vh;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  position: relative;
+}
+
 .Photography {
   display: flex;
   flex-direction: column;
@@ -10,6 +18,7 @@
   min-height: 100vh;
   background: $dark;
   color: white;
+  position: absolute;
 }
 
 .Nav {
@@ -64,19 +73,57 @@
 
 .ImgContainer {
   width: 100%;
+  height: 100vw;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center left;
   }
 
   @include media-min-width($desktop-width) {
     width: 50%;
+    height: 50vw;
   }
 
   @include media-min-width($desktop-width * 1.5) {
-    width: 25%;
+    width: 33.3%;
+    height: 33.3vw;
   }
+
+  @include media-min-width($desktop-width * 2) {
+    width: 25%;
+    height: 25vw;
+  }
+}
+
+.Card {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.8);
+  transition: opacity $transition1, z-index 0s $transition-duration1;
+  border-radius: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.CardOnScreenY {
+  opacity: 1;
+  transition: opacity $transition1;
+  z-index: 0;
 }

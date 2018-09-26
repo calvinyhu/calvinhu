@@ -21,9 +21,28 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Photography extends PureComponent {
+  state = {
+    isExpandPhoto: false,
+    src: null
+  };
+
+  openHandlers = {};
+
   componentDidMount() {
     if (!this.props.photos) this.getPhotoInfo();
   }
+
+  getOpenHandler = src => {
+    if (!this.openHandlers[src]) {
+      this.openHandlers[src] = () =>
+        this.setState({ isExpandPhoto: true, src: src });
+    }
+    return this.openHandlers[src];
+  };
+
+  handleClose = () => {
+    this.setState({ isExpandPhoto: false });
+  };
 
   getPhotoInfo = () => {
     firestore
@@ -40,8 +59,11 @@ class Photography extends PureComponent {
     const gallery = [];
 
     gallery.push(
-      <Reveal effect={classes.BlockSlideFadeIn}>
-        <div className={classes.ImgContainer} key={'lake_siskiyou'}>
+      <Reveal effect={classes.BlockSlideFadeIn} key={'lake_siskiyou'}>
+        <div
+          className={classes.ImgContainer}
+          onClick={this.getOpenHandler(lake_siskiyou)}
+        >
           <img src={lake_siskiyou} alt="calvinhu" />
         </div>
       </Reveal>
@@ -50,8 +72,11 @@ class Photography extends PureComponent {
     const photoIds = Object.keys(this.props.photos);
     photoIds.forEach(id => {
       gallery.push(
-        <Reveal effect={classes.BlockSlideFadeIn}>
-          <div className={classes.ImgContainer} key={id}>
+        <Reveal effect={classes.BlockSlideFadeIn} key={id}>
+          <div
+            className={classes.ImgContainer}
+            onClick={this.getOpenHandler(this.props.photos[id])}
+          >
             <img src={this.props.photos[id]} alt="calvinhu" />
           </div>
         </Reveal>
@@ -78,10 +103,21 @@ class Photography extends PureComponent {
     let gallery = [];
     if (this.props.photos) gallery = this.renderPhotos();
 
+    let cardClasses = 'card ' + classes.Card;
+    if (this.state.isExpandPhoto) cardClasses += ' ' + classes.CardOnScreenY;
+    let card = (
+      <div className={cardClasses} onClick={this.handleClose}>
+        <img className="card-img-top" src={this.state.src} alt="calvinhu" />
+      </div>
+    );
+
     return (
-      <div className={classes.Photography}>
-        {nav}
-        <div className={classes.Gallery}>{gallery}</div>
+      <div className={classes.PhotographyContainer}>
+        <div className={classes.Photography}>
+          {nav}
+          <div className={classes.Gallery}>{gallery}</div>
+        </div>
+        {card}
       </div>
     );
   }
