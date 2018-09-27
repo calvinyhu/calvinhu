@@ -63,6 +63,7 @@ class Fitness extends PureComponent {
 
     const banner = (
       <div className={classes.Banner}>
+        {nav}
         <div className={classes.QuoteContainer}>
           <div className={classes.Quote}>
             <div className={STYLES.MAT_ICONS}>format_quote</div>
@@ -231,7 +232,6 @@ class Fitness extends PureComponent {
       >
         <div className={classes.Fitness}>
           <Reveal effect={classes.BlockSlideFadeIn}>
-            {nav}
             {banner}
             {current}
             {timeline}
