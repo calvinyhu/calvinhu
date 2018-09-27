@@ -115,41 +115,9 @@ class Fitness extends PureComponent {
       </div>
     );
 
-    const diet = (
-      <div className={classes.DietContainer}>
-        <h3>My Usual Diet</h3>
-        <div className={classes.Diet}>
-          <Reveal effect={classes.BlockSlideFadeIn}>
-            <div className={classes.Meal}>
-              <h5>Breakfast</h5>
-              <p>3 Eggs</p>
-              <p>Deli Meat</p>
-              <p>Mixed Vegetables</p>
-            </div>
-            <div className={classes.Meal}>
-              <h5>Lunch</h5>
-              <p>Varies (carb heavy)</p>
-            </div>
-            <div className={classes.Meal}>
-              <h5>Post Workout</h5>
-              <p>Greek Yogurt Fruit Smoothie</p>
-            </div>
-            <div className={classes.Meal}>
-              <h5>Dinner</h5>
-              <p>Varies (protein heavy)</p>
-            </div>
-            <div className={classes.Meal}>
-              <h5>Late Night</h5>
-              <p>Peanut Butter Banana Bread Toast</p>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-    );
-
     const workout = (
       <div className={classes.WorkoutContainer}>
-        <h3>My Usual Routine</h3>
+        <h3>My Routine</h3>
         <div className={classes.Workout}>
           <Reveal effect={classes.BlockSlideFadeIn}>
             <div className={classes.Day}>
@@ -189,42 +157,8 @@ class Fitness extends PureComponent {
       <div className={classes.Current}>
         <Reveal effect={classes.BlockSlideFadeIn}>
           {nutrition}
-          {diet}
           {workout}
         </Reveal>
-      </div>
-    );
-
-    const year2013 = (
-      <div className={classes.YearSection}>
-        <h5>2013</h5>
-        <div className={classes.YearSummary}>
-          <p>Inspired by Jesse Wellens and Jeff Cavaliere</p>
-          <p>Started 6 day bodybuilding home workout</p>
-          <p>Starting weight was 135</p>
-        </div>
-      </div>
-    );
-    const year2014 = (
-      <div className={classes.YearSection}>
-        <h5>2014</h5>
-        <div className={classes.YearSummary}>
-          <p>Inspired by Frank Medrano and Dominik Sky</p>
-          <p>Changed to 4 day calisthenics routine</p>
-          <p>Starting weight was 145</p>
-        </div>
-      </div>
-    );
-
-    const timeline = (
-      <div className={classes.TimelineContainer}>
-        <h3>My Beginning</h3>
-        <div className={classes.Timeline}>
-          <Reveal effect={classes.BlockSlideFadeIn}>
-            {year2013}
-            {year2014}
-          </Reveal>
-        </div>
       </div>
     );
 
@@ -240,10 +174,7 @@ class Fitness extends PureComponent {
       >
         <div className={classes.Fitness}>
           {banner}
-          <Reveal effect={classes.BlockSlideFadeIn}>
-            {current}
-            {timeline}
-          </Reveal>
+          <Reveal effect={classes.BlockSlideFadeIn}>{current}</Reveal>
         </div>
         <div className={goBackToTopBtnClasses}>
           <Button circle adj click={this.handleScrollToTop}>

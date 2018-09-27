@@ -15,13 +15,13 @@ class About extends PureComponent {
         <h5>Calvin Who?</h5>
         <h6>Calvin Hu! (punny)</h6>
         <p>
-          I am a recent UC Davis graduate, currently seeking an entry-level web
+          I am a recent UC Davis graduate, currently seeking a full-stack
           development position in the Bay Area. Previously, I have developed C++
-          and C applications that simulate vehicle traffic to test hardware
-          capabilities for various traffic scenarios, including blind spot
+          and C applications that simulate vehicle traffic to test onboard
+          networking hardware in various traffic scenarios, including blind spot
           warning detection, forward collision warning, and automatic toll
-          collection. I am a generalist, actively pursuing a specialization in
-          full-stack web development.
+          collection. I am a generalist software engineer, actively pursuing a
+          career in full-stack engineering.
         </p>
       </div>
     );
@@ -30,13 +30,13 @@ class About extends PureComponent {
       <div className={classes.Question}>
         <h5>How am I pursuing my career objectives?</h5>
         <p>
-          Within the past 3 months (July 2018 - Sep 2018), I spent many, many
-          hours teaching myself HTML, CSS, JavaScript, React, a lots of other
-          tools and methodologies, to build <i>this</i> website and several
-          other projects. I have utilized web development tutorials on Udemy,
-          developer documentation on React, Firebase, MDN, Stack Overflow (can't
-          leave that one out), and Google Cloud Services. I have much more to
-          learn and I am eager to improve my skills.
+          Within the past 3 months (July 2018 - Sep 2018), I dedicated to teach
+          myself JavaScript, HTML, CSS, React, and more tools and methodologies,
+          to build my website and other projects. I have utilized web
+          development tutorials on Udemy, developer documentation on React,
+          Firebase, MDN, Stack Overflow, and Google Cloud Services. I have much
+          more to learn and I am eager to improve my skills in both front-end
+          and back-end development.
         </p>
       </div>
     );
@@ -58,8 +58,8 @@ class About extends PureComponent {
       <div className={classes.Passions}>
         <h5>What are my other passions?</h5>
         <p>
-          Check out my <Link to="/photo">photography</Link> and see how I stay
-          healthy with <Link to="/fitness">calisthenics</Link>.
+          Take a look at my <Link to="/photo">photography</Link> and how I stay{' '}
+          <Link to="/fitness">healthy</Link>.
         </p>
       </div>
     );

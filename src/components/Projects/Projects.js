@@ -15,8 +15,9 @@ class Projects extends PureComponent {
         <div className={classes.ColorSplash} />
         <div className={classes.ProjectContent}>
           <p>
-            Shmack is the wikipedia of restaurants, where users can view, add,
-            and edit popular food items
+            Shmack is a platform where users can view, add, and vote on popular
+            menu items at restaurants. This app aims to be fast, simple, and
+            intuitive for finding quick eats.
           </p>
           <div className={classes.Carousel}>
             <div className={classes.CarouselItem}>
@@ -43,7 +44,7 @@ class Projects extends PureComponent {
     return (
       <Reveal effect={classes.BlockSlideFadeIn}>
         <div className={classes.Projects}>
-          <h3>Web Apps I've Developed</h3>
+          <h3>Web Apps I've Built</h3>
           {shmack}
         </div>
       </Reveal>

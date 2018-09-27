@@ -116,8 +116,7 @@ class Cover extends PureComponent {
 
     const blurb = (
       <div className={classes.Blurb}>
-        <h1 className={classes.Name}>Hi, I'm Calvin</h1>
-        <h2 className={classes.Title}>Web Developer</h2>
+        <h1 className={classes.Name}>Hi, I'm Calvin.</h1>
       </div>
     );
 
