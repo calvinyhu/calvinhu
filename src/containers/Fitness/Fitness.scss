@@ -15,8 +15,8 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background: $dark;
-  color: $bright;
+  background: white;
+  color: black;
 
   p {
     margin-bottom: $margin / 3;
@@ -41,7 +41,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: $bright;
+  color: black;
 
   h2 {
     margin: 0;
@@ -58,11 +58,11 @@
   display: inline-block;
   height: 100%;
   font-size: $font-size * 1.5;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.4);
   transition: $transition2;
 
   &:hover {
-    color: $bright;
+    color: black;
     text-decoration: none;
   }
 }
@@ -91,6 +91,7 @@
 
     .Quote {
       margin: $margin;
+      color: white;
 
       h1 {
         font-size: 2rem;
@@ -114,6 +115,31 @@
 
   @include media-min-width($desktop-width) {
     max-width: 80rem;
+  }
+
+  .NutritionContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: $margin;
+    overflow: hidden;
+
+    .Nutrition {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
+
+      .Macros {
+        margin: $margin;
+        padding: $padding;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 
   .DietContainer {
