@@ -41,7 +41,7 @@
     z-index: 0;
     background: linear-gradient(
       $lighter-opp-adj-color,
-      lighten($lighter-opp-adj-color, 12%)
+      lighten($lighter-opp-adj-color, 13%)
     );
     transform: scale(1.2);
     transition: $transition1;
@@ -110,12 +110,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   a {
     color: $opp-adj-color;
     font-weight: 600;
+
     &:hover {
       cursor: pointer;
-
       color: $dark-opp-adj-color;
     }
   }
