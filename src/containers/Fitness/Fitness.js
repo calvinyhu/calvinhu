@@ -48,8 +48,7 @@ class Fitness extends PureComponent {
   handleScrollToTop = () => (this.fitness.current.scrollTop = 0);
 
   render() {
-    const navClasses =
-      classes.Nav + ' ' + classes.Hide + ' ' + classes.TextSlideFadeIn;
+    const navClasses = classes.Nav + ' ' + classes.Hide + ' ' + classes.FadeIn;
     const nav = (
       <div className={navClasses}>
         <div className={classes.Logo}>
@@ -61,8 +60,9 @@ class Fitness extends PureComponent {
       </div>
     );
 
+    const bannerClasses = classes.Banner + ' ' + classes.FadeIn;
     const banner = (
-      <div className={classes.Banner}>
+      <div className={bannerClasses}>
         {nav}
         <div className={classes.QuoteContainer}>
           <div className={classes.Quote}>

@@ -150,7 +150,7 @@
     .Nutrition {
       display: flex;
       flex-flow: row wrap;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: center;
       width: 100%;
 
@@ -178,7 +178,7 @@
     .Diet {
       display: flex;
       flex-flow: row wrap;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: flex-start;
       width: 100%;
 
@@ -204,7 +204,7 @@
     .Workout {
       display: flex;
       flex-flow: row wrap;
-      justify-content: space-around;
+      justify-content: space-between;
       align-items: flex-start;
       width: 100%;
 

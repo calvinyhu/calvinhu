@@ -133,8 +133,7 @@ class Photography extends PureComponent {
   };
 
   render() {
-    const navClasses =
-      classes.Nav + ' ' + classes.Hide + ' ' + classes.TextSlideFadeIn;
+    const navClasses = classes.Nav + ' ' + classes.Hide + ' ' + classes.FadeIn;
     const nav = (
       <div className={navClasses}>
         <div className={classes.Logo}>
