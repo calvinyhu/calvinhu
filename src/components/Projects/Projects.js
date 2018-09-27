@@ -38,16 +38,10 @@ class Projects extends PureComponent {
               <div className={classes.ImgContainer}>
                 <img src={shmack1} alt="shmack1" />
               </div>
-              <div className={classes.Description}>
-                <p>Know what's popular fast</p>
-              </div>
             </div>
             <div className={classes.CarouselItem}>
               <div className={classes.ImgContainer}>
                 <img src={shmack2} alt="shmack2" />
-              </div>
-              <div className={classes.Description}>
-                <p>Search around</p>
               </div>
             </div>
           </div>
