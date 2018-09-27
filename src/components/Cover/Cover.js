@@ -123,9 +123,9 @@ class Cover extends PureComponent {
 
     const nav = (
       <div className={classes.Nav}>
-        <h5 onClick={this.clickWeb}>Web Apps</h5>
-        <h5 onClick={this.clickAbout}>About</h5>
-        <h5 onClick={this.clickResume}>Resume</h5>
+        <h6 onClick={this.clickWeb}>Web Apps</h6>
+        <h6 onClick={this.clickAbout}>About</h6>
+        <h6 onClick={this.clickResume}>Resume</h6>
         <div className={classes.SocialMedia}>
           <a
             className={classes.ImgContainer}

@@ -239,8 +239,8 @@ class Fitness extends PureComponent {
         ref={this.fitness}
       >
         <div className={classes.Fitness}>
+          {banner}
           <Reveal effect={classes.BlockSlideFadeIn}>
-            {banner}
             {current}
             {timeline}
           </Reveal>

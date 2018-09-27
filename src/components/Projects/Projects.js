@@ -43,7 +43,7 @@ class Projects extends PureComponent {
     return (
       <Reveal effect={classes.BlockSlideFadeIn}>
         <div className={classes.Projects}>
-          <h4>Web Apps I've Developed</h4>
+          <h3>Web Apps I've Developed</h3>
           {shmack}
         </div>
       </Reveal>

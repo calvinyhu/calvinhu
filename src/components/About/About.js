@@ -12,7 +12,7 @@ class About extends PureComponent {
   render() {
     const who = (
       <div className={classes.Question}>
-        <h4>Calvin Who?</h4>
+        <h5>Calvin Who?</h5>
         <h6>Calvin Hu! (punny)</h6>
         <p>
           I am a recent UC Davis graduate, currently seeking an entry-level web
@@ -28,7 +28,7 @@ class About extends PureComponent {
 
     const obj = (
       <div className={classes.Question}>
-        <h4>How am I pursuing my career objectives?</h4>
+        <h5>How am I pursuing my career objectives?</h5>
         <p>
           Within the past 3 months (July 2018 - Sep 2018), I spent many, many
           hours teaching myself HTML, CSS, JavaScript, React, a lots of other
@@ -43,7 +43,7 @@ class About extends PureComponent {
 
     const consider = (
       <div className={classes.Question}>
-        <h4>Why consider me? (Recruiters)</h4>
+        <h5>Why consider me? (Recruiters)</h5>
         <p>
           I have unrelenting determination to achieve milestones utilizing the
           best and thoughtful methods. I am extremely organized both virtually
@@ -56,7 +56,7 @@ class About extends PureComponent {
 
     const passions = (
       <div className={classes.Passions}>
-        <h4>What are my other passions?</h4>
+        <h5>What are my other passions?</h5>
         <p>
           Check out my <Link to="/photo">photography</Link> and see how I stay
           healthy with <Link to="/fitness">calisthenics</Link>.
@@ -66,7 +66,7 @@ class About extends PureComponent {
 
     const contact = (
       <div className={classes.Contact}>
-        <h4>Contact me at:</h4>
+        <h5>Contact me at:</h5>
         <h5>ycalvinhu@gmail.com</h5>
       </div>
     );
@@ -77,6 +77,7 @@ class About extends PureComponent {
           <div className={classes.Me} />
           <div className={classes.ColorSplash} />
           <main>
+            <div className={classes.ColorSplash} />
             <Reveal effect={classes.BlockSlideFadeIn}>
               {who}
               {obj}

@@ -150,16 +150,20 @@
     .Nutrition {
       display: flex;
       flex-flow: row wrap;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
+      width: 100%;
 
       .Target {
         margin: $margin;
-        padding: $padding;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
+        @include media-min-width($desktop-width) {
+          margin: $margin * 2;
+        }
       }
     }
   }
@@ -174,6 +178,9 @@
     .Diet {
       display: flex;
       flex-flow: row wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      width: 100%;
 
       .Meal {
         width: 100%;
@@ -197,6 +204,9 @@
     .Workout {
       display: flex;
       flex-flow: row wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      width: 100%;
 
       .Day {
         width: 100%;

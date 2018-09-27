@@ -96,7 +96,9 @@ class Photography extends PureComponent {
           <div className={imgContainerClasses}>
             <img src={lake_siskiyou} alt="calvinhu" />
           </div>
-          <div className={detailsClasses}>Lake Siskiyou</div>
+          <div className={detailsClasses}>
+            <h5>Lake Siskiyou</h5>
+          </div>
         </div>
       </Reveal>
     );
@@ -120,7 +122,7 @@ class Photography extends PureComponent {
               <img src={this.props.photoUrls[id]} alt="calvinhu" />
             </div>
             <div className={detailsClasses}>
-              {this.props.photoDetails[id].name}
+              <h5>{this.props.photoDetails[id].name}</h5>
             </div>
           </div>
         </Reveal>
@@ -136,7 +138,7 @@ class Photography extends PureComponent {
     const nav = (
       <div className={navClasses}>
         <div className={classes.Logo}>
-          <h2>Calvin Hu</h2>
+          <h3>Calvin Hu</h3>
         </div>
         <NavLink className={classes.NavLink} to="/">
           Home
