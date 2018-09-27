@@ -7,6 +7,21 @@
   height: 100vh;
   scroll-behavior: smooth;
   overflow-y: scroll;
+
+  h3,
+  h5 {
+    transition: $transition1;
+  }
+
+  @include media-min-width($desktop-width) {
+    h3 {
+      font-size: $font-size * 2.5;
+    }
+
+    h5 {
+      font-size: $font-size * 1.5;
+    }
+  }
 }
 
 .Fitness {
@@ -43,23 +58,20 @@
   align-items: center;
   color: black;
 
-  h2 {
+  h3 {
     margin: 0;
-  }
-
-  @include media-min-width($desktop-width) {
-    h2 {
-      font-size: $font-size * 2.5;
-    }
   }
 }
 
 .NavLink {
   display: inline-block;
   height: 100%;
-  font-size: $font-size * 1.5;
   color: rgba(0, 0, 0, 0.4);
   transition: $transition2;
+
+  @include media-min-width($desktop-width) {
+    font-size: $font-size * 1.5;
+  }
 
   &:hover {
     color: black;

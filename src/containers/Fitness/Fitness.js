@@ -53,7 +53,7 @@ class Fitness extends PureComponent {
     const nav = (
       <div className={navClasses}>
         <div className={classes.Logo}>
-          <h2>Calvin Hu</h2>
+          <h3>Calvin Hu</h3>
         </div>
         <NavLink className={classes.NavLink} to="/">
           Home
@@ -92,91 +92,89 @@ class Fitness extends PureComponent {
     const nutrition = (
       <div className={classes.NutritionContainer}>
         <h3>Targets</h3>
-        <div className={classes.Nutrition}>
-          <div className={classes.Macros}>
-            <p>Daily Macros (% grams)</p>
-            <canvas id={macroPieId} />
+        <Reveal effect={classes.BlockSlideFadeIn}>
+          <div className={classes.Nutrition}>
+            <div className={classes.Macros}>
+              <p>Daily Macros (% grams)</p>
+              <canvas id={macroPieId} />
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     );
 
     const diet = (
       <div className={classes.DietContainer}>
-        <h3>Example Diet</h3>
-        <div className={classes.Diet}>
-          <div className={classes.Meal}>
-            <h4>Breakfast</h4>
-            <p>3 Eggs</p>
-            <p>Mixed Veggies</p>
+        <Reveal effect={classes.BlockSlideFadeIn}>
+          <h3>Example Diet</h3>
+          <div className={classes.Diet}>
+            <Reveal effect={classes.BlockSlideFadeIn}>
+              <div className={classes.Meal}>
+                <h5>Breakfast</h5>
+                <p>3 Eggs</p>
+                <p>Mixed Veggies</p>
+              </div>
+              <div className={classes.Meal}>
+                <h5>Lunch</h5>
+                <p>Pasta</p>
+              </div>
+              <div className={classes.Meal}>
+                <h5>Post Workout</h5>
+                <p>Greek Yogurt Fruit Smoothie</p>
+              </div>
+              <div className={classes.Meal}>
+                <h5>Dinner</h5>
+                <p>Chicken Breast</p>
+                <p>Broccolli</p>
+                <p>Brown Rice</p>
+              </div>
+              <div className={classes.Meal}>
+                <h5>Late Night</h5>
+                <p>Peanut Butter Banana Bread Toast</p>
+              </div>
+            </Reveal>
           </div>
-          <div className={classes.Meal}>
-            <h4>Lunch</h4>
-            <p>Pasta</p>
-          </div>
-          <div className={classes.Meal}>
-            <h4>Post Workout</h4>
-            <p>Greek Yogurt Fruit Smoothie</p>
-          </div>
-          <div className={classes.Meal}>
-            <h4>Dinner</h4>
-            <p>Chicken Breast</p>
-            <p>Broccolli</p>
-            <p>Brown Rice</p>
-          </div>
-          <div className={classes.Meal}>
-            <h4>Late Night</h4>
-            <p>Peanut Butter Banana Bread Toast</p>
-          </div>
-        </div>
+        </Reveal>
       </div>
     );
 
     const workout = (
       <div className={classes.WorkoutContainer}>
-        <h3>Example Week</h3>
-        <div className={classes.Workout}>
-          <div className={classes.Day}>
-            <h4>Day 1</h4>
-            <p>Pseudo Planche Push Ups</p>
-            <p>Ring Dips</p>
-            <p>Dumbbell Squats</p>
-            <p>Calf Press</p>
+        <Reveal effect={classes.BlockSlideFadeIn}>
+          <h3>Example Week</h3>
+          <div className={classes.Workout}>
+            <Reveal effect={classes.BlockSlideFadeIn}>
+              <div className={classes.Day}>
+                <h5>Monday</h5>
+                <p>Pseudo Planche Push Ups</p>
+                <p>Ring Dips</p>
+                <p>Dumbbell Squats</p>
+                <p>Calf Press</p>
+              </div>
+              <div className={classes.Day}>
+                <h5>Tuesday</h5>
+                <p>Front Lever Holds</p>
+                <p>Pull Ups</p>
+                <p>Deadlifts</p>
+                <p>V-Ups</p>
+              </div>
+              <div className={classes.Day}>
+                <h5>Thursday</h5>
+                <p>One Handed Push Ups</p>
+                <p>Weighted Dips</p>
+                <p>Barbell Squats</p>
+                <p>Calf Press</p>
+              </div>
+              <div className={classes.Day}>
+                <h5>Friday</h5>
+                <p>One Handed Chin Up Hold</p>
+                <p>Chin Ups</p>
+                <p>Reverse Deadlifts</p>
+                <p>V-Ups</p>
+              </div>
+            </Reveal>
           </div>
-          <div className={classes.Day}>
-            <h4>Day 2</h4>
-            <p>Front Lever Holds</p>
-            <p>Pull Ups</p>
-            <p>Deadlifts</p>
-            <p>V-Ups</p>
-          </div>
-          <div className={classes.Day}>
-            <h4>Day 3</h4>
-            <p>Recover</p>
-          </div>
-          <div className={classes.Day}>
-            <h4>Day 4</h4>
-            <p>One Handed Push Ups</p>
-            <p>Weighted Dips</p>
-            <p>Barbell Squats</p>
-            <p>Calf Press</p>
-          </div>
-          <div className={classes.Day}>
-            <h4>Day 5</h4>
-            <p>One Handed Chin Up Hold</p>
-            <p>Chin Ups</p>
-            <p>Reverse Deadlifts</p>
-            <p>V-Ups</p>
-          </div>
-          <div className={classes.Day}>
-            <h4>Day 6</h4>
-            <p>Recover</p>
-          </div>
-          <div className={classes.Day}>
-            <h4>Day 7</h4>
-            <p>Recover</p>
-          </div>
-        </div>
+        </Reveal>
       </div>
     );
 
@@ -190,7 +188,7 @@ class Fitness extends PureComponent {
 
     const year2013 = (
       <div className={classes.YearSection}>
-        <h4>2013</h4>
+        <h5>2013</h5>
         <div className={classes.YearSummary}>
           <p>Inspired by Jesse Wellens and Jeff Cavaliere</p>
           <p>Started 6 day bodybuilding home workout</p>
@@ -200,7 +198,7 @@ class Fitness extends PureComponent {
     );
     const year2014 = (
       <div className={classes.YearSection}>
-        <h4>2014</h4>
+        <h5>2014</h5>
         <div className={classes.YearSummary}>
           <p>Inspired by Frank Medrano and Dominik Sky</p>
           <p>Changed to 4 day calisthenics routine</p>
