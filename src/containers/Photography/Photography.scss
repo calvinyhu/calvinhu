@@ -112,9 +112,11 @@
 }
 
 .ImgContainerHover {
-  img {
-    filter: blur(5px);
-    transform: scale(1.1);
+  @include media-min-width($desktop-width) {
+    img {
+      filter: blur(5px);
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -134,7 +136,9 @@
 }
 
 .DetailsHover {
-  opacity: 1;
+  @include media-min-width($desktop-width) {
+    opacity: 1;
+  }
 }
 
 .Card {
