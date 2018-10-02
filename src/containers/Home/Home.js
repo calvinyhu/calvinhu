@@ -24,7 +24,8 @@ class Home extends PureComponent {
 
   state = {
     isShowBackToTopButton: false,
-    page: 0
+    page: 1,
+    offsetX: 0
   };
 
   handleClick = page => {
@@ -48,12 +49,14 @@ class Home extends PureComponent {
         this.setState({ isShowBackToTopButton: false });
       if (!this.state.isShowBackToTopButton && scrollTop >= clientHeight)
         this.setState({ isShowBackToTopButton: true });
+      if (scrollTop < clientHeight) this.setState({ offsetX: -scrollTop / 10 });
     }
   };
 
   handleScrollToTop = () => (this.home.current.scrollTop = 0);
   handleScrollToPage = () => {
-    this.home.current.scrollTop = this.home.current.clientHeight;
+    if (this.home.current)
+      this.home.current.scrollTop = this.home.current.clientHeight;
   };
 
   switchPage = newPage => {
@@ -82,7 +85,7 @@ class Home extends PureComponent {
         onScroll={this.handleScroll}
         ref={this.home}
       >
-        <Cover click={this.handleClick} />
+        <Cover click={this.handleClick} offsetX={this.state.offsetX} />
         {page}
         <div className={goBackToTopBtnClasses}>
           <Button circle adj click={this.handleScrollToTop}>

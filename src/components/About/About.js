@@ -30,13 +30,13 @@ class About extends PureComponent {
       <div className={classes.Question}>
         <h5>How am I pursuing my career objectives?</h5>
         <p>
-          Within the past 3 months (July 2018 - Sep 2018), I dedicated to teach
-          myself JavaScript, HTML, CSS, React, and more tools and methodologies,
-          to build my website and other projects. I have utilized web
-          development tutorials on Udemy, developer documentation on React,
-          Firebase, MDN, Stack Overflow, and Google Cloud Services. I have much
-          more to learn and I am eager to improve my skills in both front-end
-          and back-end development.
+          Within the past 3 months (July 2018 - Sep 2018), I taught myself
+          JavaScript, HTML, CSS, React, and more tools and methodologies, to
+          build my website and other projects. I have utilized web development
+          tutorials on Udemy, developer documentation on React, Firebase, MDN,
+          Stack Overflow, and Google Cloud Services. I have much more to learn
+          and I am eager to improve my skills in both front-end and back-end
+          development.
         </p>
       </div>
     );

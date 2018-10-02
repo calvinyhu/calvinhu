@@ -19,40 +19,17 @@ class Cover extends PureComponent {
     isAnimating: false
   };
 
-  componentDidMount() {
-    if (window.DeviceOrientationEvent) {
-      window.addEventListener(
-        'deviceorientation',
-        this.handleOrientationEvent,
-        true
-      );
-    }
-  }
-
-  componentWillUnmount() {
-    if (window.DeviceOrientationEvent) {
-      window.removeEventListener(
-        'deviceorientation',
-        this.handleOrientationEvent,
-        true
-      );
-    }
-  }
-
-  handleOrientationEvent = event => {
-    throttle(this.setAnimationValues(event.beta, event.gamma, false));
-  };
-
   clickWeb = () => this.props.click(PAGE.WEB);
   clickAbout = () => this.props.click(PAGE.ABOUT);
   clickResume = () => this.props.click(PAGE.RESUME);
 
   handleMouseMove = event => {
-    throttle(this.setAnimationValues(event.clientX, event.clientY, true));
+    if (event.movementX !== 0 || event.movementY !== 0)
+      throttle(this.setAnimationValues(event.clientX, event.clientY));
   };
 
   // Effect provided by Fabio Ottaviani (https://codepen.io/supah/pen/RrzREx) that I modified to not run infinitely
-  setAnimationValues = (mouseX, mouseY, isMouseEvent) => {
+  setAnimationValues = (mouseX, mouseY) => {
     if (!mouseX && !mouseY) return;
 
     let x = null;
@@ -60,17 +37,11 @@ class Cover extends PureComponent {
     let followX = null;
     let followY = null;
 
-    if (isMouseEvent) {
-      x = Math.max(-100, Math.min(100, window.innerWidth / 2 - mouseX));
-      y = Math.max(-100, Math.min(100, window.innerHeight / 2 - mouseY));
-      followX = (DISPLACE_X * x) / 100;
-      followY = (DISPLACE_Y * y) / 100;
-    } else {
-      x = mouseY;
-      y = mouseX - 70;
-      followX = (DISPLACE_X * 4 * x) / 100;
-      followY = (DISPLACE_Y * 4 * y) / 100;
-    }
+    x = Math.max(-100, Math.min(100, window.innerWidth / 2 - mouseX));
+    y = Math.max(-100, Math.min(100, window.innerHeight / 2 - mouseY));
+    followX = (DISPLACE_X * x) / 100;
+    followY = (DISPLACE_Y * y) / 100;
+
     this.setState({ followX: followX, followY: followY });
 
     // Start the animation loop
@@ -105,9 +76,9 @@ class Cover extends PureComponent {
       <div
         className={classes.Background}
         style={{
-          transform: `translate(${this.state.x}px, ${
+          transform: `translate(${this.state.x + this.props.offsetX}px, ${
             this.state.y
-          }px) scale(1.3)`
+          }px) scale(1.4)`
         }}
       />
     );
