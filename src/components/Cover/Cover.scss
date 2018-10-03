@@ -62,6 +62,7 @@
 
   h1 {
     margin: 0;
+    user-select: none;
   }
 
   .Name,
@@ -115,6 +116,8 @@
   h6 {
     margin: $margin / 1.5 $margin / 2;
     transition: $transition2;
+    font-weight: bold;
+    user-select: none;
 
     &:hover {
       cursor: pointer;
@@ -135,6 +138,7 @@
     .ImgContainer {
       width: 2rem;
       transition: $transition2;
+      user-select: none;
 
       &:hover {
         cursor: pointer;

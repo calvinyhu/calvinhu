@@ -57,10 +57,10 @@ class Resume extends PureComponent {
           <h6>June 2017 – Sep 2017</h6>
         </div>
         <p>Redpine Signals in San Jose, CA</p>
-        <i className={classes.CompanyDescription}>
+        <p className={classes.CompanyDescription}>
           Leading provider of ultra-low power, high performance wireless
           solutions for next generation applications
-        </i>
+        </p>
         <ul>
           <li>Implemented 7+ vehicle traffic simulations in C++ and C</li>
           <li>

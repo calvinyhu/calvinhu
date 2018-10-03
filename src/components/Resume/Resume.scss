@@ -16,6 +16,7 @@
   h5 {
     text-align: center;
     margin-bottom: $margin;
+    font-weight: bold;
 
     @include media-min-width($desktop-width) {
       font-size: $font-size * 1.5;
@@ -57,6 +58,10 @@
       justify-content: space-around;
       width: 90vw;
 
+      h6 {
+        font-style: italic;
+      }
+
       @include media-min-width($desktop-width) {
         width: auto;
 
@@ -83,6 +88,7 @@
 
   .CompanyDescription {
     margin-bottom: $margin / 2;
+    font-style: italic;
   }
 
   @include media-min-width($desktop-width / 1.5) {

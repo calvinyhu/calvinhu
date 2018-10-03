@@ -76,6 +76,10 @@
       max-width: 45rem;
     }
 
+    h5 {
+      font-weight: bold;
+    }
+
     p {
       text-indent: 5%;
     }
@@ -103,6 +107,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  h6 {
+    font-style: italic;
+  }
 }
 .Passions {
   width: 100%;
@@ -113,7 +121,7 @@
 
   a {
     color: $opp-adj-color;
-    font-weight: 600;
+    font-weight: bold;
 
     &:hover {
       cursor: pointer;

@@ -15,13 +15,13 @@ class About extends PureComponent {
         <h5>Calvin Who?</h5>
         <h6>Calvin Hu! (punny)</h6>
         <p>
-          I am a recent UC Davis graduate, currently seeking a full-stack
-          development position in the Bay Area. Previously, I have developed C++
-          and C applications that simulate vehicle traffic to test onboard
-          networking hardware in various traffic scenarios, including blind spot
-          warning detection, forward collision warning, and automatic toll
-          collection. I am a generalist software engineer, actively pursuing a
-          career in full-stack engineering.
+          I am a UC Davis alumnus and graduated with a B.S. in Computer Science
+          and a minor in Technology Management. My experience includes
+          developing C++ and C applications, which simulate vehicle traffic, to
+          test onboard networking hardware in various traffic scenarios. I am a
+          generalist software engineer, actively pursuing a career in web
+          development and seeking a full-stack engineering position in the Bay
+          Area.
         </p>
       </div>
     );
@@ -35,8 +35,7 @@ class About extends PureComponent {
           build my website and other projects. I have utilized web development
           tutorials on Udemy, developer documentation on React, Firebase, MDN,
           Stack Overflow, and Google Cloud Services. I have much more to learn
-          and I am eager to improve my skills in both front-end and back-end
-          development.
+          and I am eager to improve my skills in full-stack development.
         </p>
       </div>
     );
@@ -46,10 +45,10 @@ class About extends PureComponent {
         <h5>Why consider me? (Recruiters)</h5>
         <p>
           I have unrelenting determination to achieve milestones utilizing the
-          best and thoughtful methods. I am extremely organized both virtually
-          and physically, but also very adaptable. I love challenging myself and
-          I love learning. I have the right skills and mindset to achieve my
-          goals once I lay my eyes on them.
+          best and most thoughtful methods. I am extremely organized, but also
+          very adaptable. I love challenging myself and I love learning. I have
+          the right skills and mindset to achieve my goals once I lay my eyes on
+          them.
         </p>
       </div>
     );
@@ -58,8 +57,9 @@ class About extends PureComponent {
       <div className={classes.Passions}>
         <h5>What are my other passions?</h5>
         <p>
-          Take a look at my <Link to="/photo">photography</Link> and how I stay{' '}
-          <Link to="/fitness">healthy</Link>.
+          I like traveling and exploring nature and taking photos of it. Take a
+          look at my <Link to="/photo">photography</Link>! I am also a
+          calisthenics (bodyweight training) aficionado.
         </p>
       </div>
     );

@@ -65,7 +65,7 @@
 
       a {
         color: $opp-adj-color;
-        font-weight: 600;
+        font-weight: bold;
         &:hover {
           cursor: pointer;
           color: $dark-opp-adj-color;
@@ -80,6 +80,7 @@
       align-items: center;
       width: 100%;
       margin: $margin;
+      margin-top: 0;
     }
   }
 }
@@ -89,11 +90,7 @@
   flex-shrink: 0;
   flex-direction: column;
   align-items: center;
-  margin: $margin 0;
-
-  @include media-min-width($desktop-width) {
-    margin: 0 $margin;
-  }
+  margin: $margin;
 
   .ImgContainer {
     display: inline-block;
