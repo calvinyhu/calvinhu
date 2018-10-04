@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import Reveal from 'react-reveal/Reveal';
 
 import classes from './Projects.css';
-import shmack1 from '../../assets/images/shmack1.png';
-import shmack2 from '../../assets/images/shmack2.png';
+import shmack_res from '../../assets/images/shmack_res.png';
+import shmack_home from '../../assets/images/shmack_home.png';
 
 class Projects extends PureComponent {
   componentDidMount() {
@@ -36,12 +36,12 @@ class Projects extends PureComponent {
           <div className={classes.Carousel}>
             <div className={classes.CarouselItem}>
               <div className={classes.ImgContainer}>
-                <img src={shmack1} alt="shmack1" />
+                <img src={shmack_home} alt="shmack_home" />
               </div>
             </div>
             <div className={classes.CarouselItem}>
               <div className={classes.ImgContainer}>
-                <img src={shmack2} alt="shmack2" />
+                <img src={shmack_res} alt="shmack_res" />
               </div>
             </div>
           </div>
