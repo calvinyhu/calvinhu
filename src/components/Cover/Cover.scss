@@ -113,16 +113,8 @@
     margin-left: $margin * 2;
   }
 
-  h6 {
+  .PageLink {
     margin: $margin / 1.5 $margin / 2;
-    transition: $transition2;
-    font-weight: bold;
-    user-select: none;
-
-    &:hover {
-      cursor: pointer;
-      color: $dark-adj-color;
-    }
 
     @include media-min-width($desktop-width) {
       font-size: $font-size * 1.2;

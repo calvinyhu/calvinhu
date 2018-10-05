@@ -5,6 +5,7 @@ import classes from './Cover.css';
 import { PAGE } from '../../containers/Home/Home';
 import linkedin from '../../assets/images/In-Black-66px-R.png';
 import github from '../../assets/images/GitHub-Mark-64px.png';
+import Button from '../UI/Button/Button';
 
 const FRICTION = 1 / 30;
 const DISPLACE_X = 20;
@@ -93,9 +94,21 @@ class Cover extends PureComponent {
 
     const nav = (
       <div className={classes.Nav}>
-        <h6 onClick={this.clickWeb}>Web Apps</h6>
-        <h6 onClick={this.clickAbout}>About</h6>
-        <h6 onClick={this.clickResume}>Resume</h6>
+        <div className={classes.PageLink}>
+          <Button link click={this.clickWeb}>
+            Web Apps
+          </Button>
+        </div>
+        <div className={classes.PageLink}>
+          <Button link click={this.clickAbout}>
+            About
+          </Button>
+        </div>
+        <div className={classes.PageLink}>
+          <Button link click={this.clickResume}>
+            Resume
+          </Button>
+        </div>
         <div className={classes.SocialMedia}>
           <a
             className={classes.ImgContainer}

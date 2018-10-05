@@ -12,6 +12,7 @@
   box-shadow: $box-shadow;
   transition: $transition2;
   user-select: none;
+  appearance: none;
 
   &:focus {
     outline: none;
@@ -22,6 +23,21 @@
   }
 }
 
+.Link {
+  font-weight: bold;
+  background: none;
+  box-shadow: none;
+}
+
+.LinkTouchHover {
+  transition: none;
+  color: $dark-adj-color;
+}
+
+.LinkMouseHover {
+  color: $dark-adj-color;
+}
+
 .Circle {
   border-radius: 50%;
   box-shadow: $box-shadow-fab;
@@ -29,10 +45,15 @@
 
 .Adj {
   background: $adj-color;
+}
 
-  &:hover {
-    background: $dark-adj-color;
-  }
+.AdjTouchHover {
+  transition: none;
+  background: $dark-adj-color;
+}
+
+.AdjMouseHover {
+  background: $dark-adj-color;
 }
 
 .Opp {
