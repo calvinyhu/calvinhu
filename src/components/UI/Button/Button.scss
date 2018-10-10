@@ -31,11 +31,11 @@
 
 .LinkTouchHover {
   transition: none;
-  color: $dark-adj-color;
+  color: $opp-color;
 }
 
 .LinkMouseHover {
-  color: $dark-adj-color;
+  color: $opp-color;
 }
 
 .Circle {
@@ -58,4 +58,13 @@
 
 .Opp {
   background: $opp-color;
+}
+
+.OppTouchHover {
+  transition: none;
+  background: $dark-opp-color;
+}
+
+.OppMouseHover {
+  background: $dark-opp-color;
 }

@@ -28,10 +28,7 @@
   height: 60%;
   position: absolute;
   z-index: -1;
-  background: linear-gradient(
-    $lighter-main-color,
-    lighten($lighter-main-color, 5%)
-  );
+  background: linear-gradient($main-color, lighten($light-main-color, 5%));
   border-radius: 100% / 10%;
   transform: scale(1.2);
   transition: $transition1;

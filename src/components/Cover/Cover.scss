@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: $dark;
+  background: $md-black;
   color: black;
   position: relative;
   width: 100%;
@@ -22,11 +22,19 @@
     position: absolute;
     width: 100%;
     height: 100vh;
-    background: url('../../assets/images/lake_siskiyou.jpg');
+    background: url('../../assets/images/DSC_9569-1080p50.jpg');
     background-size: cover;
     background-position: top 55% left 20%;
     opacity: 0;
     animation: fadeIn 1s $timing-func-2 0.5s forwards;
+
+    @include media-min-width(1080px) {
+      background-image: url('../../assets/images/DSC_9569-1440p50.jpg');
+    }
+
+    @include media-min-width(2160px) {
+      background-image: url('../../assets/images/DSC_9569-2160p35.jpg');
+    }
   }
 
   .LightenFilter {
@@ -103,7 +111,7 @@
 
   &:hover {
     transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.6);
+    background: $md-white;
     box-shadow: $box-shadow;
   }
 

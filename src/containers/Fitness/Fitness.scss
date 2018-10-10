@@ -57,7 +57,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: $bright;
+  color: $md-white;
 
   h3 {
     margin: 0;
@@ -87,7 +87,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('../../assets/images/pullup.jpg') no-repeat center left 24%;
+  background: url('../../assets/images/DSC_6523-1080p35.jpg') no-repeat center
+    left 24%;
   background-size: cover;
   background-attachment: fixed;
   transition: $transition1;

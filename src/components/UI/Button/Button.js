@@ -51,11 +51,13 @@ class Button extends PureComponent {
     if (this.state.isTouch) {
       if (this.props.link) buttonClasses += ' ' + classes.LinkTouchHover;
       if (this.props.adj) buttonClasses += ' ' + classes.AdjTouchHover;
+      if (this.props.opp) buttonClasses += ' ' + classes.OppTouchHover;
     }
 
     if (this.state.isMouse) {
       if (this.props.link) buttonClasses += ' ' + classes.LinkMouseHover;
       if (this.props.adj) buttonClasses += ' ' + classes.AdjMouseHover;
+      if (this.props.opp) buttonClasses += ' ' + classes.OppMouseHover;
     }
 
     return (

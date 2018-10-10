@@ -5,7 +5,7 @@ import Reveal from 'react-reveal/Reveal';
 
 import classes from './Photography.css';
 import { firestore } from '../../utils/firebase';
-import lake_siskiyou from '../../assets/images/lake_siskiyou.jpg';
+import lake_siskiyou_med from '../../assets/images/DSC_9569-1440p50.jpg';
 import * as actions from '../../store/actions/photographyActions';
 
 const mapStateToProps = state => {
@@ -91,10 +91,10 @@ class Photography extends PureComponent {
         <div
           className={classes.GalleryItem}
           onMouseOver={this.getHoverHandler(lake_siskiyou_id)}
-          onClick={this.getOpenHandler(lake_siskiyou)}
+          onClick={this.getOpenHandler(lake_siskiyou_med)}
         >
           <div className={imgContainerClasses}>
-            <img src={lake_siskiyou} alt="calvinhu" />
+            <img src={lake_siskiyou_med} alt="calvinhu" />
           </div>
           <div className={detailsClasses}>
             <h5>Lake Siskiyou</h5>

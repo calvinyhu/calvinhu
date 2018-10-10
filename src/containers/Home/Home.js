@@ -88,7 +88,7 @@ class Home extends PureComponent {
         <Cover click={this.handleClick} offsetX={this.state.offsetX} />
         {page}
         <div className={goBackToTopBtnClasses}>
-          <Button circle adj click={this.handleScrollToTop}>
+          <Button circle opp click={this.handleScrollToTop}>
             <div className={STYLES.MAT_ICONS}>arrow_upward</div>
           </Button>
         </div>

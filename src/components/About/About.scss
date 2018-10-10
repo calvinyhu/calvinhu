@@ -27,22 +27,28 @@
   .Me {
     width: 100%;
     height: 75vh;
-    background: url('../../assets/images/me.jpg') no-repeat top 60% left 75%;
+    background: url('../../assets/images/DSC_1858-1080p35.jpg') no-repeat top
+      60% left 75%;
     background-size: cover;
     background-attachment: fixed;
     box-shadow: inset 0px -3px 10px -2px rgba(0, 0, 0, 0.4);
     position: relative;
     z-index: 1;
+
+    @include media-min-width(1440px) {
+      background-image: url('../../assets/images/DSC_1858-1440p35.jpg');
+    }
+
+    @include media-min-width(2160px) {
+      background-image: url('../../assets/images/DSC_1858-2160p35.jpg');
+    }
   }
 
   .ColorSplash {
     width: 100%;
     position: absolute;
     z-index: 0;
-    background: linear-gradient(
-      $lighter-opp-adj-color,
-      lighten($lighter-opp-adj-color, 13%)
-    );
+    background: linear-gradient($opp-color, lighten($light-opp-color, 13%));
     transform: scale(1.2);
     transition: $transition1;
     height: 0;
@@ -89,7 +95,7 @@
       position: absolute;
       top: 0;
       z-index: 0;
-      background: linear-gradient($lighter-opp-adj-color, transparent);
+      background: linear-gradient($light-opp-color, transparent);
       border-radius: 100% / 10%;
       transform: scale(1.2);
       transition: $transition1;
