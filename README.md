@@ -1,5 +1,3 @@
-#My website
-
 ## Notes
 
 To append custom service worker code:
