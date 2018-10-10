@@ -15,100 +15,11 @@
   h3 {
     margin: $margin * 1.5 $margin;
     transition: $transition1;
+    font-weight: bold;
 
     @include media-min-width($desktop-width) {
       margin: $margin * 2;
       font-size: $font-size * 2.5;
     }
-  }
-}
-
-.ColorSplash {
-  width: 100%;
-  height: 60%;
-  position: absolute;
-  z-index: -1;
-  background: linear-gradient($main-color, lighten($light-main-color, 5%));
-  border-radius: 100% / 10%;
-  transform: scale(1.2);
-  transition: $transition1;
-
-  @include media-min-width($desktop-width) {
-    border-radius: 100% / 20%;
-  }
-}
-
-.ProjectItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-
-  .ProjectContent {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-
-    p {
-      margin: $margin;
-
-      @include media-min-width($desktop-width) {
-        margin: $margin * 2;
-      }
-
-      a {
-        color: $opp-adj-color;
-        font-weight: bold;
-        &:hover {
-          cursor: pointer;
-          color: $dark-opp-adj-color;
-        }
-      }
-    }
-
-    .Carousel {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-evenly;
-      align-items: center;
-      width: 100%;
-      margin: $margin;
-      margin-top: 0;
-    }
-  }
-}
-
-.CarouselItem {
-  display: flex;
-  flex-shrink: 0;
-  flex-direction: column;
-  align-items: center;
-  margin: $margin;
-
-  .ImgContainer {
-    display: inline-block;
-
-    img {
-      width: 85vw;
-      max-width: 20rem;
-
-      @include media-min-width($desktop-width) {
-        width: auto;
-        max-width: 100%;
-        height: 66vh;
-        min-height: 25rem;
-      }
-      object-fit: contain;
-      border-radius: $border-radius-button;
-      box-shadow: $box-shadow-card;
-    }
-  }
-
-  .Description {
-    display: inline-block;
   }
 }
