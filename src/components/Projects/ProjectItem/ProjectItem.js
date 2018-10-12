@@ -1,4 +1,5 @@
 import React from 'react';
+import Fade from 'react-reveal/Fade';
 
 import classes from './ProjectItem.css';
 import { THEME_COLOR } from '../Projects';
@@ -33,16 +34,18 @@ const projectItem = props => {
     <div className={classes.ProjectItem}>
       <div className={colorSplashClassNames} />
       <div className={classes.ProjectContent}>
-        <div className={classes.Description}>
-          <p>{props.description}</p>
-          <p>
-            Check it out:{' '}
-            <a href={props.href} target="_blank" rel="noopener noreferrer">
-              {props.name}
-            </a>
-          </p>
-        </div>
-        <div className={classes.Carousel}>{carouselItems}</div>
+        <Fade bottom>
+          <div className={classes.Description}>
+            <p>{props.description}</p>
+            <p>
+              Check it out @{' '}
+              <a href={props.href} target="_blank" rel="noopener noreferrer">
+                {props.name}
+              </a>
+            </p>
+          </div>
+          <div className={classes.Carousel}>{carouselItems}</div>
+        </Fade>
       </div>
     </div>
   );

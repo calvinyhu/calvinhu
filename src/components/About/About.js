@@ -66,7 +66,7 @@ class About extends PureComponent {
 
     const contact = (
       <div className={classes.Contact}>
-        <h5>Contact me at:</h5>
+        <h5>Contact me @</h5>
         <h5>ycalvinhu@gmail.com</h5>
       </div>
     );

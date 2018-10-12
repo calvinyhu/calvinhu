@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Reveal from 'react-reveal/Reveal';
+import Fade from 'react-reveal/Fade';
 
 import classes from './Photography.css';
 import { firestore } from '../../utils/firebase';
@@ -87,7 +87,7 @@ class Photography extends PureComponent {
       detailsClasses += ' ' + classes.DetailsHover;
     }
     gallery.push(
-      <Reveal effect={classes.BlockSlideFadeIn} key={lake_siskiyou_id}>
+      <Fade key={lake_siskiyou_id}>
         <div
           className={classes.GalleryItem}
           onMouseOver={this.getHoverHandler(lake_siskiyou_id)}
@@ -100,7 +100,7 @@ class Photography extends PureComponent {
             <h5>Lake Siskiyou</h5>
           </div>
         </div>
-      </Reveal>
+      </Fade>
     );
 
     const photoIds = Object.keys(this.props.photoUrls);
@@ -112,7 +112,7 @@ class Photography extends PureComponent {
         detailsClasses += ' ' + classes.DetailsHover;
       }
       gallery.push(
-        <Reveal effect={classes.BlockSlideFadeIn} key={id}>
+        <Fade key={id}>
           <div
             className={classes.GalleryItem}
             onMouseOver={this.getHoverHandler(id)}
@@ -125,7 +125,7 @@ class Photography extends PureComponent {
               <h5>{this.props.photoDetails[id].name}</h5>
             </div>
           </div>
-        </Reveal>
+        </Fade>
       );
     });
 
