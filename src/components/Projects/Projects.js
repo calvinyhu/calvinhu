@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import Reveal from 'react-reveal/Reveal';
+import Fade from 'react-reveal/Fade';
 
 import classes from './Projects.css';
 import ProjectItem from './ProjectItem/ProjectItem';
@@ -24,6 +24,7 @@ class Projects extends PureComponent {
       <ProjectItem
         href="https://shmack.app"
         name="shmack.app"
+        header="My Web Apps"
         description="Shmack is a platform where users can view, add, and vote on popular menu
       items at restaurants. This app aims to be fast, simple, and intuitive for finding quick
       eats."
@@ -45,13 +46,12 @@ class Projects extends PureComponent {
     );
 
     return (
-      <Reveal effect={classes.BlockSlideFadeIn}>
+      <Fade>
         <div className={classes.Projects}>
-          <h3>My Web Apps</h3>
           {shmack}
           {jammming}
         </div>
-      </Reveal>
+      </Fade>
     );
   }
 }

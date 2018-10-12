@@ -7,4 +7,9 @@ body {
   font-family: 'Noto Sans', sans-serif;
   background: $md-white;
   color: $md-blue-gray;
+
+  ::selection {
+    background: $md-opp;
+    color: $md-white;
+  }
 }

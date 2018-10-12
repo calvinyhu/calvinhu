@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import Reveal from 'react-reveal/Reveal';
+import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 
 import classes from './About.css';
@@ -57,7 +58,7 @@ class About extends PureComponent {
       <div className={classes.Passions}>
         <h5>What are my other passions?</h5>
         <p>
-          I like traveling and exploring nature and taking photos of it. Take a
+          I like to hike and capture photos of nature, people, and cars. Take a
           look at my <Link to="/photo">photography</Link>! I am also a
           calisthenics (bodyweight training) aficionado.
         </p>
@@ -72,7 +73,7 @@ class About extends PureComponent {
     );
 
     return (
-      <Reveal effect={classes.BlockSlideFadeIn}>
+      <Fade>
         <div className={classes.About}>
           <div className={classes.Me} />
           <div className={classes.ColorSplash} />
@@ -87,7 +88,7 @@ class About extends PureComponent {
             </Reveal>
           </main>
         </div>
-      </Reveal>
+      </Fade>
     );
   }
 }

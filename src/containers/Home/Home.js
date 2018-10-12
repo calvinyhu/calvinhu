@@ -28,35 +28,39 @@ class Home extends PureComponent {
     offsetX: 0
   };
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   handleClick = page => {
     if (this.state.page !== page) this.setState({ page: page });
     else this.handleScrollToPage();
   };
 
-  handleScroll = event => {
-    throttle(
-      this.animatePage(
-        event.target.className,
-        event.target.scrollTop,
-        event.target.clientHeight
-      )
-    );
+  handleScroll = () => {
+    throttle(this.animatePage(window.scrollY, window.innerHeight));
   };
 
-  animatePage = (className, scrollTop, clientHeight) => {
-    if (this.home.current.className === className) {
-      if (this.state.isShowBackToTopButton && scrollTop < clientHeight)
-        this.setState({ isShowBackToTopButton: false });
-      if (!this.state.isShowBackToTopButton && scrollTop >= clientHeight)
-        this.setState({ isShowBackToTopButton: true });
-      if (scrollTop < clientHeight) this.setState({ offsetX: -scrollTop / 10 });
-    }
+  animatePage = (scrollTop, clientHeight) => {
+    if (this.state.isShowBackToTopButton && scrollTop < clientHeight)
+      this.setState({ isShowBackToTopButton: false });
+    if (!this.state.isShowBackToTopButton && scrollTop >= clientHeight)
+      this.setState({ isShowBackToTopButton: true });
+    if (scrollTop < clientHeight) this.setState({ offsetX: -scrollTop / 10 });
   };
 
-  handleScrollToTop = () => (this.home.current.scrollTop = 0);
+  handleScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   handleScrollToPage = () => {
-    if (this.home.current)
-      this.home.current.scrollTop = this.home.current.clientHeight;
+    if (this.home.current) {
+      window.scrollTo({
+        top: this.home.current.clientHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   switchPage = newPage => {

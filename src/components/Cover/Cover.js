@@ -88,7 +88,7 @@ class Cover extends PureComponent {
 
     const blurb = (
       <div className={classes.Blurb}>
-        <h1 className={classes.Name}>Hi, I'm Calvin.</h1>
+        <h1 className={classes.Name}>Hi, I'm Calvin</h1>
       </div>
     );
 
@@ -111,24 +111,27 @@ class Cover extends PureComponent {
             </Button>
           </div>
         </div>
-        <div className={classes.SocialMedia}>
-          <a
-            className={classes.ImgContainer}
-            href="https://www.linkedin.com/in/calvinyhu/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={linkedin} alt="LinkedIn" />
-          </a>
-          <a
-            className={classes.ImgContainer}
-            href="https://www.github.com/calvinyhu/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={github} alt="GitHub" />
-          </a>
-        </div>
+      </div>
+    );
+
+    const socialMedia = (
+      <div className={classes.SocialMedia}>
+        <a
+          className={classes.ImgContainer}
+          href="https://www.linkedin.com/in/calvinyhu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={linkedin} alt="LinkedIn" />
+        </a>
+        <a
+          className={classes.ImgContainer}
+          href="https://www.github.com/calvinyhu/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={github} alt="GitHub" />
+        </a>
       </div>
     );
 
@@ -144,6 +147,7 @@ class Cover extends PureComponent {
         {background}
         {lightenFilter}
         {coverText}
+        {socialMedia}
       </div>
     );
   }
