@@ -24,18 +24,35 @@
 }
 
 .Link {
-  font-weight: bold;
+  position: relative;
+  font-weight: normal;
   background: none;
   box-shadow: none;
+  border-radius: 0;
+  color: inherit;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0px;
+    transition: $transition2;
+    border-bottom: 3px solid $md-blue-gray;
+    transform: scaleX(0) translateY(3px);
+  }
 }
 
 .LinkTouchHover {
-  transition: none;
-  color: $opp-color;
+  &:before {
+    transform: scaleX(1) translateY(3px);
+  }
 }
 
 .LinkMouseHover {
-  color: $opp-color;
+  &:before {
+    transform: scaleX(1) translateY(3px);
+  }
 }
 
 .Circle {

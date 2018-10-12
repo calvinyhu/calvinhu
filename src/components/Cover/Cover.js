@@ -94,20 +94,22 @@ class Cover extends PureComponent {
 
     const nav = (
       <div className={classes.Nav}>
-        <div className={classes.PageLink}>
-          <Button link click={this.clickWeb}>
-            Web Apps
-          </Button>
-        </div>
-        <div className={classes.PageLink}>
-          <Button link click={this.clickAbout}>
-            About
-          </Button>
-        </div>
-        <div className={classes.PageLink}>
-          <Button link click={this.clickResume}>
-            Resume
-          </Button>
+        <div className={classes.PageLinks}>
+          <div className={classes.PageLink}>
+            <Button link click={this.clickWeb}>
+              Web Apps
+            </Button>
+          </div>
+          <div className={classes.PageLink}>
+            <Button link click={this.clickAbout}>
+              About
+            </Button>
+          </div>
+          <div className={classes.PageLink}>
+            <Button link click={this.clickResume}>
+              Resume
+            </Button>
+          </div>
         </div>
         <div className={classes.SocialMedia}>
           <a
