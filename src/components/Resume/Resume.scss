@@ -27,8 +27,12 @@
 
 .DocumentContainer {
   display: flex;
-  width: auto;
-  padding: $padding;
+  width: 100%;
+  overflow-x: auto;
+
+  @include media-min-width($desktop-width) {
+    width: auto;
+  }
 }
 
 .Document {
@@ -39,6 +43,11 @@
   canvas,
   svg {
     box-shadow: $box-shadow-card;
+    margin: $margin;
+  }
+
+  div {
+    display: none;
   }
 }
 
@@ -49,14 +58,22 @@
   width: 100%;
   height: 100%;
   margin: $margin 0;
+  font-weight: bold;
 
   @include media-min-width(65rem) {
     width: auto;
-    transform: translateY(-200%);
   }
 }
 
 .DownloadButton {
-  width: 10rem;
-  height: 3rem;
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5rem;
+    height: 3rem;
+    background: none;
+    color: $md-blue-gray;
+    text-decoration: none;
+  }
 }
