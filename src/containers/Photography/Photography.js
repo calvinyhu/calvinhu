@@ -28,7 +28,6 @@ class Photography extends PureComponent {
       .doc('photoUrls')
       .get()
       .then(doc => {
-        // if (doc.exists) this.props.onSetPhotoUrls(doc.data());
         if (doc.exists) {
           photoUrls = doc.data();
           this.setState({ photoUrls: doc.data() });
@@ -40,7 +39,6 @@ class Photography extends PureComponent {
       .doc('photoDetails')
       .get()
       .then(doc => {
-        // if (doc.exists) this.props.onSetPhotoDetails(doc.data());
         if (doc.exists) {
           photoDetails = doc.data();
           this.setState({ photoDetails: doc.data() });

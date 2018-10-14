@@ -1,5 +1,1 @@
-const STYLES = {
-  MAT_ICONS: 'material-icons'
-};
-
-export default STYLES;
+export const MAT_ICONS = 'material-icons';

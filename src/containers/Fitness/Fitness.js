@@ -5,7 +5,7 @@ import throttle from 'raf-throttle';
 import Chart from 'chart.js';
 
 import classes from './Fitness.css';
-import STYLES from '../../utils/styles';
+import { MAT_ICONS } from '../../utils/styles';
 import Button from '../../components/UI/Button/Button';
 
 const macroPieId = 'macroPieId';
@@ -66,7 +66,7 @@ class Fitness extends PureComponent {
         {nav}
         <div className={classes.QuoteContainer}>
           <div className={classes.Quote}>
-            <div className={STYLES.MAT_ICONS}>format_quote</div>
+            <div className={MAT_ICONS}>format_quote</div>
             <h1>Comfort is the enemy of progress.</h1>
             <p>- P.T. Barnum</p>
           </div>
@@ -178,7 +178,7 @@ class Fitness extends PureComponent {
         </div>
         <div className={goBackToTopBtnClasses}>
           <Button circle adj click={this.handleScrollToTop}>
-            <div className={STYLES.MAT_ICONS}>arrow_upward</div>
+            <div className={MAT_ICONS}>arrow_upward</div>
           </Button>
         </div>
       </div>

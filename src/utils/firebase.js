@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/storage';
 
 import { FIREBASE_API_KEY } from './secrets';
 
@@ -18,3 +19,5 @@ export const firestore = firebase.firestore();
 
 const settings = { /* your settings... */ timestampsInSnapshots: true };
 firestore.settings(settings);
+
+export const storage = firebase.storage();

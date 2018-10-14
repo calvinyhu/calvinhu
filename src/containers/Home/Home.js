@@ -7,7 +7,7 @@ import Projects from '../../components/Projects/Projects';
 import About from '../../components/About/About';
 import Resume from '../../components/Resume/Resume';
 import Button from '../../components/UI/Button/Button';
-import STYLES from '../../utils/styles';
+import { MAT_ICONS } from '../../utils/styles';
 
 export const PAGE = {
   NONE: 0,
@@ -93,7 +93,7 @@ class Home extends PureComponent {
         {page}
         <div className={goBackToTopBtnClasses}>
           <Button circle opp click={this.handleScrollToTop}>
-            <div className={STYLES.MAT_ICONS}>arrow_upward</div>
+            <div className={MAT_ICONS}>arrow_upward</div>
           </Button>
         </div>
       </div>

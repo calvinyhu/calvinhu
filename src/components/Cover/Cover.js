@@ -7,7 +7,7 @@ import { PAGE } from '../../containers/Home/Home';
 import linkedin from '../../assets/images/In-Black-66px-R.png';
 import github from '../../assets/images/GitHub-Mark-64px.png';
 import Button from '../UI/Button/Button';
-import styles from '../../utils/styles';
+import { MAT_ICONS } from '../../utils/styles';
 
 const FRICTION = 1 / 30;
 const DISPLACE_X = 20;
@@ -137,7 +137,7 @@ class Cover extends React.PureComponent {
           <img src={github} alt="GitHub" />
         </a>
         <Link to="/photo">
-          <div className={styles.MAT_ICONS}>photo_library</div>
+          <div className={MAT_ICONS}>photo_library</div>
         </Link>
       </div>
     );
