@@ -4,7 +4,6 @@ import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import { storage } from '../../utils/firebase';
 
 import classes from './Resume.css';
-import { MAT_ICONS } from '../../utils/styles';
 
 const cors = 'https://cors-anywhere.herokuapp.com/';
 const job = 'job';
