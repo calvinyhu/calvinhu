@@ -74,10 +74,10 @@
   font-size: $font-size;
   position: relative;
   text-indent: -9999rem;
-  border-top: 0.5rem solid $lighter-opp-color;
-  border-right: 0.5rem solid $lighter-opp-color;
-  border-bottom: 0.5rem solid $lighter-opp-color;
-  border-left: 0.5rem solid $dark-opp-color;
+  border-top: 0.5rem solid $lighter-adj-color;
+  border-right: 0.5rem solid $lighter-adj-color;
+  border-bottom: 0.5rem solid $lighter-adj-color;
+  border-left: 0.5rem solid $dark-adj-color;
   transform: translateZ(0);
   animation: loading 1.3s infinite linear;
 }

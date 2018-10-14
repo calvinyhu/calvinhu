@@ -72,7 +72,7 @@
     align-items: center;
     width: 10rem;
     height: 3rem;
-    background: $opp-color;
+    background: $adj-color;
     color: $md-blue-gray;
     text-decoration: none;
     border-radius: 3px;
@@ -80,7 +80,7 @@
     box-shadow: $box-shadow;
 
     &:hover {
-      background: $dark-opp-color;
+      background: $dark-adj-color;
     }
 
     p {
@@ -114,7 +114,7 @@
   left: 0;
   position: absolute;
   z-index: -1;
-  background: linear-gradient($adj-color, $light-adj-color);
+  background: linear-gradient($opp-color, $light-opp-color);
   transition: $transition1;
   border-radius: 100% / 15%;
   transform: scale(1.2);
