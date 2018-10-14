@@ -81,6 +81,7 @@ class Resume extends PureComponent {
     return (
       <Fade>
         <div className={classes.Resume}>
+          <div className={classes.ColorSplash} />
           {downloadButton}
           <div className={classes.DocumentContainer}>{document}</div>
         </div>

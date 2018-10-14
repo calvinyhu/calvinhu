@@ -11,7 +11,7 @@
   min-height: 100%;
   background: transparent;
   color: $md-blue-gray;
-  overflow-x: auto;
+  overflow: hidden;
 
   @include media-min-width(42rem) {
     align-items: center;
@@ -105,4 +105,17 @@
     left: 0;
     transform: translateX(0);
   }
+}
+
+.ColorSplash {
+  width: 100%;
+  height: 66%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  background: linear-gradient($adj-color, $light-adj-color);
+  transition: $transition1;
+  border-radius: 100% / 15%;
+  transform: scale(1.2);
 }
