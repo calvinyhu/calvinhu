@@ -161,8 +161,6 @@ class Cover extends React.PureComponent {
         {background}
         {lightenFilter}
         {coverContent}
-        {/* {coverText}
-        {socialMedia} */}
       </div>
     );
   }
