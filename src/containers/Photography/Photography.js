@@ -1,36 +1,25 @@
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import Fade from 'react-reveal/Fade';
 
 import classes from './Photography.css';
 import { firestore } from '../../utils/firebase';
 import lake_siskiyou_med from '../../assets/images/DSC_9569-1440p50.jpg';
-import * as actions from '../../store/actions/photographyActions';
 
-const mapStateToProps = state => {
-  return {
-    photoUrls: state.photoUrls,
-    photoDetails: state.photoDetails
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onSetPhotoUrls: urls => dispatch(actions.setPhotoUrls(urls)),
-    onSetPhotoDetails: details => dispatch(actions.setPhotoDetails(details))
-  };
-};
+let photoUrls = null;
+let photoDetails = null;
 
 class Photography extends PureComponent {
   state = {
     isExpandPhoto: false,
+    photoUrls: photoUrls,
+    photoDetails: photoDetails,
     src: null,
     hoverPhoto: null
   };
 
   componentDidMount() {
-    if (!this.props.photoUrls) this.getPhotoInfo();
+    if (!this.state.photoUrls) this.getPhotoInfo();
   }
 
   getPhotoInfo = () => {
@@ -39,8 +28,11 @@ class Photography extends PureComponent {
       .doc('photoUrls')
       .get()
       .then(doc => {
-        if (doc.exists) this.props.onSetPhotoUrls(doc.data());
-        else console.log('Photo urls do not exist!');
+        // if (doc.exists) this.props.onSetPhotoUrls(doc.data());
+        if (doc.exists) {
+          photoUrls = doc.data();
+          this.setState({ photoUrls: doc.data() });
+        } else console.log('Photo urls do not exist!');
       });
 
     firestore
@@ -48,8 +40,11 @@ class Photography extends PureComponent {
       .doc('photoDetails')
       .get()
       .then(doc => {
-        if (doc.exists) this.props.onSetPhotoDetails(doc.data());
-        else console.log('Photo details do not exist!');
+        // if (doc.exists) this.props.onSetPhotoDetails(doc.data());
+        if (doc.exists) {
+          photoDetails = doc.data();
+          this.setState({ photoDetails: doc.data() });
+        } else console.log('Photo details do not exist!');
       });
   };
 
@@ -103,7 +98,7 @@ class Photography extends PureComponent {
       </Fade>
     );
 
-    const photoIds = Object.keys(this.props.photoUrls);
+    const photoIds = Object.keys(this.state.photoUrls);
     photoIds.forEach(id => {
       imgContainerClasses = classes.ImgContainer;
       detailsClasses = classes.Details;
@@ -116,13 +111,13 @@ class Photography extends PureComponent {
           <div
             className={classes.GalleryItem}
             onMouseOver={this.getHoverHandler(id)}
-            onClick={this.getOpenHandler(this.props.photoUrls[id])}
+            onClick={this.getOpenHandler(this.state.photoUrls[id])}
           >
             <div className={imgContainerClasses}>
-              <img src={this.props.photoUrls[id]} alt="calvinhu" />
+              <img src={this.state.photoUrls[id]} alt="calvinhu" />
             </div>
             <div className={detailsClasses}>
-              <h5>{this.props.photoDetails[id].name}</h5>
+              <h5>{this.state.photoDetails[id].name}</h5>
             </div>
           </div>
         </Fade>
@@ -146,7 +141,7 @@ class Photography extends PureComponent {
     );
 
     let gallery = [];
-    if (this.props.photoUrls && this.props.photoDetails)
+    if (this.state.photoUrls && this.state.photoDetails)
       gallery = this.renderPhotos();
 
     let cardClasses = 'card ' + classes.Card;
@@ -171,7 +166,4 @@ class Photography extends PureComponent {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Photography);
+export default Photography;

@@ -1,17 +1,19 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import throttle from 'raf-throttle';
+import { Link } from 'react-router-dom';
 
 import classes from './Cover.css';
 import { PAGE } from '../../containers/Home/Home';
 import linkedin from '../../assets/images/In-Black-66px-R.png';
 import github from '../../assets/images/GitHub-Mark-64px.png';
 import Button from '../UI/Button/Button';
+import styles from '../../utils/styles';
 
 const FRICTION = 1 / 30;
 const DISPLACE_X = 20;
 const DISPLACE_Y = 20;
 
-class Cover extends PureComponent {
+class Cover extends React.PureComponent {
   state = {
     x: 0,
     y: 0,
@@ -54,6 +56,8 @@ class Cover extends PureComponent {
 
   // Effect provided by Fabio Ottaviani (https://codepen.io/supah/pen/RrzREx) that I modified to not run infinitely
   animateBackground = () => {
+    if (window.location.pathname !== '/') return;
+
     this.setState(prevState => {
       return {
         x: prevState.x + (this.state.followX - prevState.x) * FRICTION,
@@ -132,6 +136,9 @@ class Cover extends PureComponent {
         >
           <img src={github} alt="GitHub" />
         </a>
+        <Link to="/photo">
+          <div className={styles.MAT_ICONS}>photo_library</div>
+        </Link>
       </div>
     );
 
@@ -142,12 +149,20 @@ class Cover extends PureComponent {
       </div>
     );
 
+    const coverContent = (
+      <div className={classes.CoverContent}>
+        {coverText}
+        {socialMedia}
+      </div>
+    );
+
     return (
       <div className={classes.Cover} onMouseMove={this.handleMouseMove}>
         {background}
         {lightenFilter}
-        {coverText}
-        {socialMedia}
+        {coverContent}
+        {/* {coverText}
+        {socialMedia} */}
       </div>
     );
   }

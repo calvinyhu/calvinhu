@@ -1,2 +1,0 @@
-export const SET_PHOTO_URLS = 'SET_PHOTO_URLS';
-export const SET_PHOTO_DETAILS = 'SET_PHOTO_DETAILS';

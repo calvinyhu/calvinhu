@@ -49,21 +49,27 @@
   }
 }
 
+.CoverContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
 .CoverText {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 85%;
-  position: absolute;
-  top: 30%;
+  width: 100%;
   transition: $transition1;
 
   @include media-min-width(65rem) {
-    top: 40%;
-    transform: translateY(-50%);
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 }
 
@@ -114,7 +120,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    transform: translateY(45%);
   }
 
   .PageLink {
@@ -128,10 +133,8 @@
 
 .SocialMedia {
   display: flex;
-  position: absolute;
-  bottom: 25%;
-  left: 50%;
-  transform: translateX(-50%);
+  justify-content: center;
+  align-items: center;
   padding: $padding / 2;
   border-bottom: 3px solid $md-blue-gray;
   opacity: 0;
@@ -143,9 +146,9 @@
     user-select: none;
     margin: $margin;
     opacity: 0.7;
+    cursor: pointer;
 
     &:hover {
-      cursor: pointer;
       transform: scale(1.2);
     }
 
@@ -154,6 +157,32 @@
       height: 100%;
       object-fit: contain;
       object-position: center left;
+    }
+  }
+
+  a {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    margin: $margin;
+    color: $md-black;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: $transition2;
+
+    &:last-of-type {
+      transform: scale(1.4);
+
+      &:hover {
+        transform: scale(1.7);
+      }
+    }
+
+    &:hover {
+      transform: scale(1.2);
     }
   }
 }
