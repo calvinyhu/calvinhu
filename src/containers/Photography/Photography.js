@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
+import throttle from 'raf-throttle';
 
 import classes from './Photography.css';
 import { MAT_ICONS } from '../../utils/styles';
@@ -12,6 +13,7 @@ class Photography extends React.PureComponent {
   state = {
     isLoaded: {},
     isExpandPhoto: false,
+    numPhotos: 10,
     photos: photos,
     src: null,
     hoverPhoto: null
@@ -19,7 +21,34 @@ class Photography extends React.PureComponent {
 
   componentDidMount() {
     if (!this.state.photos) this.getPhotos();
+
+    window.addEventListener('scroll', this.handleScroll);
   }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll = () => {
+    throttle(this.showMorePhotos());
+  };
+
+  showMorePhotos = () => {
+    const scrollHeight = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight,
+      document.body.clientHeight,
+      document.documentElement.clientHeight
+    );
+
+    if (scrollHeight - window.innerHeight === window.scrollY) {
+      this.setState(prevState => {
+        return { numPhotos: prevState.numPhotos + 10 };
+      });
+    }
+  };
 
   getPhotos = () => {
     firestore
@@ -86,7 +115,9 @@ class Photography extends React.PureComponent {
 
     const gallery = [];
     const photoIds = Object.keys(this.state.photos);
-    photoIds.forEach(id => {
+    photoIds.forEach((id, index) => {
+      if (index + 1 > this.state.numPhotos) return;
+
       let imgContainerClasses = classes.ImgContainer + ' ' + classes.Hide;
       if (this.state.isLoaded[id]) imgContainerClasses += ' ' + classes.Show;
 
