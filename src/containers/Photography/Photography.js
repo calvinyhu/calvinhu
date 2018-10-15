@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 
 import classes from './Photography.css';
+import { MAT_ICONS } from '../../utils/styles';
 import { firestore, storage } from '../../utils/firebase';
 
 let photos = null;
@@ -153,6 +154,7 @@ class Photography extends React.PureComponent {
             {gallery}
           </div>
         </div>
+        <div className={MAT_ICONS + ' ' + classes.TouchApp}>touch_app</div>
         {card}
       </div>
     );
