@@ -90,20 +90,18 @@
 }
 
 .LoaderContainer {
-  justify-self: center;
-  align-self: center;
   width: 5rem;
   height: 5rem;
   overflow: hidden;
-  margin: $margin;
   position: absolute;
+  top: 30%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-50%);
 
   @include media-min-width(65rem) {
-    position: static;
+    position: relative;
     left: 0;
-    transform: translateX(0);
+    transform: translateX(0) translateY(0);
   }
 }
 
