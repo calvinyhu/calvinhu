@@ -9,7 +9,7 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background: $md-white;
+  background: $opp-color;
   color: $md-blue-gray;
   overflow: hidden;
   position: relative;
@@ -127,10 +127,22 @@
     font-weight: bold;
   }
 }
+
 .Contact {
   width: 100%;
   margin-top: $margin;
   @include media-min-width($desktop-width) {
     text-align: center;
   }
+}
+
+.LoaderContainer {
+  position: absolute;
+  top: 40vh;
+  width: 5rem;
+  height: 5rem;
+}
+
+.DisplayNone {
+  display: none;
 }

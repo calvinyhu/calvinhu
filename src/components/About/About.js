@@ -105,8 +105,13 @@ class About extends PureComponent {
       </div>
     );
 
+    let loaderClasses = classes.Loader;
     let imgClasses = classes.Hide;
-    if (this.state.isLoaded) imgClasses += ' ' + classes.FadeIn;
+    if (this.state.isLoaded) {
+      imgClasses += ' ' + classes.FadeIn;
+      loaderClasses += ' ' + classes.DisplayNone;
+    }
+
     let me = null;
     if (this.state.urls) {
       me = (
@@ -132,6 +137,9 @@ class About extends PureComponent {
     return (
       <Fade>
         <div className={classes.About}>
+          <div className={classes.LoaderContainer}>
+            <div className={loaderClasses} />
+          </div>
           <div className={classes.Me}>{me}</div>
           <div className={classes.Questions}>
             <div className={classes.ColorSplash} />
