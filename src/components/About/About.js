@@ -4,11 +4,44 @@ import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 
 import classes from './About.css';
+import { storage } from '../../utils/firebase';
+
+const profile = 'profile';
+const files = [
+  'DSC_1858-1080p35.jpg',
+  'DSC_1858-1440p35.jpg',
+  'DSC_1858-2160p35.jpg'
+];
+let staticUrls = null;
 
 class About extends PureComponent {
+  state = {
+    isLoaded: false,
+    urls: staticUrls
+  };
+
   componentDidMount() {
     this.props.scrollIntoView();
+    if (!this.state.urls) this.getUrls();
   }
+
+  handleLoad = () => this.setState({ isLoaded: true });
+
+  getUrls = () => {
+    staticUrls = {};
+
+    files.forEach(file => {
+      storage
+        .ref(`${profile}/${file}`)
+        .getDownloadURL()
+        .then(url => {
+          staticUrls[file] = url;
+          const urls = { ...this.state.urls };
+          urls[file] = url;
+          this.setState({ urls });
+        });
+    });
+  };
 
   render() {
     const who = (
@@ -72,21 +105,48 @@ class About extends PureComponent {
       </div>
     );
 
+    let imgClasses = classes.Hide;
+    if (this.state.isLoaded) imgClasses += ' ' + classes.FadeIn;
+    let me = null;
+    if (this.state.urls) {
+      me = (
+        <picture>
+          <source
+            media="(min-width: 1440px)"
+            srcSet={`${this.state.urls[files[1]]} 2x`}
+          />
+          <source
+            media="(min-width: 2160px)"
+            srcSet={`${this.state.urls[files[2]]} 2x`}
+          />
+          <img
+            className={imgClasses}
+            onLoad={this.handleLoad}
+            src={this.state.urls[files[0]]}
+            alt="me"
+          />
+        </picture>
+      );
+    }
+
     return (
       <Fade>
         <div className={classes.About}>
-          <div className={classes.Me} />
-          <div className={classes.ColorSplash} />
-          <main>
+          {/* <div className={classes.Me} /> */}
+          <div className={classes.Me2}>{me}</div>
+          <div className={classes.Questions}>
             <div className={classes.ColorSplash} />
-            <Reveal effect={classes.BlockSlideFadeIn}>
-              {who}
-              {obj}
-              {consider}
-              {passions}
-              {contact}
-            </Reveal>
-          </main>
+            <main>
+              <div className={classes.ColorSplash} />
+              <Reveal effect={classes.BlockSlideFadeIn}>
+                {who}
+                {obj}
+                {consider}
+                {passions}
+                {contact}
+              </Reveal>
+            </main>
+          </div>
         </div>
       </Fade>
     );

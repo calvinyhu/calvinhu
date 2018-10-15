@@ -11,6 +11,7 @@ let photoDetails = null;
 
 class Photography extends PureComponent {
   state = {
+    isLoaded: {},
     isExpandPhoto: false,
     photoUrls: photoUrls,
     photoDetails: photoDetails,
@@ -46,6 +47,18 @@ class Photography extends PureComponent {
       });
   };
 
+  loadHandlers = {};
+  getLoadHandler = photoId => {
+    if (!this.loadHandlers[photoId]) {
+      this.loadHandlers[photoId] = () => {
+        const isLoaded = { ...this.state.isLoaded };
+        isLoaded[photoId] = true;
+        this.setState({ isLoaded });
+      };
+    }
+    return this.loadHandlers[photoId];
+  };
+
   hoverHandlers = {};
   getHoverHandler = photoId => {
     if (!this.hoverHandlers[photoId]) {
@@ -73,7 +86,10 @@ class Photography extends PureComponent {
     const gallery = [];
 
     let lake_siskiyou_id = 'lake_siskiyou';
-    let imgContainerClasses = classes.ImgContainer;
+    let imgContainerClasses = classes.ImgContainer + ' ' + classes.Hide;
+    if (this.state.isLoaded[lake_siskiyou_id])
+      imgContainerClasses += ' ' + classes.Show;
+
     let detailsClasses = classes.Details;
     if (this.state.hoverPhoto === lake_siskiyou_id) {
       imgContainerClasses += ' ' + classes.ImgContainerHover;
@@ -87,7 +103,11 @@ class Photography extends PureComponent {
           onClick={this.getOpenHandler(lake_siskiyou_med)}
         >
           <div className={imgContainerClasses}>
-            <img src={lake_siskiyou_med} alt="calvinhu" />
+            <img
+              onLoad={this.getLoadHandler(lake_siskiyou_id)}
+              src={lake_siskiyou_med}
+              alt="calvinhu"
+            />
           </div>
           <div className={detailsClasses}>
             <h5>Lake Siskiyou</h5>
@@ -99,6 +119,8 @@ class Photography extends PureComponent {
     const photoIds = Object.keys(this.state.photoUrls);
     photoIds.forEach(id => {
       imgContainerClasses = classes.ImgContainer;
+      if (this.state.isLoaded[id]) imgContainerClasses += ' ' + classes.Show;
+
       detailsClasses = classes.Details;
       if (this.state.hoverPhoto === id) {
         imgContainerClasses += ' ' + classes.ImgContainerHover;
@@ -112,7 +134,11 @@ class Photography extends PureComponent {
             onClick={this.getOpenHandler(this.state.photoUrls[id])}
           >
             <div className={imgContainerClasses}>
-              <img src={this.state.photoUrls[id]} alt="calvinhu" />
+              <img
+                onLoad={this.getLoadHandler(id)}
+                src={this.state.photoUrls[id]}
+                alt="calvinhu"
+              />
             </div>
             <div className={detailsClasses}>
               <h5>{this.state.photoDetails[id].name}</h5>
