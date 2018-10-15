@@ -43,7 +43,7 @@ class Photography extends React.PureComponent {
       document.documentElement.clientHeight
     );
 
-    if (scrollHeight - window.innerHeight === window.scrollY) {
+    if (window.scrollY >= scrollHeight - window.innerHeight * 1.3) {
       this.setState(prevState => {
         return { numPhotos: prevState.numPhotos + 10 };
       });

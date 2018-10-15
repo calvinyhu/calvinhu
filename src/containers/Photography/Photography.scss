@@ -97,11 +97,6 @@
     width: 33.3%;
     height: 33.3vw;
   }
-
-  @include media-min-width($desktop-width * 2) {
-    width: 25%;
-    height: 25vw;
-  }
 }
 
 .ImgContainer {
