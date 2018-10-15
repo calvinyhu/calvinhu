@@ -177,10 +177,20 @@ class Photography extends React.PureComponent {
       </div>
     );
 
+    let loader = null;
+    if (!this.state.photos) {
+      loader = (
+        <div className={classes.LoaderContainer}>
+          <div className={classes.Loader} />
+        </div>
+      );
+    }
+
     return (
       <div className={classes.PhotographyContainer}>
         <div className={classes.Photography}>
           {nav}
+          {loader}
           <div className={classes.Gallery} onMouseLeave={this.handleMouseLeave}>
             {gallery}
           </div>
