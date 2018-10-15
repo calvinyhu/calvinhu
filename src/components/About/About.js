@@ -132,8 +132,7 @@ class About extends PureComponent {
     return (
       <Fade>
         <div className={classes.About}>
-          {/* <div className={classes.Me} /> */}
-          <div className={classes.Me2}>{me}</div>
+          <div className={classes.Me}>{me}</div>
           <div className={classes.Questions}>
             <div className={classes.ColorSplash} />
             <main>

@@ -1,48 +1,46 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 
 import classes from './Photography.css';
-import { firestore } from '../../utils/firebase';
-import lake_siskiyou_med from '../../assets/images/DSC_9569-1440p50.jpg';
+import { firestore, storage } from '../../utils/firebase';
 
-let photoUrls = null;
-let photoDetails = null;
+let photos = null;
 
-class Photography extends PureComponent {
+class Photography extends React.PureComponent {
   state = {
     isLoaded: {},
     isExpandPhoto: false,
-    photoUrls: photoUrls,
-    photoDetails: photoDetails,
+    photos: photos,
     src: null,
     hoverPhoto: null
   };
 
   componentDidMount() {
-    if (!this.state.photoUrls) this.getPhotoInfo();
+    if (!this.state.photos) this.getPhotos();
   }
 
-  getPhotoInfo = () => {
-    firestore
-      .collection('photography')
-      .doc('photoUrls')
-      .get()
-      .then(doc => {
-        if (doc.exists) {
-          photoUrls = doc.data();
-          this.setState({ photoUrls: doc.data() });
-        } else console.log('Photo urls do not exist!');
-      });
-
+  getPhotos = () => {
     firestore
       .collection('photography')
       .doc('photoDetails')
       .get()
       .then(doc => {
         if (doc.exists) {
-          photoDetails = doc.data();
-          this.setState({ photoDetails: doc.data() });
+          const data = doc.data();
+
+          const ids = Object.keys(data);
+          ids.forEach(id => {
+            storage
+              .ref(`photography/${id}`)
+              .getDownloadURL()
+              .then(url => {
+                data[id].url = url;
+                this.setState({ photos: data });
+              });
+          });
+
+          photos = data;
         } else console.log('Photo details do not exist!');
       });
   };
@@ -83,65 +81,38 @@ class Photography extends PureComponent {
   handleClose = () => this.setState({ isExpandPhoto: false });
 
   renderPhotos = () => {
+    if (!this.state.photos) return null;
+
     const gallery = [];
-
-    let lake_siskiyou_id = 'lake_siskiyou';
-    let imgContainerClasses = classes.ImgContainer + ' ' + classes.Hide;
-    if (this.state.isLoaded[lake_siskiyou_id])
-      imgContainerClasses += ' ' + classes.Show;
-
-    let detailsClasses = classes.Details;
-    if (this.state.hoverPhoto === lake_siskiyou_id) {
-      imgContainerClasses += ' ' + classes.ImgContainerHover;
-      detailsClasses += ' ' + classes.DetailsHover;
-    }
-    gallery.push(
-      <Fade key={lake_siskiyou_id}>
-        <div
-          className={classes.GalleryItem}
-          onMouseOver={this.getHoverHandler(lake_siskiyou_id)}
-          onClick={this.getOpenHandler(lake_siskiyou_med)}
-        >
-          <div className={imgContainerClasses}>
-            <img
-              onLoad={this.getLoadHandler(lake_siskiyou_id)}
-              src={lake_siskiyou_med}
-              alt="calvinhu"
-            />
-          </div>
-          <div className={detailsClasses}>
-            <h5>Lake Siskiyou</h5>
-          </div>
-        </div>
-      </Fade>
-    );
-
-    const photoIds = Object.keys(this.state.photoUrls);
+    const photoIds = Object.keys(this.state.photos);
     photoIds.forEach(id => {
-      imgContainerClasses = classes.ImgContainer;
+      let imgContainerClasses = classes.ImgContainer + ' ' + classes.Hide;
       if (this.state.isLoaded[id]) imgContainerClasses += ' ' + classes.Show;
 
-      detailsClasses = classes.Details;
+      let detailsClasses = classes.Details;
       if (this.state.hoverPhoto === id) {
         imgContainerClasses += ' ' + classes.ImgContainerHover;
         detailsClasses += ' ' + classes.DetailsHover;
       }
+
+      let img = (
+        <img
+          onLoad={this.getLoadHandler(id)}
+          src={this.state.photos[id].url}
+          alt="calvinhu"
+        />
+      );
+
       gallery.push(
         <Fade key={id}>
           <div
             className={classes.GalleryItem}
             onMouseOver={this.getHoverHandler(id)}
-            onClick={this.getOpenHandler(this.state.photoUrls[id])}
+            onClick={this.getOpenHandler(this.state.photos[id].url)}
           >
-            <div className={imgContainerClasses}>
-              <img
-                onLoad={this.getLoadHandler(id)}
-                src={this.state.photoUrls[id]}
-                alt="calvinhu"
-              />
-            </div>
+            <div className={imgContainerClasses}>{img}</div>
             <div className={detailsClasses}>
-              <h5>{this.state.photoDetails[id].name}</h5>
+              <h5>{this.state.photos[id].name}</h5>
             </div>
           </div>
         </Fade>
@@ -164,9 +135,7 @@ class Photography extends PureComponent {
       </div>
     );
 
-    let gallery = [];
-    if (this.state.photoUrls && this.state.photoDetails)
-      gallery = this.renderPhotos();
+    let gallery = this.renderPhotos();
 
     let cardClasses = 'card ' + classes.Card;
     if (this.state.isExpandPhoto) cardClasses += ' ' + classes.CardShow;
