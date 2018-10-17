@@ -15,7 +15,7 @@ export const THEME_COLOR = {
 
 class Projects extends PureComponent {
   componentDidMount() {
-    this.props.scrollIntoView();
+    if (this.props.isClicked) this.props.scrollIntoView();
   }
 
   render() {

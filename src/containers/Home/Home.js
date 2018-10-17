@@ -6,8 +6,6 @@ import Cover from '../../components/Cover/Cover';
 import Projects from '../../components/Projects/Projects';
 import About from '../../components/About/About';
 import Resume from '../../components/Resume/Resume';
-import Button from '../../components/UI/Button/Button';
-import { MAT_ICONS } from '../../utils/styles';
 
 export const PAGE = {
   NONE: 0,
@@ -17,14 +15,9 @@ export const PAGE = {
 };
 
 class Home extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.home = React.createRef();
-  }
-
   state = {
-    isShowBackToTopButton: false,
-    page: 1,
+    isClicked: false,
+    page: PAGE.WEB,
     offsetX: 0
   };
 
@@ -37,6 +30,8 @@ class Home extends PureComponent {
   }
 
   handleClick = page => {
+    if (!this.state.isClicked) this.setState({ isClicked: true });
+
     if (this.state.page !== page) this.setState({ page: page });
     else this.handleScrollToPage();
   };
@@ -46,27 +41,22 @@ class Home extends PureComponent {
   };
 
   animatePage = (scrollTop, clientHeight) => {
-    if (this.state.isShowBackToTopButton && scrollTop < clientHeight)
-      this.setState({ isShowBackToTopButton: false });
-    if (!this.state.isShowBackToTopButton && scrollTop >= clientHeight)
-      this.setState({ isShowBackToTopButton: true });
     if (scrollTop < clientHeight) this.setState({ offsetX: -scrollTop / 10 });
   };
 
-  handleScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   handleScrollToPage = () => {
-    if (this.home.current) {
-      window.scrollTo({
-        top: this.home.current.clientHeight,
-        behavior: 'smooth'
-      });
-    }
+    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
   };
 
   switchPage = newPage => {
     switch (newPage) {
       case PAGE.WEB:
-        return <Projects scrollIntoView={this.handleScrollToPage} />;
+        return (
+          <Projects
+            scrollIntoView={this.handleScrollToPage}
+            isClicked={this.state.isClicked}
+          />
+        );
       case PAGE.ABOUT:
         return <About scrollIntoView={this.handleScrollToPage} />;
       case PAGE.RESUME:
@@ -79,10 +69,6 @@ class Home extends PureComponent {
   render() {
     let page = this.switchPage(this.state.page);
 
-    let goBackToTopBtnClasses = classes.BackToTopBtn;
-    if (this.state.isShowBackToTopButton)
-      goBackToTopBtnClasses += ' ' + classes.OnScreenY;
-
     return (
       <div
         className={classes.Home}
@@ -91,11 +77,6 @@ class Home extends PureComponent {
       >
         <Cover click={this.handleClick} offsetX={this.state.offsetX} />
         {page}
-        <div className={goBackToTopBtnClasses}>
-          <Button circle adj click={this.handleScrollToTop}>
-            <div className={MAT_ICONS}>arrow_upward</div>
-          </Button>
-        </div>
       </div>
     );
   }

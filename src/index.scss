@@ -7,6 +7,7 @@ body {
   font-family: 'Noto Sans', sans-serif;
   background: $md-white;
   color: $md-blue-gray;
+  overflow-y: scroll;
 
   ::selection {
     background: $md-opp;
