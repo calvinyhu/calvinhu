@@ -30,10 +30,6 @@ class Photography extends React.PureComponent {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
-  }
-
   handleScroll = () => {
     throttle(this.showMorePhotos());
   };
