@@ -14,19 +14,24 @@ class Photography extends React.PureComponent {
     isLoaded: {},
     isExpandPhoto: false,
     numPhotos: 10,
+    totalNumPhotos: 0,
     photos: photos,
     src: null,
     hoverPhoto: null
   };
 
   componentDidMount() {
-    if (!this.state.photos) this.getPhotos();
-
     window.addEventListener('scroll', this.handleScroll);
+
+    if (!this.state.photos) this.getPhotos();
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  componentDidUpdate() {
+    console.log('componentDidUpdate');
   }
 
   handleScroll = () => {
@@ -43,36 +48,47 @@ class Photography extends React.PureComponent {
       document.documentElement.clientHeight
     );
 
-    if (window.scrollY >= scrollHeight - window.innerHeight * 1.3) {
+    const isAtBottom = window.scrollY > scrollHeight - window.innerHeight * 1.3;
+    const isMorePhotos = this.state.numPhotos < this.state.totalNumPhotos;
+
+    if (isAtBottom && isMorePhotos) {
       this.setState(prevState => {
         return { numPhotos: prevState.numPhotos + 10 };
       });
     }
   };
 
-  getPhotos = () => {
-    firestore
+  getPhotos = async () => {
+    let data = null;
+    const urls = await firestore
       .collection('photography')
       .doc('photoDetails')
       .get()
       .then(doc => {
         if (doc.exists) {
-          const data = doc.data();
-
-          const ids = Object.keys(data);
-          ids.forEach(id => {
-            storage
-              .ref(`photography/${id}`)
-              .getDownloadURL()
-              .then(url => {
-                data[id].url = url;
-                this.setState({ photos: data });
-              });
-          });
-
-          photos = data;
+          data = doc.data();
+          return this.getUrls(data);
         } else console.log('Photo details do not exist!');
-      });
+      })
+      .catch(error => console.log(error));
+
+    const ids = Object.keys(data);
+    ids.forEach((id, index) => (data[id].url = urls[index]));
+
+    photos = data;
+    this.setState({ photos: data, totalNumPhotos: ids.length });
+  };
+
+  getUrls = data => {
+    const urlPromises = [];
+
+    const ids = Object.keys(data);
+    ids.forEach(id => {
+      const urlPromise = storage.ref(`photography/${id}`).getDownloadURL();
+      urlPromises.push(urlPromise);
+    });
+
+    return Promise.all(urlPromises).then(urls => urls);
   };
 
   loadHandlers = {};

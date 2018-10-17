@@ -83,10 +83,7 @@
   width: 100%;
   height: 100vw;
   position: relative;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   @include media-min-width($desktop-width) {
     width: 50%;
