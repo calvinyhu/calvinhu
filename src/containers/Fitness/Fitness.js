@@ -4,7 +4,7 @@ import Reveal from 'react-reveal/Reveal';
 import throttle from 'raf-throttle';
 import Chart from 'chart.js';
 
-import classes from './Fitness.css';
+import classes from './Fitness.module.scss';
 import { MAT_ICONS } from '../../utils/styles';
 import Button from '../../components/UI/Button/Button';
 

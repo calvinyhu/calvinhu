@@ -6,7 +6,7 @@ import Github from 'react-feather/dist/icons/github';
 import Image from 'react-feather/dist/icons/image';
 import Linkedin from 'react-feather/dist/icons/linkedin';
 
-import styles from './Rf.module.css';
+import styles from './Rf.module.scss';
 
 const Rf = props => {
   let iconClasses = styles.Icon;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Fa.module.css';
+import styles from './Fa.module.scss';
 
 const Fa = props => {
   let faClasses = styles.Fa + ' ' + props.children;

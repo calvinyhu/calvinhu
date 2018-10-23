@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
 import Fade from 'react-reveal/Fade';
-import { Document, Page } from 'react-pdf/dist/entry.webpack';
+// import { Document, Page } from 'react-pdf';
+import PDF from 'react-pdf-js';
 import { storage } from '../../utils/firebase';
 
-import classes from './Resume.css';
+import classes from './Resume.module.scss';
 import Rf from '../UI/Icon/Rf/Rf';
 
 const cors = 'https://cors-anywhere.herokuapp.com/';
@@ -14,6 +15,7 @@ let wordUrl = null;
 
 class Resume extends PureComponent {
   state = {
+    isLoading: true,
     pdfUrl: pdfUrl,
     wordUrl: wordUrl
   };
@@ -41,28 +43,30 @@ class Resume extends PureComponent {
       });
   };
 
-  render() {
-    let loader = (
-      <div className={classes.LoaderContainer}>
-        <div className={classes.Loader} />
-      </div>
-    );
+  handleDocumentComplete = () => this.setState({ isLoading: false });
 
+  render() {
+    let loader = null;
+    if (this.state.isLoading) {
+      loader = (
+        <div className={classes.LoaderContainer}>
+          <div className={classes.Loader} />
+        </div>
+      );
+    }
+
+    let documentClasses = classes.Document;
+    if (!this.state.isLoading) documentClasses += ' ' + classes.Show;
     let document = null;
     if (this.state.pdfUrl) {
       document = (
-        <Document
-          className={classes.Document}
-          file={cors + this.state.pdfUrl}
-          loading={loader}
-        >
-          <Page
-            className={classes.Page}
-            pageNumber={1}
-            renderAnnotationLayer={false}
-            renderTextLayer={false}
+        <div className={documentClasses}>
+          <PDF
+            file={cors + this.state.pdfUrl}
+            onDocumentComplete={this.handleDocumentComplete}
+            page={1}
           />
-        </Document>
+        </div>
       );
     }
 
@@ -86,6 +90,7 @@ class Resume extends PureComponent {
           <div className={classes.ColorSplash} />
           {downloadButton}
           <div className={classes.DocumentContainer}>{document}</div>
+          {loader}
         </div>
       </Fade>
     );

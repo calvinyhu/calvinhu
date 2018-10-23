@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import throttle from 'raf-throttle';
 
-import classes from './Photography.css';
+import classes from './Photography.module.scss';
 import { MAT_ICONS } from '../../utils/styles';
 import { firestore, storage } from '../../utils/firebase';
 

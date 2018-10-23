@@ -1,7 +1,7 @@
 import React from 'react';
 import Reveal from 'react-reveal/Reveal';
 
-import classes from './ProjectItem.css';
+import classes from './ProjectItem.module.scss';
 import { THEME_COLOR } from '../Projects';
 
 const projectItem = props => {

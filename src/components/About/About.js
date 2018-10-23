@@ -3,7 +3,7 @@ import Reveal from 'react-reveal/Reveal';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 
-import classes from './About.css';
+import classes from './About.module.scss';
 import { storage } from '../../utils/firebase';
 
 const profile = 'profile';

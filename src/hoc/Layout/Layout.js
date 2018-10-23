@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import throttle from 'raf-throttle';
 
-import classes from './Layout.css';
+import classes from './Layout.module.scss';
 import Button from '../../components/UI/Button/Button';
 import Rf from '../../components/UI/Icon/Rf/Rf';
 

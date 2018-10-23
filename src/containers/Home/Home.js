@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import throttle from 'raf-throttle';
 
-import classes from './Home.css';
+import classes from './Home.module.scss';
 import Cover from '../../components/Cover/Cover';
 import Projects from '../../components/Projects/Projects';
 import About from '../../components/About/About';

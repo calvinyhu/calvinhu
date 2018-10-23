@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import Fade from 'react-reveal/Fade';
 
-import classes from './Projects.css';
+import classes from './Projects.module.scss';
 import ProjectItem from './ProjectItem/ProjectItem';
 import shmack_res from '../../assets/images/shmack_res.png';
 import shmack_home from '../../assets/images/shmack_home.png';

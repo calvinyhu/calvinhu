@@ -2,7 +2,7 @@ import React from 'react';
 import throttle from 'raf-throttle';
 import { Link } from 'react-router-dom';
 
-import classes from './Cover.css';
+import classes from './Cover.module.scss';
 import { PAGE } from '../../containers/Home/Home';
 import Button from '../UI/Button/Button';
 import Rf from '../UI/Icon/Rf/Rf';
