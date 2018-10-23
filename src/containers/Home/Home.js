@@ -15,6 +15,11 @@ export const PAGE = {
 };
 
 class Home extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.homeRef = React.createRef();
+  }
+
   state = {
     isClicked: false,
     page: PAGE.WEB,
@@ -45,7 +50,12 @@ class Home extends PureComponent {
   };
 
   handleScrollToPage = () => {
-    window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+    if (this.homeRef.current) {
+      window.scrollTo({
+        top: this.homeRef.current.clientHeight,
+        behavior: 'smooth'
+      });
+    }
   };
 
   switchPage = newPage => {
@@ -73,7 +83,7 @@ class Home extends PureComponent {
       <div
         className={classes.Home}
         onScroll={this.handleScroll}
-        ref={this.home}
+        ref={this.homeRef}
       >
         <Cover click={this.handleClick} offsetX={this.state.offsetX} />
         {page}

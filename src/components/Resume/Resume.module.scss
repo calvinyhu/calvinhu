@@ -27,14 +27,13 @@
 
 .DocumentContainer {
   width: 100%;
-  max-width: 85vh;
+  max-width: 50rem;
   overflow-x: auto;
 }
 
 .Document {
   display: inline-block;
   min-width: 45rem;
-  max-width: 85vh;
   padding: $padding;
   transition: 1.5s;
   opacity: 0;
