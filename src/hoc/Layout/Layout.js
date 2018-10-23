@@ -3,7 +3,7 @@ import throttle from 'raf-throttle';
 
 import classes from './Layout.css';
 import Button from '../../components/UI/Button/Button';
-import { MAT_ICONS } from '../../utils/styles';
+import Rf from '../../components/UI/Icon/Rf/Rf';
 
 class Layout extends Component {
   state = {
@@ -42,7 +42,7 @@ class Layout extends Component {
 
         <div className={goBackToTopBtnClasses}>
           <Button circle adj click={this.handleScrollToTop}>
-            <div className={MAT_ICONS}>arrow_upward</div>
+            <Rf>arrow-up</Rf>
           </Button>
         </div>
       </div>

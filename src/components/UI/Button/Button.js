@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './Button.css';
 
 class Button extends PureComponent {
+  isTouched = false;
   touchBounds = { top: 0, bot: 0, left: 0, right: 0 };
 
   state = {
@@ -74,5 +76,14 @@ class Button extends PureComponent {
     );
   }
 }
+
+Button.propTypes = {
+  link: PropTypes.bool,
+  circle: PropTypes.bool,
+  adj: PropTypes.bool,
+  opp: PropTypes.bool,
+  click: PropTypes.func,
+  children: PropTypes.any
+};
 
 export default Button;

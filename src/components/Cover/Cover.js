@@ -4,10 +4,8 @@ import { Link } from 'react-router-dom';
 
 import classes from './Cover.css';
 import { PAGE } from '../../containers/Home/Home';
-import linkedin from '../../assets/images/In-Black-66px-R.png';
-import github from '../../assets/images/GitHub-Mark-64px.png';
 import Button from '../UI/Button/Button';
-import { MAT_ICONS } from '../../utils/styles';
+import Rf from '../UI/Icon/Rf/Rf';
 
 const FRICTION = 1 / 30;
 const DISPLACE_X = 20;
@@ -126,7 +124,7 @@ class Cover extends React.PureComponent {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={linkedin} alt="LinkedIn" />
+          <Rf lg>linkedin</Rf>
         </a>
         <a
           className={classes.ImgContainer}
@@ -134,10 +132,10 @@ class Cover extends React.PureComponent {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={github} alt="GitHub" />
+          <Rf lg>github</Rf>
         </a>
         <Link to="/photo">
-          <div className={MAT_ICONS}>photo_library</div>
+          <Rf lg>image</Rf>
         </Link>
       </div>
     );

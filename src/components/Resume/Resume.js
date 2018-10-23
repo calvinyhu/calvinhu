@@ -4,6 +4,7 @@ import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import { storage } from '../../utils/firebase';
 
 import classes from './Resume.css';
+import Rf from '../UI/Icon/Rf/Rf';
 
 const cors = 'https://cors-anywhere.herokuapp.com/';
 const job = 'job';
@@ -71,7 +72,8 @@ class Resume extends PureComponent {
         <div className={classes.Download}>
           <div className={classes.DownloadButton}>
             <a href={this.state.wordUrl} download>
-              Download
+              <Rf sm>download</Rf>
+              <p>Download</p>
             </a>
           </div>
         </div>
