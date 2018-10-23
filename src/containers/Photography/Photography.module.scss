@@ -153,12 +153,9 @@
   opacity: 0;
   z-index: -1;
   background: rgba(0, 0, 0, 0.9);
-  // transition: opacity $transition1, z-index 0s $transition-duration1;
+  transition: opacity $transition3, z-index 0s $transition-duration3;
   border-radius: 0;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   img {
     width: 100%;
@@ -169,7 +166,7 @@
 
 .CardShow {
   opacity: 1;
-  // transition: opacity $transition1;
+  transition: opacity $transition3;
   z-index: 0;
 }
 
@@ -180,6 +177,11 @@
   transform: translateX(-50%) scale(1.4);
   color: $md-white;
   opacity: 0.5;
+  transition: $transition1;
+}
+
+.HideTouchApp {
+  opacity: 0;
 }
 
 .LoaderContainer {

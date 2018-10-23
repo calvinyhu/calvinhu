@@ -13,6 +13,7 @@ class Photography extends React.PureComponent {
   state = {
     isLoaded: {},
     isExpandPhoto: false,
+    isHideTouchApp: false,
     numPhotos: 10,
     totalNumPhotos: 0,
     photos: photos,
@@ -24,6 +25,8 @@ class Photography extends React.PureComponent {
     window.addEventListener('scroll', this.handleScroll);
 
     if (!this.state.photos) this.getPhotos();
+
+    setTimeout(() => this.setState({ isHideTouchApp: true }), 7000);
   }
 
   componentWillUnmount() {
@@ -198,6 +201,10 @@ class Photography extends React.PureComponent {
       );
     }
 
+    let touchAppClasses = MAT_ICONS + ' ' + classes.TouchApp;
+    if (this.state.isHideTouchApp)
+      touchAppClasses += ' ' + classes.HideTouchApp;
+
     return (
       <div className={classes.PhotographyContainer}>
         <div className={classes.Photography}>
@@ -207,7 +214,7 @@ class Photography extends React.PureComponent {
             {gallery}
           </div>
         </div>
-        <div className={MAT_ICONS + ' ' + classes.TouchApp}>touch_app</div>
+        <div className={touchAppClasses}>touch_app</div>
         {card}
       </div>
     );
