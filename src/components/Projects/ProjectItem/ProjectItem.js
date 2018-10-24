@@ -1,58 +1,94 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Reveal from 'react-reveal/Reveal';
 
 import classes from './ProjectItem.module.scss';
-import { THEME_COLOR } from '../Projects';
 
-const projectItem = props => {
-  let colorSplashClassNames = classes.ColorSplash;
+class ProjectItem extends Component {
+  state = {
+    isLoaded: {}
+  };
 
-  switch (props.themeColor) {
-    case THEME_COLOR.SHMACK:
-      colorSplashClassNames += ' ' + classes.ShmackColorSplash;
-      break;
-    case THEME_COLOR.JAMMMING:
-      colorSplashClassNames += ' ' + classes.JammmingColorSplash;
-      break;
-    default:
-      break;
-  }
+  loadHandlers = {};
+  getLoadHandler = id => {
+    if (!this.loadHandlers[id]) {
+      this.loadHandlers[id] = () => {
+        const isLoaded = { ...this.state.isLoaded };
+        isLoaded[id] = true;
+        this.setState({ isLoaded });
+      };
+    }
+    return this.loadHandlers[id];
+  };
 
-  let carouselItems = [];
+  render() {
+    let colorSplashClassNames = classes.ColorSplash;
 
-  props.srcs.forEach((src, index) => {
-    carouselItems.push(
-      <div key={index} className={classes.CarouselItem}>
-        <div className={classes.ImgContainer}>
-          <img src={src} alt={props.alt} />
+    switch (this.props.themeColor) {
+      case 1:
+        colorSplashClassNames += ' ' + classes.ShmackColorSplash;
+        break;
+      case 2:
+        colorSplashClassNames += ' ' + classes.JammmingColorSplash;
+        break;
+      default:
+        break;
+    }
+
+    let carouselItems = [];
+
+    if (this.props.srcs.length > 0) {
+      this.props.srcs.forEach((src, index) => {
+        let carouselItemClasses = classes.CarouselItem + ' ' + classes.Hide;
+        if (this.state.isLoaded[src]) carouselItemClasses += ' ' + classes.Show;
+
+        carouselItems.push(
+          <div key={index} className={carouselItemClasses}>
+            <div className={classes.ImgContainer}>
+              <img
+                src={src}
+                alt={this.props.alt}
+                onLoad={this.getLoadHandler(src)}
+              />
+            </div>
+          </div>
+        );
+      });
+    } else {
+      carouselItems.push(
+        <div key={1} className={classes.LoaderContainer}>
+          <div className={classes.Loader} />
+        </div>
+      );
+    }
+
+    let header = null;
+    if (this.props.header) header = <h3>{this.props.header}</h3>;
+
+    return (
+      <div className={classes.ProjectItem}>
+        <div className={classes.ProjectContent}>
+          <div className={colorSplashClassNames} />
+          <div className={classes.Description}>
+            {header}
+            <p>{this.props.description}</p>
+            <p>
+              Check it out @{' '}
+              <a
+                href={this.props.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {this.props.name}
+              </a>
+            </p>
+          </div>
+          <Reveal effect={classes.BlockSlideFadeIn}>
+            <div className={classes.Carousel}>{carouselItems}</div>
+          </Reveal>
         </div>
       </div>
     );
-  });
+  }
+}
 
-  let header = null;
-  if (props.header) header = <h3>{props.header}</h3>;
-
-  return (
-    <div className={classes.ProjectItem}>
-      <div className={classes.ProjectContent}>
-        <div className={colorSplashClassNames} />
-        <div className={classes.Description}>
-          {header}
-          <p>{props.description}</p>
-          <p>
-            Check it out @{' '}
-            <a href={props.href} target="_blank" rel="noopener noreferrer">
-              {props.name}
-            </a>
-          </p>
-        </div>
-        <Reveal effect={classes.BlockSlideFadeIn}>
-          <div className={classes.Carousel}>{carouselItems}</div>
-        </Reveal>
-      </div>
-    </div>
-  );
-};
-
-export default projectItem;
+export default ProjectItem;
