@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import classes from './Button.module.scss';
+import styles from './Button.module.scss';
 
 class Button extends PureComponent {
   isTouched = false;
@@ -42,24 +42,24 @@ class Button extends PureComponent {
   handleMouseLeave = () => this.setState({ isMouse: false });
 
   render() {
-    let buttonClasses = classes.Button;
+    let buttonClasses = styles.Button;
 
-    if (this.props.link) buttonClasses += ' ' + classes.Link;
-    if (this.props.circle) buttonClasses += ' ' + classes.Circle;
-    if (this.props.adj) buttonClasses += ' ' + classes.Adj;
-    if (this.props.opp) buttonClasses += ' ' + classes.Opp;
+    if (this.props.link) buttonClasses += ' ' + styles.Link;
+    if (this.props.circle) buttonClasses += ' ' + styles.Circle;
+    if (this.props.adj) buttonClasses += ' ' + styles.Adj;
+    if (this.props.opp) buttonClasses += ' ' + styles.Opp;
 
     // Hover effects
     if (this.state.isTouch) {
-      if (this.props.link) buttonClasses += ' ' + classes.LinkTouchHover;
-      if (this.props.adj) buttonClasses += ' ' + classes.AdjTouchHover;
-      if (this.props.opp) buttonClasses += ' ' + classes.OppTouchHover;
+      if (this.props.link) buttonClasses += ' ' + styles.LinkTouchHover;
+      if (this.props.adj) buttonClasses += ' ' + styles.AdjTouchHover;
+      if (this.props.opp) buttonClasses += ' ' + styles.OppTouchHover;
     }
 
     if (this.state.isMouse) {
-      if (this.props.link) buttonClasses += ' ' + classes.LinkMouseHover;
-      if (this.props.adj) buttonClasses += ' ' + classes.AdjMouseHover;
-      if (this.props.opp) buttonClasses += ' ' + classes.OppMouseHover;
+      if (this.props.link) buttonClasses += ' ' + styles.LinkMouseHover;
+      if (this.props.adj) buttonClasses += ' ' + styles.AdjMouseHover;
+      if (this.props.opp) buttonClasses += ' ' + styles.OppMouseHover;
     }
 
     return (

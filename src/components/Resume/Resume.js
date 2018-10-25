@@ -4,7 +4,7 @@ import PDF from 'react-pdf-js';
 import { storage } from '../../utils/firebase';
 import PropTypes from 'prop-types';
 
-import classes from './Resume.module.scss';
+import styles from './Resume.module.scss';
 import Rf from '../UI/Icon/Rf/Rf';
 
 const cors = 'https://cors-anywhere.herokuapp.com/';
@@ -49,14 +49,14 @@ class Resume extends PureComponent {
     let loader = null;
     if (this.state.isLoading) {
       loader = (
-        <div className={classes.LoaderContainer}>
-          <div className={classes.Loader} />
+        <div className={styles.LoaderContainer}>
+          <div className={styles.Loader} />
         </div>
       );
     }
 
-    let documentClasses = classes.Document;
-    if (!this.state.isLoading) documentClasses += ' ' + classes.Show;
+    let documentClasses = styles.Document;
+    if (!this.state.isLoading) documentClasses += ' ' + styles.Show;
     let document = null;
     if (this.state.pdfUrl) {
       document = (
@@ -73,8 +73,8 @@ class Resume extends PureComponent {
     let downloadButton = null;
     if (this.state.wordUrl) {
       downloadButton = (
-        <div className={classes.Download}>
-          <div className={classes.DownloadButton}>
+        <div className={styles.Download}>
+          <div className={styles.DownloadButton}>
             <a href={this.state.wordUrl} download>
               <Rf sm>download</Rf>
               <p>Download</p>
@@ -86,10 +86,10 @@ class Resume extends PureComponent {
 
     return (
       <Fade>
-        <div className={classes.Resume}>
-          <div className={classes.ColorSplash} />
+        <div className={styles.Resume}>
+          <div className={styles.ColorSplash} />
           {downloadButton}
-          <div className={classes.DocumentContainer}>{document}</div>
+          <div className={styles.DocumentContainer}>{document}</div>
           {loader}
         </div>
       </Fade>

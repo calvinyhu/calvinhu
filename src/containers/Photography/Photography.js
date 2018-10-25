@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import throttle from 'raf-throttle';
 
-import classes from './Photography.module.scss';
+import styles from './Photography.module.scss';
 import { MAT_ICONS } from '../../utils/styles';
 import { firestore, storage } from '../../utils/firebase';
 
@@ -135,13 +135,13 @@ class Photography extends React.PureComponent {
     photoIds.forEach((id, index) => {
       if (index + 1 > this.state.numPhotos) return;
 
-      let imgContainerClasses = classes.ImgContainer + ' ' + classes.Hide;
-      if (this.state.isLoaded[id]) imgContainerClasses += ' ' + classes.Show;
+      let imgContainerClasses = styles.ImgContainer + ' ' + styles.Hide;
+      if (this.state.isLoaded[id]) imgContainerClasses += ' ' + styles.Show;
 
-      let detailsClasses = classes.Details;
+      let detailsClasses = styles.Details;
       if (this.state.hoverPhoto === id) {
-        imgContainerClasses += ' ' + classes.ImgContainerHover;
-        detailsClasses += ' ' + classes.DetailsHover;
+        imgContainerClasses += ' ' + styles.ImgContainerHover;
+        detailsClasses += ' ' + styles.DetailsHover;
       }
 
       let img = (
@@ -155,7 +155,7 @@ class Photography extends React.PureComponent {
       gallery.push(
         <Fade key={id}>
           <div
-            className={classes.GalleryItem}
+            className={styles.GalleryItem}
             onMouseOver={this.getHoverHandler(id)}
             onClick={this.getOpenHandler(this.state.photos[id].url)}
           >
@@ -172,13 +172,13 @@ class Photography extends React.PureComponent {
   };
 
   render() {
-    const navClasses = classes.Nav + ' ' + classes.Hide + ' ' + classes.FadeIn;
+    const navClasses = styles.Nav + ' ' + styles.Hide + ' ' + styles.FadeIn;
     const nav = (
       <div className={navClasses}>
-        <div className={classes.Logo}>
+        <div className={styles.Logo}>
           <h3>Calvin Hu</h3>
         </div>
-        <NavLink className={classes.NavLink} to="/">
+        <NavLink className={styles.NavLink} to="/">
           Home
         </NavLink>
       </div>
@@ -186,8 +186,8 @@ class Photography extends React.PureComponent {
 
     let gallery = this.renderPhotos();
 
-    let cardClasses = 'card ' + classes.Card;
-    if (this.state.isExpandPhoto) cardClasses += ' ' + classes.CardShow;
+    let cardClasses = 'card ' + styles.Card;
+    if (this.state.isExpandPhoto) cardClasses += ' ' + styles.CardShow;
     let card = (
       <div className={cardClasses} onClick={this.handleClose}>
         <img className="card-img-top" src={this.state.src} alt="calvinhu" />
@@ -197,22 +197,21 @@ class Photography extends React.PureComponent {
     let loader = null;
     if (!this.state.photos) {
       loader = (
-        <div className={classes.LoaderContainer}>
-          <div className={classes.Loader} />
+        <div className={styles.LoaderContainer}>
+          <div className={styles.Loader} />
         </div>
       );
     }
 
-    let touchAppClasses = MAT_ICONS + ' ' + classes.TouchApp;
-    if (this.state.isHideTouchApp)
-      touchAppClasses += ' ' + classes.HideTouchApp;
+    let touchAppClasses = MAT_ICONS + ' ' + styles.TouchApp;
+    if (this.state.isHideTouchApp) touchAppClasses += ' ' + styles.HideTouchApp;
 
     return (
-      <div className={classes.PhotographyContainer}>
-        <div className={classes.Photography}>
+      <div className={styles.PhotographyContainer}>
+        <div className={styles.Photography}>
           {nav}
           {loader}
-          <div className={classes.Gallery} onMouseLeave={this.handleMouseLeave}>
+          <div className={styles.Gallery} onMouseLeave={this.handleMouseLeave}>
             {gallery}
           </div>
         </div>

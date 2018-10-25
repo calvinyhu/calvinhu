@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Reveal from 'react-reveal/Reveal';
 import PropTypes from 'prop-types';
 
-import classes from './ProjectItem.module.scss';
+import styles from './ProjectItem.module.scss';
 
 class ProjectItem extends Component {
   state = {
@@ -22,14 +22,14 @@ class ProjectItem extends Component {
   };
 
   render() {
-    let colorSplashClassNames = classes.ColorSplash;
+    let colorSplashClassNames = styles.ColorSplash;
 
     switch (this.props.themeColor) {
       case 1:
-        colorSplashClassNames += ' ' + classes.ShmackColorSplash;
+        colorSplashClassNames += ' ' + styles.ShmackColorSplash;
         break;
       case 2:
-        colorSplashClassNames += ' ' + classes.JammmingColorSplash;
+        colorSplashClassNames += ' ' + styles.JammmingColorSplash;
         break;
       default:
         break;
@@ -39,12 +39,12 @@ class ProjectItem extends Component {
 
     if (this.props.srcs.length > 0) {
       this.props.srcs.forEach((src, index) => {
-        let carouselItemClasses = classes.CarouselItem + ' ' + classes.Hide;
-        if (this.state.isLoaded[src]) carouselItemClasses += ' ' + classes.Show;
+        let carouselItemClasses = styles.CarouselItem + ' ' + styles.Hide;
+        if (this.state.isLoaded[src]) carouselItemClasses += ' ' + styles.Show;
 
         carouselItems.push(
           <div key={index} className={carouselItemClasses}>
-            <div className={classes.ImgContainer}>
+            <div className={styles.ImgContainer}>
               <img
                 src={src}
                 alt={this.props.alt}
@@ -56,8 +56,8 @@ class ProjectItem extends Component {
       });
     } else {
       carouselItems.push(
-        <div key={1} className={classes.LoaderContainer}>
-          <div className={classes.Loader} />
+        <div key={1} className={styles.LoaderContainer}>
+          <div className={styles.Loader} />
         </div>
       );
     }
@@ -66,10 +66,10 @@ class ProjectItem extends Component {
     if (this.props.header) header = <h3>{this.props.header}</h3>;
 
     return (
-      <div className={classes.ProjectItem}>
-        <div className={classes.ProjectContent}>
+      <div className={styles.ProjectItem}>
+        <div className={styles.ProjectContent}>
           <div className={colorSplashClassNames} />
-          <div className={classes.Description}>
+          <div className={styles.Description}>
             {header}
             <p>{this.props.description}</p>
             <p>
@@ -83,8 +83,8 @@ class ProjectItem extends Component {
               </a>
             </p>
           </div>
-          <Reveal effect={classes.BlockSlideFadeIn}>
-            <div className={classes.Carousel}>{carouselItems}</div>
+          <Reveal effect={styles.BlockSlideFadeIn}>
+            <div className={styles.Carousel}>{carouselItems}</div>
           </Reveal>
         </div>
       </div>

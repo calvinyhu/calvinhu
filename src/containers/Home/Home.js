@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import throttle from 'raf-throttle';
 
-import classes from './Home.module.scss';
+import styles from './Home.module.scss';
 import Cover from '../../components/Cover/Cover';
 import Projects from '../../components/Projects/Projects';
 import About from '../../components/About/About';
@@ -81,7 +81,7 @@ class Home extends PureComponent {
 
     return (
       <div
-        className={classes.Home}
+        className={styles.Home}
         onScroll={this.handleScroll}
         ref={this.homeRef}
       >

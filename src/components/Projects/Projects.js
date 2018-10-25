@@ -3,7 +3,7 @@ import Fade from 'react-reveal/Fade';
 import { firestore, storage } from '../../utils/firebase';
 import PropTypes from 'prop-types';
 
-import classes from './Projects.module.scss';
+import styles from './Projects.module.scss';
 import ProjectItem from './ProjectItem/ProjectItem';
 
 let shmackUrls = [];
@@ -16,11 +16,11 @@ class Projects extends PureComponent {
   };
 
   componentDidMount() {
-    // if (
-    //   this.state.shmackUrls.length === 0 ||
-    //   this.state.jammmingUrls.length === 0
-    // )
-    //   this.getPhotos();
+    if (
+      this.state.shmackUrls.length === 0 ||
+      this.state.jammmingUrls.length === 0
+    )
+      this.getPhotos();
     if (this.props.isClicked) this.props.scrollIntoView();
   }
 
@@ -82,7 +82,7 @@ class Projects extends PureComponent {
 
     return (
       <Fade>
-        <div className={classes.Projects}>
+        <div className={styles.Projects}>
           {shmack}
           {jammming}
         </div>

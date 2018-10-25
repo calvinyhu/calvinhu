@@ -3,7 +3,7 @@ import throttle from 'raf-throttle';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import classes from './Cover.module.scss';
+import styles from './Cover.module.scss';
 import { PAGE } from '../../containers/Home/Home';
 import Button from '../UI/Button/Button';
 import Rf from '../UI/Icon/Rf/Rf';
@@ -78,7 +78,7 @@ class Cover extends React.PureComponent {
   render() {
     const background = (
       <div
-        className={classes.Background}
+        className={styles.Background}
         style={{
           transform: `translate(${this.state.x + this.props.offsetX}px, ${
             this.state.y
@@ -87,28 +87,28 @@ class Cover extends React.PureComponent {
       />
     );
 
-    const lightenFilter = <div className={classes.LightenFilter} />;
+    const lightenFilter = <div className={styles.LightenFilter} />;
 
     const blurb = (
-      <div className={classes.Blurb}>
-        <h1 className={classes.Name}>Hi, I'm Calvin</h1>
+      <div className={styles.Blurb}>
+        <h1 className={styles.Name}>Hi, I'm Calvin</h1>
       </div>
     );
 
     const nav = (
-      <div className={classes.Nav}>
-        <div className={classes.PageLinks}>
-          <div className={classes.PageLink}>
+      <div className={styles.Nav}>
+        <div className={styles.PageLinks}>
+          <div className={styles.PageLink}>
             <Button link click={this.clickWeb}>
               Web Apps
             </Button>
           </div>
-          <div className={classes.PageLink}>
+          <div className={styles.PageLink}>
             <Button link click={this.clickAbout}>
               About
             </Button>
           </div>
-          <div className={classes.PageLink}>
+          <div className={styles.PageLink}>
             <Button link click={this.clickResume}>
               Resume
             </Button>
@@ -118,9 +118,9 @@ class Cover extends React.PureComponent {
     );
 
     const socialMedia = (
-      <div className={classes.SocialMedia}>
+      <div className={styles.SocialMedia}>
         <a
-          className={classes.ImgContainer}
+          className={styles.ImgContainer}
           href="https://www.linkedin.com/in/calvinyhu/"
           target="_blank"
           rel="noopener noreferrer"
@@ -128,7 +128,7 @@ class Cover extends React.PureComponent {
           <Rf lg>linkedin</Rf>
         </a>
         <a
-          className={classes.ImgContainer}
+          className={styles.ImgContainer}
           href="https://www.github.com/calvinyhu/"
           target="_blank"
           rel="noopener noreferrer"
@@ -142,21 +142,21 @@ class Cover extends React.PureComponent {
     );
 
     const coverText = (
-      <div className={classes.CoverText}>
+      <div className={styles.CoverText}>
         {blurb}
         {nav}
       </div>
     );
 
     const coverContent = (
-      <div className={classes.CoverContent}>
+      <div className={styles.CoverContent}>
         {coverText}
         {socialMedia}
       </div>
     );
 
     return (
-      <div className={classes.Cover} onMouseMove={this.handleMouseMove}>
+      <div className={styles.Cover} onMouseMove={this.handleMouseMove}>
         {background}
         {lightenFilter}
         {coverContent}

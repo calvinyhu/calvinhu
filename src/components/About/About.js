@@ -4,7 +4,7 @@ import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import classes from './About.module.scss';
+import styles from './About.module.scss';
 import { storage } from '../../utils/firebase';
 
 const profile = 'profile';
@@ -46,7 +46,7 @@ class About extends PureComponent {
 
   render() {
     const who = (
-      <div className={classes.Question}>
+      <div className={styles.Question}>
         <h5>Calvin Who?</h5>
         <h6>Calvin Hu! (punny)</h6>
         <p>
@@ -62,7 +62,7 @@ class About extends PureComponent {
     );
 
     const obj = (
-      <div className={classes.Question}>
+      <div className={styles.Question}>
         <h5>How am I pursuing my career objectives?</h5>
         <p>
           Within the past 3 months (July 2018 - Sep 2018), I taught myself
@@ -76,7 +76,7 @@ class About extends PureComponent {
     );
 
     const consider = (
-      <div className={classes.Question}>
+      <div className={styles.Question}>
         <h5>Why consider me? (Recruiters)</h5>
         <p>
           I have unrelenting determination to achieve milestones utilizing the
@@ -89,7 +89,7 @@ class About extends PureComponent {
     );
 
     const passions = (
-      <div className={classes.Passions}>
+      <div className={styles.Passions}>
         <h5>What are my other passions?</h5>
         <p>
           I like to hike and capture photos of nature, people, and cars. Take a
@@ -100,17 +100,17 @@ class About extends PureComponent {
     );
 
     const contact = (
-      <div className={classes.Contact}>
+      <div className={styles.Contact}>
         <h5>Contact me @</h5>
         <h5>ycalvinhu@gmail.com</h5>
       </div>
     );
 
-    let loaderClasses = classes.Loader;
-    let imgClasses = classes.Hide;
+    let loaderClasses = styles.Loader;
+    let imgClasses = styles.Hide;
     if (this.state.isLoaded) {
-      imgClasses += ' ' + classes.FadeIn;
-      loaderClasses += ' ' + classes.DisplayNone;
+      imgClasses += ' ' + styles.FadeIn;
+      loaderClasses += ' ' + styles.DisplayNone;
     }
 
     let me = null;
@@ -137,16 +137,16 @@ class About extends PureComponent {
 
     return (
       <Fade>
-        <div className={classes.About}>
-          <div className={classes.LoaderContainer}>
+        <div className={styles.About}>
+          <div className={styles.LoaderContainer}>
             <div className={loaderClasses} />
           </div>
-          <div className={classes.Me}>{me}</div>
-          <div className={classes.Questions}>
-            <div className={classes.ColorSplash} />
+          <div className={styles.Me}>{me}</div>
+          <div className={styles.Questions}>
+            <div className={styles.ColorSplash} />
             <main>
-              <div className={classes.ColorSplash} />
-              <Reveal effect={classes.BlockSlideFadeIn}>
+              <div className={styles.ColorSplash} />
+              <Reveal effect={styles.BlockSlideFadeIn}>
                 {who}
                 {obj}
                 {consider}
