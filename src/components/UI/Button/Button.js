@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import styles from './Button.module.scss';
 
@@ -42,25 +43,19 @@ class Button extends PureComponent {
   handleMouseLeave = () => this.setState({ isMouse: false });
 
   render() {
-    let buttonClasses = styles.Button;
-
-    if (this.props.link) buttonClasses += ' ' + styles.Link;
-    if (this.props.circle) buttonClasses += ' ' + styles.Circle;
-    if (this.props.adj) buttonClasses += ' ' + styles.Adj;
-    if (this.props.opp) buttonClasses += ' ' + styles.Opp;
-
-    // Hover effects
-    if (this.state.isTouch) {
-      if (this.props.link) buttonClasses += ' ' + styles.LinkTouchHover;
-      if (this.props.adj) buttonClasses += ' ' + styles.AdjTouchHover;
-      if (this.props.opp) buttonClasses += ' ' + styles.OppTouchHover;
-    }
-
-    if (this.state.isMouse) {
-      if (this.props.link) buttonClasses += ' ' + styles.LinkMouseHover;
-      if (this.props.adj) buttonClasses += ' ' + styles.AdjMouseHover;
-      if (this.props.opp) buttonClasses += ' ' + styles.OppMouseHover;
-    }
+    const buttonClasses = classnames({
+      [styles.Button]: true,
+      [styles.Link]: this.props.link,
+      [styles.Circle]: this.props.circle,
+      [styles.Adj]: this.props.adj,
+      [styles.Opp]: this.props.opp,
+      [styles.LinkTouchHover]: this.state.isTouch && this.props.link,
+      [styles.AdjTouchHover]: this.state.isTouch && this.props.adj,
+      [styles.OppTouchHover]: this.state.isTouch && this.props.opp,
+      [styles.LinkMouseHover]: this.state.isMouse && this.props.link,
+      [styles.AdjMouseHover]: this.state.isMouse && this.props.adj,
+      [styles.OppMouseHover]: this.state.isMouse && this.props.opp
+    });
 
     return (
       <button

@@ -9,6 +9,7 @@ import { firestore, storage } from '../../utils/firebase';
 
 let photos = null;
 let totalNumPhotos = 0;
+let timeout = null;
 
 class Photography extends React.PureComponent {
   state = {
@@ -24,19 +25,16 @@ class Photography extends React.PureComponent {
 
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll);
-
     if (!this.state.photos) this.getPhotos();
-
-    setTimeout(() => this.setState({ isHideTouchApp: true }), 7000);
+    timeout = setTimeout(() => this.setState({ isHideTouchApp: true }), 7000);
   }
 
   componentWillUnmount() {
+    clearTimeout(timeout);
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll = () => {
-    throttle(this.showMorePhotos());
-  };
+  handleScroll = () => throttle(this.showMorePhotos());
 
   showMorePhotos = () => {
     const scrollHeight = Math.max(
