@@ -153,7 +153,7 @@
   opacity: 0;
   z-index: -1;
   background: rgba(0, 0, 0, 0.9);
-  transition: opacity $transition3, z-index 0s $transition-duration3;
+  // transition: opacity $transition3, z-index 0s $transition-duration3;
   border-radius: 0;
   cursor: pointer;
 
@@ -166,7 +166,7 @@
 
 .CardShow {
   opacity: 1;
-  transition: opacity $transition3;
+  // transition: opacity $transition3;
   z-index: 0;
 }
 
