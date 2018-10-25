@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import throttle from 'raf-throttle';
+import PropTypes from 'prop-types';
 
 import classes from './Layout.module.scss';
 import Button from '../../components/UI/Button/Button';
@@ -49,5 +50,9 @@ class Layout extends Component {
     );
   }
 }
+
+Layout.propTypes = {
+  children: PropTypes.element.isRequired
+};
 
 export default Layout;

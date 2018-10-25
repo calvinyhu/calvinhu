@@ -1,6 +1,7 @@
 import React from 'react';
 import throttle from 'raf-throttle';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import classes from './Cover.module.scss';
 import { PAGE } from '../../containers/Home/Home';
@@ -163,5 +164,10 @@ class Cover extends React.PureComponent {
     );
   }
 }
+
+Cover.propTypes = {
+  offsetX: PropTypes.number.isRequired,
+  click: PropTypes.func.isRequired
+};
 
 export default Cover;

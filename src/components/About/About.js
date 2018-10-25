@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import Reveal from 'react-reveal/Reveal';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import classes from './About.module.scss';
 import { storage } from '../../utils/firebase';
@@ -159,5 +160,9 @@ class About extends PureComponent {
     );
   }
 }
+
+About.propTypes = {
+  scrollIntoView: PropTypes.func.isRequired
+};
 
 export default About;

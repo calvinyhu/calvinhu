@@ -31,7 +31,9 @@ const Rf = props => {
 };
 
 Rf.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired,
+  sm: PropTypes.bool,
+  lg: PropTypes.bool
 };
 
 export default Rf;

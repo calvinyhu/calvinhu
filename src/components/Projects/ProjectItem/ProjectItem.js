@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Reveal from 'react-reveal/Reveal';
+import PropTypes from 'prop-types';
 
 import classes from './ProjectItem.module.scss';
 
@@ -90,5 +91,15 @@ class ProjectItem extends Component {
     );
   }
 }
+
+ProjectItem.propTypes = {
+  themeColor: PropTypes.number.isRequired,
+  alt: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  srcs: PropTypes.array.isRequired,
+  header: PropTypes.string
+};
 
 export default ProjectItem;

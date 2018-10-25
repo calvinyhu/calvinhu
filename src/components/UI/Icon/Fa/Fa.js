@@ -13,9 +13,9 @@ const Fa = props => {
 };
 
 Fa.propTypes = {
-  bare: PropTypes.bool,
+  children: PropTypes.string.isRequired,
   lg: PropTypes.bool,
-  children: PropTypes.string.isRequired
+  twoX: PropTypes.bool
 };
 
 export default Fa;
