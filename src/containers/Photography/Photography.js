@@ -8,6 +8,7 @@ import { MAT_ICONS } from '../../utils/styles';
 import { firestore, storage } from '../../utils/firebase';
 
 let photos = null;
+let totalNumPhotos = 0;
 
 class Photography extends React.PureComponent {
   state = {
@@ -15,7 +16,7 @@ class Photography extends React.PureComponent {
     isExpandPhoto: false,
     isHideTouchApp: false,
     numPhotos: 10,
-    totalNumPhotos: 0,
+    totalNumPhotos: totalNumPhotos,
     photos: photos,
     src: null,
     hoverPhoto: null
@@ -75,6 +76,7 @@ class Photography extends React.PureComponent {
     ids.forEach((id, index) => (data[id].url = urls[index]));
 
     photos = data;
+    totalNumPhotos = ids.length;
     this.setState({ photos: data, totalNumPhotos: ids.length });
   };
 
