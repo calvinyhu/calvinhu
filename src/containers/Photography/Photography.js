@@ -129,7 +129,7 @@ class Photography extends React.PureComponent {
   renderPhotos = () => {
     if (!this.state.photos) return null;
 
-    const gallery = [];
+    const galleryItems = [];
     const photoIds = Object.keys(this.state.photos);
     photoIds.forEach((id, index) => {
       if (index + 1 > this.state.numPhotos) return;
@@ -146,7 +146,7 @@ class Photography extends React.PureComponent {
         [styles.DetailsHover]: this.state.hoverPhoto === id
       });
 
-      gallery.push(
+      galleryItems.push(
         <Fade key={id}>
           <div
             className={styles.GalleryItem}
@@ -168,7 +168,7 @@ class Photography extends React.PureComponent {
       );
     });
 
-    return gallery;
+    return galleryItems;
   };
 
   render() {
@@ -188,15 +188,27 @@ class Photography extends React.PureComponent {
       </div>
     );
 
-    let gallery = this.renderPhotos();
+    const blurb = (
+      <div className={styles.Blurb}>
+        <Fade>
+          <p>Enjoy some of my best images that I have captured since 2013.</p>
+        </Fade>
+      </div>
+    );
+
+    const galleryItems = this.renderPhotos();
+    const gallery = (
+      <div className={styles.Gallery} onMouseLeave={this.handleMouseLeave}>
+        {galleryItems}
+      </div>
+    );
 
     const cardClasses = classnames({
       card: true,
       [styles.Card]: true,
       [styles.CardShow]: this.state.isExpandPhoto
     });
-
-    let card = (
+    const card = (
       <div className={cardClasses} onClick={this.handleClose}>
         <img className="card-img-top" src={this.state.src} alt="calvinhu" />
       </div>
@@ -216,18 +228,16 @@ class Photography extends React.PureComponent {
       [styles.TouchApp]: true,
       [styles.HideTouchApp]: this.state.isHideTouchApp
     });
+    const touchAppIcon = <div className={touchAppClasses}>touch_app</div>;
 
     return (
       <div className={styles.PhotographyContainer}>
-        <div className={styles.Photography}>
-          {nav}
-          {loader}
-          <div className={styles.Gallery} onMouseLeave={this.handleMouseLeave}>
-            {gallery}
-          </div>
-        </div>
-        <div className={touchAppClasses}>touch_app</div>
+        {nav}
+        {blurb}
+        {gallery}
         {card}
+        {loader}
+        {touchAppIcon}
       </div>
     );
   }

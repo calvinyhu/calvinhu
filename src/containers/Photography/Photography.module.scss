@@ -4,7 +4,10 @@
 
 .PhotographyContainer {
   width: 100%;
+  min-height: 100%;
   position: relative;
+  background: $md-blue-gray;
+  color: $md-white;
 
   h3,
   h5 {
@@ -22,77 +25,76 @@
   }
 }
 
-.Photography {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  min-height: 100vh;
-  background: $md-blue-gray;
-  color: $md-white;
-  position: absolute;
-}
-
 .Nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: $padding;
+  position: relative;
 
   @include media-min-width($desktop-width) {
     justify-content: space-around;
   }
+
+  .Logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .NavLink {
+    display: inline-block;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.5);
+    transition: $transition2;
+
+    @include media-min-width($desktop-width) {
+      font-size: $font-size * 1.5;
+    }
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+  }
 }
 
-.Logo {
+.Blurb {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: rgba(255, 255, 255, 0.9);
-
-  h3 {
-    margin: 0;
-  }
-}
-
-.NavLink {
-  display: inline-block;
-  height: 100%;
-  color: rgba(255, 255, 255, 0.5);
-  transition: $transition2;
-
-  @include media-min-width($desktop-width) {
-    font-size: $font-size * 1.5;
-  }
-
-  &:hover {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-  }
+  padding: $padding;
 }
 
 .Gallery {
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-}
-
-.GalleryItem {
-  width: 100%;
-  height: 100vw;
   position: relative;
-  cursor: pointer;
 
-  @include media-min-width($desktop-width) {
-    width: 50%;
-    height: 50vw;
-  }
+  .GalleryItem {
+    width: 100%;
+    height: 100vw;
+    position: relative;
+    cursor: pointer;
 
-  @include media-min-width($desktop-width * 1.5) {
-    width: 33.3%;
-    height: 33.3vw;
+    @include media-min-width($desktop-width) {
+      width: 50%;
+      height: 50vw;
+    }
+
+    @include media-min-width($desktop-width * 1.5) {
+      width: 33.3%;
+      height: 33.3vw;
+    }
   }
 }
 
@@ -148,12 +150,13 @@
 
 .Card {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   opacity: 0;
   z-index: -1;
   background: rgba(0, 0, 0, 0.9);
-  // transition: opacity $transition3, z-index 0s $transition-duration3;
   border-radius: 0;
   cursor: pointer;
 
@@ -166,7 +169,6 @@
 
 .CardShow {
   opacity: 1;
-  // transition: opacity $transition3;
   z-index: 0;
 }
 
@@ -185,10 +187,11 @@
 }
 
 .LoaderContainer {
-  position: absolute;
+  position: fixed;
   width: 5rem;
   height: 5rem;
-  top: 30%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: $transition1;
 }
