@@ -3,6 +3,7 @@ import Fade from 'react-reveal/Fade';
 import PDF from 'react-pdf-js';
 import { storage } from '../../utils/firebase';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import styles from './Resume.module.scss';
 import Rf from '../UI/Icon/Rf/Rf';
@@ -55,8 +56,11 @@ class Resume extends PureComponent {
       );
     }
 
-    let documentClasses = styles.Document;
-    if (!this.state.isLoading) documentClasses += ' ' + styles.Show;
+    const documentClasses = classnames({
+      [styles.Document]: true,
+      [styles.Show]: !this.state.isLoading
+    });
+
     let document = null;
     if (this.state.pdfUrl) {
       document = (

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import throttle from 'raf-throttle';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import styles from './Layout.module.scss';
 import Button from '../../components/UI/Button/Button';
@@ -33,9 +34,10 @@ class Layout extends Component {
   handleScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   render() {
-    let goBackToTopBtnClasses = styles.BackToTopBtn;
-    if (this.state.isShowBackToTopButton)
-      goBackToTopBtnClasses += ' ' + styles.OnScreenY;
+    const goBackToTopBtnClasses = classnames({
+      [styles.BackToTopBtn]: true,
+      [styles.OnScreenY]: this.state.isShowBackToTopButton
+    });
 
     return (
       <div className={styles.Layout}>

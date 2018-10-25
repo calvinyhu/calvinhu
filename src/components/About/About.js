@@ -3,6 +3,7 @@ import Reveal from 'react-reveal/Reveal';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import styles from './About.module.scss';
 import { storage } from '../../utils/firebase';
@@ -106,12 +107,15 @@ class About extends PureComponent {
       </div>
     );
 
-    let loaderClasses = styles.Loader;
-    let imgClasses = styles.Hide;
-    if (this.state.isLoaded) {
-      imgClasses += ' ' + styles.FadeIn;
-      loaderClasses += ' ' + styles.DisplayNone;
-    }
+    const loaderClasses = classnames({
+      [styles.Loader]: true,
+      [styles.DisplayNone]: this.state.isLoaded
+    });
+
+    const imgClasses = classnames({
+      [styles.Hide]: true,
+      [styles.FadeIn]: this.state.isLoaded
+    });
 
     let me = null;
     if (this.state.urls) {

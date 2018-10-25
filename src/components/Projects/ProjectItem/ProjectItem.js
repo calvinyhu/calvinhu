@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Reveal from 'react-reveal/Reveal';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import styles from './ProjectItem.module.scss';
 
@@ -22,25 +23,20 @@ class ProjectItem extends Component {
   };
 
   render() {
-    let colorSplashClassNames = styles.ColorSplash;
-
-    switch (this.props.themeColor) {
-      case 1:
-        colorSplashClassNames += ' ' + styles.ShmackColorSplash;
-        break;
-      case 2:
-        colorSplashClassNames += ' ' + styles.JammmingColorSplash;
-        break;
-      default:
-        break;
-    }
+    const colorSplashClassNames = classnames({
+      [styles.ColorSplash]: true,
+      [styles.ShmackColorSplash]: this.props.themeColor === 1,
+      [styles.JammmingColorSplash]: this.props.themeColor === 2
+    });
 
     let carouselItems = [];
-
     if (this.props.srcs.length > 0) {
       this.props.srcs.forEach((src, index) => {
-        let carouselItemClasses = styles.CarouselItem + ' ' + styles.Hide;
-        if (this.state.isLoaded[src]) carouselItemClasses += ' ' + styles.Show;
+        const carouselItemClasses = classnames({
+          [styles.CarouselItem]: true,
+          [styles.Hide]: true,
+          [styles.Show]: this.state.isLoaded[src]
+        });
 
         carouselItems.push(
           <div key={index} className={carouselItemClasses}>

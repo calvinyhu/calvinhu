@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import throttle from 'raf-throttle';
+import classnames from 'classnames';
 
 import styles from './Photography.module.scss';
 import { MAT_ICONS } from '../../utils/styles';
@@ -133,22 +134,17 @@ class Photography extends React.PureComponent {
     photoIds.forEach((id, index) => {
       if (index + 1 > this.state.numPhotos) return;
 
-      let imgContainerClasses = styles.ImgContainer + ' ' + styles.Hide;
-      if (this.state.isLoaded[id]) imgContainerClasses += ' ' + styles.Show;
+      const imgContainerClasses = classnames({
+        [styles.ImgContainer]: true,
+        [styles.Hide]: true,
+        [styles.Show]: this.state.isLoaded[id],
+        [styles.ImgContainerHover]: this.state.hoverPhoto === id
+      });
 
-      let detailsClasses = styles.Details;
-      if (this.state.hoverPhoto === id) {
-        imgContainerClasses += ' ' + styles.ImgContainerHover;
-        detailsClasses += ' ' + styles.DetailsHover;
-      }
-
-      let img = (
-        <img
-          onLoad={this.getLoadHandler(id)}
-          src={this.state.photos[id].url}
-          alt="calvinhu"
-        />
-      );
+      const detailsClasses = classnames({
+        [styles.Details]: true,
+        [styles.DetailsHover]: this.state.hoverPhoto === id
+      });
 
       gallery.push(
         <Fade key={id}>
@@ -157,7 +153,13 @@ class Photography extends React.PureComponent {
             onMouseOver={this.getHoverHandler(id)}
             onClick={this.getOpenHandler(this.state.photos[id].url)}
           >
-            <div className={imgContainerClasses}>{img}</div>
+            <div className={imgContainerClasses}>
+              <img
+                onLoad={this.getLoadHandler(id)}
+                src={this.state.photos[id].url}
+                alt="calvinhu"
+              />
+            </div>
             <div className={detailsClasses}>
               <h5>{this.state.photos[id].name}</h5>
             </div>
@@ -170,7 +172,11 @@ class Photography extends React.PureComponent {
   };
 
   render() {
-    const navClasses = styles.Nav + ' ' + styles.Hide + ' ' + styles.FadeIn;
+    const navClasses = classnames({
+      [styles.Nav]: true,
+      [styles.Hide]: true,
+      [styles.FadeIn]: true
+    });
     const nav = (
       <div className={navClasses}>
         <div className={styles.Logo}>
@@ -184,8 +190,12 @@ class Photography extends React.PureComponent {
 
     let gallery = this.renderPhotos();
 
-    let cardClasses = 'card ' + styles.Card;
-    if (this.state.isExpandPhoto) cardClasses += ' ' + styles.CardShow;
+    const cardClasses = classnames({
+      card: true,
+      [styles.Card]: true,
+      [styles.CardShow]: this.state.isExpandPhoto
+    });
+
     let card = (
       <div className={cardClasses} onClick={this.handleClose}>
         <img className="card-img-top" src={this.state.src} alt="calvinhu" />
@@ -201,8 +211,11 @@ class Photography extends React.PureComponent {
       );
     }
 
-    let touchAppClasses = MAT_ICONS + ' ' + styles.TouchApp;
-    if (this.state.isHideTouchApp) touchAppClasses += ' ' + styles.HideTouchApp;
+    const touchAppClasses = classnames({
+      [MAT_ICONS]: true,
+      [styles.TouchApp]: true,
+      [styles.HideTouchApp]: this.state.isHideTouchApp
+    });
 
     return (
       <div className={styles.PhotographyContainer}>

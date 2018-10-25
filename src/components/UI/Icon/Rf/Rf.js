@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import ArrowUp from 'react-feather/dist/icons/arrow-up';
 import Download from 'react-feather/dist/icons/download';
 import Github from 'react-feather/dist/icons/github';
@@ -9,10 +10,11 @@ import Linkedin from 'react-feather/dist/icons/linkedin';
 import styles from './Rf.module.scss';
 
 const Rf = props => {
-  let iconClasses = styles.Icon;
-
-  if (props.sm) iconClasses += ' ' + styles.Sm;
-  if (props.lg) iconClasses += ' ' + styles.Lg;
+  const iconClasses = classnames({
+    [styles.Icon]: true,
+    [styles.Sm]: props.sm,
+    [styles.Lg]: props.lg
+  });
 
   switch (props.children) {
     case 'arrow-up':
