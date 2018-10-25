@@ -12,7 +12,8 @@ const profile = 'profile';
 const files = [
   'DSC_1858-1080p35.jpg',
   'DSC_1858-1440p35.jpg',
-  'DSC_1858-2160p35.jpg'
+  'DSC_1858-2160p35.jpg',
+  'DSC_6523-1080p35.jpg'
 ];
 let staticUrls = null;
 
@@ -140,8 +141,8 @@ class About extends PureComponent {
     }
 
     return (
-      <Fade>
-        <div className={styles.About}>
+      <div className={styles.About}>
+        <Fade>
           <div className={styles.LoaderContainer}>
             <div className={loaderClasses} />
           </div>
@@ -159,8 +160,8 @@ class About extends PureComponent {
               </Reveal>
             </main>
           </div>
-        </div>
-      </Fade>
+        </Fade>
+      </div>
     );
   }
 }
