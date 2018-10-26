@@ -4,8 +4,9 @@ import throttle from 'raf-throttle';
 import styles from './Home.module.scss';
 import Cover from '../../components/Cover/Cover';
 import Projects from '../../components/Projects/Projects';
-import About from '../../components/About/About';
-import Resume from '../../components/Resume/Resume';
+import AsyncComponent from '../../hoc/AsyncComponent/AsyncComponent';
+const About = AsyncComponent(() => import('../../components/About/About'));
+const Resume = AsyncComponent(() => import('../../components/Resume/Resume'));
 
 export const PAGE = {
   NONE: 0,

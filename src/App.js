@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import AsyncComponent from './hoc/AsyncComponent/AsyncComponent';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
-import Photography from './containers/Photography/Photography';
+
+const Photography = AsyncComponent(() => {
+  return import('./containers/Photography/Photography');
+});
 
 class App extends Component {
   render() {
