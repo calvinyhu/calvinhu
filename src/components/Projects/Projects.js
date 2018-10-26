@@ -47,7 +47,7 @@ class Projects extends PureComponent {
   getUrls = images => {
     const urlPromises = [];
     images.forEach(image => {
-      const urlPromise = storage.ref(`projects/${image}`).getDownloadURL();
+      const urlPromise = storage.ref(`projects/${image}.webp`).getDownloadURL();
       urlPromises.push(urlPromise);
     });
     return Promise.all(urlPromises).then(urls => urls);

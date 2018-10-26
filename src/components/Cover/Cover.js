@@ -7,6 +7,9 @@ import styles from './Cover.module.scss';
 import { PAGE } from '../../containers/Home/Home';
 import Button from '../UI/Button/Button';
 import Rf from '../UI/Icon/Rf/Rf';
+import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.webp';
+import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.webp';
+import p2160 from '../../assets/images/DSC_9569-2160p35-blurred.webp';
 
 const FRICTION = 1 / 30;
 const DISPLACE_X = 20;
@@ -84,7 +87,13 @@ class Cover extends React.PureComponent {
             this.state.y
           }px) scale(1.4)`
         }}
-      />
+      >
+        <picture>
+          <source media="(min-width: 1440px)" srcSet={p1440} />
+          <source media="(min-width: 2160px)" srcSet={p2160} />
+          <img src={p1080} alt="me" />
+        </picture>
+      </div>
     );
 
     const lightenFilter = <div className={styles.LightenFilter} />;
@@ -92,6 +101,7 @@ class Cover extends React.PureComponent {
     const blurb = (
       <div className={styles.Blurb}>
         <h1 className={styles.Name}>Hi, I'm Calvin</h1>
+        <h5>Aspiring Full Stack Developer</h5>
       </div>
     );
 
