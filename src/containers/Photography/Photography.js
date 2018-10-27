@@ -124,7 +124,7 @@ class Photography extends React.PureComponent {
   };
 
   handleMouseLeave = () => this.setState({ hoverPhoto: null });
-  handleClose = () => this.setState({ isExpandPhoto: false });
+  handleClose = () => this.setState({ isExpandPhoto: false, src: null });
 
   renderPhotos = () => {
     if (!this.state.photos) return null;
