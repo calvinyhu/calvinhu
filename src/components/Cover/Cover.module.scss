@@ -30,7 +30,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: 70%;
+      object-position: 25%;
     }
   }
 
@@ -77,6 +77,9 @@
   align-items: center;
   margin-bottom: $margin * 2;
   user-select: none;
+  opacity: 0;
+  animation: fadeIn 1.5s $timing-func-1 1s forwards;
+  transition: $transition2;
 
   h5 {
     font-size: $font-size;
@@ -88,9 +91,6 @@
 
   .Name {
     text-align: center;
-    opacity: 0;
-    animation: fadeIn 1.5s $timing-func-1 1s forwards;
-    transition: $transition2;
 
     @include media-min-width($desktop-width) {
       font-size: $font-size * 4.5;
