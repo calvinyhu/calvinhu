@@ -34,7 +34,7 @@ class Button extends PureComponent {
       touch.clientY <= this.touchBounds.bot &&
       touch.clientY >= this.touchBounds.top;
 
-    if (this.props.click && withinX && withinY) this.props.click();
+    if (this.props.click && withinX && withinY) this.props.click(event);
 
     this.setState({ isTouch: false });
   };
@@ -45,13 +45,16 @@ class Button extends PureComponent {
   render() {
     const buttonClasses = classnames({
       [styles.Button]: true,
+      [styles.Clear]: this.props.clear,
       [styles.Link]: this.props.link,
       [styles.Circle]: this.props.circle,
       [styles.Adj]: this.props.adj,
       [styles.Opp]: this.props.opp,
+      [styles.ClearTouchHover]: this.state.isTouch && this.props.clear,
       [styles.LinkTouchHover]: this.state.isTouch && this.props.link,
       [styles.AdjTouchHover]: this.state.isTouch && this.props.adj,
       [styles.OppTouchHover]: this.state.isTouch && this.props.opp,
+      [styles.ClearMouseHover]: this.state.isMouse && this.props.clear,
       [styles.LinkMouseHover]: this.state.isMouse && this.props.link,
       [styles.AdjMouseHover]: this.state.isMouse && this.props.adj,
       [styles.OppMouseHover]: this.state.isMouse && this.props.opp

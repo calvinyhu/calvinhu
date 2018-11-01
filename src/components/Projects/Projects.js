@@ -10,18 +10,26 @@ let shmackUrls = [];
 let jammmingUrls = [];
 
 class Projects extends PureComponent {
+  isAlive = false;
+
   state = {
     shmackUrls: shmackUrls,
     jammmingUrls: jammmingUrls
   };
 
   componentDidMount() {
+    this.isAlive = true;
+
     if (
       this.state.shmackUrls.length === 0 ||
       this.state.jammmingUrls.length === 0
     )
       this.getPhotos();
     if (this.props.isClicked) this.props.scrollIntoView();
+  }
+
+  componentWillUnmount() {
+    this.isAlive = false;
   }
 
   getPhotos = async () => {
@@ -41,6 +49,7 @@ class Projects extends PureComponent {
     shmackUrls = await shmackPromise;
     jammmingUrls = await jammmingPromise;
 
+    if (!this.isAlive) return;
     this.setState({ shmackUrls, jammmingUrls });
   };
 

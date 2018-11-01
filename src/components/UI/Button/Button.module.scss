@@ -82,3 +82,18 @@
 .OppMouseHover {
   background: $dark-opp-color;
 }
+
+.Clear {
+  background: transparent;
+  color: $md-blue-gray;
+  box-shadow: none;
+}
+
+.ClearTouchHover {
+  transition: none;
+  background: transparentize($md-black, 0.93);
+}
+
+.ClearMouseHover {
+  background: transparentize($md-black, 0.93);
+}

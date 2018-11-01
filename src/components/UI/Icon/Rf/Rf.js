@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import ArrowUp from 'react-feather/dist/icons/arrow-up';
+import Copy from 'react-feather/dist/icons/copy';
 import Download from 'react-feather/dist/icons/download';
 import Github from 'react-feather/dist/icons/github';
 import Image from 'react-feather/dist/icons/image';
@@ -19,6 +20,8 @@ const Rf = props => {
   switch (props.children) {
     case 'arrow-up':
       return <ArrowUp className={iconClasses} />;
+    case 'copy':
+      return <Copy className={iconClasses} />;
     case 'download':
       return <Download className={iconClasses} />;
     case 'github':

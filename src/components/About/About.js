@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import styles from './About.module.scss';
+import Button from '../UI/Button/Button';
+import Input from '../UI/Input/Input';
+import Rf from '../UI/Icon/Rf/Rf';
 import { storage } from '../../utils/firebase';
 
 const profile = 'profile';
@@ -29,6 +32,12 @@ class About extends PureComponent {
   }
 
   handleLoad = () => this.setState({ isLoaded: true });
+
+  handleCopyEmail = () => {
+    document.getElementById('email').select();
+    document.execCommand('copy');
+    if (window.getSelection) window.getSelection().removeAllRanges();
+  };
 
   getUrls = () => {
     staticUrls = {};
@@ -103,8 +112,27 @@ class About extends PureComponent {
 
     const contact = (
       <div className={styles.Contact}>
-        <h5>Contact me @</h5>
-        <h5>ycalvinhu@gmail.com</h5>
+        <h5>Contact Me</h5>
+        <div>
+          <div className={styles.EmailContainer}>
+            <Input
+              noBorder
+              noBoxShadow
+              noError
+              required={false}
+              readOnly
+              id="email"
+              type="text"
+              value="ycalvinhu@gmail.com"
+              name="email"
+            />
+          </div>
+          <div className={styles.Copy}>
+            <Button clear circle sm click={this.handleCopyEmail}>
+              <Rf sm>copy</Rf>
+            </Button>
+          </div>
+        </div>
       </div>
     );
 
