@@ -61,13 +61,12 @@ class About extends PureComponent {
         <h5>Calvin Who?</h5>
         <h6>Calvin Hu! (punny)</h6>
         <p>
-          I am a UC Davis alumnus and graduated with a B.S. in Computer Science
-          and a minor in Technology Management. My experience includes
-          developing C++ and C applications, which simulate vehicle traffic, to
-          test onboard networking hardware in various traffic scenarios. I am a
-          generalist software engineer, actively pursuing a career in web
-          development and seeking a full-stack engineering position in the Bay
-          Area.
+          I graduated from UC Davis with a B.S. in Computer Science and a minor
+          in Technology Management. My experience includes developing C++ and C
+          applications, which simulate vehicle traffic, to test onboard
+          networking hardware in various traffic scenarios. I am actively
+          pursuing a career in web application development and am seeking a full
+          stack engineering position, with more emphasis on front end.
         </p>
       </div>
     );
@@ -91,10 +90,9 @@ class About extends PureComponent {
         <h5>Why consider me? (Recruiters)</h5>
         <p>
           I have unrelenting determination to achieve milestones utilizing the
-          best and most thoughtful methods. I am extremely organized, but also
-          very adaptable. I love challenging myself and I love learning. I have
-          the right skills and mindset to achieve my goals once I lay my eyes on
-          them.
+          best and most thoughtful methods. I am organized, but also adaptable.
+          I love challenging myself and I love learning. I have the right skills
+          and mindset to achieve goals once I lay my eyes on them.
         </p>
       </div>
     );

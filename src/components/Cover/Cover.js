@@ -101,7 +101,7 @@ class Cover extends React.PureComponent {
     const blurb = (
       <div className={styles.Blurb}>
         <h1 className={styles.Name}>Hi, I'm Calvin</h1>
-        <h5>Aspiring Full Stack Developer</h5>
+        <p>Web Developer</p>
       </div>
     );
 
