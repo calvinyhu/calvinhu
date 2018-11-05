@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import Reveal from 'react-reveal/Reveal';
+import Fade from 'react-reveal/Fade';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import styles from './ProjectItem.module.scss';
 
 class ProjectItem extends Component {
+  static propTypes = {
+    themeColor: PropTypes.number.isRequired,
+    alt: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    srcs: PropTypes.array.isRequired,
+    header: PropTypes.string
+  };
+
   state = {
     isLoaded: {}
   };
@@ -65,20 +76,22 @@ class ProjectItem extends Component {
       <div className={styles.ProjectItem}>
         <div className={styles.ProjectContent}>
           <div className={colorSplashClassNames} />
-          <div className={styles.Description}>
-            {header}
-            <p>{this.props.description}</p>
-            <p>
-              Check it out @{' '}
-              <a
-                href={this.props.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {this.props.name}
-              </a>
-            </p>
-          </div>
+          <Fade>
+            <div className={styles.Description}>
+              {header}
+              <p>{this.props.description}</p>
+              <p>
+                Check it out @{' '}
+                <a
+                  href={this.props.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {this.props.name}
+                </a>
+              </p>
+            </div>
+          </Fade>
           <Reveal effect={styles.BlockSlideFadeIn}>
             <div className={styles.Carousel}>{carouselItems}</div>
           </Reveal>
@@ -87,15 +100,5 @@ class ProjectItem extends Component {
     );
   }
 }
-
-ProjectItem.propTypes = {
-  themeColor: PropTypes.number.isRequired,
-  alt: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  srcs: PropTypes.array.isRequired,
-  header: PropTypes.string
-};
 
 export default ProjectItem;

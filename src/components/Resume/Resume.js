@@ -15,6 +15,10 @@ let pdfUrl = null;
 let wordUrl = null;
 
 class Resume extends PureComponent {
+  static propTypes = {
+    scrollIntoView: PropTypes.func.isRequired
+  };
+
   state = {
     isLoading: true,
     pdfUrl: pdfUrl,
@@ -56,6 +60,11 @@ class Resume extends PureComponent {
       );
     }
 
+    const documentContainerClasses = classnames({
+      [styles.DocumentContainer]: true,
+      [styles.OverflowAuto]: !this.state.isLoading
+    });
+
     const documentClasses = classnames({
       [styles.Document]: true,
       [styles.Show]: !this.state.isLoading
@@ -77,32 +86,28 @@ class Resume extends PureComponent {
     let downloadButton = null;
     if (this.state.wordUrl) {
       downloadButton = (
-        <div className={styles.Download}>
-          <div className={styles.DownloadButton}>
-            <a href={this.state.wordUrl} download>
-              <Rf sm>download</Rf>
-              <p>Download</p>
-            </a>
+        <Fade>
+          <div className={styles.Download}>
+            <div className={styles.DownloadButton}>
+              <a href={this.state.wordUrl} download>
+                <Rf sm>download</Rf>
+                <p>Download</p>
+              </a>
+            </div>
           </div>
-        </div>
+        </Fade>
       );
     }
 
     return (
-      <Fade>
-        <div className={styles.Resume}>
-          <div className={styles.ColorSplash} />
-          {downloadButton}
-          <div className={styles.DocumentContainer}>{document}</div>
-          {loader}
-        </div>
-      </Fade>
+      <div className={styles.Resume}>
+        <div className={styles.ColorSplash} />
+        {downloadButton}
+        <div className={documentContainerClasses}>{document}</div>
+        {loader}
+      </div>
     );
   }
 }
-
-Resume.propTypes = {
-  scrollIntoView: PropTypes.func.isRequired
-};
 
 export default Resume;

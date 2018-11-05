@@ -40,13 +40,14 @@
 }
 
 .JammmingColorSplash {
-  background: linear-gradient($jammming-main-color, transparent);
+  background: linear-gradient($jammming-main-color, $md-white);
 }
 
 .Description {
   display: flex;
   flex-direction: column;
   max-width: 50rem;
+
   h3 {
     margin-bottom: $margin;
     transition: $transition1;

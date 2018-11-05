@@ -4,7 +4,7 @@
 @include fade-in;
 @include fade(fadeIn0to75, 0, 0.75);
 @include fade(fadeOut75to0, 0.75, 0);
-@include slide-y(blockSlideY, 5rem, 0);
+@include slide-y(blockSlideY, 2.5rem, 0);
 @include slide-y(slideYOut5, 0, 5rem);
 @include slide-y(textSlideY, 50%, 0%);
 @include loading;

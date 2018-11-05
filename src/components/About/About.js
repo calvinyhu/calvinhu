@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import Reveal from 'react-reveal/Reveal';
-import Fade from 'react-reveal/Fade';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -21,6 +20,10 @@ const files = [
 let staticUrls = null;
 
 class About extends PureComponent {
+  static propTypes = {
+    scrollIntoView: PropTypes.func.isRequired
+  };
+
   state = {
     isLoaded: false,
     urls: staticUrls
@@ -110,8 +113,8 @@ class About extends PureComponent {
 
     const contact = (
       <div className={styles.Contact}>
-        <h5>Contact Me</h5>
-        <div>
+        <h5>Contact Me:</h5>
+        <div className={styles.Handle}>
           <div className={styles.EmailContainer}>
             <Input
               noBorder
@@ -168,32 +171,26 @@ class About extends PureComponent {
 
     return (
       <div className={styles.About}>
-        <Fade>
-          <div className={styles.LoaderContainer}>
-            <div className={loaderClasses} />
-          </div>
-          <div className={styles.Me}>{me}</div>
-          <div className={styles.Questions}>
+        <div className={styles.LoaderContainer}>
+          <div className={loaderClasses} />
+        </div>
+        <div className={styles.Me}>{me}</div>
+        <div className={styles.Questions}>
+          <div className={styles.ColorSplash} />
+          <main>
             <div className={styles.ColorSplash} />
-            <main>
-              <div className={styles.ColorSplash} />
-              <Reveal effect={styles.BlockSlideFadeIn}>
-                {who}
-                {obj}
-                {consider}
-                {passions}
-                {contact}
-              </Reveal>
-            </main>
-          </div>
-        </Fade>
+            <Reveal effect={styles.BlockSlideFadeIn}>
+              {who}
+              {obj}
+              {consider}
+              {passions}
+              {contact}
+            </Reveal>
+          </main>
+        </div>
       </div>
     );
   }
 }
-
-About.propTypes = {
-  scrollIntoView: PropTypes.func.isRequired
-};
 
 export default About;

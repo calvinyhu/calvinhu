@@ -25,6 +25,7 @@ class Photography extends React.PureComponent {
   };
 
   componentDidMount() {
+    if (window.top !== 0) window.scrollTo({ top: 0 });
     window.addEventListener('scroll', this.handleScroll);
     if (!this.state.photos) this.getPhotos();
     timeout = setTimeout(() => this.setState({ isHideTouchApp: true }), 7000);

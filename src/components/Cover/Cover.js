@@ -16,6 +16,11 @@ const DISPLACE_X = 20;
 const DISPLACE_Y = 20;
 
 class Cover extends React.PureComponent {
+  static propTypes = {
+    offsetX: PropTypes.number.isRequired,
+    click: PropTypes.func.isRequired
+  };
+
   state = {
     x: 0,
     y: 0,
@@ -174,10 +179,5 @@ class Cover extends React.PureComponent {
     );
   }
 }
-
-Cover.propTypes = {
-  offsetX: PropTypes.number.isRequired,
-  click: PropTypes.func.isRequired
-};
 
 export default Cover;

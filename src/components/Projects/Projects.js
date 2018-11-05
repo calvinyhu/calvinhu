@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import Fade from 'react-reveal/Fade';
 import { firestore, storage } from '../../utils/firebase';
 import PropTypes from 'prop-types';
 
@@ -10,6 +9,11 @@ let shmackUrls = [];
 let jammmingUrls = [];
 
 class Projects extends PureComponent {
+  static propTypes = {
+    isClicked: PropTypes.bool.isRequired,
+    scrollIntoView: PropTypes.func.isRequired
+  };
+
   isAlive = false;
 
   state = {
@@ -90,19 +94,12 @@ class Projects extends PureComponent {
     );
 
     return (
-      <Fade>
-        <div className={styles.Projects}>
-          {shmack}
-          {jammming}
-        </div>
-      </Fade>
+      <div className={styles.Projects}>
+        {shmack}
+        {jammming}
+      </div>
     );
   }
 }
-
-Projects.propTypes = {
-  isClicked: PropTypes.bool.isRequired,
-  scrollIntoView: PropTypes.func.isRequired
-};
 
 export default Projects;
