@@ -123,12 +123,14 @@ class Photography extends React.PureComponent {
   };
 
   openHandlers = {};
-  getOpenHandler = src => {
-    if (!this.openHandlers[src]) {
-      this.openHandlers[src] = () =>
+  getOpenHandler = (id, src) => {
+    if (!this.openHandlers[id]) {
+      this.openHandlers[id] = () => {
+        if (!this.state.isLoaded[id]) return;
         this.setState({ isExpandPhoto: true, src: src });
+      };
     }
-    return this.openHandlers[src];
+    return this.openHandlers[id];
   };
 
   handleMouseLeave = () => this.setState({ hoverPhoto: null });
@@ -138,6 +140,11 @@ class Photography extends React.PureComponent {
     if (!this.state.photos) return null;
 
     const galleryItems = [];
+    const photoLoader = (
+      <div className={styles.PhotoLoaderContainer}>
+        <div className={styles.Loader} />
+      </div>
+    );
     const photoIds = Object.keys(this.state.photos);
     photoIds.forEach((id, index) => {
       if (index + 1 > this.state.numPhotos) return;
@@ -151,7 +158,8 @@ class Photography extends React.PureComponent {
 
       const detailsClasses = classnames({
         [styles.Details]: true,
-        [styles.DetailsHover]: this.state.hoverPhoto === id
+        [styles.DetailsHover]:
+          this.state.isLoaded[id] && this.state.hoverPhoto === id
       });
 
       galleryItems.push(
@@ -159,8 +167,9 @@ class Photography extends React.PureComponent {
           <div
             className={styles.GalleryItem}
             onMouseOver={this.getHoverHandler(id)}
-            onClick={this.getOpenHandler(this.state.photos[id].url)}
+            onClick={this.getOpenHandler(id, this.state.photos[id].url)}
           >
+            {this.state.isLoaded[id] ? null : photoLoader}
             <div className={imgContainerClasses}>
               <img
                 onLoad={this.getLoadHandler(id)}
@@ -226,9 +235,7 @@ class Photography extends React.PureComponent {
     if (!this.state.photos) {
       loader = (
         <div className={styles.LoaderContainer}>
-          <Fade>
-            <div className={styles.Loader} />
-          </Fade>
+          <div className={styles.Loader} />
         </div>
       );
     }
