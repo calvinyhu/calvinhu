@@ -199,7 +199,7 @@ class Photography extends React.PureComponent {
     const blurb = (
       <div className={styles.Blurb}>
         <Fade>
-          <p>Enjoy some of my best images that I have captured since 2013.</p>
+          <p>Enjoy some of my best images since 2013!</p>
         </Fade>
       </div>
     );
