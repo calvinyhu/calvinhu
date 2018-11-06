@@ -1,5 +1,7 @@
 @import './src/assets/scss/_variables.scss';
 
+/********************************* Base *************************************/
+
 .Button {
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@
   border: none;
   border-radius: $border-radius-button;
   box-shadow: $box-shadow;
-  transition: $transition2;
+  transition: $transition1;
   user-select: none;
   appearance: none;
   cursor: pointer;
@@ -18,7 +20,14 @@
   &:focus {
     outline: none;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: #ccc;
+  }
 }
+
+/********************************* Types *************************************/
 
 .Link {
   position: relative;
@@ -52,10 +61,14 @@
   }
 }
 
+/********************************* Shape *************************************/
+
 .Circle {
   border-radius: 50%;
   box-shadow: $box-shadow-fab;
 }
+
+/********************************* Color *************************************/
 
 .Adj {
   background: $adj-color;
