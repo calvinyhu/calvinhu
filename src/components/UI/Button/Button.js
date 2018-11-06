@@ -5,6 +5,15 @@ import classnames from 'classnames';
 import styles from './Button.module.scss';
 
 class Button extends PureComponent {
+  static propTypes = {
+    link: PropTypes.bool,
+    circle: PropTypes.bool,
+    adj: PropTypes.bool,
+    opp: PropTypes.bool,
+    click: PropTypes.func,
+    children: PropTypes.any
+  };
+
   isTouched = false;
   touchBounds = { top: 0, bot: 0, left: 0, right: 0 };
 
@@ -74,14 +83,5 @@ class Button extends PureComponent {
     );
   }
 }
-
-Button.propTypes = {
-  link: PropTypes.bool,
-  circle: PropTypes.bool,
-  adj: PropTypes.bool,
-  opp: PropTypes.bool,
-  click: PropTypes.func,
-  children: PropTypes.any
-};
 
 export default Button;

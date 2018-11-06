@@ -8,6 +8,10 @@ import Button from '../../components/UI/Button/Button';
 import Fa from '../../components/UI/Icon/Fa/Fa';
 
 class Layout extends Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired
+  };
+
   state = {
     isShowBackToTopButton: false
   };
@@ -52,9 +56,5 @@ class Layout extends Component {
     );
   }
 }
-
-Layout.propTypes = {
-  children: PropTypes.element.isRequired
-};
 
 export default Layout;

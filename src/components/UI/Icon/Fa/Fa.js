@@ -5,6 +5,12 @@ import classnames from 'classnames';
 import styles from './Fa.module.scss';
 
 const Fa = props => {
+  Fa.propTypes = {
+    children: PropTypes.string.isRequired,
+    lg: PropTypes.bool,
+    twoX: PropTypes.bool
+  };
+
   const faClasses = classnames({
     [styles.Fa]: true,
     [props.children]: true,
@@ -15,12 +21,6 @@ const Fa = props => {
   });
 
   return <div className={faClasses} />;
-};
-
-Fa.propTypes = {
-  children: PropTypes.string.isRequired,
-  lg: PropTypes.bool,
-  twoX: PropTypes.bool
 };
 
 export default Fa;
