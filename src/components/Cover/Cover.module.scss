@@ -32,17 +32,19 @@
       object-fit: cover;
       object-position: 17%;
     }
-  }
 
-  .LightenFilter {
-    position: absolute;
-    width: 250vw;
-    height: 100vh;
-    border-radius: 50%;
-    background: radial-gradient(rgba(255, 255, 255, 0.8) 0%, transparent 35%);
-    opacity: 0;
-    animation: fadeIn 1s $timing-func-2 0.5s forwards;
-    transform: scale(1.4);
+    .LightenFilter {
+      position: fixed;
+      top: 0;
+      left: -75%;
+      width: 250vw;
+      height: 100vh;
+      border-radius: 50%;
+      background: radial-gradient(rgba(255, 255, 255, 0.8) 0%, transparent 35%);
+      opacity: 0;
+      animation: fadeIn 1s $timing-func-2 0.5s forwards;
+      transform: scale(1.4);
+    }
   }
 }
 

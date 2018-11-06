@@ -5,7 +5,7 @@ import classnames from 'classnames';
 
 import styles from './Layout.module.scss';
 import Button from '../../components/UI/Button/Button';
-import Rf from '../../components/UI/Icon/Rf/Rf';
+import Fa from '../../components/UI/Icon/Fa/Fa';
 
 class Layout extends Component {
   state = {
@@ -45,7 +45,7 @@ class Layout extends Component {
 
         <div className={goBackToTopBtnClasses}>
           <Button circle adj click={this.handleScrollToTop}>
-            <Rf>arrow-up</Rf>
+            <Fa lg>fas fa-arrow-up</Fa>
           </Button>
         </div>
       </div>

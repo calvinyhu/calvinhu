@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import styles from './Cover.module.scss';
 import { PAGE } from '../../containers/Home/Home';
 import Button from '../UI/Button/Button';
-import Rf from '../UI/Icon/Rf/Rf';
+import Fa from '../UI/Icon/Fa/Fa';
 import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.webp';
 import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.webp';
 import p2160 from '../../assets/images/DSC_9569-2160p35-blurred.webp';
@@ -84,24 +84,24 @@ class Cover extends React.PureComponent {
   };
 
   render() {
+    const lightenFilter = <div className={styles.LightenFilter} />;
     const background = (
       <div
-        className={styles.Background}
         style={{
-          transform: `translate(${this.state.x + this.props.offsetX}px, ${
+          transform: `translate3d(${this.state.x + this.props.offsetX}px, ${
             this.state.y
-          }px) scale(1.4)`
+          }px, 0px) scale3d(1.4,1.4,1.4)`
         }}
+        className={styles.Background}
       >
         <picture>
           <source media="(min-width: 1440px)" srcSet={p1440} />
           <source media="(min-width: 2160px)" srcSet={p2160} />
           <img src={p1080} alt="me" />
         </picture>
+        {lightenFilter}
       </div>
     );
-
-    const lightenFilter = <div className={styles.LightenFilter} />;
 
     const blurb = (
       <div className={styles.Blurb}>
@@ -140,7 +140,7 @@ class Cover extends React.PureComponent {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Rf lg>linkedin</Rf>
+          <Fa twoX>fab fa-linkedin</Fa>
         </a>
         <a
           className={styles.ImgContainer}
@@ -148,10 +148,10 @@ class Cover extends React.PureComponent {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Rf lg>github</Rf>
+          <Fa twoX>fab fa-github</Fa>
         </a>
         <Link to="/photo">
-          <Rf lg>image</Rf>
+          <Fa twoX>fas fa-camera-retro</Fa>
         </Link>
       </div>
     );
@@ -173,7 +173,6 @@ class Cover extends React.PureComponent {
     return (
       <div className={styles.Cover} onMouseMove={this.handleMouseMove}>
         {background}
-        {lightenFilter}
         {coverContent}
       </div>
     );

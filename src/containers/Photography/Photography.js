@@ -5,7 +5,7 @@ import throttle from 'raf-throttle';
 import classnames from 'classnames';
 
 import styles from './Photography.module.scss';
-import { MAT_ICONS } from '../../utils/styles';
+import Fa from '../../components/UI/Icon/Fa/Fa';
 import { firestore, storage } from '../../utils/firebase';
 
 let photos = null;
@@ -219,17 +219,26 @@ class Photography extends React.PureComponent {
     if (!this.state.photos) {
       loader = (
         <div className={styles.LoaderContainer}>
-          <div className={styles.Loader} />
+          <Fade>
+            <div className={styles.Loader} />
+          </Fade>
         </div>
       );
     }
 
     const touchAppClasses = classnames({
-      [MAT_ICONS]: true,
       [styles.TouchApp]: true,
       [styles.HideTouchApp]: this.state.isHideTouchApp
     });
-    const touchAppIcon = <div className={touchAppClasses}>touch_app</div>;
+    const touchAppIcon = (
+      <div className={touchAppClasses}>
+        <Fade>
+          <Fa lg white>
+            fas fa-hand-point-up
+          </Fa>
+        </Fade>
+      </div>
+    );
 
     return (
       <div className={styles.PhotographyContainer}>

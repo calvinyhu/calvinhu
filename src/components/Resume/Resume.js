@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import styles from './Resume.module.scss';
-import Rf from '../UI/Icon/Rf/Rf';
+import Fa from '../UI/Icon/Fa/Fa';
 
 const cors = 'https://cors-anywhere.herokuapp.com/';
 const job = 'job';
@@ -90,7 +90,7 @@ class Resume extends PureComponent {
           <div className={styles.Download}>
             <div className={styles.DownloadButton}>
               <a href={this.state.wordUrl} download>
-                <Rf sm>download</Rf>
+                <Fa>fas fa-download</Fa>
                 <p>Download</p>
               </a>
             </div>

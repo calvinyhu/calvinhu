@@ -7,7 +7,7 @@ import classnames from 'classnames';
 import styles from './About.module.scss';
 import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
-import Rf from '../UI/Icon/Rf/Rf';
+import Fa from '../UI/Icon/Fa/Fa';
 import { storage } from '../../utils/firebase';
 
 const profile = 'profile';
@@ -130,7 +130,7 @@ class About extends PureComponent {
           </div>
           <div className={styles.Copy}>
             <Button clear circle sm click={this.handleCopyEmail}>
-              <Rf sm>copy</Rf>
+              <Fa lg>far fa-copy</Fa>
             </Button>
           </div>
         </div>

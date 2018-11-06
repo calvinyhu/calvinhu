@@ -9,7 +9,9 @@ const Fa = props => {
     [styles.Fa]: true,
     [props.children]: true,
     'fa-lg': props.lg,
-    'fa-2x': props.twoX
+    'fa-2x': props.twoX,
+    'fa-3x': props.threeX,
+    [styles.White]: props.white
   });
 
   return <div className={faClasses} />;
