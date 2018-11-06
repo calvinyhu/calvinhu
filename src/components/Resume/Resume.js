@@ -19,6 +19,8 @@ class Resume extends PureComponent {
     scrollIntoView: PropTypes.func.isRequired
   };
 
+  isAlive = false;
+
   state = {
     isLoading: true,
     pdfUrl: pdfUrl,
@@ -26,8 +28,13 @@ class Resume extends PureComponent {
   };
 
   componentDidMount() {
+    this.isAlive = true;
     this.props.scrollIntoView();
     if (!this.state.pdfUrl) this.getUrls();
+  }
+
+  componentWillUnmount() {
+    this.isAlive = false;
   }
 
   getUrls = () => {
@@ -36,7 +43,7 @@ class Resume extends PureComponent {
       .getDownloadURL()
       .then(url => {
         pdfUrl = url;
-        this.setState({ pdfUrl: url });
+        if (this.isAlive) this.setState({ pdfUrl: url });
       });
 
     storage
@@ -44,11 +51,14 @@ class Resume extends PureComponent {
       .getDownloadURL()
       .then(url => {
         wordUrl = url;
-        this.setState({ wordUrl: url });
+        if (this.isAlive) this.setState({ wordUrl: url });
       });
   };
 
-  handleDocumentComplete = () => this.setState({ isLoading: false });
+  handleDocumentComplete = () => {
+    if (!this.isAlive) return;
+    this.setState({ isLoading: false });
+  };
 
   render() {
     let loader = null;

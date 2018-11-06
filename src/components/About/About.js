@@ -24,17 +24,26 @@ class About extends PureComponent {
     scrollIntoView: PropTypes.func.isRequired
   };
 
+  isAlive = false;
+
   state = {
     isLoaded: false,
     urls: staticUrls
   };
 
   componentDidMount() {
+    this.isAlive = true;
     this.props.scrollIntoView();
     if (!this.state.urls) this.getUrls();
   }
 
-  handleLoad = () => this.setState({ isLoaded: true });
+  componentWillUnmount() {
+    this.isAlive = false;
+  }
+
+  handleLoad = () => {
+    if (this.isAlive) this.setState({ isLoaded: true });
+  };
 
   handleCopyEmail = () => {
     document.getElementById('email').select();
@@ -53,7 +62,8 @@ class About extends PureComponent {
           staticUrls[file] = url;
           const urls = { ...this.state.urls };
           urls[file] = url;
-          this.setState({ urls });
+
+          if (this.isAlive) this.setState({ urls });
         });
     });
   };

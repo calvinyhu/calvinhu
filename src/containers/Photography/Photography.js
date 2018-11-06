@@ -13,6 +13,8 @@ let totalNumPhotos = 0;
 let timeout = null;
 
 class Photography extends React.PureComponent {
+  isAlive = false;
+
   state = {
     isLoaded: {},
     isExpandPhoto: false,
@@ -25,15 +27,18 @@ class Photography extends React.PureComponent {
   };
 
   componentDidMount() {
-    if (window.top !== 0) window.scrollTo({ top: 0 });
+    this.isAlive = true;
     window.addEventListener('scroll', this.handleScroll);
-    if (!this.state.photos) this.getPhotos();
     timeout = setTimeout(() => this.setState({ isHideTouchApp: true }), 7000);
+
+    if (window.top !== 0) window.scrollTo({ top: 0 });
+    if (!this.state.photos) this.getPhotos();
   }
 
   componentWillUnmount() {
-    clearTimeout(timeout);
+    this.isAlive = false;
     window.removeEventListener('scroll', this.handleScroll);
+    clearTimeout(timeout);
   }
 
   handleScroll = () => throttle(this.showMorePhotos());
@@ -77,6 +82,8 @@ class Photography extends React.PureComponent {
 
     photos = data;
     totalNumPhotos = ids.length;
+
+    if (!this.isAlive) return;
     this.setState({ photos: data, totalNumPhotos: ids.length });
   };
 
