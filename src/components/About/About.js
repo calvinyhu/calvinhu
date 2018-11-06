@@ -123,7 +123,7 @@ class About extends PureComponent {
 
     const contact = (
       <div className={styles.Contact}>
-        <h5>Contact Me:</h5>
+        <h5>Contact:</h5>
         <div className={styles.Handle}>
           <div className={styles.EmailContainer}>
             <Input

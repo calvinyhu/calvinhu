@@ -143,10 +143,6 @@
   justify-content: center;
   margin-top: $margin;
 
-  // @include media-min-width($desktop-width) {
-  //   text-align: center;
-  // }
-
   h5 {
     margin: 0;
     margin-right: $margin;
@@ -158,7 +154,9 @@
 
     input {
       color: $md-blue-gray;
+      width: 10.7rem;
     }
+
     div {
       display: flex;
       align-items: center;
