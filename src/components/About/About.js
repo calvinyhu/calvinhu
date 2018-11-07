@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import Fade from 'react-reveal/Fade';
+import Zoom from 'react-reveal/Zoom';
 import Reveal from 'react-reveal/Reveal';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -9,6 +11,7 @@ import Button from '../UI/Button/Button';
 import Input from '../UI/Input/Input';
 import Fa from '../UI/Icon/Fa/Fa';
 import { storage } from '../../utils/firebase';
+import profile_picture from '../../assets/images/profile.jpg';
 
 const profile = 'profile';
 const files = [
@@ -21,6 +24,7 @@ let staticUrls = null;
 
 class About extends PureComponent {
   static propTypes = {
+    isClicked: PropTypes.bool,
     scrollIntoView: PropTypes.func.isRequired
   };
 
@@ -33,8 +37,8 @@ class About extends PureComponent {
 
   componentDidMount() {
     this.isAlive = true;
-    this.props.scrollIntoView();
     if (!this.state.urls) this.getUrls();
+    if (this.props.isClicked) this.props.scrollIntoView();
   }
 
   componentWillUnmount() {
@@ -69,88 +73,267 @@ class About extends PureComponent {
   };
 
   render() {
-    const who = (
-      <div className={styles.Question}>
-        <h5>Calvin Who?</h5>
-        <h6>Calvin Hu! (punny)</h6>
-        <p>
-          I graduated from UC Davis with a B.S. in Computer Science and a minor
-          in Technology Management. My experience includes developing C++ and C
-          applications, which simulate vehicle traffic, to test onboard
-          networking hardware in various traffic scenarios. I am actively
-          pursuing a career in web application development and am seeking a full
-          stack engineering position, with more emphasis on front end.
-        </p>
+    const contactEmail = (
+      <div className={styles.Handle}>
+        <div className={styles.EmailContainer}>
+          <Input
+            noBorder
+            noBoxShadow
+            noError
+            required={false}
+            readOnly
+            id="email"
+            type="text"
+            value="ycalvinhu@gmail.com"
+            name="email"
+          />
+        </div>
+        <div className={styles.Copy}>
+          <Button clear circle sm click={this.handleCopyEmail}>
+            <Fa lg white>
+              far fa-copy
+            </Fa>
+          </Button>
+        </div>
       </div>
     );
 
-    const obj = (
-      <div className={styles.Question}>
-        <h5>How am I pursuing my career objectives?</h5>
-        <p>
-          Within the past 3 months (July 2018 - Sep 2018), I taught myself
-          JavaScript, HTML, CSS, React, and more tools and methodologies, to
-          build my website and other projects. I have utilized web development
-          tutorials on Udemy, developer documentation on React, Firebase, MDN,
-          Stack Overflow, and Google Cloud Services. I have much more to learn
-          and I am eager to improve my skills in full-stack development.
-        </p>
-      </div>
-    );
-
-    const consider = (
-      <div className={styles.Question}>
-        <h5>Why consider me? (Recruiters)</h5>
-        <p>
-          I have unrelenting determination to achieve milestones utilizing the
-          best and most thoughtful methods. I am organized, but also adaptable.
-          I love challenging myself and I love learning. I have the right skills
-          and mindset to achieve goals once I lay my eyes on them.
-        </p>
-      </div>
-    );
-
-    const passions = (
-      <div className={styles.Passions}>
-        <h5>What are my other passions?</h5>
-        <p>
-          I like to hike and capture photos of nature, people, and cars. Take a
-          look at my <Link to="/photo">photography</Link>! I am also a
-          calisthenics (bodyweight training) aficionado.
-        </p>
-      </div>
-    );
-
-    const contact = (
-      <div className={styles.Contact}>
-        <h5>Contact:</h5>
-        <div className={styles.Handle}>
-          <div className={styles.EmailContainer}>
-            <Input
-              noBorder
-              noBoxShadow
-              noError
-              required={false}
-              readOnly
-              id="email"
-              type="text"
-              value="ycalvinhu@gmail.com"
-              name="email"
-            />
-          </div>
-          <div className={styles.Copy}>
-            <Button clear circle sm click={this.handleCopyEmail}>
-              <Fa lg>far fa-copy</Fa>
-            </Button>
+    const aboutMe = (
+      <div className={styles.AboutMeContainer}>
+        <div className={styles.AboutMe}>
+          <Reveal effect={styles.BlockSlideFadeIn}>
+            <div className={styles.Intro}>
+              <Fa threeX white>
+                far fa-smile
+              </Fa>
+              <h5>Calvin Who? Calvin Hu!</h5>
+              <p>
+                I graduated from UC Davis with a B.S. in Computer Science and a
+                minor in Technology Management. I am actively pursuing a career
+                in web application development and am seeking a full stack
+                engineering position, with more emphasis on front end.
+              </p>
+            </div>
+          </Reveal>
+          <div className={styles.Profile}>
+            <Zoom>
+              <div className={styles.PictureContainer}>
+                <img src={profile_picture} alt="profile" />
+              </div>
+            </Zoom>
+            <Fade>
+              <div className={styles.SocialMedia}>
+                <a
+                  href="https://www.linkedin.com/in/calvinyhu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Fa twoX white>
+                    fab fa-linkedin
+                  </Fa>
+                </a>
+                <a
+                  href="https://www.github.com/calvinyhu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Fa twoX white>
+                    fab fa-github
+                  </Fa>
+                </a>
+                <a
+                  href="https://www.facebook.com/calvinyhu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Fa twoX white>
+                    fab fa-facebook-f
+                  </Fa>
+                </a>
+                <a
+                  href="https://www.instagram.com/calvinyhu"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Fa twoX white>
+                    fab fa-instagram
+                  </Fa>
+                </a>
+              </div>
+              {contactEmail}
+            </Fade>
           </div>
         </div>
       </div>
     );
 
-    const loaderClasses = classnames({
-      [styles.Loader]: true,
-      [styles.DisplayNone]: this.state.isLoaded
-    });
+    const DELAY = 500;
+    const skills = (
+      <div className={styles.SkillsContainer}>
+        <Fade>
+          <div className={styles.Skills}>
+            <div className={styles.Skill}>
+              <p>C</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.C} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>C++</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.CPP} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>Express</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.Express} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>Git</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.Git} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>gulp</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.Gulp} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>HTML</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.HTML} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>JavaScript</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.JavaScript} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>mlab</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.Mlab} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>Node.js</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.Node} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>Postman</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.Postman} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>React</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.React} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>SASSY CSS</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.SASSYCSS} />
+                </Reveal>
+              </div>
+            </div>
+            <div className={styles.Skill}>
+              <p>VS Code</p>
+              <div className={styles.Bar}>
+                <Reveal effect={styles.Extend} delay={DELAY}>
+                  <div className={styles.VSCode} />
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </Fade>
+      </div>
+    );
+
+    const passions = (
+      <div className={styles.PassionsContainer}>
+        <div className={styles.Passions}>
+          <Fade left>
+            <div className={styles.Passion}>
+              <Fa threeX white>
+                fas fa-code
+              </Fa>
+              <h5>Web Development</h5>
+              <p>
+                I taught myself JavaScript, HTML, CSS, React, and more tools and
+                methodologies, to build my website and other projects.
+              </p>
+            </div>
+          </Fade>
+          <Fade up>
+            <div className={styles.Passion}>
+              <Fa threeX white>
+                fas fa-camera-retro
+              </Fa>
+              <h5>Photography</h5>
+              <p>
+                I like taking photos! I have been shooting since 2013. I like to
+                take photos of nature, cars, and people. Capturing photos helps
+                me be more creative. Check out my{' '}
+                <Link to="/photo">photography</Link>!
+              </p>
+            </div>
+          </Fade>
+          <Fade right>
+            <div className={styles.Passion}>
+              <Fa threeX white>
+                fas fa-dumbbell
+              </Fa>
+              <h5>Calisthenics</h5>
+              <p>
+                I also do bodyweight and weight training. I am enthusiastic
+                about keeping a healthy mind and body.
+              </p>
+            </div>
+          </Fade>
+        </div>
+      </div>
+    );
+
+    let loader = null;
+    if (!this.state.isLoaded) {
+      loader = (
+        <div className={styles.LoaderContainer}>
+          <div className={styles.Loader} />
+        </div>
+      );
+    }
 
     const imgClasses = classnames({
       [styles.Hide]: true,
@@ -179,24 +362,25 @@ class About extends PureComponent {
       );
     }
 
+    let scrollIndicator = (
+      <div className={styles.ScrollIndicator}>
+        <Fa twoX white>
+          fas fa-angle-double-down
+        </Fa>
+      </div>
+    );
+
     return (
       <div className={styles.About}>
-        <div className={styles.LoaderContainer}>
-          <div className={loaderClasses} />
+        <div className={styles.SlideShowContainer}>
+          {loader}
+          {me}
+          {scrollIndicator}
         </div>
-        <div className={styles.Me}>{me}</div>
-        <div className={styles.Questions}>
-          <div className={styles.ColorSplash} />
-          <main>
-            <div className={styles.ColorSplash} />
-            <Reveal effect={styles.BlockSlideFadeIn}>
-              {who}
-              {obj}
-              {consider}
-              {passions}
-              {contact}
-            </Reveal>
-          </main>
+        <div className={styles.FeaturesContainer}>
+          {aboutMe}
+          {skills}
+          {passions}
         </div>
       </div>
     );

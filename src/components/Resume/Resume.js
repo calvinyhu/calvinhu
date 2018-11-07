@@ -29,8 +29,8 @@ class Resume extends PureComponent {
 
   componentDidMount() {
     this.isAlive = true;
-    this.props.scrollIntoView();
     if (!this.state.pdfUrl) this.getUrls();
+    this.props.scrollIntoView();
   }
 
   componentWillUnmount() {

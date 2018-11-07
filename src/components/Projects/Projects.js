@@ -10,7 +10,7 @@ let jammmingUrls = [];
 
 class Projects extends PureComponent {
   static propTypes = {
-    isClicked: PropTypes.bool.isRequired,
+    isClicked: PropTypes.bool,
     scrollIntoView: PropTypes.func.isRequired
   };
 
@@ -29,7 +29,9 @@ class Projects extends PureComponent {
       this.state.jammmingUrls.length === 0
     )
       this.getPhotos();
-    if (this.props.isClicked) this.props.scrollIntoView();
+
+    this.props.scrollIntoView();
+    // if (this.props.isClicked) this.props.scrollIntoView();
   }
 
   componentWillUnmount() {

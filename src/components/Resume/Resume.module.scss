@@ -114,8 +114,12 @@
   left: 0;
   position: absolute;
   z-index: -1;
-  background: linear-gradient($opp-color, $light-opp-color);
+  background: $md-blue-gray;
   transition: $transition1;
-  border-radius: 100% / 15%;
   transform: scale(1.2);
+  border-radius: 100% / 10%;
+
+  @include media-min-width($desktop-width) {
+    border-radius: 100% / 25%;
+  }
 }

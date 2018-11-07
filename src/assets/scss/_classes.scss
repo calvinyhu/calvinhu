@@ -8,6 +8,7 @@
 @include slide-y(slideYOut5, 0, 5rem);
 @include slide-y(textSlideY, 50%, 0%);
 @include loading;
+@include extend;
 
 .Hide {
   opacity: 0;
@@ -81,4 +82,8 @@
   border-left: 0.5rem solid $adj-color;
   transform: translateZ(0);
   animation: loading 1.3s infinite linear;
+}
+
+.Extend {
+  animation: extend forwards;
 }

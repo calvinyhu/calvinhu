@@ -23,7 +23,7 @@ class Home extends PureComponent {
 
   state = {
     isClicked: false,
-    page: PAGE.WEB,
+    page: PAGE.ABOUT,
     offsetX: 0
   };
 
@@ -62,14 +62,14 @@ class Home extends PureComponent {
   switchPage = newPage => {
     switch (newPage) {
       case PAGE.WEB:
+        return <Projects scrollIntoView={this.handleScrollToPage} />;
+      case PAGE.ABOUT:
         return (
-          <Projects
-            scrollIntoView={this.handleScrollToPage}
+          <About
             isClicked={this.state.isClicked}
+            scrollIntoView={this.handleScrollToPage}
           />
         );
-      case PAGE.ABOUT:
-        return <About scrollIntoView={this.handleScrollToPage} />;
       case PAGE.RESUME:
         return <Resume scrollIntoView={this.handleScrollToPage} />;
       default:

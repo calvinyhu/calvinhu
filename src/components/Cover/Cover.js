@@ -114,13 +114,13 @@ class Cover extends React.PureComponent {
       <div className={styles.Nav}>
         <div className={styles.PageLinks}>
           <div className={styles.PageLink}>
-            <Button link click={this.clickWeb}>
-              Web Apps
+            <Button link click={this.clickAbout}>
+              About
             </Button>
           </div>
           <div className={styles.PageLink}>
-            <Button link click={this.clickAbout}>
-              About
+            <Button link click={this.clickWeb}>
+              Portfolio
             </Button>
           </div>
           <div className={styles.PageLink}>
@@ -135,7 +135,6 @@ class Cover extends React.PureComponent {
     const socialMedia = (
       <div className={styles.SocialMedia}>
         <a
-          className={styles.ImgContainer}
           href="https://www.linkedin.com/in/calvinyhu/"
           target="_blank"
           rel="noopener noreferrer"
@@ -143,7 +142,6 @@ class Cover extends React.PureComponent {
           <Fa twoX>fab fa-linkedin</Fa>
         </a>
         <a
-          className={styles.ImgContainer}
           href="https://www.github.com/calvinyhu/"
           target="_blank"
           rel="noopener noreferrer"
