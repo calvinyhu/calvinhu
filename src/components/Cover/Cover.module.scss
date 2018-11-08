@@ -95,7 +95,7 @@
     }
   }
 
-  .Name {
+  h1 {
     text-align: center;
 
     @include media-min-width($desktop-width) {
@@ -104,6 +104,10 @@
 
     @include media-min-width(65rem) {
       margin-bottom: 0;
+    }
+
+    span {
+      color: $dark-opp-color;
     }
   }
 }

@@ -4,7 +4,7 @@ import Reveal from 'react-reveal/Reveal';
 import styles from './Skills.module.scss';
 
 const skills = () => {
-  const DELAY = 500;
+  const DELAY = 300;
 
   return (
     <div className={styles.Skills}>
@@ -89,6 +89,14 @@ const skills = () => {
         </div>
       </div>
       <div className={styles.Skill}>
+        <p>Python</p>
+        <div className={styles.Bar}>
+          <Reveal effect={styles.Extend} delay={DELAY}>
+            <div className={styles.Python} />
+          </Reveal>
+        </div>
+      </div>
+      <div className={styles.Skill}>
         <p>React</p>
         <div className={styles.Bar}>
           <Reveal effect={styles.Extend} delay={DELAY}>
@@ -97,7 +105,7 @@ const skills = () => {
         </div>
       </div>
       <div className={styles.Skill}>
-        <p>SASSY CSS</p>
+        <p>SASS(Y) CSS</p>
         <div className={styles.Bar}>
           <Reveal effect={styles.Extend} delay={DELAY}>
             <div className={styles.SASSYCSS} />
