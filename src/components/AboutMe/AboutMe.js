@@ -1,7 +1,6 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
-import Reveal from 'react-reveal/Reveal';
 
 import styles from './AboutMe.module.scss';
 import Button from '../UI/Button/Button';
@@ -37,7 +36,7 @@ const aboutMe = props => {
 
   return (
     <div className={styles.AboutMe}>
-      <Reveal effect={styles.BlockSlideFadeIn}>
+      <Fade up>
         <div className={styles.Intro}>
           <Fa threeX white>
             far fa-smile
@@ -50,7 +49,7 @@ const aboutMe = props => {
             position, with more emphasis on front end.
           </p>
         </div>
-      </Reveal>
+      </Fade>
       <div className={styles.Profile}>
         <Zoom>
           <div className={styles.PictureContainer}>
