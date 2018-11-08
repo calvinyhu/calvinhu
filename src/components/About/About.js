@@ -1,10 +1,10 @@
 import React, { PureComponent } from 'react';
-import Fade from 'react-reveal/Fade';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import styles from './About.module.scss';
 import AboutMe from '../AboutMe/AboutMe';
+import Priorities from '../Priorities/Priorities';
 import Skills from '../Skills/Skills';
 import Passions from '../Passions/Passions';
 import Fa from '../UI/Icon/Fa/Fa';
@@ -120,32 +120,10 @@ class About extends PureComponent {
     );
 
     const skills = (
-      <Fade>
-        <div className={styles.SkillsContainer}>
-          <div className={styles.Priorities}>
-            <div className={styles.Priority}>
-              <Fa twoX>fas fa-columns</Fa>
-              <h5>Clean</h5>
-              <p>Simple and concise. Material Design.</p>
-            </div>
-            <div className={styles.Priority}>
-              <div className={styles.ResponsiveIcons}>
-                <Fa twoX>fas fa-mobile-alt</Fa>
-                <Fa>fas fa-plus</Fa>
-                <Fa twoX>fas fa-laptop</Fa>
-              </div>
-              <h5>Responsive</h5>
-              <p>Mobile first with fluid layouts.</p>
-            </div>
-            <div className={styles.Priority}>
-              <Fa twoX>fas fa-bolt</Fa>
-              <h5>Fast</h5>
-              <p>Lag-free user experience.</p>
-            </div>
-          </div>
-          <Skills />
-        </div>
-      </Fade>
+      <div className={styles.SkillsContainer}>
+        <Priorities />
+        <Skills />
+      </div>
     );
 
     const passions = (

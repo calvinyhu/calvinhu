@@ -8,7 +8,7 @@ import Fa from '../UI/Icon/Fa/Fa';
 const passions = () => {
   return (
     <div className={styles.Passions}>
-      <Fade left>
+      <Fade down>
         <div className={styles.Passion}>
           <Fa threeX white>
             fas fa-code
@@ -19,8 +19,6 @@ const passions = () => {
             methodologies, to build my website and other projects.
           </p>
         </div>
-      </Fade>
-      <Fade up>
         <div className={styles.Passion}>
           <Fa threeX white>
             fas fa-camera-retro
@@ -32,8 +30,6 @@ const passions = () => {
             be more creative. Check out my <Link to="/photo">photography</Link>!
           </p>
         </div>
-      </Fade>
-      <Fade right>
         <div className={styles.Passion}>
           <Fa threeX white>
             fas fa-dumbbell
