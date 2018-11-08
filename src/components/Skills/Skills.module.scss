@@ -1,0 +1,148 @@
+@import './src/assets/scss/_variables.scss';
+@import './src/assets/scss/_mixins.scss';
+@import './src/assets/scss/_classes.scss';
+
+$md-white-dark: darken($md-white, 25%);
+$skill25: 25%;
+$skill40: 40%;
+$skill50: 50%;
+$skill65: 65%;
+$skill75: 75%;
+
+.Skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 30rem;
+}
+
+.Skill {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  p {
+    margin: $margin / 4 0;
+    min-width: 5rem;
+    text-align: center;
+    margin-right: $margin;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    font-weight: bold;
+  }
+
+  .Bar {
+    position: relative;
+    width: 100%;
+    max-width: 25rem;
+    height: 1.2rem;
+    margin: $margin / 4 0;
+    background: lighten($md-blue-gray, 50%);
+  }
+}
+
+.C {
+  position: absolute;
+  width: $skill75;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.CPP {
+  position: absolute;
+  width: $skill75;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.Express {
+  position: absolute;
+  width: $skill25;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.Git {
+  position: absolute;
+  width: $skill75;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.Gulp {
+  position: absolute;
+  width: $skill50;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.HTML {
+  position: absolute;
+  width: $skill65;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.JavaScript {
+  position: absolute;
+  width: $skill75;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.Mlab {
+  position: absolute;
+  width: $skill25;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.Node {
+  position: absolute;
+  width: $skill40;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.Postman {
+  position: absolute;
+  width: $skill25;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.React {
+  position: absolute;
+  width: $skill75;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.SASSYCSS {
+  position: absolute;
+  width: $skill65;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}
+
+.VSCode {
+  position: absolute;
+  width: $skill75;
+  height: inherit;
+  background: $md-blue-gray;
+  transform: scaleX(0);
+}

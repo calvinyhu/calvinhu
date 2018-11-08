@@ -1,0 +1,32 @@
+@import './src/assets/scss/_variables.scss';
+@import './src/assets/scss/_mixins.scss';
+@import './src/assets/scss/_classes.scss';
+
+.Passions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+
+  @include media-min-width($desktop-width) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .Passion {
+    display: flex;
+    flex-direction: column;
+    max-width: 25rem;
+    margin: $margin 0;
+
+    @include media-min-width($desktop-width) {
+      margin: $margin;
+    }
+
+    a {
+      color: $md-white;
+      font-weight: bold;
+    }
+  }
+}
