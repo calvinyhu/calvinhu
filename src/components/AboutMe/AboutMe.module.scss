@@ -2,6 +2,16 @@
 @import './src/assets/scss/_mixins.scss';
 @import './src/assets/scss/_classes.scss';
 
+.AboutMeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: $padding * 3 $padding;
+  overflow: hidden;
+  background: $md-blue-gray;
+}
+
 .AboutMe {
   display: flex;
   flex-direction: column;
@@ -14,6 +24,17 @@
   @include media-min-width($desktop-width) {
     flex-direction: row;
     align-items: center;
+  }
+
+  h5 {
+    margin-top: $margin / 2;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    margin-top: $margin;
+    color: darken($md-white, 25%);
   }
 
   .Profile {

@@ -117,17 +117,17 @@ class Cover extends React.PureComponent {
         <div className={styles.PageLinks}>
           <div className={styles.PageLink}>
             <Button link click={this.clickAbout}>
-              About
+              ABOUT
             </Button>
           </div>
           <div className={styles.PageLink}>
             <Button link click={this.clickWeb}>
-              Portfolio
+              PORTFOLIO
             </Button>
           </div>
           <div className={styles.PageLink}>
             <Button link click={this.clickResume}>
-              Resume
+              RESUME
             </Button>
           </div>
         </div>

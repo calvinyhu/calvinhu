@@ -35,68 +35,70 @@ const aboutMe = props => {
   );
 
   return (
-    <div className={styles.AboutMe}>
-      <Fade up>
-        <div className={styles.Intro}>
-          <Fa threeX white>
-            far fa-smile
-          </Fa>
-          <h5>Calvin Who? Calvin Hu!</h5>
-          <p>
-            I graduated from UC Davis with a B.S. in Computer Science and a
-            minor in Technology Management. I am actively pursuing a career in
-            web application development and am seeking a full stack engineering
-            position, with more emphasis on front end.
-          </p>
-        </div>
-      </Fade>
-      <div className={styles.Profile}>
-        <Zoom>
-          <div className={styles.PictureContainer}>
-            <img src={profile_picture} alt="profile" />
+    <div className={styles.AboutMeContainer}>
+      <div className={styles.AboutMe}>
+        <Fade up>
+          <div className={styles.Intro}>
+            <Fa threeX white>
+              far fa-smile
+            </Fa>
+            <h5>Calvin Who? Calvin Hu!</h5>
+            <p>
+              I graduated from UC Davis with a B.S. in Computer Science and a
+              minor in Technology Management. I am actively pursuing a career in
+              web application development and am seeking a full stack
+              engineering position, with more emphasis on front end.
+            </p>
           </div>
-        </Zoom>
-        <Fade>
-          <div className={styles.SocialMedia}>
-            <a
-              href="https://www.linkedin.com/in/calvinyhu"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Fa twoX white>
-                fab fa-linkedin
-              </Fa>
-            </a>
-            <a
-              href="https://www.github.com/calvinyhu"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Fa twoX white>
-                fab fa-github
-              </Fa>
-            </a>
-            <a
-              href="https://www.facebook.com/calvinyhu"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Fa twoX white>
-                fab fa-facebook-f
-              </Fa>
-            </a>
-            <a
-              href="https://www.instagram.com/calvinyhu"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Fa twoX white>
-                fab fa-instagram
-              </Fa>
-            </a>
-          </div>
-          {contactEmail}
         </Fade>
+        <div className={styles.Profile}>
+          <Zoom>
+            <div className={styles.PictureContainer}>
+              <img src={profile_picture} alt="profile" />
+            </div>
+          </Zoom>
+          <Fade>
+            <div className={styles.SocialMedia}>
+              <a
+                href="https://www.linkedin.com/in/calvinyhu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Fa twoX white>
+                  fab fa-linkedin
+                </Fa>
+              </a>
+              <a
+                href="https://www.github.com/calvinyhu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Fa twoX white>
+                  fab fa-github
+                </Fa>
+              </a>
+              <a
+                href="https://www.facebook.com/calvinyhu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Fa twoX white>
+                  fab fa-facebook-f
+                </Fa>
+              </a>
+              <a
+                href="https://www.instagram.com/calvinyhu"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Fa twoX white>
+                  fab fa-instagram
+                </Fa>
+              </a>
+            </div>
+            {contactEmail}
+          </Fade>
+        </div>
       </div>
     </div>
   );
