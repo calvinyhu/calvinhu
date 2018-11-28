@@ -8,6 +8,7 @@ import Priorities from '../Priorities/Priorities';
 import Skills from '../Skills/Skills';
 import Passions from '../Passions/Passions';
 import Fa from '../UI/Icon/Fa/Fa';
+import Carousel from '../Carousel/Carousel';
 import { storage } from '../../utils/firebase';
 
 const profile = 'profile';
@@ -83,26 +84,27 @@ class About extends PureComponent {
       [styles.Hide]: true,
       [styles.FadeIn]: this.state.isLoaded
     });
-    let me = null;
+    let slideShow = null;
     if (this.state.urls) {
-      me = (
-        <picture>
-          <source
-            media="(min-width: 1440px)"
-            srcSet={`${this.state.urls[files[1]]} 2x`}
-          />
-          <source
-            media="(min-width: 2160px)"
-            srcSet={`${this.state.urls[files[2]]} 2x`}
-          />
-          <img
-            className={imgClasses}
-            onLoad={this.handleLoad}
-            src={this.state.urls[files[0]]}
-            alt="me"
-          />
-        </picture>
-      );
+      // slideShow = (
+      //   <picture>
+      //     <source
+      //       media="(min-width: 1440px)"
+      //       srcSet={`${this.state.urls[files[1]]} 2x`}
+      //     />
+      //     <source
+      //       media="(min-width: 2160px)"
+      //       srcSet={`${this.state.urls[files[2]]} 2x`}
+      //     />
+      //     <img
+      //       className={imgClasses}
+      //       onLoad={this.handleLoad}
+      //       src={this.state.urls[files[0]]}
+      //       alt="me"
+      //     />
+      //   </picture>
+      // );
+      slideShow = <Carousel />;
     }
 
     let scrollIndicator = (
@@ -113,12 +115,6 @@ class About extends PureComponent {
       </div>
     );
 
-    const aboutMe = (
-      <div className={styles.AboutMeContainer}>
-        <AboutMe handleCopyEmail={this.handleCopyEmail} />
-      </div>
-    );
-
     const skills = (
       <div className={styles.SkillsContainer}>
         <Priorities />
@@ -126,23 +122,17 @@ class About extends PureComponent {
       </div>
     );
 
-    const passions = (
-      <div className={styles.PassionsContainer}>
-        <Passions />
-      </div>
-    );
-
     return (
       <div className={styles.About}>
         <div className={styles.SlideShowContainer}>
           {loader}
-          {me}
+          {slideShow}
           {scrollIndicator}
         </div>
         <div className={styles.FeaturesContainer}>
-          {aboutMe}
+          <AboutMe handleCopyEmail={this.handleCopyEmail} />
           {skills}
-          {passions}
+          <Passions />
         </div>
       </div>
     );
