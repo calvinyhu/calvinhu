@@ -27,9 +27,16 @@
 }
 
 .DocumentContainer {
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
   max-width: 50rem;
   overflow-x: hidden;
+  user-select: none;
+
+  @include media-min-width($desktop-width + 12rem) {
+    justify-content: center;
+  }
 }
 
 .OverflowAuto {
@@ -38,13 +45,11 @@
 
 .Document {
   display: inline-block;
-  min-width: 45rem;
   padding: $padding;
   transition: 1.5s;
   opacity: 0;
 
   canvas {
-    width: 100%;
     box-shadow: $box-shadow-card;
   }
 }

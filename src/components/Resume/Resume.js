@@ -1,12 +1,18 @@
 import React, { PureComponent } from 'react';
 import Fade from 'react-reveal/Fade';
-import PDF from 'react-pdf-js';
+import { Document, Page } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import { pdfjs } from 'react-pdf';
 import { storage } from '../../utils/firebase';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import styles from './Resume.module.scss';
 import Fa from '../UI/Icon/Fa/Fa';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${
+  pdfjs.version
+}/pdf.worker.js`;
 
 const cors = 'https://cors-anywhere.herokuapp.com/';
 const job = 'job';
@@ -84,11 +90,12 @@ class Resume extends PureComponent {
     if (this.state.pdfUrl) {
       document = (
         <div className={documentClasses}>
-          <PDF
+          <Document
             file={cors + this.state.pdfUrl}
-            onDocumentComplete={this.handleDocumentComplete}
-            page={1}
-          />
+            onLoadSuccess={this.handleDocumentComplete}
+          >
+            <Page pageNumber={1} height={990} />
+          </Document>
         </div>
       );
     }
