@@ -1,4 +1,5 @@
 @import './src/assets/scss/_variables.scss';
+@import './src/assets/scss/_mixins.scss';
 
 .Carousel {
   width: 100%;
@@ -38,35 +39,60 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 5rem;
+  z-index: 1;
+  width: 2.5rem;
   height: 100%;
+
+  @include media-min-width($desktop-width) {
+    top: 0;
+    left: 0;
+    width: 5rem;
+    height: 100%;
+  }
 }
 
 .CarouselRight {
   position: absolute;
   top: 0;
   right: 0;
-  width: 5rem;
+  z-index: 1;
+  width: 2.5rem;
   height: 100%;
+
+  @include media-min-width($desktop-width) {
+    top: 0;
+    right: 0;
+    width: 5rem;
+    height: 100%;
+  }
 }
 
 .CarouselIndicators {
   display: flex;
+  justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  height: 8rem;
+  bottom: 0;
+  background: linear-gradient(transparent, $md-black);
+}
+
+.CarouselIndicatorContainer {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .CarouselIndicator {
   width: 0.5rem;
   height: 0.5rem;
-  background: lighten($md-gray, 5%);
+  background: lighten($md-gray, 15%);
   border-radius: 50%;
-  margin: $margin / 2;
   transition: $transition1;
-  cursor: pointer;
 }
 
 .ActiveIndicator {

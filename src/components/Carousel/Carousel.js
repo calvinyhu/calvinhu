@@ -68,9 +68,11 @@ class Carousel extends Component {
         carouselIndicators.push(
           <div
             key={index}
-            className={carouselIndicatorClasses}
+            className={styles.CarouselIndicatorContainer}
             onClick={this.getIndicatorClickHandler(index)}
-          />
+          >
+            <div className={carouselIndicatorClasses} />
+          </div>
         );
       });
     }
