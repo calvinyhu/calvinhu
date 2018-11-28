@@ -30,14 +30,6 @@
     top: 0;
     left: 0;
     background: $md-blue-gray;
-
-    .ScrollIndicator {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translate(-50%, -100%);
-      animation: shake 1.3s infinite;
-    }
   }
 
   .FeaturesContainer {

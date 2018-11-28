@@ -6,7 +6,6 @@ import AboutMe from '../AboutMe/AboutMe';
 import Priorities from '../Priorities/Priorities';
 import Skills from '../Skills/Skills';
 import Passions from '../Passions/Passions';
-import Fa from '../UI/Icon/Fa/Fa';
 import Carousel from '../Carousel/Carousel';
 import { storage } from '../../utils/firebase';
 
@@ -74,14 +73,6 @@ class About extends PureComponent {
       );
     }
 
-    let scrollIndicator = (
-      <div className={styles.ScrollIndicator}>
-        <Fa twoX white>
-          fas fa-angle-double-down
-        </Fa>
-      </div>
-    );
-
     const skills = (
       <div className={styles.SkillsContainer}>
         <Priorities />
@@ -91,10 +82,7 @@ class About extends PureComponent {
 
     return (
       <div className={styles.About}>
-        <div className={styles.SlideShowContainer}>
-          {slideShow}
-          {scrollIndicator}
-        </div>
+        <div className={styles.SlideShowContainer}>{slideShow}</div>
         <div className={styles.FeaturesContainer}>
           <AboutMe handleCopyEmail={this.handleCopyEmail} />
           {skills}

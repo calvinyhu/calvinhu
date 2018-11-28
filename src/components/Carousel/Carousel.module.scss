@@ -28,6 +28,12 @@
   }
 }
 
+.ObjectPosition25Center {
+  img {
+    object-position: 25% center;
+  }
+}
+
 .CarouselLeft {
   position: absolute;
   top: 0;
@@ -42,4 +48,27 @@
   right: 0;
   width: 5rem;
   height: 100%;
+}
+
+.CarouselIndicators {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.CarouselIndicator {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: lighten($md-gray, 5%);
+  border-radius: 50%;
+  margin: $margin / 2;
+  transition: $transition1;
+  cursor: pointer;
+}
+
+.ActiveIndicator {
+  background: $md-white;
 }

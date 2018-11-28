@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 import styles from './Carousel.module.scss';
 import Button from '../UI/Button/Button';
@@ -15,37 +16,67 @@ class Carousel extends Component {
   };
 
   state = {
-    pic: 0
+    item: 0
   };
 
   handleLeftClick = () => {
-    let pic = this.state.pic;
+    let item = this.state.item;
     const itemLength = this.props.items.length;
-    if (pic === 0) pic = -(itemLength - 1);
-    else pic++;
-    this.setState({ pic });
+    if (item === 0) item = -(itemLength - 1);
+    else item++;
+    this.setState({ item });
   };
 
   handleRightClick = () => {
-    let pic = this.state.pic;
+    let item = this.state.item;
     const itemLength = this.props.items.length;
-    if (pic === -(itemLength - 1)) pic = 0;
-    else pic--;
-    this.setState({ pic });
+    if (item === -(itemLength - 1)) item = 0;
+    else item--;
+    this.setState({ item });
   };
+
+  indicatorClickHandlers = {};
+  getIndicatorClickHandler = index => {
+    if (!this.indicatorClickHandlers[index]) {
+      this.indicatorClickHandlers[index] = () =>
+        this.handleClickIndicator(index);
+    }
+    return this.indicatorClickHandlers[index];
+  };
+  handleClickIndicator = index => this.setState({ item: -index });
 
   render() {
     let carouselItems = [];
-    if (this.props.items && this.props.items.length > 0) {
-      carouselItems = this.props.items.map((item, index) => (
-        <div key={index} className={styles.CarouselItem}>
-          <img src={item} alt="item" />
-        </div>
-      ));
+    let carouselIndicators = [];
+
+    if (this.props.items.length > 0) {
+      this.props.items.forEach((item, index) => {
+        const carouselItemClasses = classnames({
+          [styles.CarouselItem]: true,
+          [styles.ObjectPosition25Center]: index === 1
+        });
+        carouselItems.push(
+          <div key={index} className={carouselItemClasses}>
+            <img src={item} alt="item" />
+          </div>
+        );
+
+        const carouselIndicatorClasses = classnames({
+          [styles.CarouselIndicator]: true,
+          [styles.ActiveIndicator]: index === -this.state.item
+        });
+        carouselIndicators.push(
+          <div
+            key={index}
+            className={carouselIndicatorClasses}
+            onClick={this.getIndicatorClickHandler(index)}
+          />
+        );
+      });
     }
 
     const carouselPosition = {
-      transform: `translateX(${this.state.pic * 100}%)`
+      transform: `translateX(${this.state.item * 100}%)`
     };
     return (
       <div className={styles.Carousel}>
@@ -67,6 +98,8 @@ class Carousel extends Component {
             </Fa>
           </Button>
         </div>
+
+        <div className={styles.CarouselIndicators}>{carouselIndicators}</div>
       </div>
     );
   }
