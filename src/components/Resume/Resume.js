@@ -144,9 +144,12 @@ class Resume extends PureComponent {
     return (
       <div className={styles.Resume}>
         <div className={styles.ColorSplash} />
-        <div className={styles.DownloadButtonsContainer}>
-          {downloadWordButton}
-          {downloadPDFButton}
+        <div className={styles.DownloadContainer}>
+          <h5>Download</h5>
+          <div className={styles.DownloadButtonsContainer}>
+            {downloadWordButton}
+            {downloadPDFButton}
+          </div>
         </div>
         <div className={documentContainerClasses}>{document}</div>
         {loader}
