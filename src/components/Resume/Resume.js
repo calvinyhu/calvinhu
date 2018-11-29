@@ -100,15 +100,40 @@ class Resume extends PureComponent {
       );
     }
 
-    let downloadButton = null;
+    let downloadWordButton = null;
     if (this.state.wordUrl) {
-      downloadButton = (
+      downloadWordButton = (
         <Fade>
-          <div className={styles.Download}>
-            <div className={styles.DownloadButton}>
+          <div className={styles.DownloadButtonContainer}>
+            <div className={styles.DownloadButton + ' ' + styles.Word}>
               <a href={this.state.wordUrl} download>
-                <Fa>fas fa-download</Fa>
-                <p>Download</p>
+                <Fa lg white>
+                  fas fa-file-word
+                </Fa>
+                <p>Word</p>
+              </a>
+            </div>
+          </div>
+        </Fade>
+      );
+    }
+
+    let downloadPDFButton = null;
+    if (this.state.pdfUrl) {
+      downloadPDFButton = (
+        <Fade>
+          <div className={styles.DownloadButtonContainer}>
+            <div className={styles.DownloadButton + ' ' + styles.PDF}>
+              <a
+                href={this.state.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+              >
+                <Fa lg white>
+                  far fa-file-pdf
+                </Fa>
+                <p>PDF</p>
               </a>
             </div>
           </div>
@@ -119,7 +144,10 @@ class Resume extends PureComponent {
     return (
       <div className={styles.Resume}>
         <div className={styles.ColorSplash} />
-        {downloadButton}
+        <div className={styles.DownloadButtonsContainer}>
+          {downloadWordButton}
+          {downloadPDFButton}
+        </div>
         <div className={documentContainerClasses}>{document}</div>
         {loader}
       </div>

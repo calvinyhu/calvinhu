@@ -58,7 +58,19 @@
   opacity: 1;
 }
 
-.Download {
+.DownloadButtonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  @include media-min-width(65rem) {
+    width: auto;
+    flex-direction: column;
+  }
+}
+
+.DownloadButtonContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,9 +87,8 @@
 .DownloadButton {
   a {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 10rem;
+    min-width: 8rem;
     height: 3rem;
     background: $adj-color;
     color: $md-blue-gray;
@@ -85,6 +96,7 @@
     border-radius: 3px;
     transition: $transition2;
     box-shadow: $box-shadow;
+    padding: $padding;
 
     &:hover {
       background: $dark-adj-color;
@@ -93,6 +105,28 @@
     p {
       margin: 0;
       margin-left: $margin;
+    }
+  }
+}
+
+.Word {
+  a {
+    background: lighten(#30549c, 10%);
+    color: $md-white;
+
+    &:hover {
+      background: #30549c;
+    }
+  }
+}
+
+.PDF {
+  a {
+    background: lighten(#7e1a1a, 10%);
+    color: $md-white;
+
+    &:hover {
+      background: #7e1a1a;
     }
   }
 }
