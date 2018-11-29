@@ -16,7 +16,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const cors = 'https://cors-anywhere.herokuapp.com/';
 const job = 'job';
-const resume = 'Hu-Calvin-Resume';
+const resume = 'Hu_Calvin_Resume';
 let pdfUrl = null;
 let wordUrl = null;
 
