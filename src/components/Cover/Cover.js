@@ -7,9 +7,9 @@ import styles from './Cover.module.scss';
 import { PAGE } from '../../containers/Home/Home';
 import Button from '../UI/Button/Button';
 import Fa from '../UI/Icon/Fa/Fa';
-import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.webp';
-import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.webp';
-import p2160 from '../../assets/images/DSC_9569-2160p35-blurred.webp';
+import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
+import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.jpg';
+import p2160 from '../../assets/images/DSC_9569-2160p35-blurred.jpg';
 
 const FRICTION = 1 / 30;
 const DISPLACE_X = 20;
