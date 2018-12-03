@@ -36,11 +36,10 @@
     .LightenFilter {
       position: fixed;
       top: 0;
-      left: -75%;
-      width: 250vw;
+      left: 0;
+      width: 100vw;
       height: 100vh;
-      border-radius: 50%;
-      background: radial-gradient(rgba(255, 255, 255, 0.8) 0%, transparent 35%);
+      background: transparentize($md-white, 0.5);
       opacity: 0;
       animation: fadeIn 1s $timing-func-2 0.5s forwards;
       transform: scale(1.4);
