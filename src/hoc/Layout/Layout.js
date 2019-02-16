@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 import throttle from 'raf-throttle';
 import PropTypes from 'prop-types';
@@ -12,7 +12,7 @@ import Rf from '../../components/UI/Icon/Rf/Rf';
 import Drawer from '../../components/UI/Drawer/Drawer';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
 
-class Layout extends Component {
+class Layout extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
   };
@@ -67,62 +67,73 @@ class Layout extends Component {
     </React.Fragment>
   );
 
-  render() {
-    const goBackToTopBtnClasses = classnames({
-      [styles.BackToTopBtn]: true,
-      [styles.OnScreenY]: this.state.isShowBackToTopButton,
-    });
-
+  renderNavBar = () => {
     const navClasses = classnames({
       [styles.Nav]: true,
       [styles.White]:
         this.state.isShowBackToTopButton ||
         this.props.location.pathname === '/photo',
     });
-
     const nameClasses = classnames({
       [styles.Name]: true,
       [styles.Opacity100]:
         this.state.isShowBackToTopButton ||
         this.props.location.pathname === '/photo',
     });
+    return (
+      <div className={navClasses}>
+        <div className={nameClasses}>
+          <NavItem to="/" clear noActiveClass click={this.handleDrawerClose}>
+            Calvin Hu
+          </NavItem>
+        </div>
+        <div className={styles.NavLinksContainer}>
+          <div className={styles.NavLinks}>{this.navLinks}</div>
+          <div className={styles.DrawerToggle}>
+            <Button circle clear click={this.handleDrawerOpen}>
+              <Rf sm>menu</Rf>
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
-    const navLinks = this.createNavLinks();
+  renderNavDrawer = () => (
+    <React.Fragment>
+      <Drawer right isOpen={this.state.isDrawerOpen}>
+        <div className={styles.NavDrawerLinks}>{this.navLinks}</div>
+      </Drawer>
+      <Backdrop
+        isOpen={this.state.isDrawerOpen}
+        click={this.handleDrawerClose}
+        percent={this.state.percent}
+      />
+    </React.Fragment>
+  );
 
+  renderBackToTopButton = () => {
+    const goBackToTopBtnClasses = classnames({
+      [styles.BackToTopBtn]: true,
+      [styles.OnScreenY]: this.state.isShowBackToTopButton,
+    });
+    return (
+      <div className={goBackToTopBtnClasses}>
+        <Button circle adj click={this.handleScrollToTop}>
+          <Fa lg>fas fa-arrow-up</Fa>
+        </Button>
+      </div>
+    );
+  };
+
+  render() {
+    this.navLinks = this.createNavLinks();
     return (
       <div className={styles.Layout}>
-        <div className={navClasses}>
-          <div className={nameClasses}>
-            <NavItem to="/" clear noActiveClass click={this.handleDrawerClose}>
-              Calvin Hu
-            </NavItem>
-          </div>
-          <div className={styles.NavLinksContainer}>
-            <div className={styles.NavLinks}>{navLinks}</div>
-            <div className={styles.DrawerToggle}>
-              <Button circle clear click={this.handleDrawerOpen}>
-                <Rf sm>menu</Rf>
-              </Button>
-            </div>
-          </div>
-        </div>
-
-        <Drawer right isOpen={this.state.isDrawerOpen}>
-          <div className={styles.NavDrawerLinks}>{navLinks}</div>
-        </Drawer>
-        <Backdrop
-          isOpen={this.state.isDrawerOpen}
-          click={this.handleDrawerClose}
-          percent={this.state.percent}
-        />
-
+        {this.renderNavBar()}
+        {this.renderNavDrawer()}
         {this.props.children}
-
-        <div className={goBackToTopBtnClasses}>
-          <Button circle adj click={this.handleScrollToTop}>
-            <Fa lg>fas fa-arrow-up</Fa>
-          </Button>
-        </div>
+        {this.renderBackToTopButton()}
       </div>
     );
   }
