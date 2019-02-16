@@ -1,12 +1,8 @@
 import React from 'react';
 import throttle from 'raf-throttle';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import styles from './Cover.module.scss';
-import { PAGE } from '../../containers/Home/Home';
-import Button from '../UI/Button/Button';
-import Fa from '../UI/Icon/Fa/Fa';
 import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
 import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.jpg';
 import p2160 from '../../assets/images/DSC_9569-2160p35-blurred.jpg';
@@ -18,7 +14,7 @@ const DISPLACE_Y = 20;
 class Cover extends React.PureComponent {
   static propTypes = {
     offsetX: PropTypes.number.isRequired,
-    click: PropTypes.func.isRequired
+    click: PropTypes.func.isRequired,
   };
 
   state = {
@@ -26,12 +22,8 @@ class Cover extends React.PureComponent {
     y: 0,
     followX: 0,
     followY: 0,
-    isAnimating: false
+    isAnimating: false,
   };
-
-  clickWeb = () => this.props.click(PAGE.WEB);
-  clickAbout = () => this.props.click(PAGE.ABOUT);
-  clickResume = () => this.props.click(PAGE.RESUME);
 
   handleMouseMove = event => {
     if (event.movementX !== 0 || event.movementY !== 0)
@@ -68,7 +60,7 @@ class Cover extends React.PureComponent {
     this.setState(prevState => {
       return {
         x: prevState.x + (this.state.followX - prevState.x) * FRICTION,
-        y: prevState.y + (this.state.followY - prevState.y) * FRICTION
+        y: prevState.y + (this.state.followY - prevState.y) * FRICTION,
       };
     });
 
@@ -83,97 +75,36 @@ class Cover extends React.PureComponent {
     else this.setState({ isAnimating: false });
   };
 
+  renderBackground = () => (
+    <div
+      style={{
+        transform: `translate3d(${this.state.x + this.props.offsetX}px, ${
+          this.state.y
+        }px, 0px) scale3d(1.4,1.4,1.4)`,
+      }}
+      className={styles.Background}
+    >
+      <picture>
+        <source media="(min-width: 1440px)" srcSet={p1440} />
+        <source media="(min-width: 2160px)" srcSet={p2160} />
+        <img src={p1080} alt="me" />
+      </picture>
+      <div className={styles.LightenFilter} />
+    </div>
+  );
+
+  renderCoverContent = () => (
+    <div className={styles.Text}>
+      <h1>Calvin</h1>
+      <h1>Hu</h1>
+    </div>
+  );
+
   render() {
-    const lightenFilter = <div className={styles.LightenFilter} />;
-    const background = (
-      <div
-        style={{
-          transform: `translate3d(${this.state.x + this.props.offsetX}px, ${
-            this.state.y
-          }px, 0px) scale3d(1.4,1.4,1.4)`
-        }}
-        className={styles.Background}
-      >
-        <picture>
-          <source media="(min-width: 1440px)" srcSet={p1440} />
-          <source media="(min-width: 2160px)" srcSet={p2160} />
-          <img src={p1080} alt="me" />
-        </picture>
-        {lightenFilter}
-      </div>
-    );
-
-    const blurb = (
-      <div className={styles.Blurb}>
-        <h1>
-          Hi, I'm <span>Calvin Hu</span>.
-        </h1>
-        <p>I'm a web developer.</p>
-      </div>
-    );
-
-    const nav = (
-      <div className={styles.Nav}>
-        <div className={styles.PageLinks}>
-          <div className={styles.PageLink}>
-            <Button link click={this.clickAbout}>
-              ABOUT
-            </Button>
-          </div>
-          <div className={styles.PageLink}>
-            <Button link click={this.clickWeb}>
-              PORTFOLIO
-            </Button>
-          </div>
-          <div className={styles.PageLink}>
-            <Button link click={this.clickResume}>
-              RESUME
-            </Button>
-          </div>
-        </div>
-      </div>
-    );
-
-    const socialMedia = (
-      <div className={styles.SocialMedia}>
-        <a
-          href="https://www.linkedin.com/in/calvinyhu/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Fa twoX>fab fa-linkedin</Fa>
-        </a>
-        <a
-          href="https://www.github.com/calvinyhu/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Fa twoX>fab fa-github</Fa>
-        </a>
-        <Link to="/photo">
-          <Fa twoX>fas fa-camera-retro</Fa>
-        </Link>
-      </div>
-    );
-
-    const coverText = (
-      <div className={styles.CoverText}>
-        {blurb}
-        {nav}
-      </div>
-    );
-
-    const coverContent = (
-      <div className={styles.CoverContent}>
-        {coverText}
-        {socialMedia}
-      </div>
-    );
-
     return (
       <div className={styles.Cover} onMouseMove={this.handleMouseMove}>
-        {background}
-        {coverContent}
+        {this.renderBackground()}
+        {this.renderCoverContent()}
       </div>
     );
   }

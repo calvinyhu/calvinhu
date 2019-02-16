@@ -6,7 +6,7 @@
   width: 100%;
   min-height: 100%;
   position: relative;
-  background: $md-blue-gray;
+  background: $md-white;
   color: $md-white;
 
   h3,
@@ -79,6 +79,7 @@
   flex-flow: row wrap;
   width: 100%;
   position: relative;
+  padding-top: 3rem;
 
   .GalleryItem {
     width: 100%;

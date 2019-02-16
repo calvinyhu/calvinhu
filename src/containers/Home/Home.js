@@ -2,18 +2,9 @@ import React, { PureComponent } from 'react';
 import throttle from 'raf-throttle';
 
 import styles from './Home.module.scss';
+import milestones from '../../assets/milestones/milestones';
 import Cover from '../../components/Cover/Cover';
-import Projects from '../../components/Projects/Projects';
-import AsyncComponent from '../../hoc/AsyncComponent/AsyncComponent';
-const About = AsyncComponent(() => import('../../components/About/About'));
-const Resume = AsyncComponent(() => import('../../components/Resume/Resume'));
-
-export const PAGE = {
-  NONE: 0,
-  WEB: 1,
-  ABOUT: 2,
-  RESUME: 3
-};
+import Milestone from '../../components/Milestone/Milestone';
 
 class Home extends PureComponent {
   constructor(props) {
@@ -23,8 +14,7 @@ class Home extends PureComponent {
 
   state = {
     isClicked: false,
-    page: PAGE.ABOUT,
-    offsetX: 0
+    offsetX: 0,
   };
 
   componentDidMount() {
@@ -54,32 +44,26 @@ class Home extends PureComponent {
     if (this.homeRef.current) {
       window.scrollTo({
         top: this.homeRef.current.clientHeight,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   };
 
-  switchPage = newPage => {
-    switch (newPage) {
-      case PAGE.WEB:
-        return <Projects scrollIntoView={this.handleScrollToPage} />;
-      case PAGE.ABOUT:
-        return (
-          <About
-            isClicked={this.state.isClicked}
-            scrollIntoView={this.handleScrollToPage}
-          />
-        );
-      case PAGE.RESUME:
-        return <Resume scrollIntoView={this.handleScrollToPage} />;
-      default:
-        return null;
-    }
-  };
+  renderMilestones = () =>
+    Object.values(milestones).map(val => (
+      <Milestone
+        key={val.title}
+        alt={val.alt}
+        date={val.date}
+        description={val.description}
+        photo={val.photo}
+        title={val.title}
+        url={val.url}
+        urlTitle={val.urlTitle}
+      />
+    ));
 
   render() {
-    let page = this.switchPage(this.state.page);
-
     return (
       <div
         className={styles.Home}
@@ -87,7 +71,7 @@ class Home extends PureComponent {
         ref={this.homeRef}
       >
         <Cover click={this.handleClick} offsetX={this.state.offsetX} />
-        {page}
+        {this.renderMilestones()}
       </div>
     );
   }

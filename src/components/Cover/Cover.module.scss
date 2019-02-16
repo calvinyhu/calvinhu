@@ -10,157 +10,65 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: $md-blue-gray;
   color: $md-blue-gray;
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
   white-space: nowrap;
+}
 
-  .Background {
-    position: fixed;
+.Background {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  animation: fadeIn 1s $timing-func-2 0.5s forwards;
+
+  img {
+    display: block;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 17%;
+  }
+
+  .LightenFilter {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
     height: 100vh;
+    background: transparentize($md-white, 0.5);
     opacity: 0;
     animation: fadeIn 1s $timing-func-2 0.5s forwards;
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 17%;
-    }
-
-    .LightenFilter {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: transparentize($md-white, 0.5);
-      opacity: 0;
-      animation: fadeIn 1s $timing-func-2 0.5s forwards;
-      transform: scale(1.4);
-    }
+    transform: scale(1.4);
   }
 }
 
-.CoverContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.CoverText {
+.Text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  transition: $transition1;
-
-  @include media-min-width(65rem) {
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-}
-
-.Blurb {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: $margin * 2;
   user-select: none;
   opacity: 0;
   animation: fadeIn 1.5s $timing-func-1 1s forwards;
   transition: $transition2;
 
   @include media-min-width(65rem) {
-    margin-bottom: 0;
-  }
-
-  p {
-    font-size: $font-size;
-
-    @include media-min-width($desktop-width) {
-      font-size: $font-size * 1.5;
-    }
+    flex-direction: row;
   }
 
   h1 {
     text-align: center;
+    font-size: 18vw;
+    margin: 0;
 
-    @include media-min-width($desktop-width) {
-      font-size: $font-size * 4.5;
-    }
-
-    @include media-min-width(65rem) {
-      margin-bottom: 0;
-    }
-
-    span {
-      color: $dark-opp-color;
-    }
-  }
-}
-
-.Nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: $border-radius-card;
-  opacity: 0;
-  animation: fadeIn 1.5s $timing-func-1 1s forwards;
-  transition: $transition2;
-
-  @include media-min-width($desktop-width) {
-    align-items: flex-start;
-    margin-top: 0;
-  }
-
-  .PageLinks {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-
-  .PageLink {
-    margin: 0 $margin;
-
-    @include media-min-width($desktop-width) {
-      font-size: $font-size * 1.3;
-    }
-  }
-}
-
-.SocialMedia {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: $padding / 2;
-  border-bottom: 3px solid $md-blue-gray;
-  opacity: 0;
-  animation: fadeIn 1.5s $timing-func-1 1s forwards;
-
-  a {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: $margin;
-    text-decoration: none;
-    transition: $transition2;
-
-    &:hover {
-      transform: scale(1.2);
+    &:first-child {
+      @include media-min-width(65rem) {
+        margin-right: $margin * 4;
+      }
     }
   }
 }

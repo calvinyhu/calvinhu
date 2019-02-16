@@ -6,3 +6,64 @@
   width: 100%;
   height: 100vh;
 }
+
+.Nav {
+  width: 100%;
+  min-height: $height * 3;
+  padding: 0 $padding;
+  position: fixed;
+  z-index: 1;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: $transition3;
+}
+
+.Name {
+  opacity: 0;
+  font-size: $font-size * 1.2;
+  pointer-events: none;
+  transition: $transition3;
+}
+
+.Opacity100 {
+  opacity: 100;
+  pointer-events: all;
+}
+
+.NavLinksContainer {
+  display: flex;
+  align-items: center;
+}
+
+.NavLinks {
+  display: none;
+
+  @include media-min-width($desktop-width) {
+    display: flex;
+  }
+}
+
+.NavDrawerLinks {
+  background: $md-white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.White {
+  background: transparentize($md-white, 0.1);
+  box-shadow: $box-shadow;
+}
+
+.DrawerToggle {
+  display: block;
+  width: $fab-size-mini;
+  height: $fab-size-mini;
+
+  @include media-min-width($desktop-width) {
+    display: none;
+  }
+}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
 import throttle from 'raf-throttle';
 import classnames from 'classnames';
@@ -23,7 +22,7 @@ class Photography extends React.PureComponent {
     totalNumPhotos: totalNumPhotos,
     photos: photos,
     src: null,
-    hoverPhoto: null
+    hoverPhoto: null,
   };
 
   componentDidMount() {
@@ -50,7 +49,7 @@ class Photography extends React.PureComponent {
       document.body.offsetHeight,
       document.documentElement.offsetHeight,
       document.body.clientHeight,
-      document.documentElement.clientHeight
+      document.documentElement.clientHeight,
     );
 
     const isAtBottom = window.scrollY > scrollHeight - window.innerHeight * 1.3;
@@ -153,13 +152,13 @@ class Photography extends React.PureComponent {
         [styles.ImgContainer]: true,
         [styles.Hide]: true,
         [styles.Show]: this.state.isLoaded[id],
-        [styles.ImgContainerHover]: this.state.hoverPhoto === id
+        [styles.ImgContainerHover]: this.state.hoverPhoto === id,
       });
 
       const detailsClasses = classnames({
         [styles.Details]: true,
         [styles.DetailsHover]:
-          this.state.isLoaded[id] && this.state.hoverPhoto === id
+          this.state.isLoaded[id] && this.state.hoverPhoto === id,
       });
 
       galleryItems.push(
@@ -181,7 +180,7 @@ class Photography extends React.PureComponent {
               <h5>{this.state.photos[id].name}</h5>
             </div>
           </div>
-        </Fade>
+        </Fade>,
       );
     });
 
@@ -189,30 +188,6 @@ class Photography extends React.PureComponent {
   };
 
   render() {
-    const navClasses = classnames({
-      [styles.Nav]: true,
-      [styles.Hide]: true,
-      [styles.FadeIn]: true
-    });
-    const nav = (
-      <div className={navClasses}>
-        <div className={styles.Logo}>
-          <h3>Calvin Hu</h3>
-        </div>
-        <NavLink className={styles.NavLink} to="/">
-          Home
-        </NavLink>
-      </div>
-    );
-
-    const blurb = (
-      <div className={styles.Blurb}>
-        <Fade>
-          <p>Enjoy some of my best images since 2013!</p>
-        </Fade>
-      </div>
-    );
-
     const galleryItems = this.renderPhotos();
     const gallery = (
       <div className={styles.Gallery} onMouseLeave={this.handleMouseLeave}>
@@ -223,7 +198,7 @@ class Photography extends React.PureComponent {
     const cardClasses = classnames({
       card: true,
       [styles.Card]: true,
-      [styles.CardShow]: this.state.isExpandPhoto
+      [styles.CardShow]: this.state.isExpandPhoto,
     });
     const card = (
       <div className={cardClasses} onClick={this.handleClose}>
@@ -242,7 +217,7 @@ class Photography extends React.PureComponent {
 
     const touchAppClasses = classnames({
       [styles.TouchApp]: true,
-      [styles.HideTouchApp]: this.state.isHideTouchApp
+      [styles.HideTouchApp]: this.state.isHideTouchApp,
     });
     const touchAppIcon = (
       <div className={touchAppClasses}>
@@ -256,8 +231,6 @@ class Photography extends React.PureComponent {
 
     return (
       <div className={styles.PhotographyContainer}>
-        {nav}
-        {blurb}
         {gallery}
         {card}
         {loader}

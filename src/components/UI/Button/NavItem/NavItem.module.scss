@@ -1,0 +1,78 @@
+@import './src/assets/scss/_variables.scss';
+
+.NavItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 $padding;
+  min-width: 6rem;
+  height: 3rem;
+  transition: $transition1;
+
+  svg {
+    margin-right: $margin * 2;
+  }
+}
+
+.Bold {
+  font-weight: bold;
+}
+
+.Link {
+  color: $md-blue-gray;
+  min-width: 0;
+  height: auto;
+  padding: 0;
+  margin: 0;
+
+  &:hover {
+    color: $md-blue-gray;
+    text-decoration: none;
+  }
+}
+
+.LinkTouchHover {
+  transition: none;
+
+  &:hover {
+    color: $md-blue-gray;
+    text-decoration: underline;
+  }
+}
+
+.LinkMouseHover {
+  &:hover {
+    color: $md-blue-gray;
+    text-decoration: underline;
+  }
+}
+
+.Clear {
+  color: $md-blue-gray;
+
+  &:hover {
+    color: $md-blue-gray;
+    text-decoration: none;
+  }
+}
+
+.ClearTouchHover {
+  transition: none;
+  background: transparentize($md-blue-gray, 0.93);
+}
+
+.ClearMouseHover {
+  background: transparentize($md-blue-gray, 0.93);
+}
+
+.BorderMain {
+  border: 1px solid $md-blue-gray;
+}
+
+.Tall {
+  height: 5rem;
+}
+
+.Active {
+  background: transparentize($md-blue-gray, 0.93);
+}
