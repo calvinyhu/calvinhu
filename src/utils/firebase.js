@@ -10,14 +10,10 @@ const config = {
   databaseURL: 'https://calvin-hu.firebaseio.com',
   projectId: 'calvin-hu',
   storageBucket: 'calvin-hu.appspot.com',
-  messagingSenderId: '700642530154'
+  messagingSenderId: '700642530154',
 };
 
 firebase.initializeApp(config);
 
 export const firestore = firebase.firestore();
-
-const settings = { /* your settings... */ timestampsInSnapshots: true };
-firestore.settings(settings);
-
 export const storage = firebase.storage();
