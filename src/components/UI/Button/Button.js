@@ -10,8 +10,9 @@ class Button extends PureComponent {
     circle: PropTypes.bool,
     adj: PropTypes.bool,
     opp: PropTypes.bool,
+    blueGray: PropTypes.bool,
     click: PropTypes.func,
-    children: PropTypes.any
+    children: PropTypes.any,
   };
 
   isTouched = false;
@@ -19,7 +20,7 @@ class Button extends PureComponent {
 
   state = {
     isMouse: false,
-    isTouch: false
+    isTouch: false,
   };
 
   handleTouchStart = event => {
@@ -59,6 +60,7 @@ class Button extends PureComponent {
       [styles.Circle]: this.props.circle,
       [styles.Adj]: this.props.adj,
       [styles.Opp]: this.props.opp,
+      [styles.BlueGray]: this.props.blueGray,
       [styles.ClearTouchHover]: this.state.isTouch && this.props.clear,
       [styles.LinkTouchHover]: this.state.isTouch && this.props.link,
       [styles.AdjTouchHover]: this.state.isTouch && this.props.adj,
@@ -66,7 +68,7 @@ class Button extends PureComponent {
       [styles.ClearMouseHover]: this.state.isMouse && this.props.clear,
       [styles.LinkMouseHover]: this.state.isMouse && this.props.link,
       [styles.AdjMouseHover]: this.state.isMouse && this.props.adj,
-      [styles.OppMouseHover]: this.state.isMouse && this.props.opp
+      [styles.OppMouseHover]: this.state.isMouse && this.props.opp,
     });
 
     return (

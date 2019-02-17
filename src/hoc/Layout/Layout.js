@@ -119,8 +119,10 @@ class Layout extends React.Component {
     });
     return (
       <div className={goBackToTopBtnClasses}>
-        <Button circle adj click={this.handleScrollToTop}>
-          <Fa lg>fas fa-arrow-up</Fa>
+        <Button circle blueGray click={this.handleScrollToTop}>
+          <Fa white lg>
+            fas fa-arrow-up
+          </Fa>
         </Button>
       </div>
     );
