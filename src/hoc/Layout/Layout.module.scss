@@ -10,7 +10,6 @@
 .Nav {
   width: 100%;
   min-height: $height * 3;
-  padding: 0 $padding;
   position: fixed;
   z-index: 1;
   background: transparent;
@@ -28,7 +27,7 @@
   white-space: nowrap;
 }
 
-.Opacity100 {
+.Clickable {
   opacity: 100;
   pointer-events: all;
 }
@@ -63,6 +62,7 @@
   display: block;
   width: $fab-size-mini;
   height: $fab-size-mini;
+  margin: 0 $margin-tiny * 2;
 
   @include media-min-width($desktop-width) {
     display: none;

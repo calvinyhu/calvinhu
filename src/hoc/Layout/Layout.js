@@ -72,13 +72,13 @@ class Layout extends React.Component {
       [styles.Nav]: true,
       [styles.White]:
         this.state.isShowBackToTopButton ||
-        this.props.location.pathname === '/photo',
+        this.props.location.pathname !== '/',
     });
     const nameClasses = classnames({
       [styles.Name]: true,
-      [styles.Opacity100]:
+      [styles.Clickable]:
         this.state.isShowBackToTopButton ||
-        this.props.location.pathname === '/photo',
+        this.props.location.pathname !== '/',
     });
     return (
       <div className={navClasses}>

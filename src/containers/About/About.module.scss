@@ -1,0 +1,47 @@
+@import './src/assets/scss/_variables.scss';
+
+.About {
+  width: 100%;
+  min-height: 100%;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ProfilePictureContainer {
+  margin: $margin * 2;
+
+  img {
+    width: 100%;
+    max-width: 20rem;
+    border-radius: 50%;
+  }
+}
+
+.Description {
+  margin: $margin;
+  max-width: 25rem;
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.SocialMedia {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 25rem;
+  margin: $margin * 2;
+
+  a {
+    transition: $transition3;
+
+    &:hover {
+      text-decoration: none;
+      transform: scale(1.2);
+    }
+  }
+}
