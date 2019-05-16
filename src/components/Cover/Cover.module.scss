@@ -43,6 +43,7 @@
     opacity: 0;
     animation: fadeIn 1s $timing-func-2 0.5s forwards;
     transform: scale(1.4);
+    user-select: none;
   }
 }
 

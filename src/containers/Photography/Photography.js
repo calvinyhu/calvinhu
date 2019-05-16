@@ -4,6 +4,7 @@ import throttle from 'raf-throttle';
 import classnames from 'classnames';
 
 import styles from './Photography.module.scss';
+import Gallery from '../../components/Gallery/Gallery';
 import Fa from '../../components/UI/Icon/Fa/Fa';
 import { firestore, storage } from '../../utils/firebase';
 
@@ -15,14 +16,10 @@ class Photography extends React.PureComponent {
   isAlive = false;
 
   state = {
-    isLoaded: {},
-    isExpandPhoto: false,
     isHideTouchApp: false,
     numPhotos: 10,
-    totalNumPhotos: totalNumPhotos,
     photos: photos,
-    src: null,
-    hoverPhoto: null,
+    totalNumPhotos: totalNumPhotos,
   };
 
   componentDidMount() {
@@ -98,114 +95,7 @@ class Photography extends React.PureComponent {
     return Promise.all(urlPromises).then(urls => urls);
   };
 
-  loadHandlers = {};
-  getLoadHandler = photoId => {
-    if (!this.loadHandlers[photoId]) {
-      this.loadHandlers[photoId] = () => {
-        const isLoaded = { ...this.state.isLoaded };
-        isLoaded[photoId] = true;
-        this.setState({ isLoaded });
-      };
-    }
-    return this.loadHandlers[photoId];
-  };
-
-  hoverHandlers = {};
-  getHoverHandler = photoId => {
-    if (!this.hoverHandlers[photoId]) {
-      this.hoverHandlers[photoId] = () => {
-        if (this.state.hoverPhoto !== photoId)
-          this.setState({ hoverPhoto: photoId });
-      };
-    }
-    return this.hoverHandlers[photoId];
-  };
-
-  openHandlers = {};
-  getOpenHandler = (id, src) => {
-    if (!this.openHandlers[id]) {
-      this.openHandlers[id] = () => {
-        if (!this.state.isLoaded[id]) return;
-        this.setState({ isExpandPhoto: true, src: src });
-      };
-    }
-    return this.openHandlers[id];
-  };
-
-  handleMouseLeave = () => this.setState({ hoverPhoto: null });
-  handleClose = () => this.setState({ isExpandPhoto: false, src: null });
-
-  renderPhotos = () => {
-    if (!this.state.photos) return null;
-
-    const galleryItems = [];
-    const photoLoader = (
-      <div className={styles.PhotoLoaderContainer}>
-        <div className={styles.Loader} />
-      </div>
-    );
-    const photoIds = Object.keys(this.state.photos);
-    photoIds.forEach((id, index) => {
-      if (index + 1 > this.state.numPhotos) return;
-
-      const imgContainerClasses = classnames({
-        [styles.ImgContainer]: true,
-        [styles.Hide]: true,
-        [styles.Show]: this.state.isLoaded[id],
-        [styles.ImgContainerHover]: this.state.hoverPhoto === id,
-      });
-
-      const detailsClasses = classnames({
-        [styles.Details]: true,
-        [styles.DetailsHover]:
-          this.state.isLoaded[id] && this.state.hoverPhoto === id,
-      });
-
-      galleryItems.push(
-        <Fade key={id}>
-          <div
-            className={styles.GalleryItem}
-            onMouseOver={this.getHoverHandler(id)}
-            onClick={this.getOpenHandler(id, this.state.photos[id].url)}
-          >
-            {this.state.isLoaded[id] ? null : photoLoader}
-            <div className={imgContainerClasses}>
-              <img
-                onLoad={this.getLoadHandler(id)}
-                src={this.state.photos[id].url}
-                alt="calvinhu"
-              />
-            </div>
-            <div className={detailsClasses}>
-              <h5>{this.state.photos[id].name}</h5>
-            </div>
-          </div>
-        </Fade>,
-      );
-    });
-
-    return galleryItems;
-  };
-
   render() {
-    const galleryItems = this.renderPhotos();
-    const gallery = (
-      <div className={styles.Gallery} onMouseLeave={this.handleMouseLeave}>
-        {galleryItems}
-      </div>
-    );
-
-    const cardClasses = classnames({
-      card: true,
-      [styles.Card]: true,
-      [styles.CardShow]: this.state.isExpandPhoto,
-    });
-    const card = (
-      <div className={cardClasses} onClick={this.handleClose}>
-        <img className="card-img-top" src={this.state.src} alt="calvinhu" />
-      </div>
-    );
-
     let loader = null;
     if (!this.state.photos) {
       loader = (
@@ -222,17 +112,14 @@ class Photography extends React.PureComponent {
     const touchAppIcon = (
       <div className={touchAppClasses}>
         <Fade>
-          <Fa lg white>
-            fas fa-hand-point-up
-          </Fa>
+          <Fa lg>fas fa-hand-point-up</Fa>
         </Fade>
       </div>
     );
 
     return (
       <div className={styles.PhotographyContainer}>
-        {gallery}
-        {card}
+        <Gallery numPhotos={this.state.numPhotos} photos={this.state.photos} />
         {loader}
         {touchAppIcon}
       </div>

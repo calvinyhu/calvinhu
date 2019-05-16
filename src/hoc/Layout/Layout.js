@@ -18,6 +18,7 @@ class Layout extends React.Component {
   };
 
   state = {
+    isBackToTopButtonClicked: false,
     isShowBackToTopButton: false,
     isDrawerOpen: false,
     percent: 0,
@@ -37,12 +38,18 @@ class Layout extends React.Component {
 
   animatePage = (scrollTop, clientHeight) => {
     if (this.state.isShowBackToTopButton && scrollTop < clientHeight)
-      this.setState({ isShowBackToTopButton: false });
+      this.setState({
+        isShowBackToTopButton: false,
+        isBackToTopButtonClicked: false,
+      });
     if (!this.state.isShowBackToTopButton && scrollTop >= clientHeight)
       this.setState({ isShowBackToTopButton: true });
   };
 
-  handleScrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.setState({ isBackToTopButtonClicked: true });
+  };
 
   handleDrawerOpen = () =>
     this.setState({
@@ -58,6 +65,9 @@ class Layout extends React.Component {
 
   createNavLinks = () => (
     <React.Fragment>
+      <NavItem to="/" clear click={this.handleDrawerClose}>
+        Home
+      </NavItem>
       <NavItem to="/photo" clear click={this.handleDrawerClose}>
         Photography
       </NavItem>
@@ -115,7 +125,9 @@ class Layout extends React.Component {
   renderBackToTopButton = () => {
     const goBackToTopBtnClasses = classnames({
       [styles.BackToTopBtn]: true,
-      [styles.OnScreenY]: this.state.isShowBackToTopButton,
+      [styles.OnScreenY]:
+        this.state.isShowBackToTopButton &&
+        !this.state.isBackToTopButtonClicked,
     });
     return (
       <div className={goBackToTopBtnClasses}>

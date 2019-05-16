@@ -14,6 +14,20 @@
   align-items: center;
   padding: $padding;
 
+  &:after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+    height: 0.2rem;
+    width: 80%;
+    border-bottom: 0.2rem solid transparentize($md-blue-gray, 0.93);
+  }
+
+  &:last-child:after {
+    border-bottom: none;
+  }
+
   @include media-min-width($desktop-width) {
     flex-direction: row;
     justify-content: space-around;
