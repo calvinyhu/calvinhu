@@ -11,6 +11,7 @@ import Fa from '../../components/UI/Icon/Fa/Fa';
 import Rf from '../../components/UI/Icon/Rf/Rf';
 import Drawer from '../../components/UI/Drawer/Drawer';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
+import SplitButton from '../../components/UI/SplitButton/SplitButton';
 
 class Layout extends React.Component {
   static propTypes = {

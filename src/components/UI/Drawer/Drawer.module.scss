@@ -4,7 +4,8 @@
 .LeftDrawer,
 .RightDrawer {
   height: 100%;
-  width: 80%;
+  width: 66%;
+  min-width: 10rem;
   max-width: 25rem;
   position: fixed;
   top: 0;
