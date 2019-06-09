@@ -54,7 +54,7 @@
 .Text {
   display: flex;
   flex-direction: column;
-  margin-bottom: $margin * 8;
+  margin-bottom: 10vmin;
 
   @include media-min-width(65rem) {
     flex-direction: row;
@@ -62,11 +62,11 @@
 
   h1 {
     text-align: center;
-    font-size: 18vw;
+    font-size: 18vmin;
     margin: 0;
 
     @include media-min-width(65rem) {
-      font-size: 12rem;
+      font-size: 20vmin;
     }
 
     &:first-child {
@@ -78,8 +78,6 @@
 }
 
 .Icon {
-  position: absolute;
-  bottom: $margin * 6;
   height: $fab-size-mini;
   width: $fab-size-mini;
 }

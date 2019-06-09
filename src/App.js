@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 
 const About = lazy(() => import('./routes/About/About'));
+const Order = lazy(() => import('./routes/Order/Order'));
 const Photography = lazy(() => import('./routes/Photography/Photography'));
 const Home = lazy(() => import('./routes/Home/Home'));
 
@@ -14,6 +15,7 @@ class App extends Component {
         <Suspense fallback={<div />}>
           <Switch>
             <Route exact path={'/about'} component={About} />
+            {/* <Route exact path={'/order'} component={Order} /> */}
             <Route exact path={'/photo'} component={Photography} />
             <Route exact path={'/'} component={Home} />
 
