@@ -11,7 +11,7 @@ const milestones = {
     photo: invitae_logo,
     title: 'Invitae',
     url: 'https://www.invitae.com/',
-    urlTitle: 'Learn more',
+    urlTitle: 'Learn about Invitae',
   },
   shmack: {
     alt: 'Shmack',

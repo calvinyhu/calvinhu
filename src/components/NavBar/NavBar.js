@@ -51,7 +51,7 @@ const NavBar = props => {
           {props.navLinks}
         </div>
         <div className={styles.DrawerToggle}>
-          <Button circle clear click={props.handleDrawerOpen}>
+          <Button circle clear click={props.handleDrawerOpen} name="menu">
             <Fa>fas fa-stream</Fa>
           </Button>
         </div>
