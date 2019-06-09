@@ -75,7 +75,7 @@ const Layout = ({ location: { pathname }, children }) => {
     });
     return (
       <div className={goBackToTopBtnClasses}>
-        <Button circle blueGray click={handleScrollToTop} name="Back To Top">
+        <Button circle blueGray ariaLabel="Go To Top" click={handleScrollToTop}>
           <Fa white lg>
             fas fa-arrow-up
           </Fa>
