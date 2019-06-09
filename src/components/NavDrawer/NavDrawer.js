@@ -9,7 +9,9 @@ import styles from './NavDrawer.module.scss';
 const NavDrawer = ({ handleDrawerClose, isDrawerOpen, navLinks, percent }) => (
   <React.Fragment>
     <Drawer right isOpen={isDrawerOpen}>
-      <div className={styles.NavDrawerLinks}>{navLinks}</div>
+      <div className={styles.NavDrawerInner}>
+        <div className={styles.NavDrawerLinksContainer}>{navLinks}</div>
+      </div>
     </Drawer>
     <Backdrop
       isOpen={isDrawerOpen}

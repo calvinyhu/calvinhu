@@ -30,7 +30,7 @@
   opacity: 0;
   font-size: $font-size * 1.2;
   pointer-events: none;
-  transition: $transition3;
+  transition: $transition1;
   white-space: nowrap;
   height: 100%;
 }
@@ -47,14 +47,7 @@
 }
 
 .NavLinks {
-  display: none;
-  opacity: 0;
   height: 100%;
-  animation: fadeIn 1.5s $timing-func-1 1s forwards;
-
-  @include media-min-width($desktop-width) {
-    display: flex;
-  }
 }
 
 .DrawerToggle {

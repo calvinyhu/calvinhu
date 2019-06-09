@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import Fade from 'react-reveal/Fade';
+import Reveal from 'react-reveal/Reveal';
 
 import styles from './GalleryItem.module.scss';
 
@@ -19,7 +19,7 @@ const GalleryItem = props => {
   });
 
   return (
-    <Fade>
+    <Reveal effect={styles.FadeIn}>
       <div
         className={styles.GalleryItem}
         onMouseOver={props.getHoverHandler(props.id)}
@@ -34,7 +34,7 @@ const GalleryItem = props => {
           />
         </div>
       </div>
-    </Fade>
+    </Reveal>
   );
 };
 

@@ -2,10 +2,16 @@
 @import './src/styles/_mixins.scss';
 @import './src/styles/_classes.scss';
 
-.NavDrawerLinks {
+.NavDrawerInner {
   background: $md-white;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.NavDrawerLinksContainer {
+  display: flex;
+  flex-direction: column;
+  height: $height * 8;
 }

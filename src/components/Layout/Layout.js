@@ -64,7 +64,7 @@ const Layout = ({ location: { pathname }, children }) => {
   );
 
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0 });
     setIsBackToTopButtonClicked(true);
   };
 
@@ -87,6 +87,7 @@ const Layout = ({ location: { pathname }, children }) => {
   return (
     <div className={styles.Layout}>
       <NavBar
+        isBackToTopButtonClicked={isBackToTopButtonClicked}
         isShowBackToTopButton={isShowBackToTopButton}
         handleDrawerClose={getDrawerToggle(false)}
         handleDrawerOpen={getDrawerToggle(true)}
@@ -99,7 +100,7 @@ const Layout = ({ location: { pathname }, children }) => {
         navLinks={navLinks}
         percent={percent}
       />
-      {children}
+      <div className={styles.LayoutInner}>{children}</div>
       {renderBackToTopButton()}
     </div>
   );

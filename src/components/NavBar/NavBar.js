@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -9,15 +9,37 @@ import Rf from '../UI/Icon/Rf/Rf';
 import styles from './NavBar.module.scss';
 
 const NavBar = props => {
+  const [width, setWidth] = useState(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+
+    const event = 'resize';
+    window.addEventListener(event, handleResize);
+
+    return () => {
+      window.removeEventListener(event, handleResize);
+    };
+  }, [width]);
+
+  console.log(props.isShowBackToTopButton);
+
   const navClasses = classnames({
     [styles.Nav]: true,
-    [styles.White]: props.isShowBackToTopButton || props.pathname !== '/',
+    [styles.White]:
+      (!props.isBackToTopButtonClicked && props.isShowBackToTopButton) ||
+      props.pathname !== '/',
   });
 
   const nameClasses = classnames({
     [styles.Name]: true,
-    [styles.Clickable]: props.isShowBackToTopButton || props.pathname !== '/',
+    [styles.Clickable]:
+      (!props.isBackToTopButtonClicked && props.isShowBackToTopButton) ||
+      props.pathname !== '/',
   });
+
+  const style = {
+    display: width < 640 ? 'none' : 'flex',
+  };
 
   return (
     <div className={navClasses}>
@@ -27,7 +49,9 @@ const NavBar = props => {
         </NavItem>
       </div>
       <div className={styles.NavLinksContainer}>
-        <div className={styles.NavLinks}>{props.navLinks}</div>
+        <div style={style} className={styles.NavLinks}>
+          {props.navLinks}
+        </div>
         <div className={styles.DrawerToggle}>
           <Button circle clear click={props.handleDrawerOpen}>
             <Rf sm>menu</Rf>
