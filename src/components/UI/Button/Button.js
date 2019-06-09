@@ -75,7 +75,7 @@ class Button extends PureComponent {
       <button
         id={this.props.id}
         className={buttonClasses}
-        ariaLabel={this.props.ariaLabel}
+        aria-label={this.props.ariaLabel}
         name={this.props.name}
         disabled={this.props.disabled}
         onTouchStart={this.handleTouchStart}
