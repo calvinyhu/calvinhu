@@ -17,9 +17,6 @@ const Layout = ({ location: { pathname }, children }) => {
     false,
   );
   const [isShowBackToTopButton, setIsShowBackToTopButton] = useState(false);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [percent, setPercent] = useState(0);
-
   useEffect(() => {
     const animatePage = (scrollTop, clientHeight) => {
       if (isShowBackToTopButton && scrollTop < clientHeight) {
@@ -34,12 +31,16 @@ const Layout = ({ location: { pathname }, children }) => {
       throttle(animatePage(window.scrollY, window.innerHeight));
     };
 
-    window.addEventListener('scroll', handleScroll);
+    const event = 'scroll';
+    window.addEventListener(event, handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener(event, handleScroll);
     };
   });
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [percent, setPercent] = useState(0);
 
   const drawerToggles = {};
   const getDrawerToggle = isOpen => {

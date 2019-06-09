@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect, useState } from 'react';
 import throttle from 'raf-throttle';
 
 import styles from './Home.module.scss';
@@ -6,50 +6,27 @@ import milestones from '../../assets/milestones/milestones';
 import Cover from '../../components/Cover/Cover';
 import Milestone from '../../components/Milestone/Milestone';
 
-class Home extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.homeRef = React.createRef();
-  }
+const Home = () => {
+  const [offsetX, setOffsetX] = useState(0);
 
-  state = {
-    isClicked: false,
-    offsetX: 0,
-  };
+  useEffect(() => {
+    const animatePage = (scrollTop, clientHeight) => {
+      if (scrollTop < clientHeight) setOffsetX(-scrollTop / 10);
+    };
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
+    const handleScroll = () => {
+      throttle(animatePage(window.scrollY, window.innerHeight));
+    };
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
+    const event = 'scroll';
+    window.addEventListener(event, handleScroll);
 
-  handleClick = page => {
-    if (!this.state.isClicked) this.setState({ isClicked: true });
+    return () => {
+      window.removeEventListener(event, handleScroll);
+    };
+  });
 
-    if (this.state.page !== page) this.setState({ page: page });
-    else this.handleScrollToPage();
-  };
-
-  handleScroll = () => {
-    throttle(this.animatePage(window.scrollY, window.innerHeight));
-  };
-
-  animatePage = (scrollTop, clientHeight) => {
-    if (scrollTop < clientHeight) this.setState({ offsetX: -scrollTop / 10 });
-  };
-
-  handleScrollToPage = () => {
-    if (this.homeRef.current) {
-      window.scrollTo({
-        top: this.homeRef.current.clientHeight,
-        behavior: 'smooth',
-      });
-    }
-  };
-
-  renderMilestones = () =>
+  const renderMilestones = () =>
     Object.values(milestones).map(val => (
       <Milestone
         key={val.title}
@@ -63,18 +40,12 @@ class Home extends PureComponent {
       />
     ));
 
-  render() {
-    return (
-      <div
-        className={styles.Home}
-        onScroll={this.handleScroll}
-        ref={this.homeRef}
-      >
-        <Cover click={this.handleClick} offsetX={this.state.offsetX} />
-        {this.renderMilestones()}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={styles.Home}>
+      <Cover offsetX={offsetX} />
+      {renderMilestones()}
+    </div>
+  );
+};
 
 export default Home;

@@ -14,7 +14,6 @@ const DISPLACE_Y = 20;
 class Cover extends React.PureComponent {
   static propTypes = {
     offsetX: PropTypes.number.isRequired,
-    click: PropTypes.func.isRequired,
   };
 
   state = {
