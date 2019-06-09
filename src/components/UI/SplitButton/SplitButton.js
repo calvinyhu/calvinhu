@@ -1,39 +1,60 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
-class SplitButton extends Component {
-  render() {
-    return (
-      <div class="btn-group">
-        <button type="button" class="btn btn-danger">
-          Action
-        </button>
-        <button
-          type="button"
-          class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">
-            Action
+const SplitButton = props => {
+  const [isShowDropdown, setIsShowDropdown] = useState(false);
+
+  const handleDropdownClick = _ => setIsShowDropdown(!isShowDropdown);
+
+  const btnGroupClasses = classnames({
+    ['btn-group']: true,
+    ['show']: isShowDropdown,
+  });
+
+  const dropdownMenuClasses = classnames({
+    ['dropdown-menu']: true,
+    ['show']: isShowDropdown,
+  });
+
+  return (
+    <div class={btnGroupClasses}>
+      <button
+        type="button"
+        class="btn btn-danger"
+        onClick={props.handleMainAction}
+      >
+        Action
+      </button>
+      <button
+        type="button"
+        class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded={isShowDropdown}
+        onClick={handleDropdownClick}
+      >
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class={dropdownMenuClasses}>
+        {props.options.map(option => (
+          <a
+            href={option.href}
+            class="btn btn-link"
+            role="button"
+            aria-pressed="true"
+          >
+            {option.label}
           </a>
-          <a class="dropdown-item" href="#">
-            Another action
-          </a>
-          <a class="dropdown-item" href="#">
-            Something else here
-          </a>
-          <div class="dropdown-divider" />
-          <a class="dropdown-item" href="#">
-            Separated link
-          </a>
-        </div>
+        ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+SplitButton.propTypes = {
+  handleMainAction: PropTypes.func.isRequired,
+  options: PropTypes.array.isRequired,
+};
 
 export default SplitButton;
