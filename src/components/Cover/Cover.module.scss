@@ -49,14 +49,16 @@
   user-select: none;
   transition: $transition1;
   z-index: 0;
+}
+
+.Text {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: $margin * 8;
 
   @include media-min-width(65rem) {
     flex-direction: row;
   }
-}
-
-.Text {
-  margin-bottom: $margin * 4;
 
   h1 {
     text-align: center;
