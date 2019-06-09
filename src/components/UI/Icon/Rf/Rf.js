@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+
+import ChevronDown from 'react-feather/dist/icons/chevron-down';
 import Menu from 'react-feather/dist/icons/menu';
 
 import styles from './Rf.module.scss';
@@ -19,6 +21,8 @@ const Rf = props => {
   });
 
   switch (props.children) {
+    case 'chevron-down':
+      return <ChevronDown className={iconClasses} />;
     case 'menu':
       return <Menu className={iconClasses} />;
     default:

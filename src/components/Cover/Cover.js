@@ -2,6 +2,8 @@ import React from 'react';
 import throttle from 'raf-throttle';
 import PropTypes from 'prop-types';
 
+import Rf from '../UI/Icon/Rf/Rf';
+
 import styles from './Cover.module.scss';
 import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
 import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.jpg';
@@ -93,9 +95,14 @@ class Cover extends React.PureComponent {
   );
 
   renderCoverContent = () => (
-    <div className={styles.Text}>
-      <h1>Calvin</h1>
-      <h1>Hu</h1>
+    <div className={styles.CoverContent}>
+      <div className={styles.Text}>
+        <h1>Calvin</h1>
+        <h1>Hu</h1>
+      </div>
+      <div className={styles.Icon}>
+        <Rf>chevron-down</Rf>
+      </div>
     </div>
   );
 

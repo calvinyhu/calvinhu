@@ -41,7 +41,7 @@
   }
 }
 
-.Text {
+.CoverContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,6 +53,10 @@
   @include media-min-width(65rem) {
     flex-direction: row;
   }
+}
+
+.Text {
+  margin-bottom: $margin * 4;
 
   h1 {
     text-align: center;
@@ -69,4 +73,9 @@
       }
     }
   }
+}
+
+.Icon {
+  position: absolute;
+  bottom: $margin * 6;
 }
