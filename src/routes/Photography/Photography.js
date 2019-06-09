@@ -94,8 +94,12 @@ const Photography = () => {
   });
 
   useEffect(() => {
+    const currentPath = window.location.pathname;
     return () => {
-      if (window.pageYOffset) window.scrollTo({ top: 0 });
+      const nextPath = window.location.pathname;
+      if (nextPath !== currentPath && window.pageYOffset) {
+        window.scrollTo({ top: 0 });
+      }
     };
   });
 
