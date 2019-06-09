@@ -11,7 +11,8 @@ class Button extends PureComponent {
     adj: PropTypes.bool,
     opp: PropTypes.bool,
     blueGray: PropTypes.bool,
-    click: PropTypes.func,
+    click: PropTypes.func.isRequired,
+    ariaLabel: PropTypes.string.isRequired,
     children: PropTypes.any,
   };
 
