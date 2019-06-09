@@ -1,0 +1,14 @@
+@import './src/styles/_variables.scss';
+
+.Fa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 1.5rem;
+  min-width: 1.5rem;
+  color: $md-blue-gray;
+}
+
+.White {
+  color: $md-white;
+}
