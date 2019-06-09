@@ -3,6 +3,7 @@ import throttle from 'raf-throttle';
 import PropTypes from 'prop-types';
 
 import Fa from '../UI/Fa/Fa';
+import Button from '../UI/Button/Button';
 
 import styles from './Cover.module.scss';
 import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
@@ -76,6 +77,10 @@ class Cover extends React.PureComponent {
     else this.setState({ isAnimating: false });
   };
 
+  handleScrollDown = () => {
+    window.scrollTo({ top: window.innerHeight });
+  };
+
   renderBackground = () => (
     <div
       style={{
@@ -101,7 +106,14 @@ class Cover extends React.PureComponent {
         <h1>Hu</h1>
       </div>
       <div className={styles.Icon}>
-        <Fa lg>fas fa-angle-down</Fa>
+        <Button
+          circle
+          clear
+          click={this.handleScrollDown}
+          ariaLabel="Scroll Down"
+        >
+          <Fa lg>fas fa-angle-down</Fa>
+        </Button>
       </div>
     </div>
   );
