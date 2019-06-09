@@ -66,6 +66,10 @@
     font-size: 18vw;
     margin: 0;
 
+    @include media-min-width(65rem) {
+      font-size: 12rem;
+    }
+
     &:first-child {
       @include media-min-width(65rem) {
         margin-right: $margin * 4;
