@@ -6,7 +6,7 @@ import classnames from 'classnames';
 
 import Button from '../UI/Button/Button';
 import NavItem from '../UI/Button/NavItem/NavItem';
-import Fa from '../UI/Icon/Fa/Fa';
+import Fa from '../UI/Fa/Fa';
 import NavBar from '../NavBar/NavBar';
 import NavDrawer from '../NavDrawer/NavDrawer';
 

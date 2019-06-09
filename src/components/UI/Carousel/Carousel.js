@@ -4,19 +4,19 @@ import classnames from 'classnames';
 
 import styles from './Carousel.module.scss';
 import Button from '../UI/Button/Button';
-import Fa from '../UI/Icon/Fa/Fa';
+import Fa from '../UI/Fa/Fa';
 
 class Carousel extends Component {
   static propTypes = {
-    items: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired,
   };
 
   static defaultProps = {
-    items: []
+    items: [],
   };
 
   state = {
-    item: 0
+    item: 0,
   };
 
   handleLeftClick = () => {
@@ -53,17 +53,17 @@ class Carousel extends Component {
       this.props.items.forEach((item, index) => {
         const carouselItemClasses = classnames({
           [styles.CarouselItem]: true,
-          [styles.ObjectPosition25Center]: index === 1
+          [styles.ObjectPosition25Center]: index === 1,
         });
         carouselItems.push(
           <div key={index} className={carouselItemClasses}>
             <img src={item} alt="item" />
-          </div>
+          </div>,
         );
 
         const carouselIndicatorClasses = classnames({
           [styles.CarouselIndicator]: true,
-          [styles.ActiveIndicator]: index === -this.state.item
+          [styles.ActiveIndicator]: index === -this.state.item,
         });
         carouselIndicators.push(
           <div
@@ -72,13 +72,13 @@ class Carousel extends Component {
             onClick={this.getIndicatorClickHandler(index)}
           >
             <div className={carouselIndicatorClasses} />
-          </div>
+          </div>,
         );
       });
     }
 
     const carouselPosition = {
-      transform: `translateX(${this.state.item * 100}%)`
+      transform: `translateX(${this.state.item * 100}%)`,
     };
     return (
       <div className={styles.Carousel}>

@@ -2,7 +2,7 @@ import React from 'react';
 import throttle from 'raf-throttle';
 import PropTypes from 'prop-types';
 
-import Fa from '../UI/Icon/Fa/Fa';
+import Fa from '../UI/Fa/Fa';
 
 import styles from './Cover.module.scss';
 import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.jpg';

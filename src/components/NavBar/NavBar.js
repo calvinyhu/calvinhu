@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import Button from '../UI/Button/Button';
 import NavItem from '../UI/Button/NavItem/NavItem';
-import Fa from '../UI/Icon/Fa/Fa';
+import Fa from '../UI/Fa/Fa';
 
 import styles from './NavBar.module.scss';
 
