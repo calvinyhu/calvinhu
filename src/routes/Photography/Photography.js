@@ -71,7 +71,7 @@ const Photography = () => {
         document.documentElement.clientHeight,
       );
       const isAtBottom =
-        window.scrollY > scrollHeight - window.innerHeight * 1.3;
+        window.pageYOffset > scrollHeight - window.innerHeight * 1.3;
       const isMorePhotos = numPhotos < totalNumPhotos;
 
       if (isAtBottom && isMorePhotos) setNumPhotos(numPhotos + 10);
@@ -91,6 +91,12 @@ const Photography = () => {
   useEffect(() => {
     timeout = setTimeout(() => setIsHideTouchApp(true), 7000);
     return () => clearTimeout(timeout);
+  });
+
+  useEffect(() => {
+    return () => {
+      if (window.pageYOffset) window.scrollTo({ top: 0 });
+    };
   });
 
   const touchAppClasses = classnames({

@@ -28,7 +28,7 @@ const Layout = ({ location: { pathname }, children }) => {
     };
 
     const handleScroll = () => {
-      throttle(animatePage(window.scrollY, window.innerHeight));
+      throttle(animatePage(window.pageYOffset, window.innerHeight));
     };
 
     const event = 'scroll';
