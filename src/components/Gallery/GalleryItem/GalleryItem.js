@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import Reveal from 'react-reveal/Reveal';
 
 import styles from './GalleryItem.module.scss';
 
@@ -19,22 +18,20 @@ const GalleryItem = props => {
   });
 
   return (
-    <Reveal effect={styles.FadeIn}>
-      <div
-        className={styles.GalleryItem}
-        onMouseOver={props.getHoverHandler(props.id)}
-        onClick={props.getOpenHandler(props.id, props.photos[props.id].url)}
-      >
-        {props.isLoaded[props.id] ? null : photoLoader}
-        <div className={imgContainerClasses}>
-          <img
-            onLoad={props.getLoadHandler(props.id)}
-            src={props.photos[props.id].url}
-            alt="calvinhu"
-          />
-        </div>
+    <div
+      className={styles.GalleryItem}
+      onMouseOver={props.getHoverHandler(props.id)}
+      onClick={props.getOpenHandler(props.id, props.photos[props.id].url)}
+    >
+      {props.isLoaded[props.id] ? null : photoLoader}
+      <div className={imgContainerClasses}>
+        <img
+          onLoad={props.getLoadHandler(props.id)}
+          src={props.photos[props.id].url}
+          alt="calvinhu"
+        />
       </div>
-    </Reveal>
+    </div>
   );
 };
 
