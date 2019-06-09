@@ -8,9 +8,9 @@ $mobile-height-tallest: 50rem;
 // Transitions
 $timing-func-1: cubic-bezier(0.26, 0.94, 0.58, 1);
 $timing-func-2: cubic-bezier(0.4, 0, 0.2, 1);
-$transition-duration1: 0.5s;
-$transition-duration2: 0.3s;
-$transition-duration3: 0.2s;
+$transition-duration1: 0.1s;
+$transition-duration2: 0.2s;
+$transition-duration3: 0.3s;
 $transition1: $transition-duration1 $timing-func-1;
 $transition2: $transition-duration2 $timing-func-2;
 $transition3: $transition-duration3 $timing-func-2;

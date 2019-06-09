@@ -51,7 +51,7 @@
   height: $fab-size;
   opacity: 0.75;
   transform: translateY(2rem + $fab-size);
-  transition: $transition1;
+  transition: $transition2;
 
   @include media-min-width($desktop-width) {
     right: 2rem;
