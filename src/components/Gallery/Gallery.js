@@ -1,72 +1,75 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 
 import styles from './Gallery.module.scss';
 import GalleryItem from './GalleryItem/GalleryItem';
 
-class Gallery extends Component {
-  state = {
-    hoverPhoto: null,
-    isExpandPhoto: false,
-    isLoaded: {},
-    src: null,
-  };
+const Gallery = ({ numPhotos, photos }) => {
+  const [hoverPhoto, setHoverPhoto] = useState(null);
+  const [isExpandPhoto, setIsExpandPhoto] = useState(false);
+  const [isLoaded, setIsLoaded] = useState({});
+  const [src, setSrc] = useState(null);
 
-  hoverHandlers = {};
-  getHoverHandler = photoId => {
-    if (!this.hoverHandlers[photoId]) {
-      this.hoverHandlers[photoId] = () => {
-        if (this.state.hoverPhoto !== photoId)
-          this.setState({ hoverPhoto: photoId });
+  const hoverHandlers = {};
+  const getHoverHandler = photoId => {
+    if (!hoverHandlers[photoId]) {
+      hoverHandlers[photoId] = () => {
+        if (hoverPhoto !== photoId) setHoverPhoto(photoId);
       };
     }
-    return this.hoverHandlers[photoId];
+    return hoverHandlers[photoId];
   };
 
-  loadHandlers = {};
-  getLoadHandler = photoId => {
-    if (!this.loadHandlers[photoId]) {
-      this.loadHandlers[photoId] = () => {
-        const isLoaded = { ...this.state.isLoaded };
-        isLoaded[photoId] = true;
-        this.setState({ isLoaded });
+  const loadHandlers = {};
+  const getLoadHandler = photoId => {
+    if (!loadHandlers[photoId]) {
+      loadHandlers[photoId] = () => {
+        const tempIsLoaded = { ...isLoaded };
+        tempIsLoaded[photoId] = true;
+        setIsLoaded(tempIsLoaded);
       };
     }
-    return this.loadHandlers[photoId];
+    return loadHandlers[photoId];
   };
 
-  openHandlers = {};
-  getOpenHandler = (id, src) => {
-    if (!this.openHandlers[id]) {
-      this.openHandlers[id] = () => {
-        if (!this.state.isLoaded[id]) return;
-        this.setState({ isExpandPhoto: true, src: src });
+  const openHandlers = {};
+  const getOpenHandler = (id, src) => {
+    if (!openHandlers[id]) {
+      openHandlers[id] = () => {
+        if (!isLoaded[id]) return;
+        setIsExpandPhoto(true);
+        setSrc(src);
       };
     }
-    return this.openHandlers[id];
+    return openHandlers[id];
   };
 
-  handleClose = () => this.setState({ isExpandPhoto: false, src: null });
-  handleMouseLeave = () => this.setState({ hoverPhoto: null });
+  const handleClose = () => {
+    setIsExpandPhoto(false);
+    setSrc(null);
+  };
+  const handleMouseLeave = () => {
+    setHoverPhoto(null);
+  };
 
-  renderGalleryItems = () => {
-    if (!this.props.photos) return null;
+  const renderGalleryItems = () => {
+    if (!photos) return null;
 
     const galleryItems = [];
 
-    const photoIds = Object.keys(this.props.photos);
+    const photoIds = Object.keys(photos);
     photoIds.forEach((id, index) => {
-      if (index + 1 > this.props.numPhotos) return;
+      if (index + 1 > numPhotos) return;
       galleryItems.push(
         <GalleryItem
           key={id}
-          getHoverHandler={this.getHoverHandler}
-          getOpenHandler={this.getOpenHandler}
-          getLoadHandler={this.getLoadHandler}
-          hoverPhoto={this.state.hoverPhoto}
+          getHoverHandler={getHoverHandler}
+          getOpenHandler={getOpenHandler}
+          getLoadHandler={getLoadHandler}
+          hoverPhoto={hoverPhoto}
           id={id}
-          isLoaded={this.state.isLoaded}
-          photos={this.props.photos}
+          isLoaded={isLoaded}
+          photos={photos}
         />,
       );
     });
@@ -74,29 +77,27 @@ class Gallery extends Component {
     return galleryItems;
   };
 
-  render() {
-    const galleryItems = this.renderGalleryItems();
+  const galleryItems = renderGalleryItems();
 
-    const cardClasses = classnames({
-      card: true,
-      [styles.Card]: true,
-      [styles.CardShow]: this.state.isExpandPhoto,
-    });
-    const card = (
-      <div className={cardClasses} onClick={this.handleClose}>
-        <img className="card-img-top" src={this.state.src} alt="calvinhu" />
+  const cardClasses = classnames({
+    card: true,
+    [styles.Card]: true,
+    [styles.CardShow]: isExpandPhoto,
+  });
+  const card = (
+    <div className={cardClasses} onClick={handleClose}>
+      <img className="card-img-top" src={src} alt="calvinhu" />
+    </div>
+  );
+
+  return (
+    <React.Fragment>
+      <div className={styles.Gallery} onMouseLeave={handleMouseLeave}>
+        {galleryItems}
       </div>
-    );
-
-    return (
-      <React.Fragment>
-        <div className={styles.Gallery} onMouseLeave={this.handleMouseLeave}>
-          {galleryItems}
-        </div>
-        {card}
-      </React.Fragment>
-    );
-  }
-}
+      {card}
+    </React.Fragment>
+  );
+};
 
 export default Gallery;
