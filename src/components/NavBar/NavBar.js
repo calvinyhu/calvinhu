@@ -21,8 +21,6 @@ const NavBar = props => {
     };
   }, [width]);
 
-  console.log(props.isShowBackToTopButton);
-
   const navClasses = classnames({
     [styles.Nav]: true,
     [styles.White]:
