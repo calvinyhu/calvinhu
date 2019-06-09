@@ -23,16 +23,12 @@ const NavBar = props => {
 
   const navClasses = classnames({
     [styles.Nav]: true,
-    [styles.White]:
-      (!props.isBackToTopButtonClicked && props.isShowBackToTopButton) ||
-      props.pathname !== '/',
+    [styles.White]: props.isShowToTop || props.pathname !== '/',
   });
 
   const nameClasses = classnames({
     [styles.Name]: true,
-    [styles.Clickable]:
-      (!props.isBackToTopButtonClicked && props.isShowBackToTopButton) ||
-      props.pathname !== '/',
+    [styles.Clickable]: props.isShowToTop || props.pathname !== '/',
   });
 
   const style = {
@@ -61,7 +57,7 @@ const NavBar = props => {
 };
 
 NavBar.propTypes = {
-  isShowBackToTopButton: PropTypes.bool.isRequired,
+  isShowToTop: PropTypes.bool.isRequired,
   handleDrawerClose: PropTypes.func.isRequired,
   handleDrawerOpen: PropTypes.func.isRequired,
   navLinks: PropTypes.any.isRequired,

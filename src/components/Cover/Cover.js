@@ -77,9 +77,7 @@ class Cover extends React.PureComponent {
     else this.setState({ isAnimating: false });
   };
 
-  handleScrollDown = () => {
-    window.scrollTo({ top: window.innerHeight });
-  };
+  handleScrollDown = () => window.scrollTo({ top: window.innerHeight + 1 });
 
   renderBackground = () => (
     <div

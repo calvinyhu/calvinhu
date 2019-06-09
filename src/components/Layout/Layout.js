@@ -13,18 +13,11 @@ import NavDrawer from '../NavDrawer/NavDrawer';
 import styles from './Layout.module.scss';
 
 const Layout = ({ location: { pathname }, children }) => {
-  const [isBackToTopButtonClicked, setIsBackToTopButtonClicked] = useState(
-    false,
-  );
-  const [isShowBackToTopButton, setIsShowBackToTopButton] = useState(false);
+  const [isShowToTop, setIsShowToTop] = useState(false);
   useEffect(() => {
     const animatePage = (scrollTop, clientHeight) => {
-      if (isShowBackToTopButton && scrollTop < clientHeight) {
-        setIsShowBackToTopButton(false);
-        setIsBackToTopButtonClicked(false);
-      }
-      if (!isShowBackToTopButton && scrollTop >= clientHeight)
-        setIsShowBackToTopButton(true);
+      if (isShowToTop && scrollTop < clientHeight) setIsShowToTop(false);
+      if (!isShowToTop && scrollTop >= clientHeight) setIsShowToTop(true);
     };
 
     const handleScroll = () => {
@@ -65,20 +58,18 @@ const Layout = ({ location: { pathname }, children }) => {
 
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0 });
-    setIsBackToTopButtonClicked(true);
+    setIsShowToTop(false);
   };
 
   const renderBackToTopButton = () => {
     const goBackToTopBtnClasses = classnames({
       [styles.BackToTopBtn]: true,
-      [styles.OnScreenY]: isShowBackToTopButton && !isBackToTopButtonClicked,
+      [styles.OnScreenY]: isShowToTop,
     });
     return (
       <div className={goBackToTopBtnClasses}>
         <Button circle blueGray ariaLabel="Go To Top" click={handleScrollToTop}>
-          <Fa white lg>
-            fas fa-arrow-up
-          </Fa>
+          <Fa white>fas fa-arrow-up</Fa>
         </Button>
       </div>
     );
@@ -87,8 +78,7 @@ const Layout = ({ location: { pathname }, children }) => {
   return (
     <div className={styles.Layout}>
       <NavBar
-        isBackToTopButtonClicked={isBackToTopButtonClicked}
-        isShowBackToTopButton={isShowBackToTopButton}
+        isShowToTop={isShowToTop}
         handleDrawerClose={getDrawerToggle(false)}
         handleDrawerOpen={getDrawerToggle(true)}
         navLinks={navLinks}
