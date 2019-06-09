@@ -1,11 +1,11 @@
 import React, { Component, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Layout from './hoc/Layout/Layout';
+import Layout from './components/Layout/Layout';
 
-const About = lazy(() => import('./containers/About/About'));
-const Photography = lazy(() => import('./containers/Photography/Photography'));
-const Home = lazy(() => import('./containers/Home/Home'));
+const About = lazy(() => import('./routes/About/About'));
+const Photography = lazy(() => import('./routes/Photography/Photography'));
+const Home = lazy(() => import('./routes/Home/Home'));
 
 class App extends Component {
   render() {

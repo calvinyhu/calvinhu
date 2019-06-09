@@ -6,7 +6,7 @@ import classnames from 'classnames';
 import styles from './Photography.module.scss';
 import Gallery from '../../components/Gallery/Gallery';
 import Fa from '../../components/UI/Icon/Fa/Fa';
-import { firestore, storage } from '../../utils/firebase';
+import { firestore, storage } from '../../firebase';
 
 let photos = null;
 let totalNumPhotos = 0;
