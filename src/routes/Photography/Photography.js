@@ -48,11 +48,15 @@ const Photography = () => {
       initialPhotos = data;
       initialTotalNumPhotos = ids.length;
 
+      if (!isMounted) return;
       setPhotos(data);
       setTotalNumPhotos(ids.length);
     };
 
     if (!photos) getPhotos();
+
+    let isMounted = true;
+    return () => (isMounted = false);
   });
 
   const [numPhotos, setNumPhotos] = useState(10);
