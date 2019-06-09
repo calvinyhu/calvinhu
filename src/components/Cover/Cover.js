@@ -2,7 +2,7 @@ import React from 'react';
 import throttle from 'raf-throttle';
 import PropTypes from 'prop-types';
 
-import Rf from '../UI/Icon/Rf/Rf';
+import Fa from '../UI/Icon/Fa/Fa';
 
 import styles from './Cover.module.scss';
 import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
@@ -101,7 +101,7 @@ class Cover extends React.PureComponent {
         <h1>Hu</h1>
       </div>
       <div className={styles.Icon}>
-        <Rf>chevron-down</Rf>
+        <Fa lg>fas fa-angle-down</Fa>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import Fade from 'react-reveal/Fade';
 
 import styles from './About.module.scss';
 import profilePicture from '../../assets/images/profilePicture.jpg';
-import Fa from '../../components/UI/Icon/Fa/Fa';
+import Fa from '../../components/UI/Fa/Fa';
 
 const About = () => (
   <div className={styles.About}>

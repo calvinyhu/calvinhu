@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import Button from '../UI/Button/Button';
 import NavItem from '../UI/Button/NavItem/NavItem';
-import Rf from '../UI/Icon/Rf/Rf';
+import Fa from '../UI/Icon/Fa/Fa';
 
 import styles from './NavBar.module.scss';
 
@@ -52,7 +52,7 @@ const NavBar = props => {
         </div>
         <div className={styles.DrawerToggle}>
           <Button circle clear click={props.handleDrawerOpen}>
-            <Rf sm>menu</Rf>
+            <Fa>fas fa-stream</Fa>
           </Button>
         </div>
       </div>
