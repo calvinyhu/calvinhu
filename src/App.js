@@ -16,6 +16,10 @@ class App extends Component {
             <Route exact path={'/about'} component={About} />
             <Route exact path={'/photo'} component={Photography} />
             <Route exact path={'/'} component={Home} />
+
+            <Redirect from="/photos" to="/photo" />
+            <Redirect from="/photography" to="/photo" />
+
             <Redirect to="/" />
           </Switch>
         </Suspense>
