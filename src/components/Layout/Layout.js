@@ -54,10 +54,10 @@ const Layout = ({ location: { pathname }, children }) => {
 
   const navLinks = (
     <React.Fragment>
-      <NavItem to="/photo" clear click={getDrawerToggle(false)}>
+      <NavItem to="/photo" noActiveClass clear click={getDrawerToggle(false)}>
         Photography
       </NavItem>
-      <NavItem to="/about" clear click={getDrawerToggle(false)}>
+      <NavItem to="/about" noActiveClass clear click={getDrawerToggle(false)}>
         About
       </NavItem>
     </React.Fragment>

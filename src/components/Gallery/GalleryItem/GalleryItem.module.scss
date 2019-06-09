@@ -31,41 +31,15 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: $transition2;
+    transition: $transition3;
   }
 }
 
 .ImgContainerHover {
   @include media-min-width($desktop-width) {
     img {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
-  }
-}
-
-.Details {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: rgba(0, 0, 0, 0.3);
-  padding: $padding;
-  font-size: $font-size * 1.7;
-  opacity: 0;
-  transition: $transition2;
-  text-align: center;
-  user-select: none;
-
-  h5 {
-    margin: 0;
-  }
-}
-
-.DetailsHover {
-  @include media-min-width($desktop-width) {
-    opacity: 1;
   }
 }
 

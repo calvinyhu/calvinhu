@@ -18,12 +18,6 @@ const GalleryItem = props => {
     [styles.ImgContainerHover]: props.hoverPhoto === props.id,
   });
 
-  const detailsClasses = classnames({
-    [styles.Details]: true,
-    [styles.DetailsHover]:
-      props.isLoaded[props.id] && props.hoverPhoto === props.id,
-  });
-
   return (
     <Fade>
       <div
@@ -38,9 +32,6 @@ const GalleryItem = props => {
             src={props.photos[props.id].url}
             alt="calvinhu"
           />
-        </div>
-        <div className={detailsClasses}>
-          <h5>{props.photos[props.id].name}</h5>
         </div>
       </div>
     </Fade>

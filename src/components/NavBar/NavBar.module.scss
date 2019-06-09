@@ -4,17 +4,19 @@
 
 .Nav {
   width: 100%;
-  min-height: $height * 3;
+  height: $height * 4;
   position: fixed;
   z-index: 1;
   background: transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: $transition3;
+  transition: $transition1;
+  padding: 0 $padding-tiny * 2;
 
   @include media-min-width($desktop-width) {
     justify-content: space-around;
+    padding: 0;
   }
 }
 
@@ -24,11 +26,13 @@
 }
 
 .Name {
+  display: flex;
   opacity: 0;
   font-size: $font-size * 1.2;
   pointer-events: none;
   transition: $transition3;
   white-space: nowrap;
+  height: 100%;
 }
 
 .Clickable {
@@ -39,11 +43,13 @@
 .NavLinksContainer {
   display: flex;
   align-items: center;
+  height: 100%;
 }
 
 .NavLinks {
   display: none;
   opacity: 0;
+  height: 100%;
   animation: fadeIn 1.5s $timing-func-1 1s forwards;
 
   @include media-min-width($desktop-width) {
