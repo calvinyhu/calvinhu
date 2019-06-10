@@ -1,17 +1,12 @@
 import React from 'react';
 
 import Button from '../UI/Button/Button';
-import { useResetScrollOnUnmount } from '../../utils/hooks';
 
 import styles from './OrderItem.module.scss';
 
 import photo from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
 
-const OrderItem = () => {
-  useResetScrollOnUnmount();
-
-  const handleAddToCard = () => {};
-
+const OrderItem = ({ addToCart }) => {
   return (
     <div className={styles.orderItem}>
       <div className={styles.orderItemPhoto}>
@@ -29,7 +24,7 @@ const OrderItem = () => {
         <div className={styles.cartSection}>
           <h4>$50</h4>
           <div className={styles.addToCartContainer}>
-            <Button adj ariaLabel="Add To Cart" click={handleAddToCard}>
+            <Button adj ariaLabel="Add To Cart" click={addToCart}>
               Add to cart
             </Button>
           </div>

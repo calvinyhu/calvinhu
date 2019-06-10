@@ -87,3 +87,8 @@
 .Extend {
   animation: extend forwards;
 }
+
+.stopScroll {
+  height: 100%;
+  overflow: hidden;
+}
