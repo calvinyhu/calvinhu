@@ -2,17 +2,17 @@ import React from 'react';
 
 import Button from '../UI/Button/Button';
 
-import styles from './OrderItem.module.scss';
+import styles from './Product.module.scss';
 
 import photo from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
 
-const OrderItem = ({ addToCart }) => {
+const Product = ({ addToCart }) => {
   return (
-    <div className={styles.orderItem}>
-      <div className={styles.orderItemPhoto}>
+    <div className={styles.product}>
+      <div className={styles.productPhoto}>
         <img src={photo} alt="Print Preview" />
       </div>
-      <div className={styles.orderItemDetails}>
+      <div className={styles.productDetails}>
         <div className={styles.text}>
           <h3>Lorem Ipsum is simply dummy text</h3>
           <p>
@@ -34,4 +34,4 @@ const OrderItem = ({ addToCart }) => {
   );
 };
 
-export default OrderItem;
+export default Product;

@@ -8,11 +8,11 @@ import Fa from '../Fa/Fa';
 
 const Modal = ({
   cancelLabel,
+  children,
   confirmLabel,
   handleCancel,
   handleConfirm,
   isOpen,
-  render,
   title,
 }) => {
   const modelClasses = classnames(styles.modal, { [styles.open]: isOpen });
@@ -31,7 +31,7 @@ const Modal = ({
           </Button>
         </div>
       </header>
-      <div className={styles.modalContent}>{render()}</div>
+      <div className={styles.modalContent}>{children}</div>
       <footer>
         <div className={styles.checkoutButtonContainer}>
           <Button adj click={handleConfirm} ariaLabel="Checkout">
