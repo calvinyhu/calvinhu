@@ -3,10 +3,12 @@ import Fade from 'react-reveal/Fade';
 import throttle from 'raf-throttle';
 import classnames from 'classnames';
 
-import styles from './Photography.module.scss';
 import Gallery from '../../components/Gallery/Gallery';
 import Fa from '../../components/UI/Fa/Fa';
 import { firestore, storage } from '../../firebase';
+import { useResetScrollOnUnmount } from '../../utils/hooks';
+
+import styles from './Photography.module.scss';
 
 let initialPhotos = null;
 let initialTotalNumPhotos = 0;
@@ -93,15 +95,7 @@ const Photography = () => {
     return () => clearTimeout(timeout);
   });
 
-  useEffect(() => {
-    const currentPath = window.location.pathname;
-    return () => {
-      const nextPath = window.location.pathname;
-      if (nextPath !== currentPath && window.pageYOffset) {
-        window.scrollTo({ top: 0 });
-      }
-    };
-  });
+  useResetScrollOnUnmount();
 
   const touchAppClasses = classnames({
     [styles.TouchApp]: true,

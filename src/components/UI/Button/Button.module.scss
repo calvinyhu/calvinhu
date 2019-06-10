@@ -71,16 +71,16 @@
 /********************************* Color *************************************/
 
 .Adj {
-  background: $adj-color;
+  background: $dark-adj-color;
 }
 
 .AdjTouchHover {
   transition: none;
-  background: $dark-adj-color;
+  background: $adj-color;
 }
 
 .AdjMouseHover {
-  background: $dark-adj-color;
+  background: $adj-color;
 }
 
 .Opp {
@@ -113,4 +113,17 @@
 
 .BlueGray {
   background: $md-blue-gray;
+  color: $md-white;
+}
+
+.BlueGrayMouseHover {
+  background: lighten($md-blue-gray, 25%);
+}
+
+.BlueGrayTouchHover {
+  background: lighten($md-blue-gray, 25%);
+}
+
+.NoBackground {
+  background: none;
 }

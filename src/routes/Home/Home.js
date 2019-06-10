@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import throttle from 'raf-throttle';
 
-import styles from './Home.module.scss';
-import milestones from '../../assets/milestones/milestones';
 import Cover from '../../components/Cover/Cover';
 import Milestone from '../../components/Milestone/Milestone';
+import { useResetScrollOnUnmount } from '../../utils/hooks';
+
+import styles from './Home.module.scss';
+import milestones from '../../assets/milestones/milestones';
 
 const Home = () => {
   const [offsetX, setOffsetX] = useState(0);
@@ -25,6 +27,8 @@ const Home = () => {
       window.removeEventListener(event, handleScroll);
     };
   });
+
+  useResetScrollOnUnmount();
 
   const renderMilestones = () =>
     Object.values(milestones).map(val => (

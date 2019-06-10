@@ -62,14 +62,19 @@ class Button extends PureComponent {
       [styles.Adj]: this.props.adj,
       [styles.Opp]: this.props.opp,
       [styles.BlueGray]: this.props.blueGray,
+      [styles.NoBackground]: this.props.noBackground,
+
       [styles.ClearTouchHover]: this.state.isTouch && this.props.clear,
       [styles.LinkTouchHover]: this.state.isTouch && this.props.link,
       [styles.AdjTouchHover]: this.state.isTouch && this.props.adj,
       [styles.OppTouchHover]: this.state.isTouch && this.props.opp,
+      [styles.BlueGrayTouchHover]: this.state.isTouch && this.props.blueGray,
+
       [styles.ClearMouseHover]: this.state.isMouse && this.props.clear,
       [styles.LinkMouseHover]: this.state.isMouse && this.props.link,
       [styles.AdjMouseHover]: this.state.isMouse && this.props.adj,
       [styles.OppMouseHover]: this.state.isMouse && this.props.opp,
+      [styles.BlueGrayMouseHover]: this.state.isMouse && this.props.blueGray,
     });
 
     return (

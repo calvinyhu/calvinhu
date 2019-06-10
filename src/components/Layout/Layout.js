@@ -50,6 +50,9 @@ const Layout = ({ location: { pathname }, children }) => {
       <NavItem to="/photo" noActiveClass clear click={getDrawerToggle(false)}>
         Photography
       </NavItem>
+      <NavItem to="/order" noActiveClass clear click={getDrawerToggle(false)}>
+        Order Prints
+      </NavItem>
       <NavItem to="/about" noActiveClass clear click={getDrawerToggle(false)}>
         About
       </NavItem>
