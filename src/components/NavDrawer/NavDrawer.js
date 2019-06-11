@@ -7,7 +7,7 @@ import Drawer from '../UI/Drawer/Drawer';
 import styles from './NavDrawer.module.scss';
 
 const NavDrawer = ({ handleDrawerClose, isDrawerOpen, navLinks, percent }) => (
-  <React.Fragment>
+  <>
     <Drawer right isOpen={isDrawerOpen}>
       <div className={styles.NavDrawerInner}>
         <div className={styles.NavDrawerLinksContainer}>{navLinks}</div>
@@ -18,7 +18,7 @@ const NavDrawer = ({ handleDrawerClose, isDrawerOpen, navLinks, percent }) => (
       click={handleDrawerClose}
       percent={percent}
     />
-  </React.Fragment>
+  </>
 );
 
 NavDrawer.propTypes = {

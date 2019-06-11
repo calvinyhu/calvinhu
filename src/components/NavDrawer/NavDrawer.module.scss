@@ -2,6 +2,7 @@
 
 .NavDrawerInner {
   background: $md-white;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,5 +12,6 @@
 .NavDrawerLinksContainer {
   display: flex;
   flex-direction: column;
-  height: $height * 8;
+  width: 100%;
+  height: $height * 12;
 }
