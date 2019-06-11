@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react';
+// @ts-ignore
 import Fade from 'react-reveal/Fade';
+// @ts-ignore
 import throttle from 'raf-throttle';
 import classnames from 'classnames';
 
-import Gallery from '../../components/Gallery/Gallery';
-import Fa from '../../components/UI/Fa/Fa';
-import { firestore, storage } from '../../firebase';
-import { useResetScrollOnUnmount } from '../../utils/hooks';
+import Gallery from 'components/Gallery/Gallery';
+import Fa from 'components/UI/Fa/Fa';
+import { firestore, storage } from 'config/firebase';
+import { useResetScrollOnUnmount } from 'utils/hooks';
 
 import styles from './Photography.module.scss';
 
-let initialPhotos = null;
-let initialTotalNumPhotos = 0;
-let timeout = null;
+let initialPhotos: any = null;
+let initialTotalNumPhotos: number = 0;
+let timeout: any = null;
 
 const Photography = () => {
   const [photos, setPhotos] = useState(initialPhotos);
   const [totalNumPhotos, setTotalNumPhotos] = useState(initialTotalNumPhotos);
   useEffect(() => {
-    const getUrls = data => {
-      const urlPromises = [];
+    const getUrls = (data: any) => {
+      const urlPromises: any = [];
 
       const ids = Object.keys(data);
       ids.forEach(id => {
@@ -31,18 +33,19 @@ const Photography = () => {
     };
 
     const getPhotos = async () => {
-      let data = null;
+      let data: any = null;
       const urls = await firestore
         .collection('photography')
         .doc('photoDetails')
         .get()
+        // @ts-ignore
         .then(doc => {
           if (doc.exists) {
             data = doc.data();
             return getUrls(data);
           } else console.log('Photo details do not exist!');
         })
-        .catch(error => console.log(error));
+        .catch((error: Error) => console.log(error));
 
       const ids = Object.keys(data);
       ids.forEach((id, index) => (data[id].url = urls[index]));
@@ -58,7 +61,9 @@ const Photography = () => {
     if (!photos) getPhotos();
 
     let isMounted = true;
-    return () => (isMounted = false);
+    return () => {
+      isMounted = false;
+    };
   });
 
   const [numPhotos, setNumPhotos] = useState(10);

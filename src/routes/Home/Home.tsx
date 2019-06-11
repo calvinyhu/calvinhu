@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react';
+// @ts-ignore
 import throttle from 'raf-throttle';
 
-import Cover from '../../components/Cover/Cover';
-import Milestone from '../../components/Milestone/Milestone';
-import { useResetScrollOnUnmount } from '../../utils/hooks';
+import Cover from 'components/Cover/Cover';
+import Milestone from 'components/Milestone/Milestone';
+import { useResetScrollOnUnmount } from 'utils/hooks';
 
 import styles from './Home.module.scss';
-import milestones from '../../assets/milestones/milestones';
+import milestones from 'assets/milestones/milestones';
 
 const Home = () => {
   const [offsetX, setOffsetX] = useState(0);
 
   useEffect(() => {
-    const animatePage = (scrollTop, clientHeight) => {
+    const animatePage = (scrollTop: number, clientHeight: number) => {
       if (scrollTop < clientHeight) setOffsetX(-scrollTop / 10);
     };
 

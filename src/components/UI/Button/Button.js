@@ -14,6 +14,7 @@ class Button extends PureComponent {
     click: PropTypes.func.isRequired,
     ariaLabel: PropTypes.string.isRequired,
     children: PropTypes.any,
+    disabled: PropTypes.bool,
   };
 
   isTouched = false;

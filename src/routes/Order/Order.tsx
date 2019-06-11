@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import { useDispatch } from 'react-redux';
+// @ts-ignore
+import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
 
-import Product from '../../components/Product/Product';
-import Button from '../../components/UI/Button/Button';
-import Fa from '../../components/UI/Fa/Fa';
-import Modal from '../../components/UI/Modal/Modal';
-import Backdrop from '../../components/UI/Backdrop/Backdrop';
-import Cart from '../../components/Cart/Cart';
-import { useResetScrollOnUnmount } from '../../utils/hooks';
-import { addToCart } from '../../store/actions/cartActions';
+import { OrderProps } from './Order.models';
+import Product from 'components/Product/Product';
+import Button from 'components/UI/Button/Button';
+import Fa from 'components/UI/Fa/Fa';
+import Modal from 'components/UI/Modal/Modal';
+import Backdrop from 'components/UI/Backdrop/Backdrop';
+import Cart from 'components/Cart/Cart';
+import { useResetScrollOnUnmount } from 'utils/hooks';
+import { addToCart } from 'store/actions/cartActions';
 
 import styles from './Order.module.scss';
 
-const products = {
+const products: any = {
   1: {
     name: 'Item Name 1',
     price: 30,
@@ -29,21 +31,19 @@ const products = {
   },
 };
 
-const addToCartHandlers = {};
-const cartClickHandlers = {};
+const addToCartHandlers: any = {};
 
-const Order = () => {
+const Order = ({ history }: OrderProps) => {
+  const cartItems = useSelector((state: any) => state.cart.items);
   const [cartOpen, setCartOpen] = useState(false);
   useResetScrollOnUnmount();
   const dispatch = useDispatch();
 
-  const getCartClickHandler = isOpen => {
-    if (cartClickHandlers[isOpen]) return cartClickHandlers[isOpen];
-    cartClickHandlers[isOpen] = () => setCartOpen(isOpen);
-    return cartClickHandlers[isOpen];
-  };
+  const handleCartOpen = () => setCartOpen(true);
+  const handleCartClose = () => setCartOpen(false);
+  const handleCheckout = () => history.push('/checkout');
 
-  const getAddToCartHandler = id => {
+  const getAddToCartHandler = (id: string) => {
     if (addToCartHandlers[id]) {
       return addToCartHandlers[id];
     }
@@ -55,12 +55,12 @@ const Order = () => {
     return addToCartHandlers[id];
   };
 
-  // const renderCart = () => <Cart />;
-
   const orderClasses = classnames({
     [styles.order]: true,
     [styles.stopScroll]: cartOpen,
   });
+
+  const cartLength = Object.keys(cartItems).length;
 
   return (
     <div className={orderClasses}>
@@ -72,10 +72,10 @@ const Order = () => {
               link
               noBackground
               ariaLabel="View Cart"
-              click={getCartClickHandler(true)}
+              click={handleCartOpen}
             >
               <Fa>fas fa-shopping-cart</Fa>
-              <p>0</p>
+              <p>{cartLength}</p>
             </Button>
           </div>
         </div>
@@ -88,14 +88,15 @@ const Order = () => {
       <Modal
         cancelLabel="Close"
         confirmLabel="Checkout"
-        handleCancel={getCartClickHandler(false)}
-        handleConfirm={getCartClickHandler(false)}
+        confirmDisabled={cartLength === 0}
+        handleCancel={handleCartClose}
+        handleConfirm={handleCheckout}
         isOpen={cartOpen}
         title="Cart"
       >
         <Cart />
       </Modal>
-      <Backdrop isOpen={cartOpen} click={getCartClickHandler(false)} />
+      <Backdrop isOpen={cartOpen} click={handleCartClose} />
     </div>
   );
 };

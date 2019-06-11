@@ -25,46 +25,45 @@
   @include media-min-width($desktop-width) {
     flex-direction: row;
   }
+}
 
-  .productPhoto {
+.productPhoto {
+  width: 100%;
+
+  img {
     width: 100%;
-    max-width: 30rem;
+  }
+}
 
-    img {
-      width: 100%;
-    }
+.productDetails {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  margin-top: $margin;
+  width: 100%;
+
+  @include media-min-width($desktop-width) {
+    margin-left: $margin * 3;
   }
 
-  .productDetails {
+  .text {
     display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    margin-top: $margin;
-    max-width: 40rem;
+    flex-direction: column;
+  }
 
-    @include media-min-width($desktop-width) {
-      margin-left: $margin * 3;
+  .cartSection {
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+
+    h4 {
+      margin: 0;
+      margin-right: $margin * 1.5;
     }
 
-    .text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .cartSection {
-      display: flex;
-      align-items: center;
-      flex-flow: row wrap;
-
-      h4 {
-        margin: 0;
-        margin-right: $margin * 1.5;
-      }
-
-      .addToCartContainer {
-        width: 8rem;
-        height: 2.7rem;
-      }
+    .addToCartContainer {
+      width: 8rem;
+      height: 2.7rem;
     }
   }
 }

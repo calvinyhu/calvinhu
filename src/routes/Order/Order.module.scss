@@ -2,6 +2,7 @@
 
 .order {
   width: 100%;
+  max-width: 70rem;
   min-height: 100%;
   position: relative;
   display: flex;
@@ -19,9 +20,10 @@
 
 header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 52rem;
   margin: $margin * 2;
   margin-bottom: 0;
   padding: $padding;
@@ -42,6 +44,8 @@ header {
       margin-left: $margin-tiny * 2;
       margin-right: $margin-tiny;
       white-space: nowrap;
+      width: 1.5rem;
+      text-align: right;
     }
   }
 }

@@ -10,6 +10,7 @@ const Modal = ({
   cancelLabel,
   children,
   confirmLabel,
+  confirmDisabled,
   handleCancel,
   handleConfirm,
   isOpen,
@@ -34,7 +35,12 @@ const Modal = ({
       <div className={styles.modalContent}>{children}</div>
       <footer>
         <div className={styles.checkoutButtonContainer}>
-          <Button adj click={handleConfirm} ariaLabel="Checkout">
+          <Button
+            adj
+            click={handleConfirm}
+            ariaLabel="Checkout"
+            disabled={confirmDisabled}
+          >
             {confirmLabel}
           </Button>
         </div>
