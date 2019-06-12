@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Button from '../UI/Button/Button';
-import NavItem from '../UI/Button/NavItem/NavItem';
+import NavItem from '../UI/NavItem/NavItem';
 import Fa from '../UI/Fa/Fa';
 
 import styles from './NavBar.module.scss';
