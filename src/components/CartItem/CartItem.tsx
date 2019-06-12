@@ -6,7 +6,13 @@ import Fa from '../UI/Fa/Fa';
 
 import src from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
 
-const CartItem = ({ name, handleRemoveItem, price }) => {
+interface CartItemProps {
+  handleRemoveItem: any;
+  name: any;
+  price: any;
+}
+
+const CartItem = ({ handleRemoveItem, name, price }: CartItemProps) => {
   return (
     <div className={styles.cartItem}>
       <div className={styles.details}>
@@ -19,11 +25,11 @@ const CartItem = ({ name, handleRemoveItem, price }) => {
         <p>{price}</p>
         <div className={styles.removeItemContainer}>
           <Button
+            ariaLabel="Remove Item"
             circle
             clear
-            noBackground
             click={handleRemoveItem}
-            ariaLabel="Remove Item"
+            noBackground
           >
             <Fa>fas fa-times</Fa>
           </Button>
