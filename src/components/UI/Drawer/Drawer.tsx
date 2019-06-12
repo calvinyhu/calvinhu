@@ -4,13 +4,18 @@ import classnames from 'classnames';
 import styles from './Drawer.module.scss';
 
 interface DrawerProps {
-  left: any;
-  right: any;
-  isOpen: any;
   children: any;
+  isOpen: boolean;
+  left?: boolean;
+  right?: boolean;
 }
 
-const Drawer = ({ left, right, isOpen, children }: DrawerProps) => {
+const Drawer = ({
+  children,
+  isOpen,
+  left = false,
+  right = false,
+}: DrawerProps) => {
   const drawerClasses = classnames({
     [styles.LeftDrawer]: left,
     [styles.OpenDrawer]: left && isOpen,
