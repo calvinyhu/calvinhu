@@ -6,16 +6,27 @@ import Button from '../Button/Button';
 import styles from './Modal.module.scss';
 import Fa from '../Fa/Fa';
 
+interface ModalProps {
+  cancelLabel: string;
+  children: any;
+  confirmDisabled: boolean;
+  confirmLabel: string;
+  handleCancel: any;
+  handleConfirm: any;
+  isOpen: boolean;
+  title: string;
+}
+
 const Modal = ({
   cancelLabel,
   children,
-  confirmLabel,
   confirmDisabled,
+  confirmLabel,
   handleCancel,
   handleConfirm,
   isOpen,
   title,
-}) => {
+}: ModalProps) => {
   const modelClasses = classnames(styles.modal, { [styles.open]: isOpen });
   return (
     <div className={modelClasses}>
