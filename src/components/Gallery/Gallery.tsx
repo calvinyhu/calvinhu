@@ -4,14 +4,19 @@ import classnames from 'classnames';
 import styles from './Gallery.module.scss';
 import GalleryItem from './GalleryItem/GalleryItem';
 
-const Gallery = ({ numPhotos, photos }) => {
-  const [hoverPhoto, setHoverPhoto] = useState(null);
-  const [isExpandPhoto, setIsExpandPhoto] = useState(false);
-  const [isLoaded, setIsLoaded] = useState({});
-  const [src, setSrc] = useState(null);
+interface GalleryProps {
+  numPhotos: number;
+  photos: any;
+}
 
-  const hoverHandlers = {};
-  const getHoverHandler = photoId => {
+const Gallery = ({ numPhotos, photos }: GalleryProps) => {
+  const [hoverPhoto, setHoverPhoto] = useState('');
+  const [isExpandPhoto, setIsExpandPhoto] = useState(false);
+  const [isLoaded, setIsLoaded] = useState({} as any);
+  const [src, setSrc] = useState('');
+
+  const hoverHandlers: any = {};
+  const getHoverHandler = (photoId: string) => {
     if (!hoverHandlers[photoId]) {
       hoverHandlers[photoId] = () => {
         if (hoverPhoto !== photoId) setHoverPhoto(photoId);
@@ -20,11 +25,11 @@ const Gallery = ({ numPhotos, photos }) => {
     return hoverHandlers[photoId];
   };
 
-  const loadHandlers = {};
-  const getLoadHandler = photoId => {
+  const loadHandlers: any = {};
+  const getLoadHandler = (photoId: string) => {
     if (!loadHandlers[photoId]) {
       loadHandlers[photoId] = () => {
-        const tempIsLoaded = { ...isLoaded };
+        const tempIsLoaded: any = { ...isLoaded };
         tempIsLoaded[photoId] = true;
         setIsLoaded(tempIsLoaded);
       };
@@ -32,8 +37,8 @@ const Gallery = ({ numPhotos, photos }) => {
     return loadHandlers[photoId];
   };
 
-  const openHandlers = {};
-  const getOpenHandler = (id, src) => {
+  const openHandlers: any = {};
+  const getOpenHandler = (id: string, src: string) => {
     if (!openHandlers[id]) {
       openHandlers[id] = () => {
         if (!isLoaded[id]) return;
@@ -46,16 +51,16 @@ const Gallery = ({ numPhotos, photos }) => {
 
   const handleClose = () => {
     setIsExpandPhoto(false);
-    setSrc(null);
+    setSrc('');
   };
   const handleMouseLeave = () => {
-    setHoverPhoto(null);
+    setHoverPhoto('');
   };
 
   const renderGalleryItems = () => {
     if (!photos) return null;
 
-    const galleryItems = [];
+    const galleryItems: any = [];
 
     const photoIds = Object.keys(photos);
     photoIds.forEach((id, index) => {
