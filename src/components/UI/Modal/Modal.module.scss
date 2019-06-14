@@ -42,13 +42,17 @@
     align-items: center;
 
     .closeModalButtonContainer {
-      width: 3rem;
+      button {
+        padding: 0 $padding-tiny;
+      }
       height: 2rem;
     }
 
     .checkoutButtonContainer {
-      width: 7rem;
-      height: 2.7rem;
+      button {
+        padding: 0 $padding;
+      }
+      height: 3rem;
       margin-right: $margin * 1.5;
     }
   }

@@ -29,12 +29,17 @@ const products: any = {
     name: 'Item Name 3',
     price: 50,
   },
+  4: {
+    name: 'Item Name 3',
+    price: 50,
+  },
 };
 
 const addToCartHandlers: any = {};
 
 const Order = ({ history }: OrderProps) => {
-  const cartItems = useSelector((state: any) => state.cart.items);
+  // @ts-ignore
+  const cartItems = useSelector(state => state.cart.items);
   const [cartOpen, setCartOpen] = useState(false);
   useResetScrollOnUnmount();
   const dispatch = useDispatch();
@@ -87,7 +92,7 @@ const Order = ({ history }: OrderProps) => {
       </div>
       <Modal
         cancelLabel="Close"
-        confirmLabel="Checkout"
+        confirmLabel="Begin Checkout"
         confirmDisabled={cartLength === 0}
         handleCancel={handleCartClose}
         handleConfirm={handleCheckout}
