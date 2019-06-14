@@ -42,7 +42,6 @@ const NavItem = ({
       left: nextRect.left,
       right: nextRect.right,
     });
-    console.log({ nextRect });
     setIsTouch(true);
   };
 
@@ -51,7 +50,6 @@ const NavItem = ({
     const withinX = touch.clientX <= rect.right && touch.clientX >= rect.left;
     const withinY = touch.clientY <= rect.bot && touch.clientY >= rect.top;
 
-    console.log({ touch, withinX, withinY });
     if (click && withinX && withinY) click();
 
     setIsTouch(false);
