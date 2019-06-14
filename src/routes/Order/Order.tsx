@@ -69,7 +69,7 @@ const Order = ({ history }: OrderProps) => {
 
   return (
     <div className={orderClasses}>
-      <header>
+      <header className={styles.orderHeader}>
         <h1>Order Prints</h1>
         <div className={styles.cart}>
           <div className={styles.cartButtonContainer}>
