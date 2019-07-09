@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-// @ts-ignore
 import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 
-import { CartProps } from './Cart.model';
+import Button from 'components/UI/Button/Button';
 import CartItem from '../CartItem/CartItem';
-import { removeFromCart } from '../../store/actions/cartActions';
+import { CartProps } from './Cart.model';
+import { removeFromCart } from 'store/actions/cartActions';
+import { RootState } from 'store/reducers';
 
 import styles from './Cart.module.scss';
-import Button from 'components/UI/Button/Button';
 
 type cartHandler = () => void;
 interface cartHandlers {
@@ -16,8 +16,7 @@ interface cartHandlers {
 }
 
 const Cart = ({ confirmRemoveItem = false }: CartProps) => {
-  // @ts-ignore
-  const items = useSelector(state => state.cart.items);
+  const items = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
   const [removeFromCartHandlers, setRemoveFromCartHandlers] = useState(

@@ -1,17 +1,22 @@
-import { types } from '../actions/cartActions';
+import { CartState } from './cartReducer.models';
+import {
+  CartActions,
+  ADD_TO_CART,
+  REMOVE_FROM_CART,
+} from '../actions/cartActions.models';
 
-const initialState = {
+export const cartState: CartState = {
   items: {},
 };
 
-const cartReducer = (state = initialState, action) => {
+const cartReducer = (state = cartState, action: CartActions) => {
   switch (action.type) {
-    case types.ADD_TO_CART:
+    case ADD_TO_CART:
       return {
         ...state,
         items: { ...state.items, ...action.item },
       };
-    case types.REMOVE_FROM_CART:
+    case REMOVE_FROM_CART:
       const items = { ...state.items };
       delete items[action.id];
       return { ...state, items };

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-// @ts-ignore
 import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
 
-import { OrderProps } from './Order.models';
+import { CartItem, OrderProps, ProductItem } from './Order.models';
+import { products } from './Order.fixtures';
 import Product from 'components/Product/Product';
 import Button from 'components/UI/Button/Button';
 import Fa from 'components/UI/Fa/Fa';
@@ -13,33 +13,14 @@ import Backdrop from 'components/UI/Backdrop/Backdrop';
 import Cart from 'components/Cart/Cart';
 import { useResetScrollOnUnmount } from 'utils/hooks';
 import { addToCart } from 'store/actions/cartActions';
+import { RootState } from 'store/reducers';
 
 import styles from './Order.module.scss';
-
-const products: any = {
-  1: {
-    name: 'Item Name 1',
-    price: 30,
-  },
-  2: {
-    name: 'Item Name 2',
-    price: 40,
-  },
-  3: {
-    name: 'Item Name 3',
-    price: 50,
-  },
-  4: {
-    name: 'Item Name 3',
-    price: 50,
-  },
-};
 
 const addToCartHandlers: any = {};
 
 const Order = ({ history }: OrderProps) => {
-  // @ts-ignore
-  const cartItems = useSelector(state => state.cart.items);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
   const [cartOpen, setCartOpen] = useState(false);
   useResetScrollOnUnmount();
   const dispatch = useDispatch();
@@ -53,8 +34,11 @@ const Order = ({ history }: OrderProps) => {
       return addToCartHandlers[id];
     }
     addToCartHandlers[id] = () => {
-      const product = { name: products[id].name, price: products[id].price };
-      const cartItem = { [uniqid()]: product };
+      const product: ProductItem = {
+        name: products[id].name,
+        price: products[id].price,
+      };
+      const cartItem: CartItem = { [uniqid()]: product };
       dispatch(addToCart(cartItem));
     };
     return addToCartHandlers[id];

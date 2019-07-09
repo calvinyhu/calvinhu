@@ -1,15 +1,14 @@
 import React from 'react';
-// @ts-ignore
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import Cart from 'components/Cart/Cart';
+import { RootState } from 'store/reducers';
 
 import styles from './Checkout.module.scss';
 
 const Checkout = () => {
-  // @ts-ignore
-  const items = useSelector(state => state.cart.items);
+  const items = useSelector((state: RootState) => state.cart.items);
 
   const renderNothingInCart = () => (
     <div className={styles.section}>
