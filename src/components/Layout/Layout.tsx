@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
+// @ts-ignore
 import throttle from 'raf-throttle';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -10,12 +11,14 @@ import Fa from '../UI/Fa/Fa';
 import NavBar from '../NavBar/NavBar';
 import NavDrawer from '../NavDrawer/NavDrawer';
 
+import { LayoutProps } from './Layout.models';
+
 import styles from './Layout.module.scss';
 
-const Layout = ({ location: { pathname }, children }) => {
+const Layout = ({ location: { pathname }, children }: LayoutProps) => {
   const [isShowToTop, setIsShowToTop] = useState(false);
   useEffect(() => {
-    const animatePage = (scrollTop, clientHeight) => {
+    const animatePage = (scrollTop: number, clientHeight: number) => {
       if (isShowToTop && scrollTop < clientHeight) setIsShowToTop(false);
       if (!isShowToTop && scrollTop >= clientHeight) setIsShowToTop(true);
     };
@@ -35,25 +38,31 @@ const Layout = ({ location: { pathname }, children }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [percent, setPercent] = useState(0);
 
-  const drawerToggles = {};
-  const getDrawerToggle = isOpen => {
-    if (drawerToggles[isOpen]) return drawerToggles[isOpen];
-    drawerToggles[isOpen] = () => {
-      setIsDrawerOpen(isOpen);
-      setPercent(isOpen ? 1 : 0);
-    };
-    return drawerToggles[isOpen];
+  const handleDrawerOpen = () => {
+    setIsDrawerOpen(true);
+    setPercent(1);
+  };
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+    setPercent(0);
   };
 
   const navLinks = (
     <>
-      <NavItem to="/photo" noActiveClass clear click={getDrawerToggle(false)}>
+      {/*
+      // @ts-ignore */}
+      <NavItem to="/photo" noActiveClass clear click={handleDrawerClose}>
         Photography
       </NavItem>
-      <NavItem to="/order" noActiveClass clear click={getDrawerToggle(false)}>
+      {/*
+      // @ts-ignore */}
+      <NavItem to="/order" noActiveClass clear click={handleDrawerClose}>
         Order Prints
       </NavItem>
-      <NavItem to="/about" noActiveClass clear click={getDrawerToggle(false)}>
+      {/*
+      // @ts-ignore */}
+      <NavItem to="/about" noActiveClass clear click={handleDrawerClose}>
         About
       </NavItem>
     </>
@@ -82,13 +91,13 @@ const Layout = ({ location: { pathname }, children }) => {
     <div className={styles.Layout}>
       <NavBar
         isShowToTop={isShowToTop}
-        handleDrawerClose={getDrawerToggle(false)}
-        handleDrawerOpen={getDrawerToggle(true)}
+        handleDrawerClose={handleDrawerClose}
+        handleDrawerOpen={handleDrawerOpen}
         navLinks={navLinks}
         pathname={pathname}
       />
       <NavDrawer
-        handleDrawerClose={getDrawerToggle(false)}
+        handleDrawerClose={handleDrawerClose}
         isDrawerOpen={isDrawerOpen}
         navLinks={navLinks}
         percent={percent}
@@ -103,4 +112,4 @@ Layout.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default withRouter(Layout);
+export default withRouter(Layout as any);
