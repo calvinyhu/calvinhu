@@ -10,9 +10,9 @@ import { RootState } from 'store/reducers';
 
 import styles from './Cart.module.scss';
 
-type cartHandler = () => void;
-interface cartHandlers {
-  [key: string]: cartHandler;
+type CartHandler = () => void;
+interface CartHandlers {
+  [key: string]: CartHandler;
 }
 
 const Cart = ({ confirmRemoveItem = false }: CartProps) => {
@@ -20,18 +20,18 @@ const Cart = ({ confirmRemoveItem = false }: CartProps) => {
   const dispatch = useDispatch();
 
   const [removeFromCartHandlers, setRemoveFromCartHandlers] = useState(
-    {} as cartHandlers,
+    {} as CartHandlers,
   );
   const [idToRemove, setIdToRemove] = useState('');
 
   const getRemoveFromCartHandler = (id: string) => {
     if (removeFromCartHandlers[id]) return removeFromCartHandlers[id];
     const newRemoveFromCartHandlers = { ...removeFromCartHandlers };
-    if (confirmRemoveItem)
-      newRemoveFromCartHandlers[id] = () => setIdToRemove(id);
-    else newRemoveFromCartHandlers[id] = () => dispatch(removeFromCart(id));
+    newRemoveFromCartHandlers[id] = confirmRemoveItem
+      ? () => setIdToRemove(id)
+      : () => dispatch(removeFromCart(id));
     setRemoveFromCartHandlers(newRemoveFromCartHandlers);
-    return removeFromCartHandlers[id];
+    return newRemoveFromCartHandlers[id];
   };
 
   const handleYes = () => {
