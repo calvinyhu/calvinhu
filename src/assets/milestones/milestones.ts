@@ -2,7 +2,21 @@ import invitae_logo from '../../assets/images/invitae_logo.png';
 import shmack_logo from '../../assets/images/shmack_logo.png';
 import jammming_logo from '../../assets/images/jammming_logo.jpg';
 
-const milestones = {
+interface Milestone {
+  alt: string;
+  date: string;
+  description: string;
+  photo: string;
+  title: string;
+  url: string;
+  urlTitle: string;
+}
+
+interface Milestones {
+  [key: string]: Milestone;
+}
+
+const milestones: Milestones = {
   invitae: {
     alt: 'Invitae',
     date: 'December 2018 - Present',
