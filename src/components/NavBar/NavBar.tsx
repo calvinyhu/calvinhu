@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Button from '../UI/Button/Button';
 import NavItem from '../UI/NavItem/NavItem';
 import Fa from '../UI/Fa/Fa';
+import { NavBarProps } from './NavBar.models';
 
 import styles from './NavBar.module.scss';
 
-const NavBar = props => {
+const NavBar = ({
+  handleDrawerClose,
+  handleDrawerOpen,
+  isShowToTop,
+  navLinks,
+  pathname,
+}: NavBarProps) => {
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const handleResize = () => setWidth(window.innerWidth);
@@ -23,12 +29,12 @@ const NavBar = props => {
 
   const navClasses = classnames({
     [styles.Nav]: true,
-    [styles.White]: props.isShowToTop || props.pathname !== '/',
+    [styles.White]: isShowToTop || pathname !== '/',
   });
 
   const nameClasses = classnames({
     [styles.Name]: true,
-    [styles.Clickable]: props.isShowToTop || props.pathname !== '/',
+    [styles.Clickable]: isShowToTop || pathname !== '/',
   });
 
   const style = {
@@ -38,30 +44,24 @@ const NavBar = props => {
   return (
     <div className={navClasses}>
       <div className={nameClasses}>
-        <NavItem to="/" clear noActiveClass click={props.handleDrawerClose}>
+        {/*
+        // @ts-ignore */}
+        <NavItem to="/" clear noActiveClass click={handleDrawerClose}>
           Calvin Hu
         </NavItem>
       </div>
       <div className={styles.NavLinksContainer}>
         <div style={style} className={styles.NavLinks}>
-          {props.navLinks}
+          {navLinks}
         </div>
         <div className={styles.DrawerToggle}>
-          <Button circle clear click={props.handleDrawerOpen} ariaLabel="Menu">
+          <Button circle clear click={handleDrawerOpen} ariaLabel="Menu">
             <Fa>fas fa-stream</Fa>
           </Button>
         </div>
       </div>
     </div>
   );
-};
-
-NavBar.propTypes = {
-  isShowToTop: PropTypes.bool.isRequired,
-  handleDrawerClose: PropTypes.func.isRequired,
-  handleDrawerOpen: PropTypes.func.isRequired,
-  navLinks: PropTypes.any.isRequired,
-  pathname: PropTypes.string.isRequired,
 };
 
 export default NavBar;

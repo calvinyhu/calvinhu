@@ -1,12 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import Backdrop from '../UI/Backdrop/Backdrop';
-import Drawer from '../UI/Drawer/Drawer';
+import Backdrop from 'components/UI/Backdrop/Backdrop';
+import Drawer from 'components/UI/Drawer/Drawer';
+import { NavDrawerProps } from './NavDrawer.models';
 
 import styles from './NavDrawer.module.scss';
 
-const NavDrawer = ({ handleDrawerClose, isDrawerOpen, navLinks, percent }) => (
+const NavDrawer = ({
+  handleDrawerClose,
+  isDrawerOpen,
+  navLinks,
+  percent,
+}: NavDrawerProps) => (
   <>
     <Drawer right isOpen={isDrawerOpen}>
       <div className={styles.NavDrawerInner}>
@@ -20,12 +25,5 @@ const NavDrawer = ({ handleDrawerClose, isDrawerOpen, navLinks, percent }) => (
     />
   </>
 );
-
-NavDrawer.propTypes = {
-  handleDrawerClose: PropTypes.func.isRequired,
-  isDrawerOpen: PropTypes.bool.isRequired,
-  navLinks: PropTypes.any.isRequired,
-  percent: PropTypes.number.isRequired,
-};
 
 export default NavDrawer;

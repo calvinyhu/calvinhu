@@ -1,12 +1,13 @@
 import React from 'react';
 
-import Button from '../UI/Button/Button';
+import Button from 'components/UI/Button/Button';
+import { ProductProps } from './Product.models';
 
 import styles from './Product.module.scss';
 
 import photo from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
 
-const Product = ({ addToCart }) => {
+const Product = ({ addToCart }: ProductProps) => {
   return (
     <div className={styles.product}>
       <div className={styles.productPhoto}>
