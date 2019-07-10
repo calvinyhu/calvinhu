@@ -4,16 +4,11 @@ import classnames from 'classnames';
 
 import Button from 'components/UI/Button/Button';
 import CartItem from '../CartItem/CartItem';
-import { CartProps } from './Cart.model';
+import { CartProps, CartHandlers } from './Cart.models';
 import { removeFromCart } from 'store/actions/cartActions';
 import { RootState } from 'store/reducers';
 
 import styles from './Cart.module.scss';
-
-type CartHandler = () => void;
-interface CartHandlers {
-  [key: string]: CartHandler;
-}
 
 const Cart = ({ confirmRemoveItem = false }: CartProps) => {
   const items = useSelector((state: RootState) => state.cart.items);
