@@ -6,6 +6,9 @@ import styles from './About.module.scss';
 import profilePicture from 'assets/images/profilePicture.jpg';
 import Fa from 'components/UI/Fa/Fa';
 
+const aboutParagraph =
+  "I graduated from UC Davis with a B.S. in Computer Science and a minor in Technology Management. I&apos;m pursuing a career in web app development and when I'm not at my computer, I am outside shooting photos or at the gym keeping fit.";
+
 const About = () => (
   <div className={styles.About}>
     <Fade>
@@ -17,10 +20,7 @@ const About = () => (
           <h4>Calvin Who?</h4>
           <h4>Calvin Hu!</h4>
         </div>
-        I graduated from UC Davis with a B.S. in Computer Science and a minor in
-        Technology Management. I'm pursuing a career in web app development and
-        when I'm not at my computer, I am outside shooting photos or at the gym
-        keeping fit.
+        {aboutParagraph}
       </div>
       <div className={styles.SocialMedia}>
         <a

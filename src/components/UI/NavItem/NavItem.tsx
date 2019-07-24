@@ -8,7 +8,9 @@ interface NavItemProps {
   bold?: boolean;
   borderMain?: boolean;
   clear?: boolean;
+  // eslint-disable-next-line
   click: any;
+  // eslint-disable-next-line
   children?: any;
   link?: boolean;
   noActiveClass: boolean;
@@ -34,6 +36,7 @@ const NavItem = ({
   const handleMouseEnter = () => setIsMouse(true);
   const handleMouseLeave = () => setIsMouse(false);
 
+  // eslint-disable-next-line
   const handleTouchStart = (event: React.TouchEvent<any>) => {
     const nextRect = (event.target as Element).getBoundingClientRect();
     setRect({
@@ -45,6 +48,7 @@ const NavItem = ({
     setIsTouch(true);
   };
 
+  // eslint-disable-next-line
   const handleTouchEnd = (event: React.TouchEvent<any>) => {
     const touch = event.changedTouches[0];
     const withinX = touch.clientX <= rect.right && touch.clientX >= rect.left;
@@ -84,4 +88,5 @@ const NavItem = ({
   );
 };
 
+// eslint-disable-next-line
 export default withRouter(NavItem as any);

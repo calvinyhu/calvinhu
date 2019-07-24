@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import styles from './Drawer.module.scss';
 
 interface DrawerProps {
+  // eslint-disable-next-line
   children: any;
   isOpen: boolean;
   left?: boolean;

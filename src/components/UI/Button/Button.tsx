@@ -7,9 +7,11 @@ interface ButtonProps {
   adj?: boolean;
   ariaLabel: string;
   blueGray?: boolean;
+  // eslint-disable-next-line
   children?: any;
   clear?: boolean;
   circle?: boolean;
+  // eslint-disable-next-line
   click: any;
   disabled?: boolean;
   id?: string | undefined;
@@ -41,6 +43,7 @@ const Button = ({
   const handleMouseEnter = () => setIsMouse(true);
   const handleMouseLeave = () => setIsMouse(false);
 
+  // eslint-disable-next-line
   const handleTouchStart = (event: React.TouchEvent<any>) => {
     const nextRect = (event.target as Element).getBoundingClientRect();
     setRect({
@@ -52,6 +55,7 @@ const Button = ({
     setIsTouch(true);
   };
 
+  // eslint-disable-next-line
   const handleTouchEnd = (event: React.TouchEvent<any>) => {
     if (event && event.cancelable) event.preventDefault();
 

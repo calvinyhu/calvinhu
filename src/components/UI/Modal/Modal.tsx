@@ -8,10 +8,13 @@ import Fa from '../Fa/Fa';
 
 interface ModalProps {
   cancelLabel: string;
+  // eslint-disable-next-line
   children: any;
   confirmDisabled: boolean;
   confirmLabel: string;
+  // eslint-disable-next-line
   handleCancel: any;
+  // eslint-disable-next-line
   handleConfirm: any;
   isOpen: boolean;
   title: string;

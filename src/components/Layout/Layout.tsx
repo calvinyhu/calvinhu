@@ -112,4 +112,5 @@ Layout.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
+// eslint-disable-next-line
 export default withRouter(Layout as any);

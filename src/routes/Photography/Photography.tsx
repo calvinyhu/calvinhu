@@ -12,15 +12,21 @@ import { useResetScrollOnUnmount } from 'utils/hooks';
 
 import styles from './Photography.module.scss';
 
+// eslint-disable-next-line
 let initialPhotos: any = null;
-let initialTotalNumPhotos: number = 0;
+let initialTotalNumPhotos = 0;
+// eslint-disable-next-line
 let timeout: any = null;
 
 const Photography = () => {
   const [photos, setPhotos] = useState(initialPhotos);
   const [totalNumPhotos, setTotalNumPhotos] = useState(initialTotalNumPhotos);
   useEffect(() => {
+    let isMounted = true;
+
+    // eslint-disable-next-line
     const getUrls = (data: any) => {
+      // eslint-disable-next-line
       const urlPromises: any = [];
 
       const ids = Object.keys(data);
@@ -33,6 +39,7 @@ const Photography = () => {
     };
 
     const getPhotos = async () => {
+      // eslint-disable-next-line
       let data: any = null;
       const urls = await firestore
         .collection('photography')
@@ -60,7 +67,6 @@ const Photography = () => {
 
     if (!photos) getPhotos();
 
-    let isMounted = true;
     return () => {
       isMounted = false;
     };

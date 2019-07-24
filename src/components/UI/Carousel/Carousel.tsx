@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
 
 import Button from 'components/UI/Button/Button';
@@ -16,6 +16,8 @@ const Carousel = ({ items }: CarouselProps) => {
   const handleRightClick = () =>
     setItem(item === -(items.length - 1) ? 0 : item - 1);
 
+  const handleClickIndicator = (index: number) => setItem(-index);
+
   const indicatorClickHandlers: IndicatorClickHandlers = {};
   const getIndicatorClickHandler = (index: number) => {
     if (!indicatorClickHandlers[index]) {
@@ -23,7 +25,6 @@ const Carousel = ({ items }: CarouselProps) => {
     }
     return indicatorClickHandlers[index];
   };
-  const handleClickIndicator = (index: number) => setItem(-index);
 
   const carouselItems: React.ReactElement[] = [];
   const carouselIndicators: React.ReactElement[] = [];

@@ -9,7 +9,9 @@ interface GalleryItemProps {
   getOpenHandler: (id: string, url: string) => void;
   hoverPhoto: string;
   id: string;
+  // eslint-disable-next-line
   isLoaded: any;
+  // eslint-disable-next-line
   photos: any;
 }
 
@@ -38,16 +40,16 @@ const GalleryItem = ({
   return (
     <div
       className={styles.GalleryItem}
-      onMouseOver={getHoverHandler(id) as any}
-      onClick={getOpenHandler(id, photos[id].url) as any}
+      // @ts-ignore
+      onMouseOver={getHoverHandler(id)}
+      // @ts-ignore
+      onClick={getOpenHandler(id, photos[id].url)}
     >
       {isLoaded[id] ? null : photoLoader}
       <div className={imgContainerClasses}>
-        <img
-          onLoad={getLoadHandler(id) as any}
-          src={photos[id].url}
-          alt="calvinhu"
-        />
+        {/*
+        // @ts-ignore */}
+        <img onLoad={getLoadHandler(id)} src={photos[id].url} alt="calvinhu" />
       </div>
     </div>
   );

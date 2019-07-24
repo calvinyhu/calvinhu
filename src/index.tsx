@@ -11,9 +11,9 @@ import rootReducer from './store/reducers';
 import './index.module.scss';
 
 const composeEnhancers =
-  (process.env.NODE_ENV === 'development'
-    ? window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null) || compose;
+  // eslint-disable-next-line
+  (process.env.NODE_ENV === 'development' ? window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) ||
+  compose;
 
 const initialState = {};
 const store = createStore(rootReducer, initialState, composeEnhancers());

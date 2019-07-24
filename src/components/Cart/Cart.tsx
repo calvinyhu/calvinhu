@@ -14,8 +14,9 @@ const Cart = ({ confirmRemoveItem = false }: CartProps) => {
   const items = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
+  const cartHandler: CartHandlers = {};
   const [removeFromCartHandlers, setRemoveFromCartHandlers] = useState(
-    {} as CartHandlers,
+    cartHandler,
   );
   const [idToRemove, setIdToRemove] = useState('');
 

@@ -1,6 +1,6 @@
-import invitae_logo from '../../assets/images/invitae_logo.png';
-import shmack_logo from '../../assets/images/shmack_logo.png';
-import jammming_logo from '../../assets/images/jammming_logo.jpg';
+import invitaeLogo from '../../assets/images/invitae_logo.png';
+import shmackLogo from '../../assets/images/shmack_logo.png';
+import jammmingLogo from '../../assets/images/jammming_logo.jpg';
 
 interface Milestone {
   alt: string;
@@ -22,7 +22,7 @@ const milestones: Milestones = {
     date: 'December 2018 - Present',
     description:
       'Helping Invitae bring comprehensive genetic testing to the mainstream.',
-    photo: invitae_logo,
+    photo: invitaeLogo,
     title: 'Invitae',
     url: 'https://www.invitae.com/',
     urlTitle: 'Learn about Invitae',
@@ -32,7 +32,7 @@ const milestones: Milestones = {
     date: 'August 2018 - November 2018',
     description:
       'Find and vote on popular, crowd-sourced restaurant menu items.',
-    photo: shmack_logo,
+    photo: shmackLogo,
     title: 'Shmack',
     url: 'https://shmack.app/',
     urlTitle: 'Try the app',
@@ -42,7 +42,7 @@ const milestones: Milestones = {
     date: 'May 2018 - June 2018',
     description:
       'Create Spotify playlists on the web and push them to your account.',
-    photo: jammming_logo,
+    photo: jammmingLogo,
     title: 'Jammming',
     url: 'https://jammmingspotify.firebaseapp.com/',
     urlTitle: 'Try the app',

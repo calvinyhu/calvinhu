@@ -6,15 +6,18 @@ import GalleryItem from './GalleryItem/GalleryItem';
 
 interface GalleryProps {
   numPhotos: number;
+  // eslint-disable-next-line
   photos: any;
 }
 
 const Gallery = ({ numPhotos, photos }: GalleryProps) => {
   const [hoverPhoto, setHoverPhoto] = useState('');
   const [isExpandPhoto, setIsExpandPhoto] = useState(false);
+  // eslint-disable-next-line
   const [isLoaded, setIsLoaded] = useState({} as any);
   const [src, setSrc] = useState('');
 
+  // eslint-disable-next-line
   const hoverHandlers: any = {};
   const getHoverHandler = (photoId: string) => {
     if (!hoverHandlers[photoId]) {
@@ -25,10 +28,12 @@ const Gallery = ({ numPhotos, photos }: GalleryProps) => {
     return hoverHandlers[photoId];
   };
 
+  // eslint-disable-next-line
   const loadHandlers: any = {};
   const getLoadHandler = (photoId: string) => {
     if (!loadHandlers[photoId]) {
       loadHandlers[photoId] = () => {
+        // eslint-disable-next-line
         const tempIsLoaded: any = { ...isLoaded };
         tempIsLoaded[photoId] = true;
         setIsLoaded(tempIsLoaded);
@@ -37,6 +42,7 @@ const Gallery = ({ numPhotos, photos }: GalleryProps) => {
     return loadHandlers[photoId];
   };
 
+  // eslint-disable-next-line
   const openHandlers: any = {};
   const getOpenHandler = (id: string, src: string) => {
     if (!openHandlers[id]) {
@@ -60,6 +66,7 @@ const Gallery = ({ numPhotos, photos }: GalleryProps) => {
   const renderGalleryItems = () => {
     if (!photos) return null;
 
+    // eslint-disable-next-line
     const galleryItems: any = [];
 
     const photoIds = Object.keys(photos);

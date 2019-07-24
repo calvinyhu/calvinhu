@@ -17,6 +17,7 @@ import { RootState } from 'store/reducers';
 
 import styles from './Order.module.scss';
 
+// eslint-disable-next-line
 const addToCartHandlers: any = {};
 
 const Order = ({ history }: OrderProps) => {
