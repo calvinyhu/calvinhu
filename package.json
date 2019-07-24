@@ -26,8 +26,7 @@
     "delete-source-map": "find ./build/static -depth -path '*.map' -delete",
     "ship": "npm run build && npm run delete-source-map && npm run deploy",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "lint:fix": "eslint src/**/*.{ts,tsx}"
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -52,17 +51,6 @@
     "@types/react-redux": "^7.1.1",
     "@types/react-router-dom": "^4.3.4",
     "@types/redux": "^3.6.0",
-    "@types/uniqid": "^4.1.3",
-    "@typescript-eslint/eslint-plugin": "^1.13.0",
-    "@typescript-eslint/parser": "^1.13.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb": "^17.1.1",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-config-react": "^1.1.7",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-prettier": "^3.1.0",
-    "eslint-plugin-react": "^7.14.3",
-    "prettier": "^1.18.2"
+    "@types/uniqid": "^4.1.3"
   }
 }
