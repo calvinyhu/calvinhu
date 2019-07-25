@@ -12,26 +12,25 @@ import { useResetScrollOnUnmount } from 'utils/hooks';
 
 import styles from './Photography.module.scss';
 
-// eslint-disable-next-line
-let initialPhotos: any = null;
+let initialPhotos: firebase.firestore.DocumentData | undefined;
 let initialTotalNumPhotos = 0;
-// eslint-disable-next-line
-let timeout: any = null;
+let timeout: NodeJS.Timeout;
 
 const Photography = () => {
+  // Get photos from firebase
   const [photos, setPhotos] = useState(initialPhotos);
   const [totalNumPhotos, setTotalNumPhotos] = useState(initialTotalNumPhotos);
   useEffect(() => {
     let isMounted = true;
 
-    // eslint-disable-next-line
-    const getUrls = (data: any) => {
-      // eslint-disable-next-line
-      const urlPromises: any = [];
+    const getUrls = (data: firebase.firestore.DocumentData | undefined) => {
+      const urlPromises: Promise<string>[] = [];
 
-      const ids = Object.keys(data);
+      const ids = Object.keys(data as object);
       ids.forEach(id => {
-        const urlPromise = storage.ref(`photography/${id}`).getDownloadURL();
+        const urlPromise: Promise<string> = storage
+          .ref(`photography/${id}`)
+          .getDownloadURL();
         urlPromises.push(urlPromise);
       });
 
@@ -39,23 +38,25 @@ const Photography = () => {
     };
 
     const getPhotos = async () => {
-      // eslint-disable-next-line
-      let data: any = null;
+      let data: firebase.firestore.DocumentData | undefined;
       const urls = await firestore
         .collection('photography')
         .doc('photoDetails')
         .get()
-        // @ts-ignore
         .then(doc => {
           if (doc.exists) {
             data = doc.data();
             return getUrls(data);
-          } else console.log('Photo details do not exist!');
+          } else throw Error('Photo details document does not exist!');
         })
         .catch((error: Error) => console.log(error));
 
-      const ids = Object.keys(data);
-      ids.forEach((id, index) => (data[id].url = urls[index]));
+      if (!urls) return;
+
+      const ids = Object.keys(data as object);
+      ids.forEach((id, index) => {
+        if (data) data[id].url = urls[index];
+      });
 
       initialPhotos = data;
       initialTotalNumPhotos = ids.length;
@@ -72,6 +73,7 @@ const Photography = () => {
     };
   });
 
+  // Show more photos on scroll
   const [numPhotos, setNumPhotos] = useState(10);
   useEffect(() => {
     const showMorePhotos = () => {
@@ -100,6 +102,7 @@ const Photography = () => {
     };
   });
 
+  // Show and hide touch app icon
   const [isHideTouchApp, setIsHideTouchApp] = useState(false);
   useEffect(() => {
     timeout = setTimeout(() => setIsHideTouchApp(true), 7000);
