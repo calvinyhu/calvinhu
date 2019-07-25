@@ -95,3 +95,40 @@
   transform: translate(-50%, -50%);
   transition: $transition1;
 }
+
+.Filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparentize($md-white, 0.07);
+  color: $md-blue-gray;
+  position: sticky;
+  top: 4rem;
+  z-index: 1;
+
+  @include media-min-width($desktop-width) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  h4 {
+    margin: $margin;
+  }
+}
+
+.FilterButtons {
+  display: flex;
+  flex-direction: column;
+
+  @include media-min-width($desktop-width) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.FilterButton {
+  width: 8rem;
+  height: 2.5rem;
+  margin: $margin;
+}

@@ -3,22 +3,30 @@ import classnames from 'classnames';
 
 import styles from './Gallery.module.scss';
 import GalleryItem from './GalleryItem/GalleryItem';
+import { Filters, TYPES } from 'routes/Photography/Photography.models';
 
 interface GalleryProps {
   numPhotos: number;
-  // eslint-disable-next-line
-  photos: any;
+  photos: firebase.firestore.DocumentData | undefined;
+  filters: Filters;
 }
 
-const Gallery = ({ numPhotos, photos }: GalleryProps) => {
+interface Handler {
+  [photoId: string]: () => void;
+}
+
+interface IsLoaded {
+  [photoId: string]: boolean;
+}
+
+const Gallery = ({ numPhotos, photos, filters }: GalleryProps) => {
   const [hoverPhoto, setHoverPhoto] = useState('');
   const [isExpandPhoto, setIsExpandPhoto] = useState(false);
-  // eslint-disable-next-line
-  const [isLoaded, setIsLoaded] = useState({} as any);
+  const initIsLoaded: IsLoaded = {};
+  const [isLoaded, setIsLoaded] = useState(initIsLoaded);
   const [src, setSrc] = useState('');
 
-  // eslint-disable-next-line
-  const hoverHandlers: any = {};
+  const hoverHandlers: Handler = {};
   const getHoverHandler = (photoId: string) => {
     if (!hoverHandlers[photoId]) {
       hoverHandlers[photoId] = () => {
@@ -28,13 +36,11 @@ const Gallery = ({ numPhotos, photos }: GalleryProps) => {
     return hoverHandlers[photoId];
   };
 
-  // eslint-disable-next-line
-  const loadHandlers: any = {};
+  const loadHandlers: Handler = {};
   const getLoadHandler = (photoId: string) => {
     if (!loadHandlers[photoId]) {
       loadHandlers[photoId] = () => {
-        // eslint-disable-next-line
-        const tempIsLoaded: any = { ...isLoaded };
+        const tempIsLoaded: IsLoaded = { ...isLoaded };
         tempIsLoaded[photoId] = true;
         setIsLoaded(tempIsLoaded);
       };
@@ -42,8 +48,7 @@ const Gallery = ({ numPhotos, photos }: GalleryProps) => {
     return loadHandlers[photoId];
   };
 
-  // eslint-disable-next-line
-  const openHandlers: any = {};
+  const openHandlers: Handler = {};
   const getOpenHandler = (id: string, src: string) => {
     if (!openHandlers[id]) {
       openHandlers[id] = () => {
@@ -66,12 +71,18 @@ const Gallery = ({ numPhotos, photos }: GalleryProps) => {
   const renderGalleryItems = () => {
     if (!photos) return null;
 
-    // eslint-disable-next-line
-    const galleryItems: any = [];
+    const galleryItems: React.ReactNodeArray = [];
+    const isFiltersOn = Boolean(Object.values(filters).filter(Boolean).length);
 
-    const photoIds = Object.keys(photos);
-    photoIds.forEach((id, index) => {
-      if (index + 1 > numPhotos) return;
+    Object.keys(photos).forEach(id => {
+      const isPhotoCorrectType = !filters[TYPES[photos[id].type]];
+
+      if (
+        galleryItems.length + 1 > numPhotos ||
+        (isFiltersOn && isPhotoCorrectType)
+      )
+        return;
+
       galleryItems.push(
         <GalleryItem
           key={id}
@@ -89,11 +100,7 @@ const Gallery = ({ numPhotos, photos }: GalleryProps) => {
     return galleryItems;
   };
 
-  const galleryItems = renderGalleryItems();
-
-  const cardClasses = classnames({
-    card: true,
-    [styles.Card]: true,
+  const cardClasses = classnames(styles.Card, {
     [styles.CardShow]: isExpandPhoto,
   });
   const card = (
@@ -103,12 +110,12 @@ const Gallery = ({ numPhotos, photos }: GalleryProps) => {
   );
 
   return (
-    <React.Fragment>
+    <>
       <div className={styles.Gallery} onMouseLeave={handleMouseLeave}>
-        {galleryItems}
+        {renderGalleryItems()}
       </div>
       {card}
-    </React.Fragment>
+    </>
   );
 };
 

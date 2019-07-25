@@ -5,8 +5,10 @@ import Fade from 'react-reveal/Fade';
 import throttle from 'raf-throttle';
 import classnames from 'classnames';
 
+import { Filters } from './Photography.models';
 import Gallery from 'components/Gallery/Gallery';
 import Fa from 'components/UI/Fa/Fa';
+import Button from 'components/UI/Button/Button';
 import { firestore, storage } from 'config/firebase';
 import { useResetScrollOnUnmount } from 'utils/hooks';
 
@@ -123,9 +125,54 @@ const Photography = () => {
     </div>
   );
 
+  const initialFilters: Filters = {
+    landscape: false,
+    portrait: false,
+    automobile: false,
+  };
+  const [filters, setFilters] = useState(initialFilters);
+  const toggleLandscapeFilter = () =>
+    setFilters({ ...filters, landscape: !filters.landscape });
+  const togglePortaitFilter = () =>
+    setFilters({ ...filters, portrait: !filters.portrait });
+  const toggleAutomobileFilter = () =>
+    setFilters({ ...filters, automobile: !filters.automobile });
+
   return (
     <div className={styles.PhotographyContainer}>
-      <Gallery numPhotos={numPhotos} photos={photos} />
+      <div className={styles.Filters}>
+        <h4>Filter</h4>
+        <div className={styles.FilterButtons}>
+          <div className={styles.FilterButton}>
+            <Button
+              clear={!filters.landscape}
+              ariaLabel="landscapes"
+              click={toggleLandscapeFilter}
+            >
+              Landscape
+            </Button>
+          </div>
+          <div className={styles.FilterButton}>
+            <Button
+              clear={!filters.portrait}
+              ariaLabel="portraits"
+              click={togglePortaitFilter}
+            >
+              Portaits
+            </Button>
+          </div>
+          <div className={styles.FilterButton}>
+            <Button
+              clear={!filters.automobile}
+              ariaLabel="automobile"
+              click={toggleAutomobileFilter}
+            >
+              Automobile
+            </Button>
+          </div>
+        </div>
+      </div>
+      <Gallery numPhotos={numPhotos} photos={photos} filters={filters} />
       {photos ? null : (
         <div className={styles.LoaderContainer}>
           <div className={styles.Loader} />
