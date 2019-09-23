@@ -7,6 +7,7 @@ import Fa from '../UI/Fa/Fa';
 import { NavBarProps } from './NavBar.models';
 
 import styles from './NavBar.module.scss';
+import { hideNavOnPathname } from 'utils/styles';
 
 const NavBar = ({
   handleDrawerClose,
@@ -30,6 +31,7 @@ const NavBar = ({
   const navClasses = classnames({
     [styles.Nav]: true,
     [styles.White]: isShowToTop || pathname !== '/',
+    [styles.PositionRelative]: hideNavOnPathname(pathname),
   });
 
   const nameClasses = classnames({

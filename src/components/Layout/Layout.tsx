@@ -10,6 +10,7 @@ import NavItem from '../UI/NavItem/NavItem';
 import Fa from '../UI/Fa/Fa';
 import NavBar from '../NavBar/NavBar';
 import NavDrawer from '../NavDrawer/NavDrawer';
+import { hideNavOnPathname } from 'utils/styles';
 
 import { LayoutProps } from './Layout.models';
 
@@ -87,6 +88,11 @@ const Layout = ({ location: { pathname }, children }: LayoutProps) => {
     );
   };
 
+  const layoutInnerClasses = classnames({
+    [styles.LayoutInner]: true,
+    [styles.PaddingTopZero]: hideNavOnPathname(pathname),
+  });
+
   return (
     <div className={styles.Layout}>
       <NavBar
@@ -102,7 +108,7 @@ const Layout = ({ location: { pathname }, children }: LayoutProps) => {
         navLinks={navLinks}
         percent={percent}
       />
-      <div className={styles.LayoutInner}>{children}</div>
+      <div className={layoutInnerClasses}>{children}</div>
       {renderBackToTopButton()}
     </div>
   );

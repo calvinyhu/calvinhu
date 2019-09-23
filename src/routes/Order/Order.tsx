@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
+// @ts-ignore
+import throttle from 'raf-throttle';
+import classnames from 'classnames';
 
 import { CartItem, OrderProps, ProductItem } from './Order.models';
 import { products } from './Order.fixtures';
@@ -17,6 +19,8 @@ import { RootState } from 'store/reducers';
 
 import styles from './Order.module.scss';
 
+const PIXELS_TO_SECONDARY_NAV = 100;
+
 // eslint-disable-next-line
 const addToCartHandlers: any = {};
 
@@ -25,6 +29,25 @@ const Order = ({ history }: OrderProps) => {
   const [cartOpen, setCartOpen] = useState(false);
   useResetScrollOnUnmount();
   const dispatch = useDispatch();
+
+  const [isNavHidden, setIsNavHidden] = useState(false);
+  useEffect(() => {
+    const animatePage = (scrollTop: number, clientHeight: number) => {
+      if (isNavHidden && scrollTop < clientHeight) setIsNavHidden(false);
+      if (!isNavHidden && scrollTop >= clientHeight) setIsNavHidden(true);
+    };
+
+    const handleScroll = () => {
+      throttle(animatePage(window.pageYOffset, PIXELS_TO_SECONDARY_NAV));
+    };
+
+    const event = 'scroll';
+    window.addEventListener(event, handleScroll);
+
+    return () => {
+      window.removeEventListener(event, handleScroll);
+    };
+  });
 
   const handleCartOpen = () => setCartOpen(true);
   const handleCartClose = () => setCartOpen(false);
@@ -45,16 +68,16 @@ const Order = ({ history }: OrderProps) => {
     return addToCartHandlers[id];
   };
 
-  const orderClasses = classnames({
-    [styles.order]: true,
-    [styles.stopScroll]: cartOpen,
-  });
-
   const cartLength = Object.keys(cartItems).length;
 
+  const orderHeaderClasses = classnames({
+    [styles.orderHeader]: true,
+    [styles.dropShadow]: isNavHidden,
+  });
+
   return (
-    <div className={orderClasses}>
-      <header className={styles.orderHeader}>
+    <div className={styles.order}>
+      <header className={orderHeaderClasses}>
         <h1>Order Prints</h1>
         <div className={styles.cart}>
           <div className={styles.cartButtonContainer}>

@@ -18,6 +18,10 @@
   }
 }
 
+.PositionRelative {
+  position: relative;
+}
+
 .White {
   background: transparentize($md-white, 0.07);
   box-shadow: $box-shadow;

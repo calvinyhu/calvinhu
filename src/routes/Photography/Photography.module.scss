@@ -104,8 +104,9 @@
   background: transparentize($md-white, 0.07);
   color: $md-blue-gray;
   position: sticky;
-  top: 4rem;
+  top: 0;
   z-index: 1;
+  height: 4rem;
 
   @include media-min-width($desktop-width) {
     flex-direction: row;

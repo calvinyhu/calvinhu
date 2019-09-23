@@ -2,7 +2,6 @@
 
 .order {
   width: 100%;
-  max-width: 70rem;
   min-height: 100%;
   position: relative;
   display: flex;
@@ -14,14 +13,23 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 52rem;
     margin: $margin * 2;
     margin-bottom: 0;
     padding: $padding;
     position: sticky;
+    top: 0;
+    z-index: 1;
+    background: transparentize($md-white, 0.07);
+    transition: $transition2;
+    height: 4rem;
+
+    @include media-min-width($desktop-width) {
+      justify-content: space-around;
+    }
 
     h1 {
       margin: 0;
+      transition: $transition2;
     }
 
     .cart {
@@ -47,5 +55,14 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    max-width: 70rem;
+  }
+}
+
+.dropShadow {
+  box-shadow: $box-shadow;
+
+  h1 {
+    font-size: 1.2rem;
   }
 }
