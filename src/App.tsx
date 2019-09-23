@@ -13,11 +13,11 @@ const App = () => (
   <Layout>
     <Suspense fallback={<div />}>
       <Switch>
-        <Route exact path={'/about'} component={About} />
-        <Route exact path={'/checkout'} component={Checkout} />
-        <Route exact path={'/order'} component={Order} />
-        <Route exact path={'/photo'} component={Photography} />
-        <Route exact path={'/'} component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path="/order" component={Order} />
+        <Route exact path="/photo" component={Photography} />
+        <Route exact path="/" component={Home} />
 
         <Redirect from="/photos" to="/photo" />
         <Redirect from="/photography" to="/photo" />
