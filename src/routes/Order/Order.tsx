@@ -19,7 +19,7 @@ import { RootState } from 'store/reducers';
 
 import styles from './Order.module.scss';
 
-const PIXELS_TO_SECONDARY_NAV = 100;
+const PIXELS_TO_SECONDARY_NAV = 83;
 
 // eslint-disable-next-line
 const addToCartHandlers: any = {};
