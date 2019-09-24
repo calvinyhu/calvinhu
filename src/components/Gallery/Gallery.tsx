@@ -6,7 +6,7 @@ import GalleryItem from './GalleryItem/GalleryItem';
 import { Filters, TYPES } from 'routes/Photography/Photography.models';
 
 interface GalleryProps {
-  numPhotos: number;
+  numPhotosLoaded: number;
   photos: firebase.firestore.DocumentData | undefined;
   filters: Filters;
 }
@@ -19,7 +19,7 @@ interface IsLoaded {
   [photoId: string]: boolean;
 }
 
-const Gallery = ({ numPhotos, photos, filters }: GalleryProps) => {
+const Gallery = ({ numPhotosLoaded, photos, filters }: GalleryProps) => {
   const [hoverPhoto, setHoverPhoto] = useState('');
   const [isExpandPhoto, setIsExpandPhoto] = useState(false);
   const initIsLoaded: IsLoaded = {};
@@ -78,7 +78,7 @@ const Gallery = ({ numPhotos, photos, filters }: GalleryProps) => {
       const isPhotoCorrectType = !filters[TYPES[photos[id].type]];
 
       if (
-        galleryItems.length + 1 > numPhotos ||
+        galleryItems.length + 1 > numPhotosLoaded ||
         (isFiltersOn && isPhotoCorrectType)
       )
         return;

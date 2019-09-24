@@ -6,92 +6,63 @@ import throttle from 'raf-throttle';
 import classnames from 'classnames';
 
 import { Filters } from './Photography.models';
+import { fetchPhotos, fetchUrls } from './Photography.api';
 import Gallery from 'components/Gallery/Gallery';
 import Fa from 'components/UI/Fa/Fa';
 import Button from 'components/UI/Button/Button';
-import { firestore, storage } from 'config/firebase';
 import { useResetScrollOnUnmount } from 'utils/hooks';
 
 import styles from './Photography.module.scss';
 
 let initialPhotos: firebase.firestore.DocumentData | undefined;
-let initialTotalNumPhotos = 0;
 let timeout: NodeJS.Timeout;
 
 const Photography = () => {
   // Get photos from firebase
   const [photos, setPhotos] = useState(initialPhotos);
-  const [totalNumPhotos, setTotalNumPhotos] = useState(initialTotalNumPhotos);
   useEffect(() => {
-    let isMounted = true;
-
-    const getUrls = (data: firebase.firestore.DocumentData | undefined) => {
-      const urlPromises: Promise<string>[] = [];
-
-      const ids = Object.keys(data as object);
-      ids.forEach(id => {
-        const urlPromise: Promise<string> = storage
-          .ref(`photography/${id}`)
-          .getDownloadURL();
-        urlPromises.push(urlPromise);
-      });
-
-      return Promise.all(urlPromises).then(urls => urls);
-    };
+    let didCancel = false;
 
     const getPhotos = async () => {
-      let data: firebase.firestore.DocumentData | undefined;
-      const urls = await firestore
-        .collection('photography')
-        .doc('photoDetails')
-        .get()
-        .then(doc => {
-          if (doc.exists) {
-            data = doc.data();
-            return getUrls(data);
-          } else throw Error('Photo details document does not exist!');
-        })
-        .catch((error: Error) => console.log(error));
+      const photos = (await fetchPhotos()) as firebase.firestore.DocumentData;
+      const urls = await fetchUrls(photos);
 
-      if (!urls) return;
-
-      const ids = Object.keys(data as object);
-      ids.forEach((id, index) => {
-        if (data) data[id].url = urls[index];
+      Object.keys(photos as object).forEach((id, index) => {
+        photos[id].url = urls[index];
       });
 
-      initialPhotos = data;
-      initialTotalNumPhotos = ids.length;
+      initialPhotos = photos;
 
-      if (!isMounted) return;
-      setPhotos(data);
-      setTotalNumPhotos(ids.length);
+      if (didCancel) return;
+
+      setPhotos(photos);
     };
 
     if (!photos) getPhotos();
 
     return () => {
-      isMounted = false;
+      didCancel = true;
     };
   });
 
-  // Show more photos on scroll
-  const [numPhotos, setNumPhotos] = useState(10);
+  // Show more photos as page scrolls
+  const [numPhotosLoaded, setNumPhotosLoaded] = useState(10);
   useEffect(() => {
     const showMorePhotos = () => {
-      const scrollHeight = Math.max(
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight,
-        document.body.offsetHeight,
-        document.documentElement.offsetHeight,
-        document.body.clientHeight,
-        document.documentElement.clientHeight,
+      const { body, documentElement } = document;
+      const height = Math.max(
+        body.scrollHeight,
+        documentElement.scrollHeight,
+        body.offsetHeight,
+        documentElement.offsetHeight,
+        body.clientHeight,
+        documentElement.clientHeight,
       );
-      const isAtBottom =
-        window.pageYOffset > scrollHeight - window.innerHeight * 1.3;
-      const isMorePhotos = numPhotos < totalNumPhotos;
+      const isAtBottom = window.pageYOffset > height - window.innerHeight * 1.3;
+      const totalNumPhotos = Object.keys(photos as object).length;
+      const hasMorePhotos = numPhotosLoaded < totalNumPhotos;
 
-      if (isAtBottom && isMorePhotos) setNumPhotos(numPhotos + 10);
+      if (isAtBottom && hasMorePhotos) setNumPhotosLoaded(numPhotosLoaded + 10);
     };
 
     const handleScroll = () => throttle(showMorePhotos());
@@ -172,7 +143,11 @@ const Photography = () => {
           </div>
         </div>
       </div>
-      <Gallery numPhotos={numPhotos} photos={photos} filters={filters} />
+      <Gallery
+        numPhotosLoaded={numPhotosLoaded}
+        photos={photos}
+        filters={filters}
+      />
       {photos ? null : (
         <div className={styles.LoaderContainer}>
           <div className={styles.Loader} />
