@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -9,6 +10,7 @@ import Fa from '../UI/Fa/Fa';
 import NavBar from '../NavBar/NavBar';
 import NavDrawer from '../NavDrawer/NavDrawer';
 import { hideNavOnPathname } from 'utils/styles';
+import { RootState } from 'store/reducers';
 
 import { LayoutProps } from './Layout.models';
 
@@ -16,6 +18,11 @@ import styles from './Layout.module.scss';
 import { useScrollPositionFlag } from 'utils/hooks';
 
 const Layout = ({ location: { pathname }, children }: LayoutProps) => {
+  const featureFlags = useSelector(
+    (state: RootState) => state.app.featureFlags,
+  );
+  const isOrderEnabled = featureFlags && featureFlags.orderEnabled;
+
   const [isShowToTop, setIsShowToTop] = useState(false);
   useScrollPositionFlag(isShowToTop, setIsShowToTop, window.innerHeight);
 
@@ -39,11 +46,12 @@ const Layout = ({ location: { pathname }, children }: LayoutProps) => {
       <NavItem to="/photo" noActiveClass clear click={handleDrawerClose}>
         Photography
       </NavItem>
-      {/*
-      // @ts-ignore */}
-      <NavItem to="/order" noActiveClass clear click={handleDrawerClose}>
-        Order Prints
-      </NavItem>
+      {isOrderEnabled && (
+        // @ts-ignore
+        <NavItem to="/order" noActiveClass clear click={handleDrawerClose}>
+          Order Prints
+        </NavItem>
+      )}
       {/*
       // @ts-ignore */}
       <NavItem to="/about" noActiveClass clear click={handleDrawerClose}>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 // @ts-ignore
 import Fade from 'react-reveal/Fade';
 // @ts-ignore
@@ -11,6 +12,7 @@ import Gallery from 'components/Gallery/Gallery';
 import Fa from 'components/UI/Fa/Fa';
 import Button from 'components/UI/Button/Button';
 import { useResetScrollOnUnmount } from 'utils/hooks';
+import { RootState } from 'store/reducers';
 
 import styles from './Photography.module.scss';
 
@@ -18,6 +20,11 @@ let initialPhotos: firebase.firestore.DocumentData | undefined;
 let timeout: NodeJS.Timeout;
 
 const Photography = () => {
+  const featureFlags = useSelector(
+    (state: RootState) => state.app.featureFlags,
+  );
+  const isPhotosEnabled = featureFlags && featureFlags.photosEnabled;
+
   // Get photos from firebase
   const [photos, setPhotos] = useState(initialPhotos);
   useEffect(() => {
@@ -111,38 +118,40 @@ const Photography = () => {
 
   return (
     <div className={styles.PhotographyContainer}>
-      <div className={styles.Filters}>
-        <h4>Filter</h4>
-        <div className={styles.FilterButtons}>
-          <div className={styles.FilterButton}>
-            <Button
-              clear={!filters.landscape}
-              ariaLabel="landscapes"
-              click={toggleLandscapeFilter}
-            >
-              Landscape
-            </Button>
-          </div>
-          <div className={styles.FilterButton}>
-            <Button
-              clear={!filters.portrait}
-              ariaLabel="portraits"
-              click={togglePortaitFilter}
-            >
-              Portaits
-            </Button>
-          </div>
-          <div className={styles.FilterButton}>
-            <Button
-              clear={!filters.automobile}
-              ariaLabel="automobile"
-              click={toggleAutomobileFilter}
-            >
-              Automobile
-            </Button>
+      {isPhotosEnabled && (
+        <div className={styles.Filters}>
+          <h4>Filter</h4>
+          <div className={styles.FilterButtons}>
+            <div className={styles.FilterButton}>
+              <Button
+                clear={!filters.landscape}
+                ariaLabel="landscapes"
+                click={toggleLandscapeFilter}
+              >
+                Landscape
+              </Button>
+            </div>
+            <div className={styles.FilterButton}>
+              <Button
+                clear={!filters.portrait}
+                ariaLabel="portraits"
+                click={togglePortaitFilter}
+              >
+                Portaits
+              </Button>
+            </div>
+            <div className={styles.FilterButton}>
+              <Button
+                clear={!filters.automobile}
+                ariaLabel="automobile"
+                click={toggleAutomobileFilter}
+              >
+                Automobile
+              </Button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Gallery
         numPhotosLoaded={numPhotosLoaded}
         photos={photos}
