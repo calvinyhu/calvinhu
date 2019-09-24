@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import uniqid from 'uniqid';
-// @ts-ignore
-import throttle from 'raf-throttle';
 import classnames from 'classnames';
 
 import { CartItem, OrderProps, ProductItem } from './Order.models';
@@ -13,7 +11,7 @@ import Fa from 'components/UI/Fa/Fa';
 import Modal from 'components/UI/Modal/Modal';
 import Backdrop from 'components/UI/Backdrop/Backdrop';
 import Cart from 'components/Cart/Cart';
-import { useResetScrollOnUnmount } from 'utils/hooks';
+import { useResetScrollOnUnmount, useScrollPositionFlag } from 'utils/hooks';
 import { addToCart } from 'store/actions/cartActions';
 import { RootState } from 'store/reducers';
 
@@ -31,23 +29,7 @@ const Order = ({ history }: OrderProps) => {
   const dispatch = useDispatch();
 
   const [isNavHidden, setIsNavHidden] = useState(false);
-  useEffect(() => {
-    const animatePage = (scrollTop: number, clientHeight: number) => {
-      if (isNavHidden && scrollTop < clientHeight) setIsNavHidden(false);
-      if (!isNavHidden && scrollTop >= clientHeight) setIsNavHidden(true);
-    };
-
-    const handleScroll = () => {
-      throttle(animatePage(window.pageYOffset, PIXELS_TO_SECONDARY_NAV));
-    };
-
-    const event = 'scroll';
-    window.addEventListener(event, handleScroll);
-
-    return () => {
-      window.removeEventListener(event, handleScroll);
-    };
-  });
+  useScrollPositionFlag(isNavHidden, setIsNavHidden, PIXELS_TO_SECONDARY_NAV);
 
   const handleCartOpen = () => setCartOpen(true);
   const handleCartClose = () => setCartOpen(false);

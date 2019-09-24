@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
-// @ts-ignore
-import throttle from 'raf-throttle';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -15,26 +13,11 @@ import { hideNavOnPathname } from 'utils/styles';
 import { LayoutProps } from './Layout.models';
 
 import styles from './Layout.module.scss';
+import { useScrollPositionFlag } from 'utils/hooks';
 
 const Layout = ({ location: { pathname }, children }: LayoutProps) => {
   const [isShowToTop, setIsShowToTop] = useState(false);
-  useEffect(() => {
-    const animatePage = (scrollTop: number, clientHeight: number) => {
-      if (isShowToTop && scrollTop < clientHeight) setIsShowToTop(false);
-      if (!isShowToTop && scrollTop >= clientHeight) setIsShowToTop(true);
-    };
-
-    const handleScroll = () => {
-      throttle(animatePage(window.pageYOffset, window.innerHeight));
-    };
-
-    const event = 'scroll';
-    window.addEventListener(event, handleScroll);
-
-    return () => {
-      window.removeEventListener(event, handleScroll);
-    };
-  });
+  useScrollPositionFlag(isShowToTop, setIsShowToTop, window.innerHeight);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [percent, setPercent] = useState(0);
