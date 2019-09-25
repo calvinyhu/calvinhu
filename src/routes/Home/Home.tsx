@@ -7,7 +7,7 @@ import Milestone from 'components/Milestone/Milestone';
 import { useResetScrollOnUnmount } from 'utils/hooks';
 
 import styles from './Home.module.scss';
-import milestones from 'assets/milestones/milestones';
+import milestones from 'constants/milestones';
 
 const Home = () => {
   const [offsetX, setOffsetX] = useState(0);

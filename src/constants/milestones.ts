@@ -1,6 +1,6 @@
-import invitaeLogo from '../../assets/images/invitae_logo.png';
-import shmackLogo from '../../assets/images/shmack_logo.png';
-import jammmingLogo from '../../assets/images/jammming_logo.jpg';
+import invitaeLogo from 'assets/images/invitae_logo.png';
+import shmackLogo from 'assets/images/shmack_logo.png';
+import jammmingLogo from 'assets/images/jammming_logo.jpg';
 
 interface Milestone {
   alt: string;
