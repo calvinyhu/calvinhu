@@ -1,4 +1,4 @@
-import { FeatureFlags } from 'store/reducers/appReducer.models';
+import { FeatureFlags } from 'store/reducers/app/app.models';
 
 export const SET_FEATURE_FLAGS = 'SET_FEATURE_FLAGS';
 

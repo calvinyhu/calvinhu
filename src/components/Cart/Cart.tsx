@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import Button from 'components/UI/Button/Button';
 import CartItem from '../CartItem/CartItem';
 import { CartProps, CartHandlers } from './Cart.models';
-import { removeFromCart } from 'store/actions/cartActions';
+import { removeFromCart } from 'store/actions/cart/cart';
 import { RootState } from 'store/reducers';
 
 import styles from './Cart.module.scss';

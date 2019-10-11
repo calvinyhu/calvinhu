@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { AppState } from './appReducer.models';
-import appReducer from './appReducer';
-import { CartState } from './cartReducer.models';
-import cartReducer from './cartReducer';
+import { AppState } from './app/app.models';
+import appReducer from './app/app';
+import { CartState } from './cart/cart.models';
+import cartReducer from './cart/cart';
 
 export interface RootState {
   app: AppState;

@@ -1,9 +1,9 @@
-import { CartState } from './cartReducer.models';
+import { CartState } from './cart.models';
 import {
   CartActions,
   ADD_TO_CART,
   REMOVE_FROM_CART,
-} from '../actions/cartActions.models';
+} from '../../actions/cart/cart.models';
 
 export const cartState: CartState = {
   items: {},

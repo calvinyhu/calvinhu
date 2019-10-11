@@ -5,7 +5,7 @@ import {
   AddToCartAction,
   REMOVE_FROM_CART,
   RemoveFromCartAction,
-} from './cartActions.models';
+} from './cart.models';
 
 export const addToCart = (item: CartItem): AddToCartAction => ({
   type: ADD_TO_CART,

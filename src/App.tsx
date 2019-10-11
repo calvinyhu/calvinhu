@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchFeatureFlags } from 'api/api';
 import Layout from 'components/Layout/Layout';
-import { setFeatureFlags } from 'store/actions/appActions';
-import { FeatureFlags } from 'store/reducers/appReducer.models';
+import { setFeatureFlags } from 'store/actions/app/app';
+import { FeatureFlags } from 'store/reducers/app/app.models';
 import { RootState } from 'store/reducers';
 
 const About = lazy(() => import('routes/About/About'));

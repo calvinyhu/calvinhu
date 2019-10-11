@@ -12,7 +12,7 @@ import Modal from 'components/UI/Modal/Modal';
 import Backdrop from 'components/UI/Backdrop/Backdrop';
 import Cart from 'components/Cart/Cart';
 import { useResetScrollOnUnmount, useScrollPositionFlag } from 'utils/hooks';
-import { addToCart } from 'store/actions/cartActions';
+import { addToCart } from 'store/actions/cart/cart';
 import { RootState } from 'store/reducers';
 
 import styles from './Order.module.scss';
