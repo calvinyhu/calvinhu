@@ -1,93 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react';
 // @ts-ignore
 import Fade from 'react-reveal/Fade';
-// @ts-ignore
-import throttle from 'raf-throttle';
 import classnames from 'classnames';
 
 import { Filters } from './Photography.models';
-import { fetchPhotos, fetchUrls } from './Photography.api';
+import {
+  useGetPhotos,
+  useHideTouchAppIcon,
+  useLoadPhotosOnScroll,
+} from './Photography.hooks';
 import Gallery from 'components/Gallery/Gallery';
 import Fa from 'components/UI/Fa/Fa';
 import Button from 'components/UI/Button/Button';
 import { useResetScrollOnUnmount } from 'utils/hooks';
-import { RootState } from 'store/reducers';
+import { useIsPhotosEnabled } from 'store/hooks/app';
 
 import styles from './Photography.module.scss';
 
-let initialPhotos: firebase.firestore.DocumentData | undefined;
-let timeout: NodeJS.Timeout;
-
 const Photography = () => {
-  const featureFlags = useSelector(
-    (state: RootState) => state.app.featureFlags,
-  );
-  const isPhotosEnabled = featureFlags && featureFlags.photosEnabled;
+  const photos = useGetPhotos();
 
-  // Get photos from firebase
-  const [photos, setPhotos] = useState(initialPhotos);
-  useEffect(() => {
-    let didCancel = false;
+  const totalNumPhotos = photos ? Object.keys(photos as object).length : 0;
+  const numPhotosLoaded = useLoadPhotosOnScroll(totalNumPhotos);
 
-    const getPhotos = async () => {
-      const photos = (await fetchPhotos()) as firebase.firestore.DocumentData;
-      const urls = await fetchUrls(photos);
-
-      Object.keys(photos as object).forEach((id, index) => {
-        photos[id].url = urls[index];
-      });
-
-      initialPhotos = photos;
-
-      if (didCancel) return;
-
-      setPhotos(photos);
-    };
-
-    if (!photos) getPhotos();
-
-    return () => {
-      didCancel = true;
-    };
-  });
-
-  // Show more photos as page scrolls
-  const [numPhotosLoaded, setNumPhotosLoaded] = useState(10);
-  useEffect(() => {
-    const showMorePhotos = () => {
-      const { body, documentElement } = document;
-      const height = Math.max(
-        body.scrollHeight,
-        documentElement.scrollHeight,
-        body.offsetHeight,
-        documentElement.offsetHeight,
-        body.clientHeight,
-        documentElement.clientHeight,
-      );
-      const isAtBottom = window.pageYOffset > height - window.innerHeight * 1.3;
-      const totalNumPhotos = Object.keys(photos as object).length;
-      const hasMorePhotos = numPhotosLoaded < totalNumPhotos;
-
-      if (isAtBottom && hasMorePhotos) setNumPhotosLoaded(numPhotosLoaded + 10);
-    };
-
-    const handleScroll = () => throttle(showMorePhotos());
-
-    const event = 'scroll';
-    window.addEventListener(event, handleScroll);
-
-    return () => {
-      window.removeEventListener(event, handleScroll);
-    };
-  });
-
-  // Show and hide touch app icon
-  const [isHideTouchApp, setIsHideTouchApp] = useState(false);
-  useEffect(() => {
-    timeout = setTimeout(() => setIsHideTouchApp(true), 7000);
-    return () => clearTimeout(timeout);
-  });
+  const isHideTouchApp = useHideTouchAppIcon();
 
   useResetScrollOnUnmount();
 
@@ -118,7 +54,7 @@ const Photography = () => {
 
   return (
     <div className={styles.PhotographyContainer}>
-      {isPhotosEnabled && (
+      {useIsPhotosEnabled() && (
         <div className={styles.Filters}>
           <h4>Filter</h4>
           <div className={styles.FilterButtons}>

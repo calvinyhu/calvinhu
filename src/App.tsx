@@ -1,12 +1,9 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchFeatureFlags } from 'api/api';
 import Layout from 'components/Layout/Layout';
-import { setFeatureFlags } from 'store/actions/app/app';
-import { FeatureFlags } from 'store/reducers/app/app.models';
-import { RootState } from 'store/reducers';
+import { useIsOrderEnabled } from 'store/hooks/app';
+import { useGetFeatureFlags } from './App.hooks';
 
 const About = lazy(() => import('routes/About/About'));
 const Checkout = lazy(() => import('routes/Checkout/Checkout'));
@@ -15,20 +12,9 @@ const Photography = lazy(() => import('routes/Photography/Photography'));
 const Home = lazy(() => import('routes/Home/Home'));
 
 const App = () => {
-  const featureFlags = useSelector(
-    (state: RootState) => state.app.featureFlags,
-  );
-  const isOrderEnabled = featureFlags && featureFlags.orderEnabled;
-  const dispatch = useDispatch();
+  useGetFeatureFlags();
 
-  useEffect(() => {
-    const getFeatureFlags = async () => {
-      const featureFlags = (await fetchFeatureFlags()) as FeatureFlags;
-      dispatch(setFeatureFlags(featureFlags));
-    };
-
-    if (!featureFlags) getFeatureFlags();
-  });
+  const isOrderEnabled = useIsOrderEnabled();
 
   return (
     <Layout>

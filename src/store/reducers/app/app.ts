@@ -2,7 +2,7 @@ import { AppState } from './app.models';
 import { SET_FEATURE_FLAGS, AppActions } from '../../actions/app/app.models';
 
 const INITIAL_APP_STATE: AppState = {
-  featureFlags: undefined,
+  featureFlags: {},
 };
 
 const appReducer = (state = INITIAL_APP_STATE, action: AppActions) => {

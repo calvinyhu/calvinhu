@@ -1,8 +1,8 @@
 export interface FeatureFlags {
-  orderEnabled: boolean;
-  photosEnabled: boolean;
+  orderEnabled?: boolean;
+  photosEnabled?: boolean;
 }
 
 export interface AppState {
-  featureFlags?: FeatureFlags;
+  featureFlags: FeatureFlags;
 }
