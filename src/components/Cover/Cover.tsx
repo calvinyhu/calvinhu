@@ -5,6 +5,7 @@ import throttle from 'raf-throttle';
 import Fa from '../UI/Fa/Fa';
 import Button from '../UI/Button/Button';
 import { CoverProps, CoverState } from './Cover.models';
+import packageJson from '../../../package.json';
 
 import styles from './Cover.module.scss';
 import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
@@ -113,6 +114,7 @@ class Cover extends React.PureComponent<CoverProps, CoverState> {
           <Fa lg>fas fa-angle-down</Fa>
         </Button>
       </div>
+      <div className={styles.version}>{packageJson.version}</div>
     </div>
   );
 
