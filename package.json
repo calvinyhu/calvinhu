@@ -27,8 +27,8 @@
     "ship": "npm run build && npm run delete-source-map && npm run deploy",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint src/**/*.{ts,tsx}",
-    "lint:fix": "eslint --fix src/**/*.{ts,tsx}"
+    "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
+    "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -27,6 +27,6 @@ cacheNetworkFallback = event => {
           })
           .catch(error => console.log('Cache Network Fallback Error: ', error));
       }
-    })
+    }),
   );
 };
