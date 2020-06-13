@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import Button from 'components/UI/Button/Button';
 import Fa from 'components/UI/Fa/Fa';
@@ -31,7 +31,7 @@ const Carousel = ({ items }: CarouselProps) => {
 
   if (items.length > 0) {
     items.forEach((item, index) => {
-      const carouselItemClasses = classnames({
+      const carouselItemClasses = clsx({
         [styles.CarouselItem]: true,
         [styles.ObjectPosition25Center]: index === 1,
       });
@@ -41,7 +41,7 @@ const Carousel = ({ items }: CarouselProps) => {
         </div>,
       );
 
-      const carouselIndicatorClasses = classnames({
+      const carouselIndicatorClasses = clsx({
         [styles.CarouselIndicator]: true,
         [styles.ActiveIndicator]: index === -item,
       });

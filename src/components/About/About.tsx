@@ -9,7 +9,7 @@ import Fa from 'components/UI/Fa/Fa';
 const aboutParagraph =
   "I graduated from UC Davis with a B.S. in Computer Science and a minor in Technology Management. I'm pursuing a career in web app development and when I'm not at my computer, I am outside shooting photos or at the gym keeping fit.";
 
-const About = () => (
+const About = (props: any) => (
   <div className={styles.About}>
     <Fade>
       <div className={styles.ProfilePictureContainer}>

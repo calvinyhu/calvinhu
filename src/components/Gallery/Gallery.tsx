@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './Gallery.module.scss';
 import GalleryItem from './GalleryItem/GalleryItem';
-import { Filters, TYPES } from 'routes/Photography/Photography.models';
 
 interface GalleryProps {
   numPhotosLoaded: number;
   photos: firebase.firestore.DocumentData | undefined;
-  filters: Filters;
 }
 
 interface Handler {
@@ -19,7 +17,7 @@ interface IsLoaded {
   [photoId: string]: boolean;
 }
 
-const Gallery = ({ numPhotosLoaded, photos, filters }: GalleryProps) => {
+const Gallery = ({ numPhotosLoaded, photos }: GalleryProps) => {
   const [hoverPhoto, setHoverPhoto] = useState('');
   const [isExpandPhoto, setIsExpandPhoto] = useState(false);
   const initIsLoaded: IsLoaded = {};
@@ -72,16 +70,9 @@ const Gallery = ({ numPhotosLoaded, photos, filters }: GalleryProps) => {
     if (!photos) return null;
 
     const galleryItems: React.ReactNodeArray = [];
-    const isFiltersOn = Boolean(Object.values(filters).filter(Boolean).length);
 
     Object.keys(photos).forEach(id => {
-      const isPhotoCorrectType = !filters[TYPES[photos[id].type]];
-
-      if (
-        galleryItems.length + 1 > numPhotosLoaded ||
-        (isFiltersOn && isPhotoCorrectType)
-      )
-        return;
+      if (galleryItems.length + 1 > numPhotosLoaded) return;
 
       galleryItems.push(
         <GalleryItem
@@ -100,7 +91,7 @@ const Gallery = ({ numPhotosLoaded, photos, filters }: GalleryProps) => {
     return galleryItems;
   };
 
-  const cardClasses = classnames(styles.Card, {
+  const cardClasses = clsx(styles.Card, {
     [styles.CardShow]: isExpandPhoto,
   });
   const card = (

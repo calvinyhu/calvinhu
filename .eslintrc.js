@@ -23,5 +23,6 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-member-accessibility": "off",
     "prettier/prettier": ["error", { singleQuote: true, trailingComma: "all" }],
+    "react/prop-types": "off",
   },
 };

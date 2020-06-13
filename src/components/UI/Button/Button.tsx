@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import classnames from 'classnames';
+import React, { useState, FC } from 'react';
+import clsx from 'clsx';
 
 import styles from './Button.module.scss';
 
@@ -7,12 +7,10 @@ interface ButtonProps {
   adj?: boolean;
   ariaLabel: string;
   blueGray?: boolean;
-  // eslint-disable-next-line
-  children?: any;
   clear?: boolean;
   circle?: boolean;
   // eslint-disable-next-line
-  click: any;
+  click?: any;
   disabled?: boolean;
   id?: string | undefined;
   link?: boolean;
@@ -21,7 +19,7 @@ interface ButtonProps {
   opp?: boolean;
 }
 
-const Button = ({
+const Button: FC<ButtonProps> = ({
   adj = false,
   ariaLabel,
   blueGray = false,
@@ -35,7 +33,7 @@ const Button = ({
   name = undefined,
   noBackground = false,
   opp = false,
-}: ButtonProps) => {
+}) => {
   const [isMouse, setIsMouse] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
   const [rect, setRect] = useState({ top: 0, bot: 0, left: 0, right: 0 });
@@ -68,7 +66,7 @@ const Button = ({
     setIsTouch(false);
   };
 
-  const buttonClasses = classnames({
+  const buttonClasses = clsx({
     [styles.Button]: true,
     [styles.Clear]: clear,
     [styles.Link]: link,

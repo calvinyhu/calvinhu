@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './Fa.module.scss';
 
@@ -18,7 +18,7 @@ const Fa = ({
   twoX = false,
   white = false,
 }: FaProps) => {
-  const faClasses = classnames(styles.Fa, children, {
+  const faClasses = clsx(styles.Fa, children, {
     'fa-lg': lg,
     'fa-3x': threeX,
     'fa-2x': twoX,

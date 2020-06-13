@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './Backdrop.module.scss';
 
@@ -10,7 +10,7 @@ interface BackdropProps {
 }
 
 const Backdrop = ({ click, isOpen, percent }: BackdropProps) => {
-  const backdropClasses = classnames({
+  const backdropClasses = clsx({
     [styles.Backdrop]: true,
     [styles.OpenBackdrop]: isOpen,
     [styles.CloseBackdrop]: !isOpen,

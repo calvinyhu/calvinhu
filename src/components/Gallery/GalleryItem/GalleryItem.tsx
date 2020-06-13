@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './GalleryItem.module.scss';
 
@@ -30,7 +30,7 @@ const GalleryItem = ({
   isLoaded,
   photos,
 }: GalleryItemProps) => {
-  const imgContainerClasses = classnames({
+  const imgContainerClasses = clsx({
     [styles.ImgContainer]: true,
     [styles.Hide]: true,
     [styles.Show]: isLoaded[id],

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import Button from '../UI/Button/Button';
 import NavItem from '../UI/NavItem/NavItem';
@@ -28,13 +28,13 @@ const NavBar = ({
     };
   }, [width]);
 
-  const navClasses = classnames({
+  const navClasses = clsx({
     [styles.Nav]: true,
     [styles.White]: isShowToTop || pathname !== '/',
     [styles.PositionRelative]: hideNavOnPathname(pathname),
   });
 
-  const nameClasses = classnames({
+  const nameClasses = clsx({
     [styles.Name]: true,
     [styles.Clickable]: isShowToTop || pathname !== '/',
   });

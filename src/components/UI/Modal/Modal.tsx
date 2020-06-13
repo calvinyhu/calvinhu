@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import Button from '../Button/Button';
 
@@ -30,7 +30,7 @@ const Modal = ({
   isOpen,
   title,
 }: ModalProps) => {
-  const modelClasses = classnames(styles.modal, { [styles.open]: isOpen });
+  const modelClasses = clsx(styles.modal, { [styles.open]: isOpen });
   return (
     <div className={modelClasses}>
       <header>

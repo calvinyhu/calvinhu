@@ -1,40 +1,24 @@
-import React, { lazy, Suspense } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { Router } from '@reach/router';
 
-import Layout from 'components/Layout/Layout';
-import { useIsOrderEnabled } from 'store/hooks/app';
-import { useGetFeatureFlags } from './App.hooks';
-
-const About = lazy(() => import('routes/About/About'));
-const Checkout = lazy(() => import('routes/Checkout/Checkout'));
-const Order = lazy(() => import('routes/Order/Order'));
-const Photography = lazy(() => import('routes/Photography/Photography'));
-const Home = lazy(() => import('routes/Home/Home'));
+import HomeLayout from 'components/HomeLayout/HomeLayout';
+import PhotoLayout from 'components/PhotoLayout/PhotoLayout';
+import Home from 'components/Home/Home';
+import About from 'components/About/About';
+import Photography from 'components/Photography/Photography';
 
 const App = () => {
-  useGetFeatureFlags();
-
-  const isOrderEnabled = useIsOrderEnabled();
-
   return (
-    <Layout>
-      <Suspense fallback={<div />}>
-        <Switch>
-          <Route exact path="/about" component={About} />
-          {isOrderEnabled && (
-            <Route exact path="/checkout" component={Checkout} />
-          )}
-          {isOrderEnabled && <Route exact path="/order" component={Order} />}
-          <Route exact path="/photo" component={Photography} />
-          <Route exact path="/" component={Home} />
+    <Router>
+      <HomeLayout path="/">
+        <Home path="/" />
+        <About path="about" />
+      </HomeLayout>
 
-          <Redirect from="/photos" to="/photo" />
-          <Redirect from="/photography" to="/photo" />
-
-          <Redirect to="/" />
-        </Switch>
-      </Suspense>
-    </Layout>
+      <PhotoLayout path="photo">
+        <Photography path="/" />
+      </PhotoLayout>
+    </Router>
   );
 };
 

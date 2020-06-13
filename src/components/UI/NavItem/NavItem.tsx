@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, withRouter } from 'react-router-dom';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './NavItem.module.scss';
 
@@ -59,7 +58,7 @@ const NavItem = ({
     setIsTouch(false);
   };
 
-  const navItemClasses = classnames(styles.NavItem, {
+  const navItemClasses = clsx(styles.NavItem, {
     [styles.Bold]: bold,
     [styles.BorderMain]: borderMain,
     [styles.Clear]: clear,
@@ -71,22 +70,23 @@ const NavItem = ({
     [styles.Tall]: tall,
   });
 
-  return (
-    <NavLink
-      activeClassName={noActiveClass ? '' : styles.Active}
-      className={navItemClasses}
-      exact
-      onClick={click}
-      onTouchEnd={handleTouchEnd}
-      onTouchStart={handleTouchStart}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      to={to}
-    >
-      {children}
-    </NavLink>
-  );
+  // return (
+  //   <NavLink
+  //     activeClassName={noActiveClass ? '' : styles.Active}
+  //     className={navItemClasses}
+  //     exact
+  //     onClick={click}
+  //     onTouchEnd={handleTouchEnd}
+  //     onTouchStart={handleTouchStart}
+  //     onMouseEnter={handleMouseEnter}
+  //     onMouseLeave={handleMouseLeave}
+  //     to={to}
+  //   >
+  //     {children}
+  //   </NavLink>
+  // );
+  return null;
 };
 
 // eslint-disable-next-line
-export default withRouter(NavItem as any);
+export default NavItem

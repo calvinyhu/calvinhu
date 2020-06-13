@@ -9,7 +9,7 @@ import { useResetScrollOnUnmount } from 'utils/hooks';
 import styles from './Home.module.scss';
 import milestones from 'constants/milestones';
 
-const Home = () => {
+const Home = (props: any) => {
   const [offsetX, setOffsetX] = useState(0);
 
   useEffect(() => {

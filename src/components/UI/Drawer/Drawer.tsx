@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import clsx from 'clsx';
 
 import styles from './Drawer.module.scss';
 
@@ -17,7 +17,7 @@ const Drawer = ({
   left = false,
   right = false,
 }: DrawerProps) => {
-  const drawerClasses = classnames({
+  const drawerClasses = clsx({
     [styles.LeftDrawer]: left,
     [styles.OpenDrawer]: left && isOpen,
     [styles.CloseLeftDrawer]: left && !isOpen,
