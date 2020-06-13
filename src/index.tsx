@@ -8,6 +8,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './store/reducers';
 
+import 'antd/dist/antd.css';
 import './index.module.scss';
 
 const composeEnhancers =
