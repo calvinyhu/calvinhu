@@ -2,15 +2,19 @@ import React from 'react';
 
 import Backdrop from 'components/UI/Backdrop/Backdrop';
 import Drawer from 'components/UI/Drawer/Drawer';
-import { NavDrawerProps } from './NavDrawer.models';
 
 import styles from './NavDrawer.module.scss';
+
+export interface NavDrawerProps {
+  handleDrawerClose: () => void;
+  isDrawerOpen: boolean;
+  navLinks: React.ReactFragment;
+}
 
 const NavDrawer = ({
   handleDrawerClose,
   isDrawerOpen,
   navLinks,
-  percent,
 }: NavDrawerProps) => (
   <>
     <Drawer right isOpen={isDrawerOpen}>
@@ -18,11 +22,7 @@ const NavDrawer = ({
         <div className={styles.NavDrawerLinksContainer}>{navLinks}</div>
       </div>
     </Drawer>
-    <Backdrop
-      isOpen={isDrawerOpen}
-      click={handleDrawerClose}
-      percent={percent}
-    />
+    <Backdrop isOpen={isDrawerOpen} onClick={handleDrawerClose} />
   </>
 );
 

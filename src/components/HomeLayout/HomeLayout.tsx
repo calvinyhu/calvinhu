@@ -1,12 +1,12 @@
 import React, { FC, useState } from 'react';
 import { Link, RouterProps, WindowLocation } from '@reach/router';
-import clsx from 'clsx';
+
+import { useScrollPositionFlag } from 'utils/hooks';
+import TopOfPageButton from 'components/UI/Button/TopOfPageButton/TopOfPageButton';
+import NavDrawer from '../NavDrawer/NavDrawer';
+import NavBar from 'components/NavBar/NavBar';
 
 import styles from './HomeLayout.module.scss';
-import { useScrollPositionFlag } from 'utils/hooks';
-import Fa from 'components/UI/Fa/Fa';
-import Button from 'components/UI/Button/Button';
-import NavDrawer from '../NavDrawer/NavDrawer';
 
 interface LinksProps {
   onClick?: () => void;
@@ -23,67 +23,6 @@ const Links: FC<LinksProps> = ({ onClick }) => (
   </>
 );
 
-interface NavBarProps {
-  isShowToTop: boolean;
-  pathname: string;
-  handleDrawerOpen: () => void;
-}
-
-const NavBar: FC<NavBarProps> = ({
-  isShowToTop,
-  pathname,
-  handleDrawerOpen,
-}) => {
-  return (
-    <div
-      className={clsx(styles.NavBar, {
-        [styles.White]: isShowToTop || pathname !== '/',
-      })}
-    >
-      <Link
-        to="."
-        className={clsx(styles.NavBarLink, styles.NavBarHomeLink, {
-          [styles.Clickable]: isShowToTop || pathname !== '/',
-        })}
-      >
-        Calvin Hu
-      </Link>
-      <span className={styles.NavBarRight}>
-        <span className={styles.NavBarLinks}>
-          <Links />
-        </span>
-        <span className={styles.NavBarDrawerToggle}>
-          <Button circle clear click={handleDrawerOpen} ariaLabel="Menu">
-            <Fa>fas fa-stream</Fa>
-          </Button>
-        </span>
-      </span>
-    </div>
-  );
-};
-
-interface TopOfPageButtonProps {
-  isShowToTop: boolean;
-  handleScrollToTop: () => void;
-}
-
-const TopOfPageButton: FC<TopOfPageButtonProps> = ({
-  isShowToTop,
-  handleScrollToTop,
-}) => {
-  return (
-    <div
-      className={clsx(styles.BackToTopBtn, {
-        [styles.OnScreenY]: isShowToTop,
-      })}
-    >
-      <Button circle blueGray ariaLabel="Go To Top" click={handleScrollToTop}>
-        <Fa white>fas fa-arrow-up</Fa>
-      </Button>
-    </div>
-  );
-};
-
 interface HomeLayoutProps extends RouterProps {
   path: string;
 }
@@ -99,15 +38,8 @@ const HomeLayout: FC<HomeLayoutProps> = ({ children, location }) => {
   };
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [percent, setPercent] = useState(0);
-  const handleDrawerOpen = () => {
-    setIsDrawerOpen(true);
-    setPercent(1);
-  };
-  const handleDrawerClose = () => {
-    setIsDrawerOpen(false);
-    setPercent(0);
-  };
+  const handleDrawerOpen = () => setIsDrawerOpen(true);
+  const handleDrawerClose = () => setIsDrawerOpen(false);
 
   return (
     <>
@@ -115,16 +47,16 @@ const HomeLayout: FC<HomeLayoutProps> = ({ children, location }) => {
         pathname={pathname}
         handleDrawerOpen={handleDrawerOpen}
         isShowToTop={isShowToTop}
+        links={<Links />}
       />
       <div className={styles.ContentContainer}>{children}</div>
       <NavDrawer
         handleDrawerClose={handleDrawerClose}
         isDrawerOpen={isDrawerOpen}
         navLinks={<Links onClick={handleDrawerClose} />}
-        percent={percent}
       />
       <TopOfPageButton
-        isShowToTop={isShowToTop}
+        isVisible={isShowToTop}
         handleScrollToTop={handleScrollToTop}
       />
     </>

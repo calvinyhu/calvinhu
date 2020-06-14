@@ -1,67 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC } from 'react';
+import { Link } from '@reach/router';
 import clsx from 'clsx';
 
-import Button from '../UI/Button/Button';
-import NavItem from '../UI/NavItem/NavItem';
-import Fa from '../UI/Fa/Fa';
-import { NavBarProps } from './NavBar.models';
+import Fa from 'components/UI/Fa/Fa';
+import Button from 'components/UI/Button/Button';
 
 import styles from './NavBar.module.scss';
-import { hideNavOnPathname } from 'utils/styles';
 
-const NavBar = ({
-  handleDrawerClose,
-  handleDrawerOpen,
+interface NavBarProps {
+  isShowToTop: boolean;
+  pathname: string;
+  handleDrawerOpen: () => void;
+  links: React.ReactNode;
+}
+
+const NavBar: FC<NavBarProps> = ({
   isShowToTop,
-  navLinks,
   pathname,
-}: NavBarProps) => {
-  const [width, setWidth] = useState(window.innerWidth);
-  useEffect(() => {
-    const handleResize = () => setWidth(window.innerWidth);
-
-    const event = 'resize';
-    window.addEventListener(event, handleResize);
-
-    return () => {
-      window.removeEventListener(event, handleResize);
-    };
-  }, [width]);
-
-  const navClasses = clsx({
-    [styles.Nav]: true,
-    [styles.White]: isShowToTop || pathname !== '/',
-    [styles.PositionRelative]: hideNavOnPathname(pathname),
-  });
-
-  const nameClasses = clsx({
-    [styles.Name]: true,
-    [styles.Clickable]: isShowToTop || pathname !== '/',
-  });
-
-  const style = {
-    display: width < 640 ? 'none' : 'flex',
-  };
-
+  handleDrawerOpen,
+  links,
+}) => {
   return (
-    <div className={navClasses}>
-      <div className={nameClasses}>
-        {/*
-        // @ts-ignore */}
-        <NavItem to="/" clear noActiveClass click={handleDrawerClose}>
-          Calvin Hu
-        </NavItem>
-      </div>
-      <div className={styles.NavLinksContainer}>
-        <div style={style} className={styles.NavLinks}>
-          {navLinks}
-        </div>
-        <div className={styles.DrawerToggle}>
-          <Button circle clear click={handleDrawerOpen} ariaLabel="Menu">
+    <div
+      className={clsx(styles.NavBar, {
+        [styles.White]: isShowToTop || pathname !== '/',
+      })}
+    >
+      <Link
+        to="/"
+        className={clsx(styles.NavBarLink, styles.NavBarHomeLink, {
+          [styles.Clickable]: isShowToTop || pathname !== '/',
+        })}
+      >
+        Calvin Hu
+      </Link>
+      <span className={styles.NavBarRight}>
+        <span className={styles.NavBarLinks}>{links}</span>
+        <span className={styles.NavBarDrawerToggle}>
+          <Button circle clear click={handleDrawerOpen} ariaLabel="menu">
             <Fa>fas fa-stream</Fa>
           </Button>
-        </div>
-      </div>
+        </span>
+      </span>
     </div>
   );
 };

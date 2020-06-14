@@ -1,25 +1,34 @@
-@import './src/styles/_classes.scss';
+@import "./src/styles/_classes.scss";
+@import "./src/styles/_variables.scss";
 
-.Nav {
-  width: 100%;
-  height: $height * 4;
-  position: fixed;
-  z-index: 1;
-  background: transparent;
+.NavBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: $transition1;
-  padding: 0 $padding-tiny * 2;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
 
   @include media-min-width($desktop-width) {
     justify-content: space-around;
-    padding: 0;
   }
 }
 
-.PositionRelative {
-  position: relative;
+.NavBarRight {
+  display: flex;
+}
+
+.NavBarLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  color: $md-blue-gray;
+
+  &:hover {
+    color: $md-blue-gray;
+    background: transparentize($md-black, 0.93);
+  }
 }
 
 .White {
@@ -27,14 +36,10 @@
   box-shadow: $box-shadow;
 }
 
-.Name {
-  display: flex;
+.NavBarHomeLink {
   opacity: 0;
-  font-size: $font-size * 1.2;
   pointer-events: none;
   transition: $transition1;
-  white-space: nowrap;
-  height: 100%;
 }
 
 .Clickable {
@@ -42,17 +47,15 @@
   pointer-events: all;
 }
 
-.NavLinksContainer {
-  display: flex;
-  align-items: center;
-  height: 100%;
+.NavBarLinks {
+  display: none;
+
+  @include media-min-width($desktop-width) {
+    display: flex;
+  }
 }
 
-.NavLinks {
-  height: 100%;
-}
-
-.DrawerToggle {
+.NavBarDrawerToggle {
   display: block;
   width: $fab-size-mini;
   height: $fab-size-mini;
