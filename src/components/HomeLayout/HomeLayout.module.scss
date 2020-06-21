@@ -1,29 +1,13 @@
 @import "./src/styles/_classes.scss";
 @import "./src/styles/_variables.scss";
 
-.NavBar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  position: fixed;
-  z-index: 1;
-
-  @include media-min-width($desktop-width) {
-    justify-content: space-around;
-  }
-}
-
-.NavBarRight {
-  display: flex;
-}
-
 .NavBarLink {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem 1.5rem;
   color: $md-blue-gray;
+  font-size: medium;
 
   &:hover {
     color: $md-blue-gray;
@@ -31,41 +15,6 @@
   }
 }
 
-.White {
-  background: transparentize($md-white, 0.07);
-  box-shadow: $box-shadow;
-}
-
-.NavBarHomeLink {
-  opacity: 0;
-  pointer-events: none;
-  transition: $transition1;
-}
-
-.Clickable {
-  opacity: 100;
-  pointer-events: all;
-}
-
-.NavBarLinks {
-  display: none;
-
-  @include media-min-width($desktop-width) {
-    display: flex;
-  }
-}
-
-.NavBarDrawerToggle {
-  display: block;
-  width: $fab-size-mini;
-  height: $fab-size-mini;
-  margin: 0 $margin-tiny * 2;
-
-  @include media-min-width($desktop-width) {
-    display: none;
-  }
-}
-
 .ContentContainer {
-  padding-top: 3rem;
+  padding-top: 3.3rem;
 }

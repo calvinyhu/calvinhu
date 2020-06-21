@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import Fa from 'components/UI/Fa/Fa';
 import Button from 'components/UI/Button/Button';
 
+import homeLayoutStyles from '../HomeLayout/HomeLayout.module.scss';
 import styles from './NavBar.module.scss';
 
 interface NavBarProps {
@@ -28,7 +29,7 @@ const NavBar: FC<NavBarProps> = ({
     >
       <Link
         to="/"
-        className={clsx(styles.NavBarLink, styles.NavBarHomeLink, {
+        className={clsx(homeLayoutStyles.NavBarLink, styles.NavBarHomeLink, {
           [styles.Clickable]: isShowToTop || pathname !== '/',
         })}
       >
