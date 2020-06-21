@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './Milestone.module.scss';
+import HyperLink from 'components/UI/HyperLink/HyperLink';
 
 interface MilestoneProps {
   alt: string;
@@ -31,14 +32,9 @@ const Milestone = ({
           <h1 className={styles.Title}>{title}</h1>
           <p className={styles.Date}>{date}</p>
           <p>{description}</p>
-          <a
-            className={styles.Url}
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <HyperLink className={styles.Url} href={url}>
             {urlTitle}
-          </a>
+          </HyperLink>
         </div>
       </div>
     </div>

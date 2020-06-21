@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { FC } from 'react';
 // @ts-ignore
 import Fade from 'react-reveal/Fade';
 
 import styles from './About.module.scss';
 import profilePicture from 'assets/images/profilePicture.jpg';
 import Fa from 'components/UI/Fa/Fa';
+import HL from 'components/UI/HyperLink/HyperLink';
 
 const aboutParagraph =
   "I graduated from UC Davis with a B.S. in Computer Science and a minor in Technology Management. I'm pursuing a career in web app development and when I'm not at my computer, I am outside shooting photos or at the gym keeping fit.";
 
-const About = (props: any) => (
+const SOCIAL_MEDIA = ['linkedin', 'github', 'facebook', 'instagram'];
+
+interface AboutProps {
+  path: string;
+}
+
+const About: FC<AboutProps> = () => (
   <div className={styles.About}>
     <Fade>
       <div className={styles.ProfilePictureContainer}>
@@ -23,34 +30,16 @@ const About = (props: any) => (
         <p>{aboutParagraph}</p>
       </div>
       <div className={styles.SocialMedia}>
-        <a
-          href="https://www.linkedin.com/in/calvinyhu"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Fa twoX>fab fa-linkedin</Fa>
-        </a>
-        <a
-          href="https://www.github.com/calvinyhu"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Fa twoX>fab fa-github</Fa>
-        </a>
-        <a
-          href="https://www.facebook.com/calvinyhu"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Fa twoX>fab fa-facebook-f</Fa>
-        </a>
-        <a
-          href="https://www.instagram.com/calvinyhu"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Fa twoX>fab fa-instagram</Fa>
-        </a>
+        {SOCIAL_MEDIA.map(media => (
+          <HL
+            key={media}
+            href={`https://www.${media}.com${
+              media === 'linkedin' ? '/in' : ''
+            }/calvinyhu`}
+          >
+            <Fa twoX>{`fab fa-${media}`}</Fa>
+          </HL>
+        ))}
       </div>
     </Fade>
   </div>
