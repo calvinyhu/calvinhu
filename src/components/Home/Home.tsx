@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, FC } from 'react';
 // @ts-ignore
 import throttle from 'raf-throttle';
 
@@ -6,10 +6,13 @@ import Cover from 'components/Cover/Cover';
 import Milestone from 'components/Milestone/Milestone';
 import { useResetScrollOnUnmount } from 'utils/hooks';
 
-import styles from './Home.module.scss';
 import milestones from 'constants/milestones';
 
-const Home = (props: any) => {
+interface HomeProps {
+  path: string;
+}
+
+const Home: FC<HomeProps> = () => {
   const [offsetX, setOffsetX] = useState(0);
 
   useEffect(() => {
@@ -31,25 +34,24 @@ const Home = (props: any) => {
 
   useResetScrollOnUnmount();
 
-  const renderMilestones = () =>
-    Object.values(milestones).map(val => (
-      <Milestone
-        key={val.title}
-        alt={val.alt}
-        date={val.date}
-        description={val.description}
-        photo={val.photo}
-        title={val.title}
-        url={val.url}
-        urlTitle={val.urlTitle}
-      />
-    ));
-
   return (
-    <div className={styles.Home}>
+    <>
       <Cover offsetX={offsetX} />
-      {renderMilestones()}
-    </div>
+      {Object.values(milestones).map(
+        ({ title, alt, date, description, photo, url, urlTitle }) => (
+          <Milestone
+            key={title}
+            alt={alt}
+            date={date}
+            description={description}
+            photo={photo}
+            title={title}
+            url={url}
+            urlTitle={urlTitle}
+          />
+        ),
+      )}
+    </>
   );
 };
 
