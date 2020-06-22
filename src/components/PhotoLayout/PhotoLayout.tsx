@@ -1,15 +1,69 @@
-import React from 'react';
-import { Link } from '@reach/router';
+import React, { FC, useState } from 'react';
+import { Link, WindowLocation, RouterProps } from '@reach/router';
+import NavBar from 'components/NavBar/NavBar';
+import NavDrawer from 'components/NavDrawer/NavDrawer';
+import TopOfPageButton from 'components/UI/Button/TopOfPageButton/TopOfPageButton';
+import { useScrollPositionFlag } from 'utils/hooks';
 
-const PhotoLayout = (props: any) => (
+import styles from './PhotoLayout.module.scss';
+
+interface LinksProps {
+  onClick?: () => void;
+}
+
+const Links: FC<LinksProps> = ({ onClick }) => (
   <>
-    <div>
-      <Link style={{ zIndex: 1000 }} to="/">
-        Home
-      </Link>
-    </div>
-    {props.children}
+    <Link to="travel" className={styles.NavBarLink} onClick={onClick}>
+      Travel
+    </Link>
+    <Link to="automotive" className={styles.NavBarLink} onClick={onClick}>
+      Automotive
+    </Link>
+    <Link to="portraits" className={styles.NavBarLink} onClick={onClick}>
+      Portraits
+    </Link>
   </>
 );
+
+interface PhotoLayoutProps extends RouterProps {
+  path: string;
+}
+
+const PhotoLayout: FC<PhotoLayoutProps> = ({ location, children }) => {
+  const { pathname } = location as WindowLocation;
+
+  const [isShowToTop, setIsShowToTop] = useState(false);
+  useScrollPositionFlag(isShowToTop, setIsShowToTop, window.innerHeight);
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0 });
+    setIsShowToTop(false);
+  };
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const handleDrawerOpen = () => setIsDrawerOpen(true);
+  const handleDrawerClose = () => setIsDrawerOpen(false);
+
+  return (
+    <>
+      <NavBar
+        className={styles.NavBar}
+        pathname={pathname}
+        handleDrawerOpen={handleDrawerOpen}
+        isShowToTop={isShowToTop}
+        links={<Links />}
+      />
+      {children}
+      <NavDrawer
+        handleDrawerClose={handleDrawerClose}
+        isDrawerOpen={isDrawerOpen}
+        navLinks={<Links onClick={handleDrawerClose} />}
+      />
+      <TopOfPageButton
+        isVisible={isShowToTop}
+        handleScrollToTop={handleScrollToTop}
+      />
+    </>
+  );
+};
 
 export default PhotoLayout;

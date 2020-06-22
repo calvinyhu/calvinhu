@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router } from '@reach/router';
+import { Router, Redirect } from '@reach/router';
 
 import HomeLayout from 'components/HomeLayout/HomeLayout';
 import PhotoLayout from 'components/PhotoLayout/PhotoLayout';
@@ -16,7 +16,10 @@ const App = () => {
       </HomeLayout>
 
       <PhotoLayout path="photo">
-        <Photography path="/" />
+        <Photography path="travel" />
+        <Photography path="automotive" />
+        <Photography path="portraits" />
+        <Redirect from="/" to="travel" />
       </PhotoLayout>
     </Router>
   );

@@ -9,6 +9,7 @@ import homeLayoutStyles from '../HomeLayout/HomeLayout.module.scss';
 import styles from './NavBar.module.scss';
 
 interface NavBarProps {
+  className?: string;
   isShowToTop: boolean;
   pathname: string;
   handleDrawerOpen: () => void;
@@ -16,6 +17,7 @@ interface NavBarProps {
 }
 
 const NavBar: FC<NavBarProps> = ({
+  className,
   isShowToTop,
   pathname,
   handleDrawerOpen,
@@ -23,7 +25,7 @@ const NavBar: FC<NavBarProps> = ({
 }) => {
   return (
     <div
-      className={clsx(styles.NavBar, {
+      className={clsx(styles.NavBar, className, {
         [styles.White]: isShowToTop || pathname !== '/',
       })}
     >

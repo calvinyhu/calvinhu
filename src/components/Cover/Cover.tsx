@@ -18,7 +18,7 @@ const Cover = () => {
       setSpring({
         xy: [clientX - window.innerWidth / 2, clientY - window.innerHeight / 2],
       }),
-    [],
+    [setSpring],
   );
 
   // @ts-ignore
