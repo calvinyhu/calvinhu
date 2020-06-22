@@ -1,9 +1,8 @@
-import React, { FC, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useSpring, animated } from 'react-spring';
 
 import Fa from '../UI/Fa/Fa';
 import Button from '../UI/Button/Button';
-import { CoverProps } from './Cover.models';
 import packageJson from '../../../package.json';
 
 import styles from './Cover.module.scss';
@@ -11,7 +10,7 @@ import p1080 from '../../assets/images/DSC_9569-1080p50-blurred.jpg';
 import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.jpg';
 import p2160 from '../../assets/images/DSC_9569-2160p35-blurred.jpg';
 
-const Cover: FC<CoverProps> = () => {
+const Cover = () => {
   const [{ xy }, setSpring] = useSpring(() => ({ xy: [0, 0] }));
 
   const handleMouseMove = useCallback(

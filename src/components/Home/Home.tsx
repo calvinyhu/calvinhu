@@ -1,6 +1,4 @@
-import React, { useEffect, useState, FC } from 'react';
-// @ts-ignore
-import throttle from 'raf-throttle';
+import React, { FC } from 'react';
 
 import Cover from 'components/Cover/Cover';
 import Milestone from 'components/Milestone/Milestone';
@@ -13,30 +11,11 @@ interface HomeProps {
 }
 
 const Home: FC<HomeProps> = () => {
-  const [offsetX, setOffsetX] = useState(0);
-
-  useEffect(() => {
-    const animatePage = (scrollTop: number, clientHeight: number) => {
-      if (scrollTop < clientHeight) setOffsetX(-scrollTop / 10);
-    };
-
-    const handleScroll = () => {
-      throttle(animatePage(window.pageYOffset, window.innerHeight));
-    };
-
-    const event = 'scroll';
-    window.addEventListener(event, handleScroll);
-
-    return () => {
-      window.removeEventListener(event, handleScroll);
-    };
-  });
-
   useResetScrollOnUnmount();
 
   return (
     <>
-      <Cover offsetX={offsetX} />
+      <Cover />
       {Object.values(milestones).map(
         ({ title, alt, date, description, photo, url, urlTitle }) => (
           <Milestone
