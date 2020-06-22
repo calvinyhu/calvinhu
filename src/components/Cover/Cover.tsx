@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
-import { useSpring, animated } from 'react-spring';
+import React, { useCallback, useEffect } from 'react';
+import { useSpring, animated, interpolate } from 'react-spring';
 
 import Fa from '../UI/Fa/Fa';
 import Button from '../UI/Button/Button';
@@ -11,7 +11,7 @@ import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.jpg';
 import p2160 from '../../assets/images/DSC_9569-2160p35-blurred.jpg';
 
 const Cover = () => {
-  const [{ xy }, setSpring] = useSpring(() => ({ xy: [0, 0] }));
+  const [{ st, xy }, setSpring] = useSpring(() => ({ st: 0, xy: [0, 0] }));
 
   const handleMouseMove = useCallback(
     ({ clientX, clientY }) =>
@@ -21,9 +21,24 @@ const Cover = () => {
     [setSpring],
   );
 
+  const onScroll = useCallback(() => setSpring({ st: window.scrollY / 4 }), [
+    setSpring,
+  ]);
+
+  useEffect(() => {
+    const event = 'scroll';
+    window.addEventListener(event, onScroll);
+
+    return () => {
+      window.removeEventListener(event, onScroll);
+    };
+  });
+
   // @ts-ignore
-  const interpolateBackground = xy.interpolate((x, y) => {
-    return `translate3d(${-x / 15}px, ${-y / 15}px, 0px) scale3d(1.4,1.4,1.4)`;
+  const interpolateBackground = interpolate([st, xy], (o, xy) => {
+    // @ts-ignore
+    return `translate3d(${-xy[0] / 15}px, ${-xy[1] / 15 -
+      o}px, 0px) scale3d(1.4,1.4,1.4)`;
   });
 
   const handleScrollDown = () =>
