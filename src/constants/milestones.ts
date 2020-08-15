@@ -8,8 +8,8 @@ interface Milestone {
   description: string;
   photo: string;
   title: string;
-  url: string;
-  urlTitle: string;
+  url?: string;
+  urlTitle?: string;
 }
 
 interface Milestones {
@@ -35,7 +35,7 @@ const milestones: Milestones = {
     photo: shmackLogo,
     title: 'Shmack',
     url: 'https://shmack.app/',
-    urlTitle: 'Try the app',
+    urlTitle: 'Try the app (deprecated)',
   },
   jammming: {
     alt: 'Jammming',
@@ -45,7 +45,7 @@ const milestones: Milestones = {
     photo: jammmingLogo,
     title: 'Jammming',
     url: 'https://jammmingspotify.firebaseapp.com/',
-    urlTitle: 'Try the app',
+    urlTitle: 'Try the app (deprecated)',
   },
 };
 

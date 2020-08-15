@@ -18,17 +18,18 @@
     "typescript": "^3.6.4"
   },
   "scripts": {
-    "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "build-storybook": "build-storybook",
     "deploy": "firebase deploy --only hosting",
     "delete-source-map": "find ./build/static -depth -path '*.map' -delete",
-    "ship": "npm run build && npm run delete-source-map && npm run deploy",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "eject": "react-scripts eject",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
-    "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}"
+    "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
+    "ship": "npm run build && npm run delete-source-map && npm run deploy",
+    "standard-version": "standard-version",
+    "start": "react-scripts start",
+    "storybook": "start-storybook -p 6006",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -60,7 +61,8 @@
     "eslint-plugin-react": "^7.16.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.6",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "standard-version": "^9.0.0"
   },
   "husky": {
     "hooks": {

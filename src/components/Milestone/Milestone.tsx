@@ -9,8 +9,8 @@ interface MilestoneProps {
   description: string;
   photo: string;
   title: string;
-  url: string;
-  urlTitle: string;
+  url?: string;
+  urlTitle?: string;
 }
 
 const Milestone = ({
@@ -32,9 +32,11 @@ const Milestone = ({
           <h1 className={styles.Title}>{title}</h1>
           <p className={styles.Date}>{date}</p>
           <p>{description}</p>
-          <HyperLink className={styles.Url} href={url}>
-            {urlTitle}
-          </HyperLink>
+          {url && urlTitle && (
+            <HyperLink className={styles.Url} href={url}>
+              {urlTitle}
+            </HyperLink>
+          )}
         </div>
       </div>
     </div>
