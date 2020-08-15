@@ -7,7 +7,7 @@ import PhotoLayout from 'components/PhotoLayout/PhotoLayout';
 const App = () => {
   return (
     <Router>
-      <HomeLayout path="/" />
+      <HomeLayout path="/*" />
       <PhotoLayout path="photo/*" />
     </Router>
   );
