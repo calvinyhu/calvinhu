@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/calvinyhu/calvinhu/compare/v2.4.0...v2.5.0) (2020-08-15)
+
+
+### Features
+
+* add commitlint. move configs to separate files ([cdd6ba0](https://github.com/calvinyhu/calvinhu/commit/cdd6ba028e5757439b9bcf244e0d972e38461dc9))
+
 ## [2.4.0](https://github.com/calvinyhu/calvinhu/compare/v2.3.0...v2.4.0) (2020-08-15)
 
 
