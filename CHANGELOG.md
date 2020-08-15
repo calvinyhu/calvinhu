@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.1](https://github.com/calvinyhu/calvinhu/compare/v2.5.0...v2.5.1) (2020-08-15)
+
+
+### Bug Fixes
+
+* add start to route ([78f1003](https://github.com/calvinyhu/calvinhu/commit/78f100369c1b7cc369eac25708a2ba9582d29ad3))
+
 ## [2.5.0](https://github.com/calvinyhu/calvinhu/compare/v2.4.0...v2.5.0) (2020-08-15)
 
 
