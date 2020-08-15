@@ -1,11 +1,18 @@
 import React, { FC, useState } from 'react';
-import { Link, WindowLocation, RouterProps } from '@reach/router';
+import {
+  Link,
+  WindowLocation,
+  RouterProps,
+  Redirect,
+  Router,
+} from '@reach/router';
 import NavBar from 'components/NavBar/NavBar';
 import NavDrawer from 'components/NavDrawer/NavDrawer';
 import TopOfPageButton from 'components/UI/Button/TopOfPageButton/TopOfPageButton';
 import { useScrollPositionFlag } from 'utils/hooks';
 
 import styles from './PhotoLayout.module.scss';
+import Photography from 'components/Photography/Photography';
 
 interface LinksProps {
   onClick?: () => void;
@@ -29,7 +36,7 @@ interface PhotoLayoutProps extends RouterProps {
   path: string;
 }
 
-const PhotoLayout: FC<PhotoLayoutProps> = ({ location, children }) => {
+const PhotoLayout: FC<PhotoLayoutProps> = ({ location }) => {
   const { pathname } = location as WindowLocation;
 
   const [isShowToTop, setIsShowToTop] = useState(false);
@@ -52,7 +59,12 @@ const PhotoLayout: FC<PhotoLayoutProps> = ({ location, children }) => {
         isShowToTop={isShowToTop}
         links={<Links />}
       />
-      {children}
+      <Router>
+        <Photography path="travel" />
+        <Photography path="automotive" />
+        <Photography path="portraits" />
+        <Redirect from="/" to="travel" />
+      </Router>
       <NavDrawer
         handleDrawerClose={handleDrawerClose}
         isDrawerOpen={isDrawerOpen}
