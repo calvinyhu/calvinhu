@@ -24,7 +24,7 @@
     "firebase": "firebase",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
     "lint:fix": "eslint --fix src/**/*.{js,jsx,ts,tsx}",
-    "ship": "standard-version && git push --follow-tags && npm run build && npm run delete-source-map && npm run deploy",
+    "ship": "standard-version --no-verify && git push --follow-tags && npm run build && npm run delete-source-map && npm run deploy",
     "standard-version": "standard-version",
     "start": "react-scripts start",
     "storybook": "start-storybook -p 6006",
