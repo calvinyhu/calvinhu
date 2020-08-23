@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/calvinyhu/calvinhu/compare/v2.5.4...v2.6.0) (2020-08-23)
+
+
+### Features
+
+* lazy import ([261d1c2](https://github.com/calvinyhu/calvinhu/commit/261d1c20a3b2ff4d1102c4e0913490af567cbd71))
+
 ### [2.5.4](https://github.com/calvinyhu/calvinhu/compare/v2.5.3...v2.5.4) (2020-08-23)
 
 
