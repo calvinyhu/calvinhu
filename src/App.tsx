@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Router } from '@reach/router';
 
-import HomeLayout from 'components/HomeLayout/HomeLayout';
-import PhotoLayout from 'components/PhotoLayout/PhotoLayout';
+const HomeLayout = lazy(() => import('components/HomeLayout/HomeLayout'));
+const PhotoLayout = lazy(() => import('components/PhotoLayout/PhotoLayout'));
 
 const App = () => {
   return (
-    <Router>
-      <HomeLayout path="/*" />
-      <PhotoLayout path="photo/*" />
-    </Router>
+    <Suspense fallback={<div>{':)'}</div>}>
+      <Router>
+        <HomeLayout path="/*" />
+        <PhotoLayout path="photo/*" />
+      </Router>
+    </Suspense>
   );
 };
 

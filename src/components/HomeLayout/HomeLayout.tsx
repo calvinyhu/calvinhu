@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { lazy, FC, useState } from 'react';
 import { Link, RouterProps, WindowLocation, Router } from '@reach/router';
 
 import { useScrollPositionFlag } from 'utils/hooks';
@@ -8,7 +8,8 @@ import NavBar from 'components/NavBar/NavBar';
 
 import styles from './HomeLayout.module.scss';
 import Home from 'components/Home/Home';
-import About from 'components/About/About';
+
+const About = lazy(() => import('components/About/About'));
 
 interface LinksProps {
   onClick?: () => void;
