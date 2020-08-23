@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-// @ts-ignore
-import Fade from 'react-reveal/Fade';
+import { useSpring, animated } from 'react-spring';
 
 import styles from './About.module.scss';
 import profilePicture from 'assets/images/profilePicture.jpg';
@@ -16,9 +15,11 @@ interface AboutProps {
   path: string;
 }
 
-const About: FC<AboutProps> = () => (
-  <div className={styles.About}>
-    <Fade>
+const About: FC<AboutProps> = () => {
+  const spring = useSpring({ opacity: 1, from: { opacity: 0 } });
+
+  return (
+    <animated.div style={spring} className={styles.About}>
       <div className={styles.ProfilePictureContainer}>
         <img src={profilePicture} alt="Calvin Hu" />
       </div>
@@ -41,8 +42,8 @@ const About: FC<AboutProps> = () => (
           </HL>
         ))}
       </div>
-    </Fade>
-  </div>
-);
+    </animated.div>
+  );
+};
 
 export default About;

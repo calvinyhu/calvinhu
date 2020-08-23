@@ -12,6 +12,7 @@
   &:hover {
     color: $md-blue-gray;
     background: transparentize($md-black, 0.93);
+    text-decoration: none;
   }
 }
 

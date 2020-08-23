@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-// @ts-ignore
-import Fade from 'react-reveal/Fade';
 import clsx from 'clsx';
+import { useSpring, animated } from 'react-spring';
 
 import {
   useGetPhotos,
@@ -34,16 +33,15 @@ const Photography: FC<PhotographyProps> = ({ path }) => {
 
   useResetScrollOnUnmount();
 
+  const spring = useSpring({ opacity: 1, from: { opacity: 0 } });
   const touchAppClasses = clsx({
     [styles.TouchApp]: true,
     [styles.HideTouchApp]: isHideTouchApp,
   });
   const touchAppIcon = (
-    <div className={touchAppClasses}>
-      <Fade>
-        <Fa lg>fas fa-hand-point-up</Fa>
-      </Fade>
-    </div>
+    <animated.div style={spring} className={touchAppClasses}>
+      <Fa lg>fas fa-hand-point-up</Fa>
+    </animated.div>
   );
 
   const filterPhotos = (photos: any) => {
