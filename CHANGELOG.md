@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.5.4](https://github.com/calvinyhu/calvinhu/compare/v2.5.3...v2.5.4) (2020-08-23)
+
+
+### Bug Fixes
+
+* remove text decoration for links ([02621d6](https://github.com/calvinyhu/calvinhu/commit/02621d6e0d5975b33ad326a15fb13c90f56d792a))
+
 ### [2.5.3](https://github.com/calvinyhu/calvinhu/compare/v2.5.1...v2.5.3) (2020-08-15)
 
 ### [2.5.2](https://github.com/calvinyhu/calvinhu/compare/v2.5.1...v2.5.2) (2020-08-15)
