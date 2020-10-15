@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/calvinyhu/calvinhu/compare/v2.7.0...v2.8.0) (2020-10-15)
+
+
+### Features
+
+* update spring config for more responsive cover parallax effect ([f169d9c](https://github.com/calvinyhu/calvinhu/commit/f169d9c7a1348c8d2f76cea587b266e9e379a31d))
+
 ## [2.7.0](https://github.com/calvinyhu/calvinhu/compare/v2.6.0...v2.7.0) (2020-10-15)
 
 
