@@ -17,13 +17,13 @@ const Home: FC<HomeProps> = () => {
     <>
       <Cover />
       {Object.values(milestones).map(
-        ({ title, alt, date, description, photo, url, urlTitle }) => (
+        ({ title, alt, date, description, logo, url, urlTitle }) => (
           <Milestone
             key={title}
             alt={alt}
             date={date}
             description={description}
-            photo={photo}
+            logo={logo}
             title={title}
             url={url}
             urlTitle={urlTitle}

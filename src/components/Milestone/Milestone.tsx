@@ -7,7 +7,7 @@ interface MilestoneProps {
   alt: string;
   date: string;
   description: string;
-  photo: string;
+  logo: string;
   title: string;
   url?: string;
   urlTitle?: string;
@@ -17,7 +17,7 @@ const Milestone = ({
   alt,
   date,
   description,
-  photo,
+  logo,
   title,
   url,
   urlTitle,
@@ -25,7 +25,7 @@ const Milestone = ({
   return (
     <div className={styles.Milestone}>
       <div className={styles.Photo}>
-        <img src={photo} alt={alt} />
+        <img src={logo} alt={alt} />
       </div>
       <div className={styles.Details}>
         <div>

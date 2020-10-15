@@ -1,12 +1,13 @@
 import invitaeLogo from 'assets/images/invitae_logo.png';
 import shmackLogo from 'assets/images/shmack_logo.png';
 import jammmingLogo from 'assets/images/jammming_logo.jpg';
+import churnLogo from 'assets/churn.svg';
 
 interface Milestone {
   alt: string;
   date: string;
   description: string;
-  photo: string;
+  logo: string;
   title: string;
   url?: string;
   urlTitle?: string;
@@ -17,14 +18,23 @@ interface Milestones {
 }
 
 const milestones: Milestones = {
+  churn: {
+    alt: 'Churn',
+    date: 'August 2020 - Present',
+    description: 'Simple credit card churning service',
+    logo: churnLogo,
+    title: 'Churn',
+    url: 'https://getchurn.com',
+    urlTitle: 'Try Churn',
+  },
   invitae: {
     alt: 'Invitae',
     date: 'December 2018 - Present',
     description:
       'Helping Invitae bring comprehensive genetic testing to the mainstream.',
-    photo: invitaeLogo,
+    logo: invitaeLogo,
     title: 'Invitae',
-    url: 'https://www.invitae.com/',
+    url: 'https://www.invitae.com',
     urlTitle: 'Learn about Invitae',
   },
   shmack: {
@@ -32,20 +42,20 @@ const milestones: Milestones = {
     date: 'August 2018 - November 2018',
     description:
       'Find and vote on popular, crowd-sourced restaurant menu items.',
-    photo: shmackLogo,
+    logo: shmackLogo,
     title: 'Shmack',
-    url: 'https://shmack.app/',
-    urlTitle: 'Try the app (deprecated)',
+    url: 'https://shmack.app',
+    urlTitle: 'Try Shmack (deprecated)',
   },
   jammming: {
     alt: 'Jammming',
     date: 'May 2018 - June 2018',
     description:
       'Create Spotify playlists on the web and push them to your account.',
-    photo: jammmingLogo,
+    logo: jammmingLogo,
     title: 'Jammming',
-    url: 'https://jammmingspotify.firebaseapp.com/',
-    urlTitle: 'Try the app (deprecated)',
+    url: 'https://jammmingspotify.firebaseapp.com',
+    urlTitle: 'Try Jammming (deprecated)',
   },
 };
 
