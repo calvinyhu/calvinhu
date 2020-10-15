@@ -11,7 +11,11 @@ import p1440 from '../../assets/images/DSC_9569-1440p50-blurred.jpg';
 import p2160 from '../../assets/images/DSC_9569-2160p35-blurred.jpg';
 
 const Cover = () => {
-  const [{ st, xy }, setSpring] = useSpring(() => ({ st: 0, xy: [0, 0] }));
+  const [{ st, xy }, setSpring] = useSpring(() => ({
+    st: 0,
+    xy: [0, 0],
+    config: { mass: 1, tension: 1000, friction: 50 },
+  }));
 
   const handleMouseMove = useCallback(
     ({ clientX, clientY }) =>
