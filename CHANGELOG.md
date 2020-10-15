@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/calvinyhu/calvinhu/compare/v2.6.0...v2.7.0) (2020-10-15)
+
+
+### Features
+
+* add churn milestone ([a2e0032](https://github.com/calvinyhu/calvinhu/commit/a2e00328472842a2003edc383634040dba806334))
+
 ## [2.6.0](https://github.com/calvinyhu/calvinhu/compare/v2.5.4...v2.6.0) (2020-08-23)
 
 
