@@ -20,7 +20,7 @@ interface Milestones {
 const milestones: Milestones = {
   churn: {
     alt: 'Churn',
-    date: 'August 2020 - Present',
+    date: 'August 2020 - September 2020',
     description: 'Simple credit card churning service',
     logo: churnLogo,
     title: 'Churn',
