@@ -1,0 +1,21 @@
+@import "./src/styles/_classes.scss";
+@import "./src/styles/_variables.scss";
+
+.NavBarLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  color: $md-blue-gray;
+  font-size: medium;
+
+  &:hover {
+    color: $md-blue-gray;
+    background: transparentize($md-black, 0.93);
+    text-decoration: none;
+  }
+}
+
+.NavBar {
+  position: relative;
+}

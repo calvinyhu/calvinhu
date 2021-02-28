@@ -1,0 +1,96 @@
+@import './src/styles/_classes.scss';
+
+.Milestone {
+  width: 100%;
+  min-height: 80vh;
+  background: $md-white;
+  color: $md-blue-gray;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: $padding;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 10%;
+    bottom: 0;
+    height: 0.2rem;
+    width: 80%;
+    border-bottom: 0.2rem solid transparentize($md-blue-gray, 0.93);
+  }
+
+  &:last-child:after {
+    border-bottom: none;
+  }
+
+  @include media-min-width($desktop-width) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.Photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $padding;
+  user-select: none;
+
+  img {
+    height: 100%;
+    width: 100%;
+    max-height: 50vh;
+    max-width: 15rem;
+    object-fit: contain;
+  }
+}
+
+.Details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $padding;
+
+  p {
+    text-align: left;
+    max-width: 25rem;
+    font-size: $font-size;
+
+    @include media-min-width($desktop-width) {
+      font-size: $font-size * 1.2;
+    }
+
+    @include media-min-width(65rem) {
+      font-size: $font-size * 1.5;
+    }
+  }
+}
+
+.Title {
+  font-weight: bold;
+
+  a {
+    color: $md-blue-gray;
+
+    &:hover {
+      color: $md-blue-gray;
+    }
+  }
+}
+
+.Date {
+  font-style: italic;
+}
+
+.Url {
+  color: $md-blue-gray;
+  font-weight: bold;
+
+  &:hover {
+    color: $md-blue-gray;
+  }
+}

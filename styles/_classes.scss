@@ -1,0 +1,94 @@
+@import './src/styles/_variables.scss';
+@import './src/styles/_mixins.scss';
+
+@include fade-in;
+@include fade(fadeIn0to75, 0, 0.75);
+@include fade(fadeOut75to0, 0.75, 0);
+@include slide-y(blockSlideY, 2.5rem, 0);
+@include slide-y(slideYOut5, 0, 5rem);
+@include slide-y(textSlideY, 50%, 0%);
+@include loading;
+@include extend;
+
+.Hide {
+  opacity: 0;
+}
+
+.Show {
+  opacity: 1;
+}
+
+.FadeIn {
+  animation: fadeIn 1.5s $timing-func-1 forwards;
+}
+
+.FabSlideFadeIn {
+  animation: fadeIn0to75 0.5s $timing-func-1 forwards,
+    blockSlideY 0.5s $timing-func-1 forwards;
+}
+
+.FabSlideFadeOut {
+  animation: fadeOut75to0 0.5s $timing-func-1 forwards,
+    slideYOut5 0.5s $timing-func-1 forwards;
+}
+
+.BlockSlideFadeIn {
+  animation: fadeIn 1.5s $timing-func-1 forwards,
+    blockSlideY 1s $timing-func-1 forwards;
+}
+
+.TextSlideFadeIn {
+  animation: fadeIn 1.5s $timing-func-1 forwards,
+    textSlideY 1s $timing-func-1 forwards;
+}
+
+.BackToTopBtn {
+  position: fixed;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+  width: $fab-size-mini;
+  height: $fab-size-mini;
+  opacity: 0.75;
+  transform: translateY(2rem + $fab-size);
+  transition: $transition2;
+
+  @include media-min-width($desktop-width) {
+    right: 2rem;
+    bottom: 2rem;
+    transform: translateY(3rem + $fab-size);
+  }
+}
+
+.OnScreenY {
+  transform: translateY(0);
+}
+
+.Loader,
+.Loader:after {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.Loader {
+  margin: auto auto;
+  font-size: $font-size;
+  position: relative;
+  text-indent: -9999rem;
+  border-top: 0.5rem solid lighten($md-blue-gray, 50%);
+  border-right: 0.5rem solid lighten($md-blue-gray, 50%);
+  border-bottom: 0.5rem solid lighten($md-blue-gray, 50%);
+  border-left: 0.5rem solid $md-blue-gray;
+  transform: translateZ(0);
+  animation: loading 1.3s infinite linear;
+}
+
+.Extend {
+  animation: extend forwards;
+}
+
+.stopScroll {
+  height: 100%;
+  overflow: hidden;
+}

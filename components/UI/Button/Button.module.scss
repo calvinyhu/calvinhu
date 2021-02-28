@@ -1,0 +1,128 @@
+@import './src/styles/_variables.scss';
+
+/********************************* Base *************************************/
+
+.Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-radius: $border-radius-button;
+  box-shadow: $box-shadow;
+  transition: $transition1;
+  user-select: none;
+  appearance: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: #ccc;
+  }
+}
+
+/********************************* Types *************************************/
+
+.Link {
+  position: relative;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  color: inherit;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 0px;
+    transition: $transition2;
+    border-bottom: 3px solid $md-blue-gray;
+    transform: scaleX(0) translateY(3px);
+  }
+}
+
+.LinkTouchHover {
+  &:before {
+    transform: scaleX(1) translateY(3px);
+  }
+}
+
+.LinkMouseHover {
+  &:before {
+    transform: scaleX(1) translateY(3px);
+  }
+}
+
+/********************************* Shape *************************************/
+
+.Circle {
+  border-radius: 50%;
+  box-shadow: $box-shadow-fab;
+}
+
+/********************************* Color *************************************/
+
+.Adj {
+  background: $dark-adj-color;
+}
+
+.AdjTouchHover {
+  transition: none;
+  background: $adj-color;
+}
+
+.AdjMouseHover {
+  background: $adj-color;
+}
+
+.Opp {
+  background: $opp-color;
+}
+
+.OppTouchHover {
+  transition: none;
+  background: $dark-opp-color;
+}
+
+.OppMouseHover {
+  background: $dark-opp-color;
+}
+
+.Clear {
+  background: transparent;
+  color: $md-blue-gray;
+  box-shadow: none;
+}
+
+.ClearTouchHover {
+  transition: none;
+  background: transparentize($md-black, 0.93);
+}
+
+.ClearMouseHover {
+  background: transparentize($md-black, 0.93);
+}
+
+.BlueGray {
+  background: $md-blue-gray;
+  color: $md-white;
+}
+
+.BlueGrayMouseHover {
+  background: lighten($md-blue-gray, 25%);
+}
+
+.BlueGrayTouchHover {
+  background: lighten($md-blue-gray, 25%);
+}
+
+.NoBackground {
+  background: none;
+}

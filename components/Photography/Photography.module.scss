@@ -1,0 +1,135 @@
+@import './src/styles/_classes.scss';
+
+.PhotographyContainer {
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+  background: $md-white;
+  color: $md-white;
+
+  h3,
+  h5 {
+    transition: $transition1;
+  }
+
+  @include media-min-width($desktop-width) {
+    h3 {
+      font-size: $font-size * 2.5;
+    }
+
+    h5 {
+      font-size: $font-size * 1.5;
+    }
+  }
+}
+
+.Nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: $padding;
+  position: relative;
+
+  @include media-min-width($desktop-width) {
+    justify-content: space-around;
+  }
+
+  .Logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.9);
+
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .NavLink {
+    display: inline-block;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.5);
+    transition: $transition2;
+
+    @include media-min-width($desktop-width) {
+      font-size: $font-size * 1.5;
+    }
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+    }
+  }
+}
+
+.Blurb {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $padding;
+}
+
+.TouchApp {
+  position: fixed;
+  bottom: $margin * 2;
+  left: 50%;
+  transform: translateX(-50%) scale(1.4);
+  opacity: 0.7;
+  transition: $transition1;
+  pointer-events: none;
+}
+
+.HideTouchApp {
+  opacity: 0;
+}
+
+.LoaderContainer {
+  position: fixed;
+  width: 5rem;
+  height: 5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: $transition1;
+}
+
+.Filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparentize($md-white, 0.07);
+  color: $md-blue-gray;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: 4rem;
+
+  @include media-min-width($desktop-width) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  h4 {
+    margin: $margin;
+  }
+}
+
+.FilterButtons {
+  display: flex;
+  flex-direction: column;
+
+  @include media-min-width($desktop-width) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.FilterButton {
+  width: 8rem;
+  height: 2.5rem;
+  margin: $margin;
+}
