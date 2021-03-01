@@ -7,9 +7,6 @@ import Button from '../UI/Button/Button';
 import packageJson from '../../package.json';
 
 import styles from './Cover.module.scss';
-import p1080 from 'public/assets/images/DSC_9569-1080p50-blurred.jpg';
-import p1440 from 'public/assets/images/DSC_9569-1440p50-blurred.jpg';
-import p2160 from 'public/assets/images/DSC_9569-2160p35-blurred.jpg';
 
 const Cover = () => {
   const [{ st, xy }, setSpring] = useSpring(() => ({
