@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Link } from '@reach/router';
+import Link from 'next/link';
 import clsx from 'clsx';
 
 import Fa from 'components/UI/Fa/Fa';
@@ -23,13 +23,14 @@ const NavBar: FC<NavBarProps> = ({ className, isShowToTop, pathname, handleDrawe
         [styles.White]: isShowToTop || pathname !== '/',
       })}
     >
-      <Link
-        to="/"
-        className={clsx(homeLayoutStyles.NavBarLink, styles.NavBarHomeLink, {
-          [styles.Clickable]: isShowToTop || pathname !== '/',
-        })}
-      >
-        Calvin Hu
+      <Link href="/">
+        <button
+          className={clsx(homeLayoutStyles.NavBarLink, styles.NavBarHomeLink, {
+            [styles.Clickable]: isShowToTop || pathname !== '/',
+          })}
+        >
+          Calvin Hu
+        </button>
       </Link>
       <span className={styles.NavBarRight}>
         <span className={styles.NavBarLinks}>{links}</span>

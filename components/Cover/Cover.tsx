@@ -1,5 +1,6 @@
 import { useCallback, useEffect } from 'react';
 import { useSpring, animated, interpolate } from 'react-spring';
+import Image from 'next/image';
 
 import Fa from '../UI/Fa/Fa';
 import Button from '../UI/Button/Button';
@@ -49,11 +50,11 @@ const Cover = () => {
   return (
     <div className={styles.Cover} onMouseMove={handleMouseMove}>
       <animated.div style={{ transform: (interpolateBackground as unknown) as string }} className={styles.Background}>
-        <picture>
-          <source media="(min-width: 1440px)" srcSet={p1440} />
-          <source media="(min-width: 2160px)" srcSet={p2160} />
-          <img src={p1080} alt="me" />
-        </picture>
+        {/* <picture>
+          <source media="(min-width: 1440px)" srcSet="/assets/images/DSC_9569-1440p50-blurred.jpg" />
+          <source media="(min-width: 2160px)" srcSet="/assets/images/DSC_9569-2160p35-blurred.jpg" />
+        </picture> */}
+        <Image src="/assets/images/DSC_9569-1080p50-blurred.jpg" height="100" width="100" alt="me" />
         <div className={styles.LightenFilter} />
       </animated.div>
 

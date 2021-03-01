@@ -1,5 +1,6 @@
-import { lazy, FC, useState } from 'react';
-import { Link, RouterProps, WindowLocation, Router } from '@reach/router';
+import { FC, useState, ReactNode } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useScrollPositionFlag } from 'utils/hooks';
 import TopOfPageButton from 'components/UI/Button/TopOfPageButton/TopOfPageButton';
@@ -7,9 +8,9 @@ import NavDrawer from '../NavDrawer/NavDrawer';
 import NavBar from 'components/NavBar/NavBar';
 
 import styles from './HomeLayout.module.scss';
-import Home from 'components/Home/Home';
+// import Home from 'components/Home/Home';
 
-const About = lazy(() => import('components/About/About'));
+// const About = lazy(() => import('components/About/About'));
 
 interface LinksProps {
   onClick?: () => void;
@@ -17,24 +18,28 @@ interface LinksProps {
 
 const Links: FC<LinksProps> = ({ onClick }) => (
   <>
-    <Link to="photo" className={styles.NavBarLink} onClick={onClick}>
-      Photography
+    <Link href="photo">
+      <button className={styles.NavBarLink} onClick={onClick}>
+        Photography
+      </button>
     </Link>
-    <Link to="about" className={styles.NavBarLink} onClick={onClick}>
-      About
+    <Link href="about">
+      <button className={styles.NavBarLink} onClick={onClick}>
+        About
+      </button>
     </Link>
   </>
 );
 
-interface HomeLayoutProps extends RouterProps {
-  path: string;
+interface HomeLayoutProps {
+  children: ReactNode;
 }
 
-const HomeLayout: FC<HomeLayoutProps> = ({ location }) => {
-  const { pathname } = location as WindowLocation;
+const HomeLayout = ({ children }: HomeLayoutProps) => {
+  const { pathname } = useRouter();
 
   const [isShowToTop, setIsShowToTop] = useState(false);
-  useScrollPositionFlag(isShowToTop, setIsShowToTop, window.innerHeight);
+  useScrollPositionFlag(isShowToTop, setIsShowToTop, typeof window !== 'undefined' ? window?.innerHeight : 0);
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0 });
     setIsShowToTop(false);
@@ -48,10 +53,8 @@ const HomeLayout: FC<HomeLayoutProps> = ({ location }) => {
     <>
       <NavBar pathname={pathname} handleDrawerOpen={handleDrawerOpen} isShowToTop={isShowToTop} links={<Links />} />
       <div className={styles.ContentContainer}>
-        <Router>
-          <Home path="/" />
-          <About path="about" />
-        </Router>
+        {children}
+        {/* <About path="about" /> */}
       </div>
       <NavDrawer
         handleDrawerClose={handleDrawerClose}

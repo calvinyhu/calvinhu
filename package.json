@@ -52,5 +52,5 @@
     "ship": "standard-version --no-verify && git push --follow-tags && npm run build && npm run deploy",
     "start": "next start"
   },
-  "version": "0.1.0"
+  "version": "2.8.1"
 }

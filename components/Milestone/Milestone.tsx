@@ -1,5 +1,7 @@
-import styles from './Milestone.module.scss';
+import Image from 'next/image';
+
 import HyperLink from 'components/UI/HyperLink/HyperLink';
+import styles from './Milestone.module.scss';
 
 interface MilestoneProps {
   alt: string;
@@ -15,7 +17,7 @@ const Milestone = ({ alt, date, description, logo, title, url, urlTitle }: Miles
   return (
     <div className={styles.Milestone}>
       <div className={styles.Photo}>
-        <img src={logo} alt={alt} />
+        <Image src={logo} width="240" height="240" alt={alt} />
       </div>
       <div className={styles.Details}>
         <div>

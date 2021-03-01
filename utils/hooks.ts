@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import throttle from 'raf-throttle';
 
 export const useResetScrollOnUnmount = () => {
-  const [currentPath] = useState(window.location.pathname);
+  const [currentPath] = useState(typeof window !== 'undefined' ? window.location.pathname : undefined);
 
   useEffect(() => {
     return () => {

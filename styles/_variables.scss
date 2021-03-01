@@ -1,0 +1,102 @@
+// Media Widths
+$desktop-width: 40rem;
+$mobile-height: 31rem;
+$mobile-height-tall: 37rem;
+$mobile-height-taller: 44rem;
+$mobile-height-tallest: 50rem;
+
+// Transitions
+$timing-func-1: cubic-bezier(0.26, 0.94, 0.58, 1);
+$timing-func-2: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-duration1: 0.1s;
+$transition-duration2: 0.2s;
+$transition-duration3: 0.3s;
+$transition1: $transition-duration1 $timing-func-1;
+$transition2: $transition-duration2 $timing-func-2;
+$transition3: $transition-duration3 $timing-func-2;
+
+// Padding
+$padding: 1rem;
+$padding-tiny: 0.2rem;
+
+// Border
+$border-input: 1px solid #ccc;
+$border-input-oa: 1px solid #5481a4;
+$border-radius-input: 2px;
+$border-radius-button: 4px;
+$border-radius-card: 6px;
+
+// Margin
+$margin: 1rem;
+$margin-tiny: 0.2rem;
+
+// Box Shadow
+$box-shadow: 0px 3px 6px -2px rgba(0, 0, 0, 0.2);
+$box-shadow-top: 0px -3px 6px -2px rgba(0, 0, 0, 0.2);
+$box-shadow-dark: 0px 3px 6px -2px rgba(0, 0, 0, 0.4);
+$box-shadow-fab: 0px 3px 6px 0px rgba(0, 0, 0, 0.4);
+$box-shadow-card: 0px 6px 15px 0px rgba(0, 0, 0, 0.5);
+$box-shadow-gallery: 0px 10px 10px -2px rgba(0, 0, 0, 0.5);
+
+// Font
+$font-size: 1rem;
+
+// Height
+$height: 1rem;
+
+// Width
+$width: 1rem;
+
+// Fab
+$fab-size: 3.5rem;
+$fab-size-mini: 2.5rem;
+
+// Paletton Colors
+$lighter-main-color: #fff3e7;
+$light-main-color: #ffe2c4;
+$main-color: #ffd1a0;
+$dark-main-color: #ffbf7d;
+$darker-main-color: #d9954d;
+
+$lighter-adj-color: #fff8e7;
+$light-adj-color: #ffeec4;
+$adj-color: #ffe3a0;
+$dark-adj-color: #ffd97d;
+$darker-adj-color: #d9b04d;
+
+$lighter-opp-color: #e0f1f6;
+$light-opp-color: #b0d5e1;
+$opp-color: #7eb3c4;
+$dark-opp-color: #518c9f;
+$darker-opp-color: #337287;
+
+$lighter-opp-adj-color: #e3e7f8;
+$light-opp-adj-color: #b8c0e6;
+$opp-adj-color: #8a96cd;
+$dark-opp-adj-color: #606eae;
+$darker-opp-adj-color: #404f94;
+
+$jammming-main-color: #bf9cd7;
+$jammming-light-main-color: #dfc9ed;
+
+// Material Design Colors
+$md-main: #ffd1a0;
+$md-main-light: #ffffd1;
+$md-main-dark: #caa071;
+
+$md-adj: #ffe3a0;
+$md-adj-light: #ffffd2;
+$md-adj-dark: #cbb171;
+
+$md-opp: #7eb3c4;
+$md-opp-light: #afe5f7;
+$md-opp-dark: #4e8394;
+
+$md-opp-adj: #8a96cd;
+$md-opp-adj-light: #bbc6ff;
+$md-opp-adj-dark: #5b689c;
+
+$md-black: #212121;
+$md-gray: #424242;
+$md-blue-gray: #37474f;
+$md-white: #fafafa;

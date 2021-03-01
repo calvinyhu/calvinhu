@@ -1,5 +1,5 @@
-@import "./src/styles/_classes.scss";
-@import "./src/styles/_variables.scss";
+@import 'styles/_classes.scss';
+@import 'styles/_variables.scss';
 
 .NavBarLink {
   display: flex;
@@ -8,6 +8,12 @@
   padding: 1rem 1.5rem;
   color: $md-blue-gray;
   font-size: medium;
+  background-color: transparent;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
 
   &:hover {
     color: $md-blue-gray;

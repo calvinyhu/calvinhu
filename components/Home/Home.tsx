@@ -1,16 +1,10 @@
-import { FC } from 'react';
-
 import Cover from 'components/Cover/Cover';
 import Milestone from 'components/Milestone/Milestone';
 import { useResetScrollOnUnmount } from 'utils/hooks';
 
 import milestones from 'constants/milestones';
 
-interface HomeProps {
-  path: string;
-}
-
-const Home: FC<HomeProps> = () => {
+const Home = () => {
   useResetScrollOnUnmount();
 
   return (
