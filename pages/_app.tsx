@@ -1,8 +1,14 @@
+import { ComponentType } from 'react';
 import Head from 'next/head';
 
 import 'styles/index.scss';
 
-function MyApp({ Component, pageProps }) {
+interface MyAppProps {
+  Component: ComponentType;
+  pageProps: Record<string, unknown>;
+}
+
+function MyApp({ Component, pageProps }: MyAppProps) {
   return (
     <>
       <Head>
