@@ -1,3 +1,4 @@
+import firebase from 'firebase';
 import { firestore, storage } from 'config/firebase';
 
 export const fetchPhotos = () =>

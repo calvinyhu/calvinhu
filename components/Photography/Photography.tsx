@@ -41,7 +41,7 @@ const Photography: FC<PhotographyProps> = ({ path }) => {
     </animated.div>
   );
 
-  const filterPhotos = (photos: firebase.firestore.DocumentData) => {
+  const filterPhotos = (photos?: firebase.firestore.DocumentData) => {
     if (!photos) return photos;
 
     const filteredPhotos: { [id: string]: Record<string, unknown> } = {};
