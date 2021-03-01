@@ -1,12 +1,13 @@
-import { FC, useState } from 'react';
-import { Link, WindowLocation, RouterProps, Redirect, Router } from '@reach/router';
+import { FC, ReactNode, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 import NavBar from 'components/NavBar/NavBar';
 import NavDrawer from 'components/NavDrawer/NavDrawer';
 import TopOfPageButton from 'components/UI/Button/TopOfPageButton/TopOfPageButton';
 import { useScrollPositionFlag } from 'utils/hooks';
 
 import styles from './PhotoLayout.module.scss';
-import Photography from 'components/Photography/Photography';
 
 interface LinksProps {
   onClick?: () => void;
@@ -14,27 +15,33 @@ interface LinksProps {
 
 const Links: FC<LinksProps> = ({ onClick }) => (
   <>
-    <Link to="travel" className={styles.NavBarLink} onClick={onClick}>
-      Travel
+    <Link href="/photo/travel">
+      <button className={styles.NavBarLink} onClick={onClick}>
+        Travel
+      </button>
     </Link>
-    <Link to="automotive" className={styles.NavBarLink} onClick={onClick}>
-      Automotive
+    <Link href="/photo/automotive">
+      <button className={styles.NavBarLink} onClick={onClick}>
+        Automotive
+      </button>
     </Link>
-    <Link to="portraits" className={styles.NavBarLink} onClick={onClick}>
-      Portraits
+    <Link href="/photo/portraits">
+      <button className={styles.NavBarLink} onClick={onClick}>
+        Portraits
+      </button>
     </Link>
   </>
 );
 
-interface PhotoLayoutProps extends RouterProps {
-  path: string;
+interface PhotoLayoutProps {
+  children: ReactNode;
 }
 
-const PhotoLayout: FC<PhotoLayoutProps> = ({ location }) => {
-  const { pathname } = location as WindowLocation;
+const PhotoLayout = ({ children }: PhotoLayoutProps) => {
+  const { pathname } = useRouter();
 
   const [isShowToTop, setIsShowToTop] = useState(false);
-  useScrollPositionFlag(isShowToTop, setIsShowToTop, window.innerHeight);
+  useScrollPositionFlag(isShowToTop, setIsShowToTop, typeof window !== 'undefined' ? window.innerHeight : 0);
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0 });
     setIsShowToTop(false);
@@ -53,12 +60,13 @@ const PhotoLayout: FC<PhotoLayoutProps> = ({ location }) => {
         isShowToTop={isShowToTop}
         links={<Links />}
       />
-      <Router>
+      {children}
+      {/* <Router>
         <Photography path="travel" />
         <Photography path="automotive" />
         <Photography path="portraits" />
         <Redirect from="/" to="travel" />
-      </Router>
+      </Router> */}
       <NavDrawer
         handleDrawerClose={handleDrawerClose}
         isDrawerOpen={isDrawerOpen}

@@ -8,9 +8,6 @@ import NavDrawer from '../NavDrawer/NavDrawer';
 import NavBar from 'components/NavBar/NavBar';
 
 import styles from './HomeLayout.module.scss';
-// import Home from 'components/Home/Home';
-
-// const About = lazy(() => import('components/About/About'));
 
 interface LinksProps {
   onClick?: () => void;
@@ -21,11 +18,6 @@ const Links: FC<LinksProps> = ({ onClick }) => (
     <Link href="photo">
       <button className={styles.NavBarLink} onClick={onClick}>
         Photography
-      </button>
-    </Link>
-    <Link href="about">
-      <button className={styles.NavBarLink} onClick={onClick}>
-        About
       </button>
     </Link>
   </>
@@ -52,10 +44,7 @@ const HomeLayout = ({ children }: HomeLayoutProps) => {
   return (
     <>
       <NavBar pathname={pathname} handleDrawerOpen={handleDrawerOpen} isShowToTop={isShowToTop} links={<Links />} />
-      <div className={styles.ContentContainer}>
-        {children}
-        {/* <About path="about" /> */}
-      </div>
+      <div className={styles.ContentContainer}>{children}</div>
       <NavDrawer
         handleDrawerClose={handleDrawerClose}
         isDrawerOpen={isDrawerOpen}
