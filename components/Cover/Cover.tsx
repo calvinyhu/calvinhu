@@ -47,7 +47,14 @@ const Cover = () => {
   return (
     <div className={styles.Cover} onMouseMove={handleMouseMove}>
       <animated.div style={{ transform: (interpolateBackground as unknown) as string }} className={styles.Background}>
-        <Image src="/assets/images/DSC_9569-2160p35-blurred.jpg" layout="fill" alt="me" className={styles.Image} />
+        <Image
+          src="/assets/images/DSC_9569-2160p35-blurred.jpg"
+          layout="fill"
+          alt="me"
+          objectFit="cover"
+          quality={100}
+          priority
+        />
         <div className={styles.LightenFilter} />
       </animated.div>
 
