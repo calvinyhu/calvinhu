@@ -8,6 +8,7 @@
   "dependencies": {
     "clsx": "^1.1.1",
     "firebase": "^8.2.9",
+    "firebase-functions": "^3.13.2",
     "next": "10.0.7",
     "raf-throttle": "^2.0.5",
     "react": "17.0.1",
@@ -41,12 +42,13 @@
   "name": "calvinhu",
   "private": true,
   "scripts": {
-    "build": "next build",
+    "build": "rm -rf .next && next build",
     "deploy": "firebase deploy --only hosting",
     "dev": "next dev",
     "firebase": "firebase",
     "eslint": "eslint **/*.{js,jsx,ts,tsx}",
     "eslint:fix": "eslint --fix **/*.{js,jsx,ts,tsx}",
+    "export": "rm -rf out && next export",
     "lint": "npm run eslint:fix && npm run prettier:write",
     "prettier": "prettier",
     "prettier:write": "prettier --write **/*.{js,jsx,ts,tsx}",
