@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import Fa from '../UI/Fa/Fa';
 import Button from '../UI/Button/Button';
-import packageJson from '../../package.json';
+import packageJson from '../../../package.json';
 
 import styles from './Cover.module.scss';
 
