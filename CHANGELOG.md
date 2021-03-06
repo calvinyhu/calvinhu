@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 2.9.0 (2021-03-06)
+
+
+### Features
+
+* add firebase init files ([0055453](https://github.com/calvinyhu/calvinhu/commit/0055453897e8b7688e3359ee4c09919253c3dc56))
+* add home page ([5852fa4](https://github.com/calvinyhu/calvinhu/commit/5852fa4bbf2aea6ee63922dd90a1cca018f8e3b1))
+* add photo page ([e1ff98a](https://github.com/calvinyhu/calvinhu/commit/e1ff98a650c1b87c050722cc35b4a973079f1ca3))
+* convert to nextjs project ([bf75cc5](https://github.com/calvinyhu/calvinhu/commit/bf75cc5a4b739056dd76da536d43f0c6bde461a6))
+
+
+### Bug Fixes
+
+* add types ([3965258](https://github.com/calvinyhu/calvinhu/commit/396525856a43c9ea41a3a3cc5f4688f36e90bfba))
+* cover styles ([9782179](https://github.com/calvinyhu/calvinhu/commit/9782179cee970f06f84a0fa1d93f7b008edcf723))
+* downgrade to husky v4 ([1a7397d](https://github.com/calvinyhu/calvinhu/commit/1a7397d4f9e2dd3bf18b66112e9f07efdccf8439))
+* fix build issues ([eb2806d](https://github.com/calvinyhu/calvinhu/commit/eb2806d863b3e5c1461eacae20cf38be70707ab6))
+* fix lint-staged config ([247a23b](https://github.com/calvinyhu/calvinhu/commit/247a23b45fa91057ba0e3d44420e49f3901780c4))
+* s ([630361a](https://github.com/calvinyhu/calvinhu/commit/630361a89fc17aa600f64e8c318676b572939da1))
+
 ### [2.8.1](https://github.com/calvinyhu/calvinhu/compare/v2.8.0...v2.8.1) (2020-11-25)
 
 ## [2.8.0](https://github.com/calvinyhu/calvinhu/compare/v2.7.0...v2.8.0) (2020-10-15)
