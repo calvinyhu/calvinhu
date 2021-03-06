@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/calvinyhu/calvinhu/compare/v2.9.0...v3.0.0) (2021-03-06)
+
 ## 2.9.0 (2021-03-06)
 
 
