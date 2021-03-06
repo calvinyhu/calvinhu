@@ -8,6 +8,7 @@
   "dependencies": {
     "clsx": "^1.1.1",
     "firebase": "^8.2.9",
+    "firebase-admin": "^9.5.0",
     "firebase-functions": "^3.13.2",
     "next": "10.0.7",
     "raf-throttle": "^2.0.5",
@@ -56,5 +57,5 @@
     "standard-version": "standard-version",
     "start": "next start"
   },
-  "version": "3.0.5"
+  "version": "3.0.6"
 }
