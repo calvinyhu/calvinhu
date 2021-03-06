@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/calvinyhu/calvinhu/compare/v3.0.1...v3.0.2) (2021-03-06)
+
+
+### Bug Fixes
+
+* node engine ([2e3c833](https://github.com/calvinyhu/calvinhu/commit/2e3c833b39e9610836aef9e7cf07f03e1e8ea44d))
+
 ### [3.0.1](https://github.com/calvinyhu/calvinhu/compare/v3.0.0...v3.0.1) (2021-03-06)
 
 ## [3.0.0](https://github.com/calvinyhu/calvinhu/compare/v2.9.0...v3.0.0) (2021-03-06)
